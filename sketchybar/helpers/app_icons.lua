@@ -421,6 +421,14 @@ return {
 	["Vim"] = ":vim:",
 	["VimR"] = ":vim:",
 	["Emacs"] = ":emacs:",
+	["Bear"] = ":bear:",
+
+	-- PDF
+	["UPDF"] = ":pdf:",
+	["Preview"] = ":pdf:",
+	["Skim"] = ":pdf:",
+	["zathura"] = ":pdf:",
+	["sioyek"] = ":pdf:",
 
 	-- Terminal
 	["Alacritty"] = ":alacritty:",
@@ -444,6 +452,7 @@ return {
 	["System Preferences"] = ":gear:",
 	["System Settings"] = ":gear:",
 	["Font Book"] = ":book:",
+	["Notes"] = ":notes:",
 
 	-- Developer
 	["OrbStack"] = ":orbstack:",
@@ -475,11 +484,5 @@ return {
 	["Bitwarden"] = ":bit_warden:",
 	["Dropbox"] = ":dropbox:",
 	["Notion"] = ":notion:",
-	["Bear"] = ":bear:",
-	["Notes"] = ":notes:",
-	["Preview"] = ":pdf:",
-	["Skim"] = ":pdf:",
-	["zathura"] = ":pdf:",
-	["sioyek"] = ":pdf:",
 	["1Password"] = ":one_password:",
 }
