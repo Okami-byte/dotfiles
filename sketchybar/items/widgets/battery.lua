@@ -10,9 +10,23 @@ local battery = sbar.add("item", "widgets.battery", {
 			size = 19.0,
 		},
 	},
-	label = { font = { family = settings.font.numbers } },
+	label = { drawing = false }, -- { font = { family = settings.font.numbers } },
 	update_freq = 180,
 	popup = { align = "center" },
+})
+
+local battery_percent = sbar.add("item", {
+	position = "popup." .. battery.name,
+	icon = {
+		string = "Percentage:",
+		width = 100,
+		align = "left",
+	},
+	label = {
+		string = "??%",
+		width = 100,
+		align = "right",
+	},
 })
 
 local remaining_time = sbar.add("item", {
@@ -29,19 +43,19 @@ local remaining_time = sbar.add("item", {
 	},
 })
 
-local battery_condition = sbar.add("item", {
-	position = "popup." .. battery.name,
-	icon = {
-		string = "Battery condition:",
-		width = 100,
-		align = "left",
-	},
-	label = {
-		string = "Normal",
-		width = 100,
-		align = "right",
-	},
-})
+-- local battery_condition = sbar.add("item", {
+-- 	position = "popup." .. battery.name,
+-- 	icon = {
+-- 		string = "Battery condition:",
+-- 		width = 100,
+-- 		align = "left",
+-- 	},
+-- 	label = {
+-- 		string = "Normal",
+-- 		width = 100,
+-- 		align = "right",
+-- 	},
+-- })
 
 local battery_capacity = sbar.add("item", {
 	position = "popup." .. battery.name,
@@ -112,6 +126,13 @@ battery:subscribe("mouse.clicked", function(env)
 
 	if drawing == "off" then
 		sbar.exec("pmset -g batt", function(batt_info)
+			local found, _, charge = batt_info:find("(%d+)%%")
+			if found then
+				battery_percent:set({ label = charge .. "%" })
+			else
+				battery_percent:set({ label = "N/A" })
+			end
+
 			local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
 			local label = found and remaining .. "h" or "No estimate"
 
@@ -121,9 +142,9 @@ battery:subscribe("mouse.clicked", function(env)
 		end)
 
 		sbar.exec("system_profiler SPPowerDataType", function(batt_info)
-			local found, _, condition = batt_info:find("Condition: (%a+)")
-			local label = found and condition or "Unknown"
-			battery_condition:set({ label = label })
+			-- local found, _, condition = batt_info:find("Condition: (%a+)")
+			-- local label = found and condition or "Unknown"
+			-- battery_condition:set({ label = label })
 
 			local found, _, capacity = batt_info:find("Maximum Capacity: (%d+)%%")
 			local label = found and capacity .. "%" or "Unknown"
