@@ -159,7 +159,7 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 
 wifi_up:subscribe("network_update", function(env)
 	local up_color = (env.upload == "000 Bps") and colors.grey or colors.red
-	local down_color = (env.download == "000 Bps") and colors.grey or colors.cyan
+	local down_color = (env.download == "000 Bps") and colors.grey or colors.blue
 	wifi_up:set({
 		icon = { color = up_color },
 		label = {
