@@ -26,6 +26,7 @@ local icons = {
 		bluetooth = "󰂯 ",
 		control_center = "􀜊",
 		brew = "􀐛",
+		brew_check = "􀆅",
 
 		-- App launchers and utilities
 		lm_studio = "􀞏",

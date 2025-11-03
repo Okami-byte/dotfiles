@@ -82,7 +82,7 @@ B.bluetooth_icon = sbar.add("item", {
 		-- string = icons_map["Bluetooth"],
 		-- font = "sketchybar-app-font:Regular:19.0",
 		string = "󰂯",
-		color = colors.blue,
+		color = colors.sapphire,
 		font = { style = settings.font.style_map["Bold"], size = 17.0 },
 	},
 	popup = {
