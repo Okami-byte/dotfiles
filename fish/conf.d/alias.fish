@@ -23,6 +23,7 @@ alias cp="cp -iv"
 alias mv="mv -iv"
 alias stat="stat -x"
 alias grep="rg --color=always"
+alias cdi='zi'
 
 # Dirs
 alias ..="cd .."
