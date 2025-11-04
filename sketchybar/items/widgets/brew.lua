@@ -56,14 +56,17 @@ local function render_bar_item(count)
 	local color = colors.green
 	local label = icons.brew_check
 
-	if count >= 30 then
+	if count >= 50 then
 		color = colors.red
 		label = tostring(count)
+	elseif count >= 30 then
+		color = colors.orange
+		label = tostring(count)
 	elseif count >= 10 then
-		color = colors.peach
+		color = colors.yellow
 		label = tostring(count)
 	elseif count >= 1 then
-		color = colors.yellow
+		color = colors.white
 		label = tostring(count)
 	end
 
