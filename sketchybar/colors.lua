@@ -35,6 +35,7 @@ return {
 	red = 0xffeb6f92, --love
 	yellow = 0xfff6c177, --gold
 	orange = 0xfff39660,
+	maroon = 0xffeba0ac,
 	flamingo = 0xfff2cdcd,
 	sapphire = 0xff74c7ec,
 	pink = 0xffebbcba, --rose

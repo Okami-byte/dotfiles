@@ -60,10 +60,10 @@ local function render_bar_item(count)
 		color = colors.red
 		label = tostring(count)
 	elseif count >= 10 then
-		color = colors.yellow
+		color = colors.peach
 		label = tostring(count)
 	elseif count >= 1 then
-		color = colors.peach
+		color = colors.yellow
 		label = tostring(count)
 	end
 
