@@ -1,6 +1,6 @@
 # Theme
-theme= Catppuccin Mocha
-# theme= Rose Pine
+# theme= Catppuccin Mocha
+theme= Rose Pine
 
 # Opacity
 background-opacity = 0.75
@@ -10,9 +10,10 @@ background-blur-radius = 50
 
 # Background Color
 # background = #0B0A08
-background = #222222
+# background = #222222
 # background = #2f2f3b
 # background = #444444
+	background = #100c08
 
 # Icon
 # macos-icon = custom-style
