@@ -38,6 +38,7 @@ abbr -a gf git fetch
 abbr -a gl lazygit
 abbr -a gm git merge
 abbr -a gst git status --short
+abbr -a glo serie
 
 # LazyDocker
 abbr -a ld lazydocker
