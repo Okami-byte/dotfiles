@@ -30,11 +30,32 @@ return {
         desc = "Git Log",
       },
       {
-        "<leader>rN",
+        "<leader>gi",
         function()
-          require("snacks").rename.rename_file()
+          Snacks.picker.gh_issue()
         end,
-        desc = "Fast Rename Current File",
+        desc = "GitHub Issues (open)",
+      },
+      {
+        "<leader>gI",
+        function()
+          Snacks.picker.gh_issue({ state = "all" })
+        end,
+        desc = "GitHub Issues (all)",
+      },
+      {
+        "<leader>gp",
+        function()
+          Snacks.picker.gh_pr()
+        end,
+        desc = "GitHub Pull Requests (open)",
+      },
+      {
+        "<leader>gP",
+        function()
+          Snacks.picker.gh_pr({ state = "all" })
+        end,
+        desc = "GitHub Pull Requests (all)",
       },
       -- -- List git branches with Snacks_picker to quickly switch to a new branch
       {
@@ -45,6 +66,13 @@ return {
           })
         end,
         desc = "List Branches",
+      },
+      {
+        "<leader>rN",
+        function()
+          require("snacks").rename.rename_file()
+        end,
+        desc = "Fast Rename Current File",
       },
       {
         "<leader>pws",
@@ -219,6 +247,9 @@ return {
           },
         },
       },
+      gh = {
+        enabled = true,
+      },
       -- Folke pointed me to the snacks docs
       -- https://github.com/LazyVim/LazyVim/discussions/4251#discussioncomment-11198069
       -- Here's the lazygit snak docs
@@ -254,15 +285,15 @@ return {
           -- render the image inline in the buffer
           -- if your env doesn't support unicode placeholders, this will be disabled
           -- takes precedence over `opts.float` on supported terminals
-          inline = vim.g.neovim_mode == "skitty" and true or false,
+          -- inline = vim.g.neovim_mode == "skitty" and true or false,
           -- only_render_image_at_cursor = vim.g.neovim_mode == "skitty" and false or true,
           -- render the image in a floating window
           -- only used if `opts.inline` is disabled
           float = true,
           -- Sets the size of the image
           -- max_width = 60,
-          max_width = vim.g.neovim_mode == "skitty" and 20 or 60,
-          max_height = vim.g.neovim_mode == "skitty" and 10 or 30,
+          -- max_width = vim.g.neovim_mode == "skitty" and 20 or 60,
+          -- max_height = vim.g.neovim_mode == "skitty" and 10 or 30,
           -- max_height = 30,
           -- Apparently, all the images that you preview in neovim are converted
           -- to .png and they're cached, original image remains the same, but
@@ -280,15 +311,15 @@ return {
         preset = {
           keys = {
             { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            -- { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
             { icon = " ", key = "s", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
             { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-            {
-              icon = " ",
-              key = "c",
-              desc = "Config",
-              action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
-            },
+            -- {
+            --   icon = " ",
+            --   key = "c",
+            --   desc = "Config",
+            --   action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+            -- },
             -- { icon = " ", key = "s", desc = "Restore Session", section = "session" },
             -- { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
             { icon = " ", key = "q", desc = "Quit", action = ":qa" },
