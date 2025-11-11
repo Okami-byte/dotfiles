@@ -51,17 +51,17 @@ restart_sketchybar() {
 }
 
 # Function to restart borders
-# restart_borders() {
-#   show_loading "Restarting borders"
-#   brew services restart borders
-# }
+restart_borders() {
+  show_loading "Restarting borders"
+  brew services restart borders
+}
 
 # Function to restart all services
 restart_all() {
   restart_yabai
   restart_skhd
   restart_sketchybar
-  # restart_borders
+  restart_borders
   echo -e "\n${GREEN}${BOLD}All services restarted successfully!${NC}"
 }
 
@@ -75,7 +75,7 @@ show_menu() {
   echo -e "${YELLOW}1)${NC} ${CYAN}Restart Yabai${NC}"
   echo -e "${YELLOW}2)${NC} ${CYAN}Restart SKHD${NC}"
   echo -e "${YELLOW}3)${NC} ${CYAN}Restart Sketchybar${NC}"
-  # echo -e "${YELLOW}4)${NC} ${CYAN}Restart Borders${NC}"
+  echo -e "${YELLOW}4)${NC} ${CYAN}Restart Borders${NC}"
   echo -e "${YELLOW}5)${NC} ${GREEN}Restart All Services${NC}"
   echo
   echo -e "${RED}q)${NC} ${WHITE}Quit${NC}"
@@ -122,7 +122,7 @@ else
   "yabai") restart_yabai ;;
   "skhd") restart_skhd ;;
   "sketchybar") restart_sketchybar ;;
-  # "borders") restart_borders ;;
+  "borders") restart_borders ;;
   "all") restart_all ;;
   *)
     echo "Usage: $0 {yabai|skhd|sketchybar|borders|all}"
