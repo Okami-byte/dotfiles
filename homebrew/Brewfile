@@ -1,4 +1,5 @@
 tap "alienator88/cask"
+tap "altalt-org/alt"
 tap "antoniorodr/cronboard"
 tap "avasilic/goto"
 tap "banh-canh/ytui"
@@ -69,7 +70,7 @@ brew "clipboard"
 # Cross-platform make
 brew "cmake"
 # Pack, ship and run any application as a lightweight container
-brew "docker"
+brew "docker", link: false
 # Command-line DNS Client for Humans
 brew "doggo"
 # More intuitive version of du in rust
@@ -156,7 +157,7 @@ brew "neovim"
 brew "ninja"
 # Port scanning utility for large networks
 brew "nmap"
-# Platform built on V8 to build network applications
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Thread-based email index, search, and tagging
 brew "notmuch"
@@ -184,8 +185,12 @@ brew "procs"
 brew "ranger"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Terminal based Media Player Client with album art support
+brew "rmpc"
 # Install Ruby, JRuby, Rubinius, TruffleRuby, or mruby
 brew "ruby-install"
+# Rich git commit graph in your terminal
+brew "serie"
 # Smart session manager for the terminal
 brew "sesh"
 # SMART hard drive monitoring
@@ -292,6 +297,8 @@ cask "1password-cli"
 cask "activitywatch"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
+# Desktop application for AI-powered lecture note taking and management
+cask "alt"
 # Enable Windows-like alt-tab
 cask "alt-tab"
 # Control the platform power state of your Apple Silicon device
@@ -300,6 +307,8 @@ cask "battery-toolkit"
 cask "betterdisplay"
 # Web browser focusing on privacy
 cask "brave-browser"
+# E-books management software
+cask "calibre"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
@@ -310,8 +319,6 @@ cask "cleanshot"
 cask "cloudflare-warp"
 # Disk space visualiser
 cask "daisydisk"
-# Menu bar app to easily switch between DNS providers
-cask "dns-easy-switcher"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Online diagram software
@@ -333,8 +340,6 @@ cask "font-sf-pro"
 cask "ghostty"
 # Free and open-source media player
 cask "iina"
-# Offline AI chat tool
-cask "jan"
 # Keyboard customiser
 cask "karabiner-elements"
 # File archiver
@@ -359,8 +364,6 @@ cask "maccy"
 cask "melonds"
 # Multi-platform web browser
 cask "microsoft-edge"
-# Utility to extend trackpad functionality
-cask "middleclick"
 # Native app email client for Gmail
 cask "mimestream"
 # Calendar for professionals and teams
@@ -389,6 +392,8 @@ cask "spotify"
 cask "tor-browser"
 # Charting and social-networking for investment traders
 cask "tradingview"
+# PDF editor
+cask "updf"
 # Custom Discord App
 cask "vesktop"
 # VirusTotal client built with SwiftUI
@@ -403,10 +408,7 @@ cask "wezterm"
 cask "zen"
 # Gecko based web browser
 cask "zen@twilight"
-mas "Apollo", id: 6448019325
 mas "Classic Loan Calculator", id: 6743346144
 mas "Color Picker", id: 1545870783
-mas "MeetingMind", id: 6751551175
 mas "PDFgear", id: 6469021132
-mas "Trace", id: 6503812022
 mas "YABA", id: 6747272081
