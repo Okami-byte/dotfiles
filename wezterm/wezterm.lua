@@ -164,10 +164,10 @@ config = {
 
 	colors = {
 		-- foreground = "#fcfcfc",
-		-- background = "#0B0A08",
+		background = "#0B0A08",
 		-- background = "#100c08",
 		-- background = "#353839",
-		background = "#222222",
+		-- background = "#222222",
 		-- background = "#9B96B5",
 		-- background = "#444444",
 		-- background = "#3c3c3c",
