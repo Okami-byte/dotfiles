@@ -13,7 +13,8 @@ command_timeout = 1000
 
 add_newline = true
 
-palette = "catppuccin_mocha"
+# palette = "catppuccin_mocha"
+palette = "rose-pine"
 
 format = """
 $character\
@@ -30,11 +31,11 @@ right_format = """$aws$python$docker_context$terraform"""
 # Drop ugly default prompt characters
 [character]
 disabled = false
-success_symbol = "[❯](bold fg:lavender)"
+success_symbol = "[❯](bold fg:iris)"
 error_symbol = "[❯❯](red bold)"
-vimcmd_symbol = '[ ](bold fg:sapphire)'
-vimcmd_replace_one_symbol = '[ ](bold fg:maroon)'
-vimcmd_replace_symbol = '[ ](bold fg:teal)'
+vimcmd_symbol = '[ ](bold fg:lavender)'
+vimcmd_replace_one_symbol = '[ ](bold fg:orange)'
+vimcmd_replace_symbol = '[ ](bold fg:sky)'
 vimcmd_visual_symbol = '[ ](bold fg:peach)'
 # ---
 
@@ -107,7 +108,7 @@ untracked = '\[ [$count](white)\]'
 stashed = '\[[ ](peach) [$count](white)\]'
 modified = '\[[󰏫 ](peach)[$count](white)\]'
 staged = '\[[󰏗 ](green)[$count](white)\]'
-renamed = '\[[󰜉 ](teal) [$count](white)\]'
+renamed = '\[[󰜉 ](sky) [$count](white)\]'
 deleted = '\[ [$count](white)\]'
 
 # Shows current git branch
@@ -191,23 +192,52 @@ style = 'bold sky'
 detect_files = ['k8s']
 format = ' [ $symbol( $context) ]($style)'
 
-[palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-hollow = "#6f7489"
-grey = "#6c7086"
-blue = "#89b4fa"
+# [palettes.catppuccin_mocha]
+# rosewater = "#f5e0dc"
+# flamingo = "#f2cdcd"
+# pink = "#f5c2e7"
+# mauve = "#cba6f7"
+# red = "#f38ba8"
+# maroon = "#eba0ac"
+# peach = "#fab387"
+# yellow = "#f9e2af"
+# green = "#a6e3a1"
+# teal = "#94e2d5"
+# sky = "#89dceb"
+# sapphire = "#74c7ec"
+# hollow = "#6f7489"
+# grey = "#6c7086"
+# blue = "#89b4fa"
+# lavender = "#b4befe"
+# text = "#cdd6f4"
+# subtext1 = "#bac2de"
+# subtext0 = "#a6adc8"
+# overlay2 = "#9399b2"
+# overlay1 = "#7f849c"
+# overlay0 = "#6c7086"
+# surface2 = "#585b70"
+# surface1 = "#45475a"
+# surface0 = "#313244"
+# base = "#1e1e2e"
+# mantle = "#181825"
+# crust = "#11111b"
+
+
+# palette = "rose-pine"
+#
+[palettes.rose-pine]
+overlay = '#26233a'
+red= '#eb6f92'
+orange = '#f6c177'
+pink = '#ebbcba'
+blue = '#31748f'
+sky = '#9ccfd8'
+green = "#95b1ac"
+iris = '#c4a7e7'
+yellow = "#f5e0dc"
+peach = "#f2cdcd"
 lavender = "#b4befe"
+purple = "#cba6f7"
 text = "#cdd6f4"
 subtext1 = "#bac2de"
 subtext0 = "#a6adc8"
@@ -220,19 +250,6 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
-
-
-# palette = "rose-pine"
-#
-# [palettes.rose-pine]
-# overlay = '#26233a'
-# love = '#eb6f92'
-# gold = '#f6c177'
-# rose = '#ebbcba'
-# pine = '#31748f'
-# foam = '#9ccfd8'
-# iris = '#c4a7e7'
-
 # [git_status]
 # disabled = false
 # style = "bg:overlay fg:love"

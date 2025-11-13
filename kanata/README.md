@@ -55,3 +55,22 @@ sudo launchctl start com.example.kanata
 Now, kanata should be running whenever your macbook starts up!
 
 If you use multiple keyboards, you may want to limit this to only showing up on your MacBooks internal keyboard.
+
+## Problems
+
+- When you update your kanata or reinstall ensure that you run through a unload
+and load of your kanata plist
+
+<u>Unload</u>
+```bash
+sudo launchctl unload /Library/LaunchDaemons/com.fox.kanata.plist
+```
+
+<u>Load</u>
+```bash
+sudo launchctl unload /Library/LaunchDaemons/com.fox.kanata.plist
+```
+
+- You can try a start, but also ensure that you re-enable input from kanata.
+- use `cmd + shift + g` to go straight to the binary after inserting the path
+which should be located in your homebrew directory
