@@ -14,8 +14,8 @@ alt - e : "${HOME}"/.config/scripts/choose/emoji.sh
 # alt - n : "${HOME}"/.config/scripts/choose/notes.sh
 
 # Applications
-rcmd - return : open -n -a "wezterm"
-# rcmd - return : open -n -a "kitty"
+# rcmd - return : open -n -a "wezterm"
+rcmd - return : open -n -a "kitty"
 
 # change layout of desktop
 lctrl + alt - b : yabai -m space --layout bsp
@@ -37,8 +37,8 @@ cmd + alt - n : yabai -m space --create && \
 cmd + alt - w : yabai -m space --destroy
 
 #change focus between external displays (top and bottom)
-alt - e: yabai -m display --focus east
-alt - w: yabai -m display --focus west
+# alt - e: yabai -m display --focus east
+# alt - w: yabai -m display --focus west
 # alt - u: yabai -m display --focus north
 # alt - d: yabai -m display --focus south
 
