@@ -47,6 +47,7 @@ return {
 	["BusyCal"] = ":busycal:",
 
 	-- Design
+	["Affinity"] = ":affinity_photo:",
 	["Affinity Designer"] = ":affinity_designer:",
 	["Affinity Designer 2"] = ":affinity_designer_2:",
 	["Affinity Photo"] = ":affinity_photo:",
@@ -200,6 +201,7 @@ return {
 	["System Preferences"] = ":gear:",
 	["System Settings"] = ":gear:",
 	["Font Book"] = ":book:",
+	["Books"] = ":book:",
 	["Notes"] = ":notes:",
 	["备忘录"] = ":notes:",
 	["メモ"] = ":notes:",
@@ -405,6 +407,7 @@ return {
 	["Pine"] = ":pine:",
 	["Iris"] = ":iris:",
 	["Zotero"] = ":zotero:",
+	["Z-Library"] = ":zlibrary:",
 	["Yuque"] = ":yuque:",
 	["语雀"] = ":yuque:",
 	["Home Assistant"] = ":home_assistant:",
