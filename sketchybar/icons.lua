@@ -52,14 +52,8 @@ local icons = {
 		},
 
 		switch = {
-			-- on = "􁏮",
-			-- off = "􁏯",
-
-			-- on = "󰍜",
-			-- on = "􀱢",
-			on = "􀯮",
-			off = "􀯯",
-			-- off = "􁚬",
+			on = "􁏮",
+			off = "􁏯",
 		},
 		zen = {
 			off = " 􀆺",
@@ -88,11 +82,8 @@ local icons = {
 			download = "􀄩",
 			connected = "􀙇",
 			disconnected = "􀙈",
-			-- connected = "􀤆",
-			-- disconnected = "􁣡",
 			router = "􁓤",
 			vpn = "􀎡",
-			test = "",
 		},
 
 		media = {

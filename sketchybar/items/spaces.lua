@@ -19,7 +19,7 @@ for i = 1, 10, 1 do
 			padding_left = 15,
 			padding_right = 8,
 			color = colors.arise,
-			highlight_color = colors.red,
+			highlight_color = colors.purple,
 			align = "center",
 		},
 		label = {
@@ -81,7 +81,7 @@ for i = 1, 10, 1 do
 			background = { border_color = selected and colors.grey or colors.bg2 },
 		})
 		space_bracket:set({
-			background = { border_color = selected and colors.peach or colors.bg2 },
+			background = { border_color = selected and colors.arise or colors.bg2 },
 		})
 	end)
 
@@ -111,7 +111,7 @@ local spaces_indicator = sbar.add("item", {
 	icon = {
 		padding_left = 8,
 		padding_right = 9,
-		color = colors.white,
+		color = colors.grey,
 		string = icons.switch.on,
 	},
 	label = {
@@ -162,9 +162,9 @@ spaces_indicator:subscribe("mouse.entered", function(env)
 				color = { alpha = 1.0 },
 				border_color = { alpha = 1.0 },
 			},
-			icon = { color = colors.white },
+			icon = { color = colors.black },
 			label = {
-				color = colors.white,
+				color = colors.black,
 				width = "dynamic",
 			},
 		})

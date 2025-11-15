@@ -148,9 +148,9 @@ brew:subscribe("brew_update", function()
 	update("brew_update")
 end)
 
-brew:subscribe("mouse.entered", function()
-	toggle_popup("on")
-end)
+-- brew:subscribe("mouse.entered", function()
+-- toggle_popup("on")
+-- end)
 
 brew:subscribe("mouse.exited", function()
 	toggle_popup("off")

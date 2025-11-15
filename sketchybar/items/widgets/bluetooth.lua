@@ -173,7 +173,7 @@ local function isInList(list, element)
 	return false
 end
 
-local function bluetooth_device_list()
+local function toggle_bluetooth_device_list()
 	local should_draw = bluetooth_bracket:query().popup.drawing == "off"
 	local connected_devices_list = {}
 	if should_draw then
@@ -217,6 +217,6 @@ local function bluetooth_device_list()
 	end
 end
 
-B.bluetooth_icon:subscribe("mouse.clicked", bluetooth_device_list)
+B.bluetooth_icon:subscribe("mouse.clicked", toggle_bluetooth_device_list)
 
 return B

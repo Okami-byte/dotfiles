@@ -10,7 +10,7 @@ sbar.add("item", { width = 5 })
 
 local apple = sbar.add("item", {
 	icon = {
-		font = { size = 20.0 },
+		font = { size = 22.0 },
 		string = icons.apple,
 		color = colors.arise,
 		padding_right = 1,
@@ -38,29 +38,6 @@ sbar.add("bracket", { apple.name }, {
 
 -- Padding item required because of bracket
 sbar.add("item", { width = 3 })
-
--- Hover effect for apple icon
--- apple:subscribe("mouse.entered", function()
--- 	sbar.animate("elastic", 15, function()
--- 		apple:set({
--- 			icon = {
--- 				font = { size = 16, style = "Bold" },
--- 				color = colors.arise,
--- 			},
--- 		})
--- 	end)
--- end)
-
--- apple:subscribe("mouse.exited", function()
--- 	sbar.animate("elastic", 15, function()
--- 		apple:set({
--- 			icon = {
--- 				font = { size = 14, style = "Bold" },
--- 				color = colors.primary,
--- 			},
--- 		})
--- 	end)
--- end)
 
 -- Helper function to create menu items with hover effect
 local function create_menu_item(position, label, icon_string, click_command)
