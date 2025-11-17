@@ -4,8 +4,8 @@
 	process = git-lfs filter-process
 	required = true
 [user]
-	name = Devin Delaney
-	email = 49962728+moonlinx@users.noreply.github.com
+	name = Okami
+	email = 49962728+Okami-byte@users.noreply.github.com
 [color]
 	ui = true
 
