@@ -27,14 +27,8 @@ set fish_cursor_replace_one underscore
 # Set neovim as default editor
 set -Ux EDITOR nvim # 'neovim/neovim' text editor
 
-# Set up Ghostty's shell integration.
-if test -n "$GHOSTTY_RESOURCES_DIR"
-    source $GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish
-end
-
 eval (/opt/homebrew/bin/brew shellenv)
 
-# starship init fish | source # https://starship.rs/
 zoxide init fish | source # ajeetdsouza/zoxide
 fzf --fish | source # https://github.com/junegunn/fzf
 atuin init fish | source # https://github.com/atuinsh/atuin
