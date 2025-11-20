@@ -2,17 +2,20 @@ tap "alienator88/cask"
 tap "altalt-org/alt"
 tap "antoniorodr/cronboard"
 tap "avasilic/goto"
-tap "banh-canh/ytui"
 tap "bloznelis/tap"
+tap "buo/cask-upgrade"
+tap "codechenx/tap"
 tap "espanso/espanso"
 tap "felixkratz/formulae"
 tap "glinford/tap"
 tap "gromgit/brewtils"
 tap "hashicorp/tap"
 tap "jesseduffield/lazygit"
+tap "joncrangle/tap"
 tap "jstkdng/programs"
 tap "keith/formulae"
 tap "koekeishiya/formulae"
+tap "ll-nick/leadr"
 tap "marsanne/cask"
 tap "mhaeuser/mhaeuser"
 tap "netbirdio/tap"
@@ -70,7 +73,7 @@ brew "clipboard"
 # Cross-platform make
 brew "cmake"
 # Pack, ship and run any application as a lightweight container
-brew "docker", link: false
+brew "docker"
 # Command-line DNS Client for Humans
 brew "doggo"
 # More intuitive version of du in rust
@@ -165,8 +168,6 @@ brew "notmuch"
 brew "nowplaying-cli"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
-# SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
-brew "openvpn"
 # Terminal User Interface (TUI) to view & control docker containers
 brew "oxker"
 # General-purpose scripting language
@@ -175,20 +176,18 @@ brew "php"
 brew "pngpaste"
 # Fast, disk space efficient package manager
 brew "pnpm"
-# Tool for managing OCI containers and pods
-brew "podman"
 # Quick and easy command-line file transfer utility from any computer to another
 brew "portal"
 # Modern replacement for ps written in Rust
 brew "procs"
-# File browser
-brew "ranger"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Terminal based Media Player Client with album art support
 brew "rmpc"
 # Install Ruby, JRuby, Rubinius, TruffleRuby, or mruby
 brew "ruby-install"
+# Intuitive find & replace CLI
+brew "sd"
 # Rich git commit graph in your terminal
 brew "serie"
 # Smart session manager for the terminal
@@ -259,14 +258,12 @@ brew "zsh-autocomplete"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# A terminal-based dashboard for managing cron jobs
-brew "antoniorodr/cronboard/cronboard"
 # Simple CLI SSH manager
 brew "avasilic/goto/goto-ssh"
-# An interactive Kubernetes log viewer for your terminal.
-brew "banh-canh/ytui/ytui"
 # Keyboard tester in terminal
 brew "bloznelis/tap/kbt"
+# Fast, feature-rich CSV/TSV/delimited file viewer for the command-line
+brew "codechenx/tap/codechenx-tv"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
@@ -275,6 +272,8 @@ brew "felixkratz/formulae/sketchybar"
 brew "gromgit/brewtils/taproom"
 # Terraform
 brew "hashicorp/tap/terraform"
+# Simple system stats event provider for SketchyBar
+brew "joncrangle/tap/sketchybar-system-stats"
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp"
 # Simple hotkey-daemon for macOS.
@@ -297,6 +296,8 @@ cask "1password-cli"
 cask "activitywatch"
 # AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
+# Image editing and design software
+cask "affinity"
 # Desktop application for AI-powered lecture note taking and management
 cask "alt"
 # Enable Windows-like alt-tab
@@ -338,8 +339,6 @@ cask "font-sf-mono"
 cask "font-sf-pro"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Free and open-source media player
-cask "iina"
 # Keyboard customiser
 cask "karabiner-elements"
 # File archiver
@@ -372,6 +371,8 @@ cask "notion-calendar"
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Markdown-based note-taking app
+cask "octarine"
 # Utility to uninstall apps and remove leftover files from old/uninstalled apps
 cask "pearcleaner"
 # Customise and maintain app icons
@@ -400,6 +401,8 @@ cask "vesktop"
 cask "virustotal"
 # Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
+# Rust-based terminal
+cask "warp"
 # Torrent streaming application
 cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
@@ -411,4 +414,7 @@ cask "zen@twilight"
 mas "Classic Loan Calculator", id: 6743346144
 mas "Color Picker", id: 1545870783
 mas "PDFgear", id: 6469021132
+mas "Prompt2Go", id: 6747984907
+mas "TestFlight", id: 899247664
+mas "THOHT", id: 0
 mas "YABA", id: 6747272081
