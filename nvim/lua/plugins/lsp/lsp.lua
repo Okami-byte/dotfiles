@@ -26,7 +26,7 @@ return {
 
     -- Servers
 
-    vim.lsp.enable("pylsp")
+    vim.lsp.enable("pyrefly")
     vim.lsp.enable("html")
     vim.lsp.enable("tsserver")
     vim.lsp.enable("cssls")

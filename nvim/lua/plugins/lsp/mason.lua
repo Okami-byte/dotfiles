@@ -11,7 +11,7 @@ return {
         "svelte",
         "lua_ls",
         "emmet_ls",
-        "pylsp",
+        "pyrefly",
         "eslint",
       },
     },
