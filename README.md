@@ -36,18 +36,9 @@ Dotfiles for my M3 Max Macbook Pro: Running macOS Sonoma 15.2.
 
 **Before you get started** make sure you give full disk access (test) permission to your terminal (for writing macos defaults). `System Preferences -> Privacy -> Full Disk Access`.
 
-```sh
-stow --target ~/.config
-```
-
-### Homebrew installation
 
 ```bash
-# Leaving a machine
-brew leaves > leaves.txt
-
-# Fresh installation
-xargs brew install < leaves.txt
+bash -c "$(curl -LsS https://raw.githubusercontent.com/Okami-byte/dotfiles/refs/heads/main/install.sh)"
 ```
 
 ### Customization
