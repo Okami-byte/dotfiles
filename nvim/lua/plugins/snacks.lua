@@ -134,7 +134,7 @@ return {
               list = { keys = { ["d"] = "bufdelete" } },
             },
             -- In case you want to override the layout for this keymap
-            layout = "ivy",
+            layout = "custom",
           })
         end,
         desc = "[P]Snacks picker buffers",
@@ -192,6 +192,25 @@ return {
           -- Then call this layout in the keymaps above
           -- got example from here
           -- https://github.com/folke/snacks.nvim/discussions/468
+
+          custom = {
+            layout = {
+              box = "vertical",
+              backdrop = false,
+              row = -1,
+              width = 0,
+              height = 0.4,
+              border = "top",
+              title = " {title} {live} {flags}",
+              title_pos = "left",
+              {
+                box = "horizontal",
+                { win = "list", border = "rounded" },
+                { win = "preview", title = "{preview}", width = 0.6, border = "rounded" },
+              },
+              { win = "input", height = 1, border = "top" },
+            },
+          },
           ivy = {
             layout = {
               box = "vertical",
