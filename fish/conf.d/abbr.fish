@@ -32,7 +32,7 @@ abbr -a gp git push
 abbr -a gpl git pull
 abbr -a gcl git clone
 abbr -a gb git branch
-abbr -a gcm git commit
+abbr -a gcm git commit -m ""
 abbr -a gco git checkout
 abbr -a gf git fetch
 abbr -a gl lazygit
