@@ -1,85 +1,68 @@
-local colors = require("colors")
-local icons = require("icons")
-local settings = require("settings")
+local settings = require "settings"
 
--- Menu watcher to monitor app changes
 local menu_watcher = sbar.add("item", {
-	drawing = false,
-	updates = false,
+  drawing = false,
+  updates = false,
 })
-
--- Space Swap event
 local space_menu_swap = sbar.add("item", {
-	drawing = false,
-	updates = true,
+  drawing = false,
+  updates = true,
 })
 sbar.add("event", "swap_menus_and_spaces")
 
--- Maximum number of menu items to display
 local max_items = 15
 local menu_items = {}
-
--- Create the menu items that will appear inline
 for i = 1, max_items, 1 do
-	local menu = sbar.add("item", "menu." .. i, {
-		padding_left = settings.paddings,
-		padding_right = settings.paddings,
-		drawing = false, -- Hidden by default
-		icon = { drawing = false },
-		label = {
-			font = {
-				style = settings.font.style_map[i == 1 and "Heavy" or "Semibold"],
-			},
-			padding_left = 6,
-			padding_right = 6,
-		},
-		click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
-	})
+  local menu = sbar.add("item", "system.menu." .. i, {
+    drawing = false,
+    icon = { drawing = false },
+    background = { drawing = false },
+    label = {
+      font = {
+        style = settings.font.style_map[i == 1 and "Heavy" or "Semibold"],
+      },
+      padding_left = 6,
+      padding_right = 6,
+    },
+    click_script = "$CONFIG_DIR/helpers/menus/bin/menus -s " .. i,
+  })
 
-	menu_items[i] = menu
+  menu_items[i] = menu
 end
 
-sbar.add("bracket", { "/menu\\..*/" }, {
-	background = { color = colors.bar.border },
-})
 
 local menu_padding = sbar.add("item", "menu.padding", {
-	drawing = false,
-	width = 5,
+  drawing = false,
+  width = 5,
 })
 
--- Function to update menu contents
-local function update_menus(env)
-	sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -l", function(menus)
-		sbar.set("/menu\\..*/", { drawing = false })
-		menu_padding:set({ drawing = true })
-		id = 1
-		for menu in string.gmatch(menus, "[^\r\n]+") do
-			if id < max_items then
-				menu_items[id]:set({ label = menu, drawing = true })
-			else
-				break
-			end
-			id = id + 1
-		end
-	end)
+local function update_menus(_)
+  sbar.exec("$CONFIG_DIR/helpers/menus/bin/menus -l", function(menus)
+    sbar.set("/menu\\..*/", { drawing = false })
+    menu_padding:set { drawing = true }
+    Id = 1
+    for menu in string.gmatch(menus, "[^\r\n]+") do
+      if Id < max_items then
+        menu_items[Id]:set { label = menu, drawing = true }
+      else
+        break
+      end
+      Id = Id + 1
+    end
+  end)
 end
 
 menu_watcher:subscribe("front_app_switched", update_menus)
 
-space_menu_swap:subscribe("swap_menus_and_spaces", function(env)
-	local drawing = menu_items[1]:query().geometry.drawing == "on"
-	if drawing then
-		menu_watcher:set({ updates = false })
-		sbar.set("/menu\\..*/", { drawing = false })
-		sbar.set("/space\\..*/", { drawing = true })
-		sbar.set("front_app", { drawing = true })
-	else
-		menu_watcher:set({ updates = true })
-		sbar.set("/space\\..*/", { drawing = false })
-		sbar.set("front_app", { drawing = true })
-		update_menus()
-	end
+space_menu_swap:subscribe("display_menu", function(_)
+  local drawing = menu_items[1]:query().geometry.drawing == "on"
+  if drawing then
+    menu_watcher:set { updates = false }
+    sbar.set("/menu\\..*/", { drawing = false })
+  else
+    menu_watcher:set { updates = true }
+    update_menus()
+  end
 end)
 
 return menu_watcher
