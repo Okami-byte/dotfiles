@@ -1,31 +1,41 @@
-notARepository: "quit"
 git:
   overrideGpg: true
   paging:
     colorArg: always
-    pager: delta
-os:
-  editPreset: nvim
+    pager: delta --dark --paging=never
+    useConfig: false
 gui:
-  showBottomLine: false
+  authorColors:
+    "*": magenta
+  showNumstatInFilesView: true
+  skipRewordInEditorWarning: true
+  tabWidth: 2
   theme:
     activeBorderColor:
-      - magenta
+      - yellow
+      - bold
+    searchingActiveBorderColor:
+      - yellow
+      - bold
+    inactiveBorderColor:
+      - "#6e6a86"
     selectedLineBgColor:
       - black
-    unstagedChangesColor:
-      - yellow
-  border: rounded
+  border: single
   nerdFontsVersion: "3"
+  spinner:
+    frames:
+      - "⠋"
+      - "⠙"
+      - "⠹"
+      - "⠸"
+      - "⠼"
+      - "⠴"
+      - "⠦"
+      - "⠧"
+      - "⠇"
+      - "⠏"
+    rate: 80
 keybinding:
   files:
-    commitChangesWithoutHook: <disabled>
-customCommands:
-  - key: w
-    prompts:
-      - type: input
-        title: Commit summary
-        initialValue: ""
-    description: Commit changes without pre-commit hook
-    command: git commit -n -m '{{index .PromptResponses 0}}'
-    context: files
+    viewResetOptions: <disabled>

@@ -26,19 +26,19 @@ path = "~/Notes"
 startup_command = "nvim "
 
 [[session]]
-name = "Python-Dev (󰌠)"
+name = "Python-Dev (󰌠 )"
 path = "~/Developer/Projects/Python"
 startup_command = "nvim "
 
 [[session]]
-name = "Developer (󰅴)"
+name = "Developer (󰅴 )"
 path = "~/Developer"
 startup_command = "yazi"
 
 [[session]]
-name = "Claude (󱙺)"
+name = "Claude (󱙺 )"
 path = "~/.claude"
-startup_command = "nvim"
+startup_command = "claude"
 
 [[session]]
 name = "Downloads"
