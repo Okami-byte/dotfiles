@@ -18,7 +18,7 @@ local minute = sbar.add("item", "widgets.calendar", {
   },
   position = "right",
   update_freq = 30,
-  click_script = "open -a 'Calendar'",
+  click_script = "open -a 'Notion Calendar'",
   padding_left = 0,
   padding_right = 12,
 })
