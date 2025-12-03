@@ -42,10 +42,22 @@ for i = 10, 1, -1 do
       corner_radius = 9999,
       height = 26,
     },
-    click_script = "yabai -m space --focus " .. i,
   })
 
   spaces[i] = space
+
+  local space_popup = sbar.add("item", {
+    position = "popup." .. space.name,
+    padding_left = 5,
+    padding_right = 0,
+    background = {
+      drawing = true,
+      image = {
+        corner_radius = 9,
+        scale = 0.2,
+      },
+    },
+  })
 
   space:subscribe("space_change", function(env)
     local selected = env.SELECTED == "true"
@@ -61,11 +73,17 @@ for i = 10, 1, -1 do
   end)
 
   space:subscribe("mouse.clicked", function(env)
-    if env.BUTTON == "right" then
-      sbar.exec("yabai -m space --destroy " .. env.SID)
+    if env.BUTTON == "other" then
+      space_popup:set { background = { image = "space." .. env.SID } }
+      space:set { popup = { drawing = "toggle" } }
     else
-      sbar.exec("yabai -m space --focus " .. env.SID)
+      local op = (env.BUTTON == "right") and "--destroy" or "--focus"
+      sbar.exec("yabai -m space " .. op .. " " .. env.SID)
     end
+  end)
+
+  space:subscribe("mouse.exited", function(_)
+    space:set { popup = { drawing = false } }
   end)
 end
 
