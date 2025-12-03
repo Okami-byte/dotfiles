@@ -90,7 +90,7 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
   end)
 end)
 
-battery:subscribe("mouse.clicked", function()
+battery:subscribe("mouse.clicked", function(env)
   local drawing = battery:query().popup.drawing
   battery:set { popup = { drawing = "toggle" } }
 
@@ -101,4 +101,13 @@ battery:subscribe("mouse.clicked", function()
       remaining_time:set { label = label }
     end)
   end
+  -- A right click button in order to open up network preferences
+  if env.BUTTON == "right" then
+    sbar.exec 'osascript -e \'tell application "System Events" to tell process "Battery Toolkit" to click menu bar item 1 of menu bar 2\''
+    return
+  end
+end)
+
+battery:subscribe("mouse.exited.global", function()
+  battery:set { popup = { drawing = "off" } }
 end)
