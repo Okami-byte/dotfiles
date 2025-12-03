@@ -49,14 +49,29 @@ volume_icon:subscribe("volume_change", function(env)
   local icon = icons.volume._0
   local volume = tonumber(env.INFO)
   sbar.exec("SwitchAudioSource -t output -c", function(result)
-    if volume > 60 then
-      icon = icons.volume._100
-    elseif volume > 30 then
-      icon = icons.volume._66
-    elseif volume > 10 then
-      icon = icons.volume._33
-    elseif volume > 0 then
-      icon = icons.volume._10
+    Current_output_device = result:sub(1, -2)
+    if Current_output_device == "AirPods Max" or Current_output_device == "Noise Eliminator" then
+      icon = "􀺹"
+    elseif Current_output_device == "AirPods2" then
+      icon = "􀟥"
+    elseif Current_output_device == "AirPods Pro" then
+      icon = "􁄡"
+    elseif Current_output_device == "Scarlett 2i2 USB" then
+      icon = "􀑫"
+    elseif Current_output_device == "Moon Pods" then
+      icon = "􀪷"
+    elseif Current_output_device == "Headphone" then
+      icon = "􀝏"
+    else
+      if volume > 60 then
+        icon = icons.volume._100
+      elseif volume > 30 then
+        icon = icons.volume._66
+      elseif volume > 10 then
+        icon = icons.volume._33
+      elseif volume > 0 then
+        icon = icons.volume._10
+      end
     end
 
     volume_icon:set { icon = icon, label = { string = volume .. "%" } }
