@@ -121,7 +121,6 @@ config = {
 	},
 
 	-- For example, changing the color scheme:
-	-- color_scheme = "AdventureTime"
 	-- color_scheme = "Catppuccin Frappé (Gogh)",
 	-- color_scheme = "Catppuccin Mocha (Gogh)",
 	-- color_scheme = "Rosé Pine Moon (Gogh)",
