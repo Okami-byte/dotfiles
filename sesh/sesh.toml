@@ -21,27 +21,27 @@ preview_command = "eza --all --git --icons --color=always {}"
 # common
 
 [[session]]
-name = "Notes"
+name = "notes_󱞁 "
 path = "~/Notes"
 startup_command = "nvim "
 
 [[session]]
-name = "Python-Dev (󰌠 )"
+name = "python-dev_󰌠 "
 path = "~/Developer/Projects/Python"
 startup_command = "nvim "
 
 [[session]]
-name = "Developer (󰅴 )"
+name = "developer_󰅴 "
 path = "~/Developer"
 startup_command = "yazi"
 
 [[session]]
-name = "Claude (󱙺 )"
+name = "claude_󱙺 "
 path = "~/.claude"
 startup_command = "claude"
 
 [[session]]
-name = "Downloads"
+name = "downloads_󱃩 "
 path = "~/Downloads"
 startup_command = "yazi"
 
