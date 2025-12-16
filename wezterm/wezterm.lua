@@ -133,7 +133,7 @@ config = {
 	macos_window_background_blur = 50,
 
 	-- Opacity
-	window_background_opacity = 0.7,
+	window_background_opacity = 0.65,
 
 	-- https://wezfurlong.org/wezterm/config/lua/wezterm/font.html
 	-- font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" }),
@@ -173,8 +173,8 @@ config = {
 		-- background = "#464651",
 		-- background = "#2f2f3b",
 		-- cursor_bg = "#9B96B5",
-		cursor_bg = "#FBF1F5",
-		-- cursor_bg = "#fab387",
+		-- cursor_bg = "#FBF1F5",
+		cursor_bg = "#fab387",
 		-- 	-- cursor_fg = "black",
 		-- cursor_border = "#fab387",
 		-- selection_fg = "black",
