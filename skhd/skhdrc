@@ -7,15 +7,15 @@
 
 # SCRIPTS
 # alt - a : "${HOME}"/.config/scripts/script-picker.sh
-alt - e : "${HOME}"/.config/scripts/choose/emoji.sh
+# alt - e : "${HOME}"/.config/scripts/choose/emoji.sh
 # alt - space : "${HOME}"/.config/scripts/choose/apps-picker.sh
 # alt - w : "${HOME}"/.config/scripts/choose/wallpapers.sh
 # alt - c : "${HOME}"/.config/scripts/choose/cam.sh
 # alt - n : "${HOME}"/.config/scripts/choose/notes.sh
 
 # Applications
-# rcmd - return : open -n -a "wezterm"
-rcmd - return : open -n -a "kitty"
+rcmd - return : open -n -a "wezterm"
+# rcmd - return : open -n -a "kitty"
 
 # change layout of desktop
 lctrl + alt - b : yabai -m space --layout bsp
