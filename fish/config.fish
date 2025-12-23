@@ -14,6 +14,14 @@ if not status is-interactive
     return 0
 end
 
+# Figure out which operating system we're in
+set -l os (uname)
+
+# Set up Ghostty's shell integration.
+if test -n "$GHOSTTY_RESOURCES_DIR"
+    source $GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish
+end
+
 # Remove the gretting message.
 set -U fish_greeting
 
@@ -32,9 +40,6 @@ eval (/opt/homebrew/bin/brew shellenv)
 zoxide init fish | source # ajeetdsouza/zoxide
 fzf --fish | source # https://github.com/junegunn/fzf
 atuin init fish | source # https://github.com/atuinsh/atuin
-
-# Figure out which operating system we're in
-set -l os (uname)
 
 # System maintenance.
 abbr -a --position anywhere ss sudo
@@ -83,11 +88,6 @@ function starship_transient_prompt_func
 end
 starship init fish | source
 enable_transience
-
-# # function for yabai window listing - fish version
-# function f
-#     yabai -m query --windows | jq -r '.[] | "\(.id) \(.app) - \(.title)"' | fzf --bind 'enter:execute(yabai -m window --focus {1})+abort'
-# end
 
 # Function to create a directory and cd diretctly into it
 function take

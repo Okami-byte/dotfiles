@@ -65,6 +65,7 @@ abbr z zoxide
 
 # Neovim.
 abbr -a nv nvim
+abbr -a nvo --set-cursor "cd % && nvim"
 abbr -a nvp nvim +Man!
 
 # Sesh
