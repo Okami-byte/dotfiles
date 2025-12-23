@@ -21,6 +21,8 @@ tap "mhaeuser/mhaeuser"
 tap "netbirdio/tap"
 tap "nikitabobko/tap"
 tap "nikolaeu/numi"
+tap "nullpointerdepressivedisorder/tap"
+tap "stan-breaks/ytsurf", "https://github.com/stan-breaks/ytsurf"
 tap "teamookla/speedtest"
 tap "waydabber/betterdisplay"
 tap "zfdang/free-for-macos"
@@ -50,6 +52,8 @@ brew "awscli"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Arbitrary precision numeric processing language
+brew "bc"
 # Swiss army knife for network attacks and monitoring
 brew "bettercap"
 # Parser generator
@@ -72,6 +76,8 @@ brew "cli11"
 brew "clipboard"
 # Cross-platform make
 brew "cmake"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Command-line DNS Client for Humans
@@ -90,12 +96,16 @@ brew "ffmpegthumbnailer"
 brew "fish"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GNU awk utility
+brew "gawk"
 # GitHub command-line tool
 brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Open-source GitLab command-line tool
+brew "glab"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Package compiler and linker metadata toolkit
@@ -268,6 +278,8 @@ brew "codechenx/tap/codechenx-tv"
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
+# Turns macOS input fields into real vim buffers
+brew "felixkratz/formulae/svim"
 # Interactive TUI for Homebrew
 brew "gromgit/brewtils/taproom"
 # Terraform
@@ -284,6 +296,8 @@ brew "koekeishiya/formulae/yabai"
 brew "netbirdio/tap/netbird"
 # Smart calculator
 brew "nikolaeu/numi/numi-cli"
+# YouTube in your terminal. Clean and distraction-free
+brew "stan-breaks/ytsurf/ytsurf"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
 # Command-line memory status tool for MacOS X, similar to free(1) on Linux
@@ -306,6 +320,8 @@ cask "alt-tab"
 cask "battery-toolkit"
 # Display management tool
 cask "betterdisplay"
+# Desktop password and login vault
+cask "bitwarden"
 # Web browser focusing on privacy
 cask "brave-browser"
 # E-books management software
@@ -363,16 +379,22 @@ cask "maccy"
 cask "melonds"
 # Multi-platform web browser
 cask "microsoft-edge"
+# Middle-click and middle-drag via three-finger trackpad gestures
+cask "middledrag"
 # Native app email client for Gmail
 cask "mimestream"
 # Calendar for professionals and teams
 cask "notion-calendar"
+# Email client integrated with Notion workspace
+cask "notion-mail"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Markdown-based note-taking app
 cask "octarine"
+# Client program for the OpenVPN Access Server
+cask "openvpn-connect"
 # Utility to uninstall apps and remove leftover files from old/uninstalled apps
 cask "pearcleaner"
 # Customise and maintain app icons
@@ -387,14 +409,20 @@ cask "raindropio"
 cask "raycast"
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
+# Team communication and collaboration software
+cask "slack"
 # Music streaming service
 cask "spotify"
+# Email client
+cask "superhuman"
 # Web browser focusing on security
 cask "tor-browser"
 # Charting and social-networking for investment traders
 cask "tradingview"
 # PDF editor
 cask "updf"
+# Virtual machines UI using QEMU
+cask "utm"
 # Custom Discord App
 cask "vesktop"
 # VirusTotal client built with SwiftUI
@@ -413,8 +441,6 @@ cask "zen"
 cask "zen@twilight"
 mas "Classic Loan Calculator", id: 6743346144
 mas "Color Picker", id: 1545870783
-mas "PDFgear", id: 6469021132
 mas "Prompt2Go", id: 6747984907
 mas "TestFlight", id: 899247664
 mas "THOHT", id: 0
-mas "YABA", id: 6747272081
