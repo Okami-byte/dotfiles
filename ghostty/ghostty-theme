@@ -3,17 +3,21 @@
 theme= Rose Pine
 
 # Opacity
-background-opacity = 0.75
+background-opacity = 0.70
 
 # Blur
-background-blur-radius = 50
+background-blur-radius = 60
 
 # Background Color
 # background = #0B0A08
 # background = #222222
 # background = #2f2f3b
+# background = #2B2B36
+# background = #21212A
 # background = #444444
-	background = #100c08
+background = #100c08
+  # background = #1c1c1c
+  # background = #181819
 
 # Icon
 # macos-icon = custom-style
