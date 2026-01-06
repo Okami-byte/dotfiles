@@ -10,9 +10,13 @@
 #     uniq |
 #     wc -l
 # }
-packages_total=$(($(ls /opt/homebrew/Caskroom 2>/dev/null | wc -l) + \
-$(ls /opt/homebrew/Cellar 2>/dev/null | wc -l) + \
-$(ls $HOME/local/Caskroom 2>/dev/null | wc -l) + \
-$(ls $HOME/local/Cellar 2>/dev/null | wc -l))) # Nix default + Nix system + Nix user
 
-sketchybar --set $NAME label="$(($packages_total - 0))"
+### Sum of all packages
+
+packages_total=$((\
+  $(ls /opt/homebrew/Caskroom 2>/dev/null | wc -l) + \
+  $(ls /opt/homebrew/Cellar 2>/dev/null | wc -l) + \
+  $(ls $HOME/local/Caskroom 2>/dev/null | wc -l) + \
+  $(ls $HOME/local/Cellar 2>/dev/null | wc -l))) # Nix default + Nix system + Nix user
+
+sketchybar --set $NAME label="$packages_total"

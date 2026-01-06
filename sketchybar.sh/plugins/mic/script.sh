@@ -1,31 +1,34 @@
 #!/bin/bash
 export RELPATH=$(dirname $0)/../..
-source $RELPATH/colors.sh
+source $RELPATH/set_colors.sh
 
-ICONS_MICROPHONE=(􀊲 􀊰 􀊱)
+ICONS_MICROPHONE=(􀊲 􀊰 􀊱) # Set mic icons
+
 update_icon() {
   VOLUME=$(osascript -e 'set ivol to input volume of (get volume settings)')
+  # Set icon + color depending on volume
   case $VOLUME in
   [6-9][0-9] | 100)
     ICON=${ICONS_MICROPHONE[2]}
-    COLOR=$IRIS_MOON
+    COLOR=$ACTIVE
     ;;
   [1-9] | [1-5][0-9])
     ICON=${ICONS_MICROPHONE[1]}
-    COLOR=$ROSE_MOON
+    COLOR=$WARN
     ;;
   *)
     ICON=${ICONS_MICROPHONE[0]}
-    COLOR=$LOVE_MOON
+    COLOR=$RED
     ;;
   esac
 
-  sketchybar --animate tanh 20 --set $NAME icon=$ICON icon.color=$COLOR
+  sketchybar --animate tanh 30 --set $NAME icon=$ICON icon.color=$COLOR
 }
 
 update_label() {
   VOLUME=$(osascript -e 'set ivol to input volume of (get volume settings)')
   if [ $VOLUME != 0 ]; then
+    # Store current volume in item's label
     mic=(
       label=$VOLUME
       label.drawing=off
@@ -39,6 +42,7 @@ mute_mic() {
 }
 
 unmute_mic() {
+  # Restore from saved volume in label
   STORED_VOLUME=$(sketchybar --query $NAME | sed 's/\\n//g; s/\\\$//g; s/\\ //g' | jq -r '.label.value')
   osascript -e "set volume input volume $STORED_VOLUME"
 }

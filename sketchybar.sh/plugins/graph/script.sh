@@ -1,40 +1,45 @@
 #!/bin/bash
 export RELPATH=$(dirname $0)/../..
-source $RELPATH/colors.sh
+source $RELPATH/set_colors.sh
 
-systempower=$(macmon pipe -s 1 -i 1 | jq -r .sys_power)
-probe=$(/bin/ps -Aceo pid,pcpu,comm -r | awk 'NR==2')
+## Fetch system related data
+
+systempower="$(macmon pipe -s 1 -i 1 | jq -r .sys_power)"
+probe="$(/bin/ps -Aceo pid,pcpu,comm -r | awk 'NR==2')"
 
 topprog_percent=$(echo "$probe" | awk '{print $2}')
 topprog=$(echo "$probe" | awk '{print $3}')
 topprog_pid=$(echo "$probe" | awk '{print $1}')
 
-if [ $(printf "%.0f" $topprog_percent) -gt 100 ]; then
-  LABEL_COLOR=$LOVE_MOON
+## Modify top consumming program name color to red if depassing more than 100% cpu
+
+if [[ $(printf "%.0f" $topprog_percent) -gt 100 ]]; then
+  LABEL_COLOR=$RED
 else
-  LABEL_COLOR=$SUBTLE_MOON
+  LABEL_COLOR=$SUBTLE
 fi
 
 graphlabel="${topprog_percent}% - $topprog [$topprog_pid]"
 
-#graphpercent=$(awk -v min=0 -v max=100 'BEGIN{srand(); print int(min+rand()*(max-min+1))}')
 graphpercent=$(top -l1 -n1 | grep "^CPU usage:" | awk '{gsub(/%/,"",$3); print $3}')
 graphpoint=$(bc <<<"scale=1; $graphpercent / 100 ")
 
+## Update graph color depending on cpu load
+
 case $(printf "%.0f" $graphpercent) in
 [8-9][0-9] | 7[5-9] | 100)
-  COLOR=$LOVE_MOON
+  COLOR=$RED
   ;;
 [5-6][0-9] | 7[0-4])
-  COLOR=$ROSE_MOON
+  COLOR=$WARN
   ;;
 [3-5][0-9] | 2[5-9])
-  COLOR=$GOLD_MOON
+  COLOR=$YELLOW
   ;;
 [5-9] | 1[0-9] | 2[0-4])
-  COLOR=$PINE_MOON
+  COLOR=$BLUE
   ;;
-*) COLOR=$SUBTLE_MOON ;;
+*) COLOR=$SUBTLE ;;
 esac
 
 sketchybar --push $NAME $graphpoint \
@@ -44,4 +49,3 @@ sketchybar --push $NAME $graphpoint \
 graphlabel="${topprog_percent}% - $topprog [$topprog_pid] | $(printf '%.2f' $systempower)W"
 
 sketchybar --set $NAME.label label="$graphlabel" label.color="$LABEL_COLOR"
-

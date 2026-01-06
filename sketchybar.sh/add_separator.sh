@@ -1,8 +1,12 @@
 #!/bin/bash
+## Functions
+
+# Adds a separator item
 add_separator() {
+	icon=${3:-"|"}
   separator=(
-    icon="|"
-    icon.color=$SUBTLE_MOON
+    icon=$icon
+    icon.color=$SUBTLE
     icon.font="$FONT:Bold:16.0"
     icon.y_offset=2
     label.drawing=off
@@ -10,12 +14,8 @@ add_separator() {
     icon.padding_right=0
   )
 
-  if [ -n "$3" ]; then
-    separator+=(
-      icon="$3"
-    )
-  fi
-
   sketchybar --add item separator.$1 $2 \
     --set separator.$1 "${separator[@]}"
+
+	sendLog "Added separator with icon \"$icon\", id $1 at $2" "debug"
 }

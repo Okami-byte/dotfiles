@@ -1,42 +1,118 @@
 #!/bin/bash
-# Program Vars
 
-if [[ -z $(ls /Library/Fonts/ | grep 'sketchybar-app-font') ]]; then
-  echo 'Sketchybarfont not found…'
+##
+# Utility bar core script
+# This is the main script used for the config which calls and sources all the helpers and Plugins / Items.
+# Made by @kcraft059
+##
+
+# --- Sourcing of core scripts + Initial setup config ---
+RELPATH="$(dirname "$0")"
+OS_VERSION="$(sw_vers -productVersion)"
+
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:$PATH"
+mkdir -p "${TMPDIR}sketchybar"
+
+## Optional user configuration
+if [[ -n "$SKETCHYBAR_CONFIG" && -f "$SKETCHYBAR_CONFIG" ]]; then
+  # External override path (useful for Nix)
+  # shellcheck disable=SC1090
+  source "$SKETCHYBAR_CONFIG"
+elif [[ -f "$RELPATH/config.sh" ]]; then
+  # Local config file in repository
+  # shellcheck disable=SC1091
+  source "$RELPATH/config.sh"
 fi
 
-RELPATH="$(dirname "$0")"
-export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:$PATH
-mkdir -p ${TMPDIR}sketchybar
+## Fallback defaults if variables unset
+: "${NOTCH_WIDTH:=210}"                # <int>
+: "${MUSIC_INFO_WIDTH:=80}"            # <int>
+: "${CPU_UPDATE_FREQ:=2}"              # <int>
+: "${MENUBAR_AUTOHIDE:=False}"         # <true|false>
+: "${GITHUB_TOKEN:="~/.github_token"}" # <path>
+# : "${WIFI_UNREDACTOR:="~/Applications/wifi-unredactor.app"}" # <path>
+: "${BAR_LOOK:="plain"}"          # <"plain"|"compact">
+: "${HIDE_EMPTY_SPACES:="false"}" # <true|false> / Is not really used here but rather in the scripts.sh
 
-source "$RELPATH/colors.sh"
+[ ${#MENU_CONTROLS[@]} -eq 0 ] && MENU_CONTROLS=(
+  "Control__Center,FocusModes"
+  "Control__Center,Bluetooth"
+)
+
+## WM detect if not already defined
+if [ -z $WINDOW_MANAGER ]; then
+  if command -v rift-cli >/dev/null; then WINDOW_MANAGER="rift"; fi
+  if command -v aerospace >/dev/null; then WINDOW_MANAGER="aerospace"; fi
+  if command -v yabai >/dev/null; then WINDOW_MANAGER="yabai"; fi
+fi
+
+## Helpers sourcing
+source "$RELPATH/log_handler.sh"
+source "$RELPATH/set_colors.sh"
 source "$RELPATH/icon_map.sh"
 source "$RELPATH/add_separator.sh"
 
-# Multi Purpose Property vars
+# --- Bar & Default Properties ---
+sendLog "=== Loading sketchybar config... ===" "info"
+sendLog "" "info"
+
+# Notify when no window-manager
+if [ -z $WINDOW_MANAGER ]; then
+  sendErr "No Window-Manager detected, defaulting to yabai. (This will likely cause problems)" "info"
+  WINDOW_MANAGER="yabai"
+fi
+
+if [ $(echo $OS_VERSION | awk -F. '{print $1}') -gt 15 ]; then
+  sendWarn "You are on a macOS version greater than macOS 15.x ($OS_VERSION), some features might not work properly" "info"
+fi
+
+[[ -f ./dyn-icon_map.sh ]] && sendLog "Found dyn-icon_map.sh, using instead." "vomit"
+
+command -v 'menubar' 2>/dev/null 1>&2 || sendWarn "Binary \`menubar\` not in \$PATH, using bundled version" "debug"
+menubarImportCmd=$(if command -v 'menubar' 2>/dev/null 1>&2; then command -v 'menubar'; else echo "$RELPATH/menubar"; fi)
 
 FONT="SF Pro"
 OUTER_PADDINGS=5
 INNER_PADDINGS=5
 X_BAR_PADDING=12
-BAR_HEIGHT=34
 
-# --- Bar & Default Properties ---
+case ${BAR_LOOK} in
+"plain")
+  BAR_HEIGHT=34
+  BAR_MARGIN=5
+  ;;
+"compact")
+  BAR_HEIGHT=27
+  ;;
+esac
+
+if [ "$(echo "$OS_VERSION" | awk -F. '{print $1}')" -gt 15 ]; then
+  BAR_CORNER_RADIUS=15
+else
+  BAR_CORNER_RADIUS=13
+fi
+
+export ZONE_CORNER_RADIUS=$(($BAR_CORNER_RADIUS - 5))
 
 bar=(
   height=$BAR_HEIGHT
-  y_offset=4
-  margin=5
-  shadow=on
-  shadow.color=$TEXT_MOON
+  y_offset=$BAR_MARGIN
+  margin=$BAR_MARGIN
+  topmost=everything
+  sticky=on
+  position=top
+  #shadow=on
+  #shadow.color=$SHADOW_COLOR
+  #shadow.angle=45
+  #shadow.distance=2
   padding_left=0
   padding_right=$X_BAR_PADDING
-  color=$BAR_COLOR
+  color="$BAR_COLOR"
   border_width=1
   border_color=$BORDER_COLOR
-  corner_radius=14
-  blur_radius=40
-  notch_width=180
+  corner_radius=$BAR_CORNER_RADIUS
+  blur_radius=14
+  notch_width=$NOTCH_WIDTH
 )
 
 defaults=(
@@ -51,7 +127,7 @@ defaults=(
   label.color=$LABEL_COLOR
   label.padding_left=$INNER_PADDINGS
   label.padding_right=$INNER_PADDINGS
-  background.corner_radius=8
+  background.corner_radius=$ZONE_CORNER_RADIUS
   popup.y_offset=4
   popup.background.border_width=1
   popup.background.corner_radius=6
@@ -64,10 +140,11 @@ defaults=(
 zones=(
   background.height=$(($BAR_HEIGHT - 8))
   background.border_width=2
-  background.border_color=$HIGH_MED_MOON
-  background.color=$OVERLAY_MOON
-  background.corner_radius=8
-  blur_radius=24
+  background.border_color=$HIGH_MED
+  background.color=$OVERLAY
+  background.corner_radius=$ZONE_CORNER_RADIUS
+  blur_radius=2
+  #background.clip=1.0
 )
 
 sketchybar --bar "${bar[@]}"
@@ -75,7 +152,8 @@ sketchybar --default "${defaults[@]}"
 
 # --- Bar Items ---
 
-# --- Left Items ---
+sendLog "Starting sourcing of Items..." "vomit"
+
 source "$RELPATH/sketchy-items/logo.sh"
 source "$RELPATH/sketchy-items/spaces.sh"
 source "$RELPATH/sketchy-items/frontapp.sh"
@@ -85,16 +163,17 @@ source "$RELPATH/sketchy-items/mic.sh"
 source "$RELPATH/sketchy-items/volume.sh"
 source "$RELPATH/sketchy-items/battery.sh"
 source "$RELPATH/sketchy-items/wifi.sh"
-# source "$RELPATH/sketchy-items/display.sh"
+source "$RELPATH/sketchy-items/display.sh"
 source "$RELPATH/sketchy-items/more-menu.sh"
 source "$RELPATH/sketchy-items/packages.sh"
 source "$RELPATH/sketchy-items/currentuser.sh"
 source "$RELPATH/sketchy-items/notifications.sh"
 source "$RELPATH/sketchy-items/controls.sh"
 
-# --- Middle Items ---
 source "$RELPATH/sketchy-items/music.sh"
 source "$RELPATH/sketchy-items/cpu.sh"
+
+sendLog "Finished sourcing of Items" "vomit"
 
 sketchybar --add bracket base-controls battery wifi display \
   --set base-controls "${zones[@]}" \
@@ -105,4 +184,5 @@ sketchybar --add bracket base-controls battery wifi display \
 
 sketchybar --update
 
-echo "sketchybar configuation loaded.."
+sendLog "" "info"
+sendLog "=== Sketchybar configuation loaded ===" "info"

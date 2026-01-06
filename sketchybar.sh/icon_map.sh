@@ -202,7 +202,7 @@ else
     "Android Studio")
       icon_result=":android_studio:"
       ;;
-    "Calculator")
+    "Calculator" | "Numi")
       icon_result=":calculator:"
       ;;
     "Xcode")
@@ -244,7 +244,7 @@ else
     "Blender")
       icon_result=":blender:"
       ;;
-    "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件" | "Outlook" | "Mimestream")
+    "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件" | "Outlook" | "Mimestream" | "Notion Mail")
       icon_result=":mail:"
       ;;
     "Safari" | "Safari Technology Preview")
@@ -355,7 +355,7 @@ else
     "Preview" | "Skim" | "zathura")
       icon_result=":pdf:"
       ;;
-    "1Password 7")
+    "1Password")
       icon_result=":one_password:"
       ;;
     "Passwords")
@@ -403,7 +403,7 @@ else
     "Podcasts")
       icon_result=":podcasts:"
       ;;
-    "Alacritty" | "Hyper" | "iTerm2" | "Terminal" | "WezTerm")
+    "Alacritty" | "Hyper" | "iTerm2" | "Terminal")
       icon_result=":terminal:"
       ;;
     "kitty")
@@ -412,9 +412,9 @@ else
     "Ghostty")
       icon_result=":ghostty:"
       ;;
-    # "WezTerm")
-    #   icon_result=":wezterm:"
-    #   ;;
+    "WezTerm")
+      icon_result=":wezterm:"
+      ;;
     "Activity Monitor")
       icon_result=":activity_monitor:"
       ;;

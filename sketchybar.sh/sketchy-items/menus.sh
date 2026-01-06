@@ -1,27 +1,32 @@
 #!/bin/bash
-SCRIPT_CLICK_MENUS="export PATH=$PATH; $RELPATH/plugins/menus/click.sh"
 
-mid=0
-spaces=()
+## Scripts
+SCRIPT_CLICK_MENUS="export PATH=$PATH; $RELPATH/plugins/menus/script.sh"
+
+## Properties
+menu_dummy=(
+	label.drawing=off
+	script="$SCRIPT_CLICK_MENUS"
+	drawing=off
+	padding_left=4
+)
+
+## Item addition
 for ((i = 1; i <= 14; ++i)); do
-  mid=$i
-  space=(
-    icon=$i
-    label.drawing=off
-    click_script="$SCRIPT_CLICK_MENUS"
-    drawing=off
-  )
-  if [ $mid = 1 ]; then
-    space+=(
-      icon.font="$FONT:Heavy:14:0"
-      icon.color=$FOAM_MOON
-    )
-  fi
+	menu=("${menu_dummy[@]}")
 
-  sketchybar --add item menu.$mid left \
-    --set menu.$mid "${space[@]}"
-  #--subscribe menu.$mid mouse.clicked front_app_switched
+	menu+="icon=$i"
+	[ $i = 1 ] && menu+=( # Properties for application main menu
+		icon.font="$FONT:Heavy:14.0"
+		icon.color=$GLOW
+	)
+
+	sketchybar --add item menu.$i left \
+		--set menu.$i "${menu[@]}" \
+		--subscribe menu.$i mouse.clicked mouse.entered
 done
 
 sketchybar --add bracket menus '/menu\..*/' \
-  --set menus "${zones[@]}"
+	--set menus "${zones[@]}"
+
+sendLog "Added menus items" "vomit"

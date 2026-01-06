@@ -1,28 +1,33 @@
 #!/bin/bash
 # sketchybar --query default_menu_items
-menucontrols=(
-  "Control__Center,UserSwitcher"
-  "Control__Center,Bluetooth"
+
+## Included moremenu.x sketchybar items
+menuitems=("${MENU_CONTROLS[@]}")
+menuitems+=(
+  moremenu.pkgs
+  moremenu.user
+  moremenu.notif
 )
 
-menuitems=(
-  "pkgs"
-  "user"
-  "notif"
-)
-
-SCRIPT_CLICK_SEPARATOR_MORE="export PATH=$PATH; \
+## Scripts
+SCRIPT_SEPARATOR_MORE="export PATH=$PATH; \
 $RELPATH/plugins/more-menu/script.sh \
-\"${menucontrols[*]}\" \"${menuitems[*]}\" $INNER_PADDINGS \"$FONT\" "
+\"${menuitems[*]}\" $INNER_PADDINGS \"$FONT\" "
 
+## Item properties
 separator=(
   icon=􀯶
   label.drawing=off
   icon.font="$FONT:Semibold:14.0"
-  icon.color=$SUBTLE_MOON
-  click_script="$SCRIPT_CLICK_SEPARATOR_MORE"
+  #click_script='yabai -m space --create && sketchybar --trigger space_change'
+  icon.color=$SUBTLE
+  script="$SCRIPT_SEPARATOR_MORE"
 )
 
+## Item addition
 sketchybar --add item separator-more right \
   --set separator-more "${separator[@]}" \
+  --subscribe separator-more mouse.entered mouse.clicked \
   --add event more-menu-update
+
+sendLog "Added separator toggle for 'more-menu' to toggle : ${MENU_CONTROLS[*]} ${menuitems[*]}" "vomit"
