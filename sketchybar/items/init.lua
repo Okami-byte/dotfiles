@@ -1,18 +1,11 @@
-local colors = require("colors").sections
---left
-require "items.apple"
-require "items.menus"
-require "items.spaces_yabai"
-require "items.front_app_yabai"
+-- Left items (L to R)
+require("items.apple")
+require("items.menus")
+require("items.spaces")
+require("items.front_app")
 
-sbar.add("bracket", { "/system\\..*/" }, {
-  background = {
-    height = 34,
-    color = colors.bracket.bg,
-    border_color = colors.bracket.border,
-    corner_radius = 9999,
-  },
-})
-
---right (reverse order)
-require "items.widgets"
+-- Right items (R to L)
+require("items.settings")
+require("items.calendar")
+require("items.widgets")
+require("items.media")
