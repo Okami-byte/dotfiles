@@ -13,8 +13,8 @@ command_timeout = 1000
 
 add_newline = true
 
-# palette = "catppuccin_mocha"
-palette = "rose-pine"
+palette = "catppuccin_mocha"
+# palette = "rose-pine"
 
 format = """
 $character\
@@ -104,12 +104,12 @@ conflicted = '\[ [$count](white)\]'
 ahead = '\[[ ](blue)[$count](white)\]' # 󰜘
 behind = '\[[ ](white)[$count](white)\]' # 
 diverged = '\[[ ](purple)|[ ﯁ ](blue)[$ahead_count](white)[ ﮾ ](white)[$behind_count](white)\]'
-untracked = '\[ [$count](white)\]'
+untracked = '\[? [$count](white)\]'
 stashed = '\[[ ](peach) [$count](white)\]'
 modified = '\[[󰏫 ](peach)[$count](white)\]'
 staged = '\[[󰏗 ](green)[$count](white)\]'
 renamed = '\[[󰜉 ](sky) [$count](white)\]'
-deleted = '\[ [$count](white)\]'
+deleted = '\[✘ [$count](white)\]'
 
 # Shows current git branch
 [git_branch]
@@ -192,52 +192,23 @@ style = 'bold sky'
 detect_files = ['k8s']
 format = ' [ $symbol( $context) ]($style)'
 
-# [palettes.catppuccin_mocha]
-# rosewater = "#f5e0dc"
-# flamingo = "#f2cdcd"
-# pink = "#f5c2e7"
-# mauve = "#cba6f7"
-# red = "#f38ba8"
-# maroon = "#eba0ac"
-# peach = "#fab387"
-# yellow = "#f9e2af"
-# green = "#a6e3a1"
-# teal = "#94e2d5"
-# sky = "#89dceb"
-# sapphire = "#74c7ec"
-# hollow = "#6f7489"
-# grey = "#6c7086"
-# blue = "#89b4fa"
-# lavender = "#b4befe"
-# text = "#cdd6f4"
-# subtext1 = "#bac2de"
-# subtext0 = "#a6adc8"
-# overlay2 = "#9399b2"
-# overlay1 = "#7f849c"
-# overlay0 = "#6c7086"
-# surface2 = "#585b70"
-# surface1 = "#45475a"
-# surface0 = "#313244"
-# base = "#1e1e2e"
-# mantle = "#181825"
-# crust = "#11111b"
-
-
-# palette = "rose-pine"
-#
-[palettes.rose-pine]
-overlay = '#26233a'
-red= '#eb6f92'
-orange = '#f6c177'
-pink = '#ebbcba'
-blue = '#31748f'
-sky = '#9ccfd8'
-green = "#95b1ac"
-iris = '#c4a7e7'
-yellow = "#f5e0dc"
-peach = "#f2cdcd"
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+hollow = "#6f7489"
+grey = "#6c7086"
+blue = "#89b4fa"
 lavender = "#b4befe"
-purple = "#cba6f7"
 text = "#cdd6f4"
 subtext1 = "#bac2de"
 subtext0 = "#a6adc8"
@@ -250,17 +221,29 @@ surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
-# [git_status]
-# disabled = false
-# style = "bg:overlay fg:love"
-# format = '[](fg:overlay)([$all_status$ahead_behind]($style))[](fg:overlay) '
-# up_to_date = '[ ✓ ](bg:overlay fg:iris)'
-# untracked = '[?\($count\)](bg:overlay fg:gold)'
-# stashed = '[\$](bg:overlay fg:iris)'
-# modified = '[!\($count\)](bg:overlay fg:gold)'
-# renamed = '[»\($count\)](bg:overlay fg:iris)'
-# deleted = '[✘\($count\)](style)'
-# staged = '[++\($count\)](bg:overlay fg:gold)'
-# ahead = '[⇡\(${count}\)](bg:overlay fg:foam)'
-# diverged = '⇕[\[](bg:overlay fg:iris)[⇡\(${ahead_count}\)](bg:overlay fg:foam)[⇣\(${behind_count}\)](bg:overlay fg:rose)[\]](bg:overlay fg:iris)'
-# behind = '[⇣\(${count}\)](bg:overlay fg:rose)'
+
+# [palettes.rose-pine]
+# overlay = '#26233a'
+# red= '#eb6f92'
+# orange = '#f6c177'
+# pink = '#ebbcba'
+# blue = '#31748f'
+# sky = '#9ccfd8'
+# green = "#95b1ac"
+# iris = '#c4a7e7'
+# yellow = "#f5e0dc"
+# peach = "#f2cdcd"
+# lavender = "#b4befe"
+# purple = "#cba6f7"
+# text = "#cdd6f4"
+# subtext1 = "#bac2de"
+# subtext0 = "#a6adc8"
+# overlay2 = "#9399b2"
+# overlay1 = "#7f849c"
+# overlay0 = "#6c7086"
+# surface2 = "#585b70"
+# surface1 = "#45475a"
+# surface0 = "#313244"
+# base = "#1e1e2e"
+# mantle = "#181825"
+# crust = "#11111b"
