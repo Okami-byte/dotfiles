@@ -107,7 +107,6 @@ fi
 
 export SUDO_EDITOR=$EDITOR
 export VISUAL=$EDITOR
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPS="--extended"
 
 # Python
