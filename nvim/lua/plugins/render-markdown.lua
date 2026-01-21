@@ -105,22 +105,13 @@ return {
         below = 0,
       },
       latex = {
-        -- Turn on / off latex rendering.
         enabled = true,
-        -- Additional modes to render latex.
-        render_modes = true,
-        -- Executable used to convert latex formula to rendered unicode.
-        converter = "latex2text",
-        -- Highlight for latex blocks.
+        render_modes = false,
+        converter = { "utftex", "latex2text" },
         highlight = "RenderMarkdownMath",
-        -- Determines where latex formula is rendered relative to block.
-        -- | above | above latex block |
-        -- | below | below latex block |
-        position = "below",
-        -- Number of empty lines above latex blocks.
-        top_pad = 1,
-        -- Number of empty lines below latex blocks.
-        bottom_pad = 1,
+        position = "center",
+        top_pad = 0,
+        bottom_pad = 0,
       },
       html = {
         -- Turn on / off all HTML rendering
@@ -250,16 +241,12 @@ return {
         highlight_inline = "RenderMarkdownCodeInline",
       },
       dash = {
-        -- Turn on / off thematic break rendering
         enabled = true,
-        -- Replaces '---'|'***'|'___'|'* * *' of 'thematic_break'
-        -- The icon gets repeated across the window's width
+        render_modes = false,
         icon = "─",
-        -- Width of the generated line:
-        --  <integer>: a hard coded width value
-        --  full:      full width of the window
         width = "full",
-        -- Highlight for the whole line generated from the icon
+        left_margin = 0,
+        priority = nil,
         highlight = "RenderMarkdownDash",
       },
       bullet = {
@@ -273,7 +260,7 @@ return {
         -- Padding to add to the left of bullet point
         left_pad = 0,
         -- Padding to add to the right of bullet point
-        right_pad = 0,
+        right_pad = 2,
         -- Highlight for the bullet icon
         highlight = "RenderMarkdownBullet",
       },
@@ -386,7 +373,6 @@ return {
           highlight = "RenderMarkdownError",
           category = "github",
         },
-        -- Obsidian: https://help.obsidian.md/Editing+and+formatting/Callouts
         abstract = {
           raw = "[!ABSTRACT]",
           rendered = "󰨸 Abstract",
@@ -521,10 +507,11 @@ return {
         },
       },
       link = {
-        -- Turn on / off inline link icon rendering
         enabled = true,
         render_modes = false,
         footnote = {
+          enabled = true,
+          icon = "󰯔 ",
           superscript = true,
           prefix = "",
           suffix = "",
@@ -533,19 +520,33 @@ return {
         email = "󰀓 ",
         hyperlink = "󰌹 ",
         highlight = "RenderMarkdownLink",
-        wiki = { icon = "󱗖 ", highlight = "RenderMarkdownWikiLink" },
+        wiki = {
+          icon = "󱗖 ",
+          body = function()
+            return nil
+          end,
+          highlight = "RenderMarkdownWikiLink",
+          scope_highlight = nil,
+        },
         custom = {
           web = { pattern = "^http", icon = "󰖟 " },
+          apple = { pattern = "apple%.com", icon = " " },
           discord = { pattern = "discord%.com", icon = "󰙯 " },
           github = { pattern = "github%.com", icon = "󰊤 " },
           gitlab = { pattern = "gitlab%.com", icon = "󰮠 " },
           google = { pattern = "google%.com", icon = "󰊭 " },
+          hackernews = { pattern = "ycombinator%.com", icon = " " },
+          linkedin = { pattern = "linkedin%.com", icon = "󰌻 " },
+          microsoft = { pattern = "microsoft%.com", icon = " " },
           neovim = { pattern = "neovim%.io", icon = " " },
           reddit = { pattern = "reddit%.com", icon = "󰑍 " },
+          slack = { pattern = "slack%.com", icon = "󰒱 " },
           stackoverflow = { pattern = "stackoverflow%.com", icon = "󰓌 " },
+          steam = { pattern = "steampowered%.com", icon = " " },
+          twitter = { pattern = "x%.com", icon = " " },
           wikipedia = { pattern = "wikipedia%.org", icon = "󰖬 " },
-          youtube = { pattern = "youtube%.com", icon = "󰗃 " },
-          python = { pattern = "%.py$", icon = "󰌠 " },
+          youtube = { pattern = "youtube[^.]*%.com", icon = "󰗃 " },
+          youtube_short = { pattern = "youtu%.be", icon = "󰗃 " },
         },
       },
       sign = {
