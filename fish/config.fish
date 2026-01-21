@@ -27,6 +27,16 @@ set -U fish_greeting
 
 # Vi mode.
 set -g fish_key_bindings fish_vi_key_bindings
+function fish_user_key_bindings
+    # Execute this once per mode that emacs bindings should be used in
+    fish_default_key_bindings -M insert
+
+    # Then execute the vi-bindings so they take precedence when there's a conflict.
+    # Without --no-erase fish_vi_key_bindings will default to
+    # resetting all bindings.
+    # The argument specifies the initial mode (insert, "default" or visual).
+    fish_vi_key_bindings --no-erase insert
+end
 set fish_vi_force_cursor 1
 set fish_cursor_default block
 set fish_cursor_insert line
@@ -35,10 +45,7 @@ set fish_cursor_replace_one underscore
 # Set neovim as default editor
 set -Ux EDITOR nvim # 'neovim/neovim' text editor
 
-eval (/opt/homebrew/bin/brew shellenv)
-
 zoxide init fish | source # ajeetdsouza/zoxide
-fzf --fish | source # https://github.com/junegunn/fzf
 atuin init fish | source # https://github.com/atuinsh/atuin
 
 # System maintenance.
@@ -60,7 +67,11 @@ if test "$os" = Darwin
     end
 end
 
-# $PATH
+# FZF Custom Configs
+set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
+set fzf_diff_highlighter delta --paging=never --width=20
+
+# $PATHS
 
 # Scripts
 fish_add_path $HOME/Developer/Scripts # my custom scripts
