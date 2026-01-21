@@ -14,8 +14,8 @@
 # alt - n : "${HOME}"/.config/scripts/choose/notes.sh
 
 # Applications
-rcmd - return : open -n -a "wezterm"
-# rcmd - return : open -n -a "kitty"
+# rcmd - return : open -n -a "wezterm"
+rcmd - return : open -n -a "kitty"
 
 # change layout of desktop
 lctrl + alt - b : yabai -m space --layout bsp
@@ -105,12 +105,12 @@ shift + alt - 5 : yabai -m window --space 5;
 
 # -- WALLPAPER SELECT -- #
 
-default < ctrl - b ; bg_select
-bg_select < ctrl - b; default
-
-bg_select < tab : sketchybar --trigger cycle_bg CYCLE=next;
-bg_select < shift - tab : sketchybar --trigger cycle_bg CYCLE=prev;
-
-bg_select < return : sketchybar --trigger select_bg SELECT=true; 
-bg_select < escape : sketchybar --trigger select_bg SELECT=false;
-
+# default < ctrl - b ; bg_select
+# bg_select < ctrl - b; default
+#
+# bg_select < tab : sketchybar --trigger cycle_bg CYCLE=next;
+# bg_select < shift - tab : sketchybar --trigger cycle_bg CYCLE=prev;
+#
+# bg_select < return : sketchybar --trigger select_bg SELECT=true; 
+# bg_select < escape : sketchybar --trigger select_bg SELECT=false;
+#
