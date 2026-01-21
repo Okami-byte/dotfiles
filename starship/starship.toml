@@ -33,8 +33,8 @@ right_format = """$aws$python$docker_context$terraform"""
 disabled = false
 success_symbol = "[❯](bold fg:iris)"
 error_symbol = "[❯❯](red bold)"
-vimcmd_symbol = '[ ](bold fg:lavender)'
-vimcmd_replace_one_symbol = '[ ](bold fg:orange)'
+vimcmd_symbol = '[ ](bold fg:maroon)'
+vimcmd_replace_one_symbol = '[ ](bold fg:peach)'
 vimcmd_replace_symbol = '[ ](bold fg:sky)'
 vimcmd_visual_symbol = '[ ](bold fg:peach)'
 # ---
@@ -82,7 +82,7 @@ disabled = false
 
 # Shows current directory
 [directory]
-style = 'pink'
+style = 'rose_pink'
 truncation_length = 10
 truncation_symbol = '…/  '
 home_symbol = '~'
@@ -196,6 +196,7 @@ format = ' [ $symbol( $context) ]($style)'
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
 pink = "#f5c2e7"
+rose_pink = '#ebbcba'
 mauve = "#cba6f7"
 red = "#f38ba8"
 maroon = "#eba0ac"
