@@ -7,9 +7,9 @@ SCRIPT_PKGS="export PATH=$PATH; $RELPATH/plugins/packages/script.sh"
 pkgs=(
   drawing=off
   script="$SCRIPT_PKGS"
-  # click_script="$SCRIPT_CLICK_PKGS"
+  #click_script="$SCRIPT_CLICK_PKGS"
   icon=􀐛
-  icon.color=$YELLOW
+  icon.color=$WARN
   icon.font="$FONT:Regular:14.0"
   icon.padding_left=0 #$(($OUTER_PADDINGS - 4))
   icon.padding_right=0
@@ -19,7 +19,7 @@ pkgs=(
   label.padding_right=6
   padding_left=$INNER_PADDINGS
   padding_right=$OUTER_PADDINGS
-  update_freq=3000
+  update_freq=0
   updates=when_shown
 )
 

@@ -23,7 +23,7 @@ update() {
   case ${PERCENTAGE} in
   9[0-9] | 100)
     ICON=􀛨
-    COLOR=$BLUE
+    COLOR=$GLOW
     ;;
   [6-8][0-9])
     ICON=􀺸

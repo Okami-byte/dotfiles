@@ -220,7 +220,7 @@ else
     "System Preferences" | "System Settings")
       icon_result=":gear:"
       ;;
-    "Discord" | "Discord Canary" | "Discord PTB")
+    "Discord" | "Discord Canary" | "Discord PTB" | "Vesktop")
       icon_result=":discord:"
       ;;
     "Vivaldi")
@@ -372,6 +372,9 @@ else
       ;;
     "Steam")
       icon_result=":steam:"
+      ;;
+    "Arc" | "Dia")
+      icon_result=":arc:"
       ;;
     "Weather")
       icon_result=":weather:"
