@@ -20,3 +20,4 @@ sketchybar --add item mic right \
   --subscribe mic mouse.clicked
 
 sendLog "Added mic item" "vomit"
+
