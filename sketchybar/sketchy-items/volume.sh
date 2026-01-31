@@ -34,7 +34,6 @@ volume_icon=(
   label.font="$FONT:Regular:14.0"
 )
 
-
 ## Item addition
 sketchybar --add slider volume right \
   --set volume "${volume_slider[@]}" \
@@ -48,3 +47,4 @@ sketchybar --add slider volume right \
 add_separator "1" "right"
 
 sendLog "Added volume item" "vomit"
+
