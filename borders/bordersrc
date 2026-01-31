@@ -4,7 +4,8 @@ options=(
   style=round
   width=4
   hidpi=on
-  active_color=0xffeba0ac # Catppuccin Mocha - Maroon
+  active_color=0xff89dceb # Catppuccin Mocha - Glow
+  # active_color=0xffeba0ac # Catppuccin Mocha - Maroon
   # active_color="gradient(top_left=0xffebbcba,bottom_right=0xffc4a7e7)"
   # active_color="gradient(top_right=0xff31748f,bottom_left=0xffeb6f92)" # RosePine Dark colorwave from Omarchy theme: rose, pine, love, iris
   # inactive_color=0xff494d64
