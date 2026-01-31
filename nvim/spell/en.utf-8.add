@@ -22,3 +22,8 @@ config
 Puttanesca
 Kubernetes
 architected
+Hashicorp
+AWS
+S3
+aws
+api
