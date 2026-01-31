@@ -25,7 +25,7 @@ menu_on() {
     --set separator drawing=off \
     --set front_app drawing=off \
     --animate tanh 15 --set $NAME background.drawing=on \
-    icon.color=$BLUE \
+    icon.color=$GLOW \
     icon=􀣺 \
     icon.font="$FONT:Black:17.0" \
     icon.y_offset=1 \
@@ -49,8 +49,8 @@ menu_off() {
     --set front_app drawing=on \
     --animate tanh 15 --set $NAME background.drawing=off \
     icon.color=$TEXT \
-    icon=􀥯 \
-    icon.font="$FONT:Semibold:17.0" \
+    icon=􀆔 \
+    icon.font="$FONT:Semibold:14.0" \
     icon.y_offset=0 \
     padding_right=10 \
     padding_left=$X_BAR_PADDING
