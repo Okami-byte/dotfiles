@@ -95,7 +95,7 @@ return {
       },
       -- Vim modes that will show a rendered view of the markdown file
       -- All other modes will be uneffected by this plugin
-      render_modes = { "n", "c" },
+      render_modes = { "n", "c", "i", "v", "V" },
       anti_conceal = {
         -- This enables hiding any added text on the line the cursor is on
         enabled = true,
@@ -503,18 +503,15 @@ return {
         },
       },
       link = {
-        enabled = true,
-        render_modes = false,
         footnote = {
-          enabled = true,
-          icon = "󰯔 ",
+          icon = " ",
           superscript = true,
           prefix = "",
           suffix = "",
         },
         image = "󰥶 ",
-        email = "󰀓 ",
-        hyperlink = "󰌹 ",
+        email = "󰇮 ",
+        hyperlink = "",
         highlight = "RenderMarkdownLink",
         wiki = {
           icon = "󱗖 ",
@@ -525,7 +522,24 @@ return {
           scope_highlight = nil,
         },
         custom = {
-          web = { pattern = "^http", icon = "󰖟 " },
+          web = { icon = " " }, -- for links that do not match a pattern below
+          -- news sites
+          medium = { pattern = "medium%.com", icon = "󰬔 " }, -- letter-glyphs are named `alpha_…`
+          verge = { pattern = "theverge%.com", icon = "󰰫 " },
+          techcrunch = { pattern = "techcrunch%.com", icon = "󰬛󰬊 " },
+          wired = { pattern = "wired%.com", icon = "󰬞 " },
+          nytimes = { pattern = "nytimes%.com", icon = "󰬕󰬠 " },
+          bloomberg = { pattern = "bloomberg%.com", icon = "󰯯 " },
+          guardian = { pattern = "theguardian%.com", icon = "󰯾 " },
+          zeit = { pattern = "zeit%.de", icon = "󰬡 " },
+          spiegel = { pattern = "spiegel%.de", icon = "󰬚 " },
+          tagesschau = { pattern = "tagesschau%.de", icon = "󰰥 " },
+
+          -- misc
+          openai = { pattern = "openai%.com", icon = " " },
+          doi = { pattern = "doi%.org", icon = "󰑴 " },
+          mastodon = { pattern = "%.social/@", icon = " " },
+          researchgate = { pattern = "researchgate%.net", icon = "󰙨 " },
           apple = { pattern = "apple%.com", icon = " " },
           discord = { pattern = "discord%.com", icon = "󰙯 " },
           github = { pattern = "github%.com", icon = "󰊤 " },
@@ -542,7 +556,7 @@ return {
           twitter = { pattern = "x%.com", icon = " " },
           wikipedia = { pattern = "wikipedia%.org", icon = "󰖬 " },
           youtube = { pattern = "youtube[^.]*%.com", icon = "󰗃 " },
-          youtube_short = { pattern = "youtu%.be", icon = "󰗃 " },
+          youtube_short = { pattern = "youtube%.com", icon = "󰗃 " },
         },
       },
       sign = {
