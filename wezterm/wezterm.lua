@@ -121,8 +121,8 @@ config = {
 	},
 
 	-- For example, changing the color scheme:
-	-- color_scheme = "Catppuccin Frappé (Gogh)",
-	color_scheme = "Catppuccin Mocha (Gogh)",
+	color_scheme = "Catppuccin Frappé (Gogh)",
+	-- color_scheme = "Catppuccin Mocha (Gogh)",
 	-- color_scheme = "Rosé Pine Moon (Gogh)",
 	-- color_scheme = "Rosé Pine (Gogh)",
 
@@ -130,10 +130,10 @@ config = {
 	window_decorations = "RESIZE",
 
 	-- Blur
-	macos_window_background_blur = 50,
+	macos_window_background_blur = 80,
 
 	-- Opacity
-	window_background_opacity = 0.65,
+	window_background_opacity = 0.85,
 
 	-- https://wezfurlong.org/wezterm/config/lua/wezterm/font.html
 	-- font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" }),
@@ -152,19 +152,51 @@ config = {
 	-- -- for that in my zshrc file
 	-- -- Neovim didn't need cursor changes, worked by setting it to "xterm-kitty"
 	-- --
-	default_cursor_style = "SteadyBlock",
+	-- default_cursor_style = "SteadyBlock",
 	-- default_cursor_style = "BlinkingBlock",
 
 	-- I don't like the the "Linear", which gives it a fade effect between blinks
-	-- cursor_blink_ease_out = "Constant",
-	-- cursor_blink_ease_in = "Constant",
+	-- cursor_blink_ease_out = "Linear",
+	-- cursor_blink_ease_in = "Linear",
 	-- Setting this to 0 disables blinking
-	-- cursor_blink_rate = 0,
+	-- cursor_blink_rate = 10,
 
 	colors = {
+		-- Kopicat
+		foreground = "#CDD6F4",
+		background = "#1f2027",
+		selection_fg = "#1E1E2E",
+		selection_bg = "#F5E0DC",
+		cursor_fg = "#fcfcfa",
+		cursor_border = "#9cd1bb",
+		scrollbar_thumb = "#8E95B3",
+		split = "#D0B1C8",
+
+		ansi = {
+			"#30303b",
+			"#ff657a",
+			"#a8be81",
+			"#eccc81",
+			"#5d81ab",
+			"#ebbcba",
+			"#9cd1bb",
+			"#fcfcfa",
+		},
+
+		brights = {
+			"#8E95B3",
+			"#ff657a",
+			"#a8be81",
+			"#eccc81",
+			"#5d81ab",
+			"#ebbcba",
+			"#9cd1bb",
+			"#A1A8C9",
+		},
+
 		-- foreground = "#fcfcfc",
 		-- background = "#0B0A08",
-		background = "#100c08",
+		-- background = "#100c08",
 		-- background = "#353839",
 		-- background = "#222222",
 		-- background = "#21212A",
@@ -175,13 +207,14 @@ config = {
 		-- background = "#2f2f3b",
 		-- cursor_bg = "#9B96B5",
 		-- cursor_bg = "#FBF1F5",
-		cursor_bg = "#fab387",
-		-- 	-- cursor_fg = "black",
+		-- cursor_bg = "#fab387",
+		-- cursor_fg = "black",
 		-- cursor_border = "#fab387",
 		-- selection_fg = "black",
 		-- selection_bg = "#fffacd",
 		-- 	scrollbar_thumb = "#222222",
 		-- split = "#444444",
+
 		--
 		-- 	ansi = {
 		-- 		"#6C6168",
