@@ -14,8 +14,8 @@
 # alt - n : "${HOME}"/.config/scripts/choose/notes.sh
 
 # Applications
-# rcmd - return : open -n -a "wezterm"
-rcmd - return : open -n -a "kitty"
+rcmd - return : open -n -a "wezterm"
+# rcmd - return : open -n -a "kitty"
 
 # change layout of desktop
 lctrl + alt - b : yabai -m space --layout bsp
@@ -63,7 +63,7 @@ shift + ctrl - k    : yabai -m window north --stack $(yabai -m query --windows -
 shift + ctrl - l : yabai -m window  east --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
 
 # maximize a window
-shift + alt - f : yabai -m window --toggle zoom-fullscreen
+shift + alt - m : yabai -m window --toggle zoom-fullscreen
 
 # balance out tree of windows (resize to occupy same area)
 shift + alt - e : yabai -m space --balance
