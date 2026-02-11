@@ -46,10 +46,10 @@ yabai -m insert_feedback_color 0xff9dd274
 yabai -m split_ratio 0.50
 yabai -m auto_balance on
 yabai -m auto_padding on
-yabai -m mouse_modifier fn # set mouse interaction modifier key (default: fn, options: ctrl, opt, cmd)
+yabai -m config mouse_modifier ctrl # set mouse interaction modifier key (default: fn, options: ctrl, opt, cmd)
 yabai -m mouse_action1 move
 yabai -m mouse_action2 resize
-yabai -m mouse_drop_action swap
+yabai -m config mouse_drop_action swap
 
 ###############################################################################
 #                              Excluded apps
