@@ -72,7 +72,7 @@ config = {
 	-- In my wezterm video and will test them out
 	-- https://youtu.be/ibCPb4tSRXM
 	-- https://wezfurlong.org/wezterm/config/lua/config/animation_fps.html?h=animation
-	-- animation_fps = 120,
+	animation_fps = 120,
 
 	-- Limits the maximum number of frames per second that wezterm will attempt to draw
 	-- I tried settings this value to 5, 15, 30, 60 and you do feel a difference
@@ -130,15 +130,11 @@ config = {
 	window_decorations = "RESIZE",
 
 	-- Blur
-	macos_window_background_blur = 80,
+	macos_window_background_blur = 95,
 
 	-- Opacity
-	window_background_opacity = 0.85,
+	window_background_opacity = 0.80,
 
-	-- https://wezfurlong.org/wezterm/config/lua/wezterm/font.html
-	-- font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" }),
-	-- font = wezterm.font("JetBrainsMono Nerd Font"),
-	-- font_size = 14.5,
 	font_size = 14,
 
 	-- I don't use tabs
