@@ -32,8 +32,8 @@ startup_command = "nvim "
 
 [[session]]
 name = "developer_󰅴 "
-path = "~/Developer"
-startup_command = "yazi"
+path = "~/Developer/Projects"
+startup_command = "la"
 
 [[session]]
 name = "claude_󱙺 "
