@@ -18,8 +18,8 @@ for i = 1, 10, 1 do
 			string = i,
 			padding_left = 15,
 			padding_right = 8,
-			color = colors.arise,
-			highlight_color = colors.hollow,
+			color = colors.white,
+			highlight_color = colors.red,
 			align = "center",
 		},
 		label = {
