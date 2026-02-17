@@ -9,13 +9,11 @@
 # alt - a : "${HOME}"/.config/scripts/script-picker.sh
 # alt - e : "${HOME}"/.config/scripts/choose/emoji.sh
 # alt - space : "${HOME}"/.config/scripts/choose/apps-picker.sh
-# alt - w : "${HOME}"/.config/scripts/choose/wallpapers.sh
-# alt - c : "${HOME}"/.config/scripts/choose/cam.sh
-# alt - n : "${HOME}"/.config/scripts/choose/notes.sh
+alt - w : "${HOME}"/.config/scripts/choose/wallpapers.sh
+alt - n : "${HOME}"/.config/scripts/open_floating_notes.sh
 
 # Applications
 rcmd - return : open -n -a "wezterm"
-# rcmd - return : open -n -a "kitty"
 
 # change layout of desktop
 lctrl + alt - b : yabai -m space --layout bsp
@@ -41,6 +39,7 @@ cmd + alt - w : yabai -m space --destroy
 # alt - w: yabai -m display --focus west
 # alt - u: yabai -m display --focus north
 # alt - d: yabai -m display --focus south
+
 
 # rotate layout clockwise
 alt - r : yabai -m space --rotate 270
