@@ -1,0 +1,17 @@
+{
+  "window_title": "FLOATING_NOTES",
+  "default_cwd": "/Users/fox/Notes/06 - Daily/",
+  "default_prog": [
+    "/opt/homebrew/bin/nvim",
+    "-c",
+    "Obsidian today"
+  ],
+  "position": {
+    "x_percent": 0.20,
+    "y_percent": 0.20
+  },
+  "size": {
+    "cols": 80,
+    "rows": 40
+  }
+}

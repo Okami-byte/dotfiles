@@ -130,7 +130,7 @@ config = {
 	window_decorations = "RESIZE",
 
 	-- Blur
-	macos_window_background_blur = 95,
+	macos_window_background_blur = 90,
 
 	-- Opacity
 	window_background_opacity = 0.80,
@@ -160,7 +160,8 @@ config = {
 	colors = {
 		-- Kopicat
 		foreground = "#CDD6F4",
-		background = "#1f2027",
+		-- background = "#1f2027",
+		background = "#21212A",
 		selection_fg = "#1E1E2E",
 		selection_bg = "#F5E0DC",
 		cursor_fg = "#fcfcfa",
