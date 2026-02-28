@@ -80,7 +80,7 @@ fish_add_path $HOME/Developer/Scripts # my custom scripts
 fish_add_path --path /opt/homebrew/opt/trash/bin
 
 # Set XDG config home
-fish_add_path XDG_CONFIG_HOME=$HOME/.config
+fish_add_path --path XDG_CONFIG_HOME=$HOME/.config
 
 # Adding Python to path
 fish_add_path --path /opt/homebrew/opt/python@3.13/libexec/bin
