@@ -10,6 +10,7 @@ displaygroups=(
   "External"
   "Built-in + External"
   "Dual External"
+  "Built-in + Dual External"
 )
 
 # Default item
@@ -34,6 +35,9 @@ match_displayGroup() {
         ;;
       'Dual External')
         ICON="􀨧"
+        ;;
+      'Built-in + Dual External')
+        ICON="􁑭"
         ;;
       *)
         sendErr "Unrecognized displayGroup $displayGroup" "debug"

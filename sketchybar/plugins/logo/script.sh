@@ -25,7 +25,7 @@ menu_on() {
     --set separator drawing=off \
     --set front_app drawing=off \
     --animate tanh 15 --set $NAME background.drawing=on \
-    icon.color=$GLOW \
+    icon.color=$BLUE \
     icon=􀣺 \
     icon.font="$FONT:Black:17.0" \
     icon.y_offset=1 \

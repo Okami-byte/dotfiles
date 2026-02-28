@@ -9,3 +9,9 @@ done
 
 sketchybar --set $NAME icon="$(date '+%a %d. %b')" label="$(date '+%H:%M')" \
   label.width=50
+
+## Main logic
+case "$BUTTON" in
+"right")
+	open -a 'Fantastical'
+	;;

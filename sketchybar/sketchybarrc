@@ -30,9 +30,8 @@ fi
 : "${CPU_UPDATE_FREQ:=2}"              # <int>
 : "${MENUBAR_AUTOHIDE:=False}"         # <true|false>
 : "${GITHUB_TOKEN:="~/.github_token"}" # <path>
-# : "${WIFI_UNREDACTOR:="~/Applications/wifi-unredactor.app"}" # <path>
-: "${BAR_LOOK:="plain"}"          # <"plain"|"compact">
-: "${HIDE_EMPTY_SPACES:="false"}" # <true|false> / Is not really used here but rather in the scripts.sh
+: "${BAR_LOOK:="plain"}"               # <"plain"|"compact">
+: "${HIDE_EMPTY_SPACES:="false"}"      # <true|false> / Is not really used here but rather in the scripts.sh
 
 [ ${#MENU_CONTROLS[@]} -eq 0 ] && MENU_CONTROLS=(
   "Control__Center,FocusModes"
@@ -167,7 +166,7 @@ source "$RELPATH/sketchy-items/display.sh"
 source "$RELPATH/sketchy-items/more-menu.sh"
 source "$RELPATH/sketchy-items/packages.sh"
 source "$RELPATH/sketchy-items/currentuser.sh"
-source "$RELPATH/sketchy-items/notifications.sh"
+# source "$RELPATH/sketchy-items/notifications.sh"
 source "$RELPATH/sketchy-items/controls.sh"
 
 source "$RELPATH/sketchy-items/music.sh"

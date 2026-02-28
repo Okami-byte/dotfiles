@@ -10,7 +10,7 @@ update_icon() {
   case $VOLUME in
   [6-9][0-9] | 100)
     ICON=${ICONS_MICROPHONE[2]}
-    COLOR=$ACTIVE
+    COLOR=$GLOW
     ;;
   [1-9] | [1-5][0-9])
     ICON=${ICONS_MICROPHONE[1]}
