@@ -27,7 +27,7 @@ config = {
 		local screen = wezterm.gui.screens().active
 		local dims = gui:get_dimensions()
 		local x = screen.x + screen.width - dims.pixel_width - 50
-		local y = screen.y + 150
+		local y = screen.y + 120
 		gui:set_position(x, y)
 	end),
 
@@ -41,7 +41,7 @@ config = {
 
 	window_decorations = "RESIZE",
 	macos_window_background_blur = 90,
-	window_background_opacity = 0.50,
+	window_background_opacity = 0.70,
 	initial_cols = 50,
 	initial_rows = 40,
 	window_padding = {

@@ -135,7 +135,7 @@ config = {
 	-- Opacity
 	window_background_opacity = 0.80,
 
-	font_size = 14,
+	font_size = 13.5,
 
 	-- I don't use tabs
 	enable_tab_bar = false,
@@ -160,8 +160,8 @@ config = {
 	colors = {
 		-- Kopicat
 		foreground = "#CDD6F4",
-		-- background = "#1f2027",
-		background = "#21212A",
+		background = "#1f2027",
+		-- background = "#21212A",
 		selection_fg = "#1E1E2E",
 		selection_bg = "#F5E0DC",
 		cursor_fg = "#fcfcfa",
