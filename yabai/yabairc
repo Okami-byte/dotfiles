@@ -14,18 +14,16 @@ sudo yabai --load-sa
 # "stack" - keeps a single app on the front
 # "bsp" - binary space partitioning enables automatic tiling (partitioning)
 # "float" - default mode, windows are not managed
-# yabai -m config layout stack
 yabai -m config layout bsp
-# yabai -m config layout float
 
 # ###############################################################################
 #                          Custom padding settings
 ###############################################################################
 yabai -m config top_padding 5
-yabai -m config bottom_padding 6
-yabai -m config left_padding 6
-yabai -m config right_padding 6
-yabai -m config window_gap 6
+yabai -m config bottom_padding 8
+yabai -m config left_padding 8
+yabai -m config right_padding 8
+yabai -m config window_gap 8
 
 ###############################################################################
 #                                  Misc
@@ -33,8 +31,9 @@ yabai -m config window_gap 6
 yabai -m config external_bar all:40:0
 yabai -m config mouse_follows_focus on
 yabai -m config focus_follows_mouse autoraise # set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
-yabai -m config window_zoom_persist off
+yabai -m config window_zoom_persist on
 yabai -m config window_placement second_child
+yabai -m config window_shadow on
 yabai -m config window_shadow float
 yabai -m window_opacity off
 yabai -m window_opacity_duration 0.4
@@ -46,7 +45,7 @@ yabai -m insert_feedback_color 0xff9dd274
 yabai -m split_ratio 0.50
 yabai -m auto_balance on
 yabai -m auto_padding on
-yabai -m config mouse_modifier ctrl # set mouse interaction modifier key (default: fn, options: ctrl, opt, cmd)
+yabai -m config mouse_modifier fn # set mouse interaction modifier key (default: fn, options: ctrl, opt, cmd)
 yabai -m mouse_action1 move
 yabai -m mouse_action2 resize
 yabai -m config mouse_drop_action swap
