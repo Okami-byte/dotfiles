@@ -11,6 +11,12 @@
 # import = ["~/.config/sesh/configs/nu-sesh.toml"]
 # blacklist = ["scratch"]
 
+# Introduces a caching layer in order to speed up load times
+cache = true
+
+# Makes it aware of the separators
+separator_aware = true
+
 # default
 
 [default_session]
