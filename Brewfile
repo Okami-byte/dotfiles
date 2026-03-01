@@ -3,7 +3,6 @@ tap "altalt-org/alt"
 tap "antoniorodr/cronboard"
 tap "avasilic/goto"
 tap "bloznelis/tap"
-tap "buo/cask-upgrade"
 tap "codechenx/tap"
 tap "espanso/espanso"
 tap "felixkratz/formulae"
@@ -15,16 +14,16 @@ tap "joncrangle/tap"
 tap "jstkdng/programs"
 tap "keith/formulae"
 tap "koekeishiya/formulae"
-tap "ll-nick/leadr"
+tap "luoling8192/tap"
 tap "marsanne/cask"
 tap "mhaeuser/mhaeuser"
 tap "netbirdio/tap"
 tap "nikitabobko/tap"
 tap "nikolaeu/numi"
-tap "nullpointerdepressivedisorder/tap"
-tap "stan-breaks/ytsurf", "https://github.com/stan-breaks/ytsurf"
 tap "teamookla/speedtest"
+tap "tonisives/tap"
 tap "waydabber/betterdisplay"
+tap "xdagiz/tap"
 tap "zfdang/free-for-macos"
 # Simple, modern, secure file encryption
 brew "age"
@@ -86,6 +85,8 @@ brew "doggo"
 brew "dust"
 # Modern, maintained replacement for ls
 brew "eza"
+# Open-source framework for augmenting humans using AI
+brew "fabric-ai"
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
@@ -100,6 +101,8 @@ brew "fzf"
 brew "gawk"
 # GitHub command-line tool
 brew "gh"
+# Conversion library
+brew "libiconv"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -114,7 +117,7 @@ brew "pkgconf"
 brew "htop"
 # Tool to report network interface bandwidth
 brew "ifstat"
-# Tools and libraries to manipulate images in many formats
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # University of Washington IMAP toolkit
 brew "imap-uw"
@@ -134,8 +137,6 @@ brew "lazygit"
 brew "lf"
 # Portable Foreign Function Interface library
 brew "libffi"
-# Conversion library
-brew "libiconv"
 # Vulkan Header files and API registry
 brew "vulkan-headers"
 # YAML Parser
@@ -204,8 +205,6 @@ brew "serie"
 brew "sesh"
 # SMART hard drive monitoring
 brew "smartmontools"
-# Command-line interface for https://speedtest.net bandwidth tests
-brew "speedtest-cli"
 # Command driven spotify player
 brew "spotify_player"
 # Graphical command-line client for SSH
@@ -244,8 +243,6 @@ brew "webtorrent-cli"
 brew "wget"
 # Show the current WiFi network password
 brew "wifi-password"
-# Network analyzer and capture tool - without graphical user interface
-brew "wireshark"
 # Lexical database for the English language
 brew "wordnet"
 # Passive hostname, domain, and IP lookup tool
@@ -278,8 +275,6 @@ brew "codechenx/tap/codechenx-tv"
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
 brew "felixkratz/formulae/sketchybar"
-# Turns macOS input fields into real vim buffers
-brew "felixkratz/formulae/svim"
 # Interactive TUI for Homebrew
 brew "gromgit/brewtils/taproom"
 # Terraform
@@ -294,12 +289,10 @@ brew "koekeishiya/formulae/skhd"
 brew "koekeishiya/formulae/yabai"
 # Netbird project.
 brew "netbirdio/tap/netbird"
-# Smart calculator
-brew "nikolaeu/numi/numi-cli"
-# YouTube in your terminal. Clean and distraction-free
-brew "stan-breaks/ytsurf/ytsurf"
 # Ookla Speedtest
 brew "teamookla/speedtest/speedtest"
+# BetterDisplay CLI proxy
+brew "waydabber/betterdisplay/betterdisplaycli"
 # Command-line memory status tool for MacOS X, similar to free(1) on Linux
 brew "zfdang/free-for-macos/free-for-macos"
 # Password manager that keeps all passwords secure behind one password
@@ -309,23 +302,17 @@ cask "1password-cli"
 # Time tracker
 cask "activitywatch"
 # AeroSpace is an i3-like tiling window manager for macOS
-cask "aerospace"
+cask "nikitabobko/tap/aerospace"
 # Image editing and design software
 cask "affinity"
 # Desktop application for AI-powered lecture note taking and management
-cask "alt"
+cask "altalt-org/alt/alt"
 # Enable Windows-like alt-tab
 cask "alt-tab"
-# Control the platform power state of your Apple Silicon device
-cask "battery-toolkit"
 # Display management tool
 cask "betterdisplay"
-# Desktop password and login vault
-cask "bitwarden"
 # Web browser focusing on privacy
 cask "brave-browser"
-# E-books management software
-cask "calibre"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
@@ -336,12 +323,8 @@ cask "cleanshot"
 cask "cloudflare-warp"
 # Disk space visualiser
 cask "daisydisk"
-# App to build and share containerised applications and microservices
-cask "docker-desktop"
 # Online diagram software
 cask "drawio"
-# Desktop client for Ente Auth
-cask "ente-auth"
 # Cross-platform Text Expander written in Rust
 cask "espanso"
 # Web browser
@@ -355,10 +338,12 @@ cask "font-sf-mono"
 cask "font-sf-pro"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Chromium-based web browser
+cask "helium-browser"
+# Free and open-source media player
+cask "iina"
 # Keyboard customiser
 cask "karabiner-elements"
-# File archiver
-cask "keka"
 # GPU-based terminal emulator
 cask "kitty"
 # Tool to show what is persistently installed on the computer
@@ -369,40 +354,30 @@ cask "latest"
 cask "little-snitch"
 # Open-source cross-platform alternative to AirDrop
 cask "localsend"
-# Open-source firewall to block unknown outgoing connections
-cask "lulu"
-# Adaptive brightness for external displays
-cask "lunar"
 # Clipboard manager
 cask "maccy"
 # Nintendo DS and DSi emulator
 cask "melonds"
 # Multi-platform web browser
 cask "microsoft-edge"
-# Middle-click and middle-drag via three-finger trackpad gestures
-cask "middledrag"
+# Utility to extend trackpad functionality
+cask "middleclick"
 # Native app email client for Gmail
 cask "mimestream"
-# Calendar for professionals and teams
-cask "notion-calendar"
-# Email client integrated with Notion workspace
-cask "notion-mail"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
-# Markdown-based note-taking app
-cask "octarine"
 # Client program for the OpenVPN Access Server
 cask "openvpn-connect"
+# Replacement for Docker Desktop
+cask "orbstack"
 # Utility to uninstall apps and remove leftover files from old/uninstalled apps
 cask "pearcleaner"
 # Customise and maintain app icons
 cask "pictogram"
 # VPN client focusing on security
 cask "protonvpn"
-# Peer to peer Bitorrent client
-cask "qbittorrent"
 # All-in-one bookmark manager
 cask "raindropio"
 # Control your tools with a few keystrokes
@@ -413,34 +388,36 @@ cask "sf-symbols"
 cask "slack"
 # Music streaming service
 cask "spotify"
-# Email client
-cask "superhuman"
 # Web browser focusing on security
 cask "tor-browser"
 # Charting and social-networking for investment traders
 cask "tradingview"
-# PDF editor
-cask "updf"
 # Virtual machines UI using QEMU
 cask "utm"
 # Custom Discord App
 cask "vesktop"
 # VirusTotal client built with SwiftUI
-cask "virustotal"
+cask "marsanne/cask/virustotal"
 # Web browser with built-in email client focusing on customization and control
 cask "vivaldi"
-# Rust-based terminal
-cask "warp"
+# Binary releases of VS Code without MS branding/telemetry/licensing
+cask "vscodium"
 # Torrent streaming application
 cask "webtorrent"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
-cask "wezterm"
+cask "wezterm@nightly"
+# Native desktop client for WhatsApp
+cask "whatsapp"
+# a beautiful TUI YouTube Downloader
+cask "xdagiz/tap/xytz"
 # Gecko based web browser
 cask "zen"
 # Gecko based web browser
 cask "zen@twilight"
-mas "Classic Loan Calculator", id: 6743346144
 mas "Color Picker", id: 1545870783
+mas "Fantastical", id: 975937182
 mas "Prompt2Go", id: 6747984907
 mas "TestFlight", id: 899247664
 mas "THOHT", id: 0
+mas "Xcode", id: 497799835
+cargo "rmpc"

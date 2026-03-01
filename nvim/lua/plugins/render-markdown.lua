@@ -3,6 +3,7 @@ return {
   dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" }, -- if you use standalone mini plugins
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
+  enabled = true,
 
   config = function()
     require("render-markdown").setup({
