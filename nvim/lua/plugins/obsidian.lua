@@ -10,6 +10,7 @@ return {
     "Obsidian",
   },
   opts = {
+
     workspaces = {
       {
         name = "notes",
@@ -41,29 +42,16 @@ return {
       },
     },
 
-    -- Alternatively - and for backwards compatibility - you can set 'dir' to a single path instead of
-    -- 'workspaces'. For example:
-    -- dir = "~/vaults/work",
-
-    -- Optional, if you keep notes in a specific subdirectory of your vault.
-
-    -- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
-    -- levels defined by "vim.log.levels.*".
-    log_level = vim.log.levels.INFO,
+    legacy_commands = false,
 
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
-      folder = "06 - Daily/",
+      folder = "04 - Daily/",
       -- Optional, if you want to change the date format for the ID of daily notes.
-      date_format = "%Y%m%d",
-      -- Optional, if you want to change the date format of the default alias of daily notes.
-      alias_format = "%B %-d, %Y",
-      -- Optional, default tags to add to each new daily note created.
-      default_tags = { "daily-notes" },
+      date_format = "%Y-%m-%d",
+      time_format = "%H:%M",
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
       template = "Daily Template",
-      -- Optional, if you want ObsidianYesterday to return the last work day or ObsidianTomorrow to return the next work day.
-      workdays_only = false,
     },
 
     -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -81,26 +69,13 @@ return {
     -- Where to put new notes. Valid options are
     --  * "current_dir" - put new notes in same directory as the current buffer.
     --  * "notes_subdir" - put new notes in the default notes subdirectory.
-    new_notes_location = "~/Notes/02 - Areas/Inbox",
+    new_notes_location = "~/Notes/00 - Inbox",
 
-    -- Optional, customize how note IDs are generated given an optional title.
-    ---@param title string|?
-    ---@return string
     note_id_func = function(title)
-      -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
-      -- In this case a note with the title 'My new note' will be given an ID that looks
-      -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-      local suffix = ""
-      if title ~= nil then
-        -- If title is given, transform it into valid file name.
-        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-      else
-        -- If title is nil, just add 4 random uppercase letters to the suffix.
-        for _ = 1, 4 do
-          suffix = suffix .. string.char(math.random(65, 90))
-        end
+      if not title or title == "" then
+        return tostring(os.time())
       end
-      return tostring(os.time()) .. "-" .. suffix
+      return title:gsub("%s+", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
     end,
 
     -- Optional, customize how note file names are generated given the ID, target directory, and title.
@@ -128,15 +103,14 @@ return {
     end,
 
     -- Either 'wiki' or 'markdown'.
-    preferred_link_style = "wiki",
+    preferred_link_style = "markdown",
 
     -- Optional, boolean or a function that takes a filename and returns a boolean.
-    -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-    disable_frontmatter = true,
+    frontmatter_enabled = false,
 
     -- Optional, alternatively you can customize the frontmatter data.
     ---@return table
-    note_frontmatter_func = function(note)
+    frontmatter_func = function(note)
       -- Add the title of the note as an alias.
       if note.title then
         note:add_alias(note.title)
@@ -173,22 +147,23 @@ return {
 
     -- Optional, by default when you use `:Obsidian followlink` on a link to an external
     -- URL it will be ignored but you can customize this behavior here.
+    vim_ui_open =
+      -- Optional, by default when you use `:Obsidian followlink` on a link to an image
+      -- file it will be ignored but you can customize this behavior here.
+      ---@param img string
+      vim_ui_open == function(img)
+        vim.fn.jobstart({ "qlmanage", "-p", img }) -- Mac OS quick look preview
+        -- vim.fn.jobstart({"xdg-open", url})  -- linux
+        -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
+      end,
+
     ---@param url string
-    follow_url_func = function(url)
+    function(url)
       -- Open the URL in the default web browser.
       vim.fn.jobstart({ "open", url }) -- Mac OS
       -- vim.fn.jobstart({"xdg-open", url})  -- linux
       -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
       -- vim.ui.open(url) -- need Neovim 0.10.0+
-    end,
-
-    -- Optional, by default when you use `:Obsidian followlink` on a link to an image
-    -- file it will be ignored but you can customize this behavior here.
-    ---@param img string
-    follow_img_func = function(img)
-      vim.fn.jobstart({ "qlmanage", "-p", img }) -- Mac OS quick look preview
-      -- vim.fn.jobstart({"xdg-open", url})  -- linux
-      -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
     end,
 
     open = {
@@ -219,8 +194,8 @@ return {
     -- Optional, sort search results by "path", "modified", "accessed", or "created".
     -- The recommend value is "modified" and `true` for `sort_reversed`, which means, for example,
     -- that `:Obsidian quickswitch` will show the notes sorted by latest modified time
-    sort_by = "modified",
-    sort_reversed = true,
+    search_sort_by = "modified",
+    search_sort_reversed = true,
 
     -- Set the maximum number of lines to read from notes on disk when performing certain searches.
     search_max_lines = 1000,
@@ -299,7 +274,7 @@ return {
       ["!"] = { char = "", hl_group = "ObsidianImportant" },
     },
     -- Specify how to handle attachments.
-    attachments = {
+    attachments_folder = {
       -- The default folder to place images in via `:Obsidian pasteimg`.
       -- If this is a relative path it will be interpreted as relative to the vault root.
       -- You can always override this per image by passing a full path to the command instead of just a filename.

@@ -21,6 +21,9 @@ abbr blr "brew leaves --installed-on-request"
 abbr blp "brew leaves --installed-as-dependency"
 abbr bs "brew search"
 
+# Claude
+abbr ca claude
+
 # Espanso
 abbr ee "espanso edit"
 abbr er "espanso restart"
