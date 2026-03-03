@@ -1,147 +1,172 @@
-# mpv config
+# Personal mpv Configuration for Windows
 
-![mpv logo](https://raw.githubusercontent.com/mpv-player/mpv.io/master/source/images/mpv-logo-128.png)
+<p align="center"><img width=100% src="https://github.com/user-attachments/assets/7d6b7cfd-41c7-4617-b573-933b4b3bd564" alt="mpv screenshot"></p>
+<p align="center"><img width=100% src="https://github.com/user-attachments/assets/bfd85e57-f244-4de4-8bf9-750723c51568" alt="mpv screenshot"></p>
 
 ## Overview
+Just my personal config files for use in [mpv](https://mpv.io/), a free, open-source, & cross-platform media player, with a focus on quality and a practical yet comfortable viewing experience. Contains tuned profiles (for up/downscaling, live action, anime & HDR content), custom key bindings, a GUI, as well as multiple scripts, shaders & filters, all serving different functions. Suitable for both high and low-end pc's (with some tweaks).
 
-**mpv** is a free (as in freedom and free beer), open-source, and cross-platform media player. It supports
-a wide variety of media file formats, audio and video codecs, and subtitle types.
+Before installing, please take your time to read this whole README as common issues can be easily solved by simply reading carefully.
 
-This repo contains my personal mpv configurations and scripts that I use and are significantly better than default mpv, VLC, and MPC. Before installing, please take your time to read this whole README as common issues can be easily solved by simply reading carefully.
+## Scripts and Shaders
+- [uosc](https://github.com/darsain/uosc) - Adds a minimalist but highly customisable GUI.
+- [evafast](https://github.com/po5/evafast) - Fast-forwarding and seeking on a single key.
+- [thumbfast](https://github.com/po5/thumbfast) - High-performance on-the-fly thumbnailer.
+- [memo](https://github.com/po5/memo) - A recent files/history menu for mpv with optional uosc integration.
+- [InputEvent](https://github.com/natural-harmonia-gropius/input-event) - Enhanced input.conf with better, conflict-free, low-latency event mechanisms.
+- [autodeint](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autodeint.lua) - Automatically deinterlace the video by using lavfi's idet filter to detect interlaced content.
+- [autoload](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autoload.lua) - Automatically load playlist entries before and after the currently playing file, by scanning the directory.
+- - - 
+- [nnedi3 and ravu](https://github.com/bjin/mpv-prescalers) - User shaders for prescaling.
+- [FSRCNN](https://github.com/igv/FSRCNN-TensorFlow/releases) - Prescaler based on layered convolutional networks.
+- [AniSD ArtCNN](https://github.com/Sirosky/Upscale-Hub/releases/tag/AniSD-ArtCNN) - ArtCNN shader for standard definition anime content.
+- [Anime4k](https://github.com/bloc97/Anime4K) - Shaders designed to scale and enhance anime. Includes shaders for sharpening and upscaling.
+- [nlmeans](https://github.com/AN3223/dotfiles/blob/master/.config/mpv/shaders/) - A featureful implementation of the non-local Means algorithm, it does both denoising and adaptive sharpening.
+- [Ani4K v2 ArtCNN](https://github.com/Sirosky/Upscale-Hub/releases/tag/Ani4k-v2-ArtCNN) - Targets modern anime, from high quality Blu-ray to crappy WEB releases, for upscaling to either 2K or 4K.
+- [SSimDownscaler, SSimSuperRes, KrigBilateral, Adaptive Sharpen](https://gist.github.com/igv) 
+    - Adaptive Sharpen: A sharpening shader.
+    - SSimDownscaler: Perceptually based downscaler.
+    - KrigBilateral: Chroma scaler that uses luma information for high quality upscaling.
+    - SSimSuperRes: Make corrections to the image upscaled by mpv built-in scaler (removes ringing artifacts and restores original  sharpness).
+   
+## Installation (on Windows)
 
-> [!IMPORTANT]
-> The original version of this belongs to [noelsimbolon](https://github.com/noelsimbolon/mpv-config)
+(Not tested on Linux and macOS but once mpv is installed, copying the contents of my `portable_config` into the [relevant](https://mpv.io/manual/master/#files) folders should be sufficient. Some settings in [mpv.conf](https://github.com/Zabooby/mpv-config/blob/main/portable_config/mpv.conf) may need to be changed due to compatibility issues. Check console for any errors.)
 
-## Preview
+* Download the latest 64bit (or 64bit-v3 for newer CPUs) mpv Windows build by shinchiro [here](https://mpv.io/installation/) or directly from [here](https://github.com/shinchiro/mpv-winbuild-cmake/releases) and extract its contents into a folder of your choice (mine is called mpv). This is now your mpv folder and can be placed wherever you want. 
+* Run `mpv-install.bat`, which is located in the `installer` folder (see File Structure section), with administrator privileges by right-clicking and selecting run as administrator, after it's done, you'll get a prompt to open Control Panel and set mpv as the default player.
+* Download and extract the `portable_config` folder from this repo to the mpv folder you just made. 
+* Add file paths, to 2 files in the [script-opts](https://github.com/Zabooby/mpv-config/tree/main/portable_config/script-opts) folder (detailed in the File Structure section), to match your preferences. 
+* **Adjust relevant settings in [mpv.conf](https://github.com/Zabooby/mpv-config/blob/main/portable_config/mpv.conf) & [profiles.conf](https://github.com/Zabooby/mpv-config/blob/main/portable_config/profiles.conf) to fit your system and preferences, use the [manual](https://mpv.io/manual/master/) to find out what different options do or open an issue if you need any help.**
+* For mpv updates, right click updater.bat and run as administrator, then follow the instructions. There will be an option to install yt-dlp to be able to stream YouTube videos and any other websites supported by [yt-dlp,](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md) if you want. Once the initial run of updater.bat has completed a settings.xml file will be generated to save your preferences. 
+* You're all set up. Go watch some videos!
 
-[![preview.png](https://i.postimg.cc/8zNHHPHy/preview.png)](https://postimg.cc/VdZnsw2M)
+After following the steps above, your mpv folder should have the following structure:
 
-## Installation
+## File Structure (on Windows)
 
-### Windows
+```
+mpv
+|
+├── doc
+│   ├── manual.pdf                            
+│   └── mpbindings.png                    # Default key bindings if not overridden in input.conf
+│
+├── installer
+│   ├── mpv-icon.ico
+│   ├── mpv-install.bat                   # Run with administrator privileges to install mpv
+│   ├── mpv-uninstall.bat                 # Run with administrator privileges to uninstall mpv
+│   └── updater.ps1
+│
+├── portable_config                       # This is where my config is placed
+│   ├── cache                             # Created automatically  
+│   │   ├──  shaders_cache
+│   │   ├──  watch_later                  
+│   │
+│   ├── fonts
+│   │   ├── ClearSans-Bold.ttf
+│   │   ├── JetBrainsMono-Regular.ttf
+|   |   ├── uosc_icons.otf
+|   |   └── uosc_textures.ttf
+│   │
+│   ├── script-opts                       # Contains configuration files for scripts
+|   |   ├── console.conf
+|   |   ├── evafast.conf 
+|   |   ├── memo.conf
+|   |   ├── memo-history.log              # Created automatically 
+│   │   ├── thumbfast.conf                    
+│   │   ├── uosc.conf                     # Set desired default directory for uosc menu here
+│   │
+│   ├── scripts      
+│   │   ├── uosc              
+│   │       ├── bin 
+|   |           ├── ziggy-darwin
+|   |           ├── ziggy-linux
+|   |           ├── ziggy-windows.exe
+│   │       ├── char_conv
+|   |           ├── zh.json
+│   │       ├── elements 
+|   |           ├── BufferingIndicator.lua
+|   |           ├── Button.lua
+|   |           ├── Controls.lua
+|   |           ├── Curtain.lua
+|   |           ├── CycleButton.lua
+|   |           ├── Element.lua
+|   |           ├── Elements.lua
+|   |           ├── ManagedButton.lua
+|   |           ├── Menu.lua
+|   |           ├── PauseIndicator.lua
+|   |           ├── Speed.lua
+|   |           ├── Timeline.lua
+|   |           ├── TopBar.lua
+|   |           ├── Updater.lua
+|   |           ├── Volume.lua
+|   |           └── WindowBorder.lua
+|   |       ├── intl
+|   |           ├── de.lua
+|   |           ├── es.lua
+|   |           ├── fr.json
+|   |           ├── pl.json
+|   |           ├── ro.json
+|   |           ├── ru.json
+|   |           ├── tr.json
+|   |           ├── uk.json
+|   |           └── zh-hans.json
+|   |       ├── lib
+|   |           ├── ass.lua
+|   |           ├── buttons.lua
+|   |           ├── char_conv.lua
+|   |           ├── cursor.lua
+|   |           ├── fzy.lua
+|   |           ├── intl.lua
+|   |           ├── menus.lua
+|   |           ├── std.lua
+|   |           ├── text.lua
+|   |           └── utils.lua
+|   |       └── main.lua
+│   │
+│   │   ├── autodeint.lua
+│   │   ├── autoload.lua 
+│   │   ├── evafast.lua                   # Activated by holding right arrow key
+│   │   ├── inputevent.lua
+|   |   ├── memo.lua
+│   │   ├── thumbfast.lua                     
+│   │
+│   ├── shaders                          
+│   │   ├── A4K_Clamp_Highlights.glsl                         
+│   │   ├── A4K_Restore_CNN_Soft_M.glsl
+│   │   ├── adasharp_luma.glsl
+│   │   ├── Ani4Kv2_ArtCNN_C4F32_i2.glsl
+│   │   ├── AniSD_ArtCNN_C4F32_i4.glsl
+│   │   ├── F8.glsl
+│   │   ├── F16.glsl
+│   │   ├── krigbl.glsl
+│   │   ├── nlmeans_luma.glsl
+│   │   ├── nnedi3-nns32-win8x4.glsl       
+│   │   ├── nnedi3-nns64-win8x4.glsl
+│   │   ├── ravu_z_ar_r3.glsl
+│   │   ├── ssimds.glsl
+│   │   └── ssimsr.glsl
+│   │
+|   ├── fonts.conf                        # Delete the duplicate made when installing mpv
+│   ├── input.conf                        # Customise uosc menu here
+│   ├── mpv.conf                          
+|   └── profiles.conf                     
+|   
+├── d3dcompiler_43.dll
+├── mpv.com
+├── mpv.exe                               # The mpv executable file
+├── settings.xml                          # Created after initial run of updater.bat
+├── updater.bat                           # Run with administrator privileges to update mpv
+└── yt-dlp.exe                            
+```
 
-Here are the steps to install mpv and to use my configuration files on Windows &
-MacOS:
-
-- Download the latest 64bit mpv Windows build by shinchiro from [mpv.io/installation](https://mpv.io/installation/) or directly from [here](https://sourceforge.net/projects/mpv-player-windows/files/) and extract it wherever you please. This is now your mpv folder
-- Run `mpv-install.bat`, which is located in `installer` folder, with administrator priviledges by right-clicking and selecting Run as administrator
-- Download this repository as a ZIP file (or you can clone it using git)
-- Create a folder named `portable_config` (**this is important**), located at the same directory as `mpv.exe`
-- Extract or copy the contents of this repository that you have downloaded to the `portable_config` folder
-- To make some scripts work, you need to modify them from the release a little bit:
-  - In order for the `mpv-gif.lua` script to work, it requires [FFmpeg](https://ffmpeg.org/) with libass enabled and accessible via terminal. See the [installation instructions](https://github.com/Scheliux/mpv-gif-generator#installation) from the script's source repository for further info.
-  - **(Optional)** By default, the `mpv-gif.lua` script saves GIFs to `C:/Program Files/mpv/gifs`. To modify this, open `gif.conf`, which is located in `portable_config/script-opts` folder, with a text editor and specify the `dir`, which is output directory for GIFs, as you please. For example `dir="C:/Users/USERNAME/Pictures/mpv-gifs"`.
-- **(Optional)** Make your own mpv configuration. You can do that by modifying my configuration files and/or making your own from scratch or modifying others' configurations. Check out the [useful links](#useful-links) section for mpv configuration guides.
-- You're all set up.
-
-### MacOS
-
-Here are the steps to install mpv and to use my configuration files on MacOS:
-
-- Download the latest version of mpv from [mpv.io/installation](https://mpv.io/installation/) or utilizing homebrew **(recommended)**. Also, download xclip as that is required on top of mpv
-
-  ```bash
-  brew install mpv xclip
-  ```
-
-- I would recommend that you go ahead and make your configuration directory in
-  your `.config` directory. This is where mpv will look for your configuration files.
-
-  ```bash
-  mkdir -p ~/.config/mpv
-  ```
-
-- To make some scripts work, you need to modify them from the release a little bit:
-
-  - In order for the `mpv-gif.lua` script to work, it requires [FFmpeg](https://ffmpeg.org/) with libass enabled and accessible via terminal. See the [installation instructions](https://github.com/Scheliux/mpv-gif-generator#installation) from the script's source repository for further info. _OR_ you can install ffmpeg using homebrew. Whatever floats your boat.
-  - **(Optional)** By default, the `mpv-gif.lua` script saves GIFs to`C:/Program Files/mpv/gifs`, I would recommend making a directory in videos and saving it there: `~/Videos/mpv-gifs`. To modify this, open `gif.conf`, which is located in `script-opts` folder, with a text editor and specify the `dir`, which is output directory for GIFs, as you please. For example `dir="~/Videos"`.
-
-### Linux
-
-Here are the steps to install mpv and to use my configuration files on Linux:
-
-- Install mpv and xclip (clipboard CLI interface) using the package manager that comes with your Linux distribution. xclip is needed for [copy-time.lua](https://github.com/noelsimbolon/mpv-config/blob/linux/scripts/copy-time.lua) and [seek-to.lua](https://github.com/noelsimbolon/mpv-config/blob/linux/scripts/seek-to.lua) scripts to work properly. The package name for mpv and xclip might also vary depending on your Linux distribution. Here, I will make Arch Linux, that comes with `pacman` as its package manager, as an example
-
-  ```bash
-  sudo pacman -S mpv xclip
-  ```
-
-  If you, for example, use Fedora Linux, that comes with `dnf` as its package manager, you can install mpv and xclip with the following command instead.
-
-  ```bash
-  sudo dnf install mpv xclip
-  ```
-
-  If you use other Linux distributions, please refer to the documentation of your Linux distribution's package manager on how to install packages.
-
-- Download this repository as a ZIP file (or you can clone it using git) and extract/copy it to your standard mpv configuration directory which is `~/.config/mpv`
-- Some things to highlight:
-  - In order for the `mpv-gif.lua` script to work, it requires [FFmpeg](https://ffmpeg.org/) with libass enabled and accessible via terminal. See the [installation instructions](https://github.com/Scheliux/mpv-gif-generator#installation) from the script's source repository for further info.
-  - **(Optional)** By default, the `mpv-gif.lua` script saves GIFs to `~/Videos/mpv-gifs`. To modify this, open `gif.conf`, which is located in `portable_config/script-opts` folder, with a text editor and specify the `dir`, which is output directory for GIFs, as you please. For example `dir="~/Videos"`.
-- **(Optional)** Make your own mpv configuration. You can do that by modifying my configuration files and/or making your own from scratch or modifying others' configurations. Check out the [useful links](#useful-links) section for mpv configuration guides.
-- You're all set up.
-
-## Scripts
-
-Scripts from external sources:
-
-- audio-visualizer.lua ([source](https://github.com/mfcc64/mpv-scripts#visualizerlua))\
-  Various audio visualization. It only works if you open audio files.
-- autoload.lua ([source](https://github.com/mpv-player/mpv/blob/master/TOOLS/lua/autoload.lua))\
-  Automatically load playlist entries before and after the currently playing file, by scanning the directory.
-
-- copy-time.lua ([source](https://github.com/linguisticmind/mpv-scripts/tree/master/copy-time))\
-  Copies current timecode in HH:MM:SS.MS format to clipboard. Cross-platform (Mac, Windows, Linux).
-
-- cycle-commands.lua ([source](https://github.com/CogentRedTester/mpv-scripts#cycle-commands))\
-  Cycles through a series of commands on a keypress. Each iteration of the cycle can contain as many commands as one wants. Syntax details are at the top of the file.
-
-- cycle-profile.lua ([source](https://github.com/CogentRedTester/mpv-scripts#cycle-profile))\
-  Cycles through a list of profiles sent via a script message and prints the profile-desc to the OSD. More details at the top of the file.
-
-- modernz.lua ([source](https://github.com/Samillion/ModernZ))\
-  A modern OSC UI replacement for MPV that retains the functionality of the default OSC.
-
-- mpv-gif.lua ([source](https://github.com/Scheliux/mpv-gif-generator))\
-  Script to generate GIFs from video playback. Requires FFmpeg with libass enabled. The exporting GIFs with subtitled currently doesn't work properly.
-
-- playlistmanager.lua ([source](https://github.com/jonniek/mpv-playlistmanager))\
-  Allows you to see and interact with your playlist in an intuitive way.
-
-- seek-to.lua ([source](https://github.com/dexeonify/mpv-config/blob/main/scripts/seek-to.lua))\
-  Seek to an absolute timestamp specified via keyboard input or pasted from clipboard.
-
-- sponsorblock-minimal.lua ([source](https://codeberg.org/jouni/mpv_sponsorblock_minimal))\
-  Skip sponsor segments in YouTube videos.
-
-- thumbfast.lua ([source](https://github.com/po5/thumbfast))\
-  High-performance on-the-fly thumbnailer for mpv. **The script does not display thumbnails on its own**, it is meant to be used alongside a UI script that calls thumbfast.
-
-Configuration files for these scripts can be found in the `script-opts` folder. I also modified some of these scripts' default keybindings. To see my modifications, look for script keybindings in `input.conf`.
-
-## Shaders
-
-The shaders included in the `shaders` folder:
-
-- ArtCNN_C4F32 ([source](https://github.com/Artoriuz/ArtCNN/blob/main/GLSL/ArtCNN_C4F32.glsl))\
-  Used for luma upscaling.
-
-- nnedi3-nns128-win8x4 ([source](https://github.com/bjin/mpv-prescalers/tree/master))\
-  Used for luma upscaling.
-
-Use shaders based on your preference and system capabilities. For more info about shaders, read the resources in the [useful links](#useful-links) section.
+## Key Bindings
+Custom key bindings can be added/edited in the [input.conf](https://github.com/Zabooby/mpv-config/blob/main/portable_config/input.conf) file. Refer to the [manual](https://mpv.io/manual/master/) and [uosc](https://github.com/tomasklaen/uosc#commands) commands for making any changes. Default key bindings can be seen from the [input.conf](https://github.com/Zabooby/mpv-config/blob/main/portable_config/input.conf) file but most of the player functions can be used through the menu accessed by `Right Click` and the buttons above the timeline as seen in the images above.
 
 ## Useful Links
 
-- [mpv tutorial](https://thewiki.moe/tutorials/mpv/) by The Wiki
-- [mpv.conf guide](https://iamscum.wordpress.com/guides/videoplayback-guide/mpv-conf/) by iamscum
-- [mpv Configuration Guide for Watching Videos](https://kokomins.wordpress.com/2019/10/14/mpv-config-guide/) by Kokomins
-- [mpv Resampling](https://artoriuz.github.io/blog/mpv_upscaling.html) by João Vitor Chrisóstomo
-
-## Official Links
-
-- [mpv homepage](https://mpv.io/)
-- [mpv wiki](https://github.com/mpv-player/mpv/wiki)
-- [mpv FAQ](https://github.com/mpv-player/mpv/wiki/FAQ)
-- [mpv manual](https://mpv.io/manual/stable/)
-- [mpv User Scripts](https://github.com/mpv-player/mpv/wiki/User-Scripts)
+* [mpv wiki](https://github.com/mpv-player/mpv/wiki) - Official wiki with links to all user scripts/shaders, FAQ's, discussions and much more.
+    * [Awesome mpv](https://github.com/stax76/awesome-mpv) -  A curated list of the user resources in the wiki, listed in distinct sections for easier browsing.
+* [mpv manual](https://mpv.io/manual/master/) - Lists and explains all the settings and configuration options available including video/audio settings, scripting, and countless other customisations.
+* [To-do's](https://github.com/users/Zabooby/projects/1) - Just a list of things I'm currently testing, tracking or improving as well as major changes/improvements I've already implemented.
