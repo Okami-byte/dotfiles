@@ -72,8 +72,8 @@ abbr -a nvo --set-cursor "cd % && nvim"
 abbr -a nvp nvim +Man!
 
 # Sesh
-abbr s sesh_start
-abbr s. "sesh connect ."
+abbr ss sesh_start
+abbr ss. "sesh connect ."
 abbr sc "sesh clone --cmdDir ~/c (pbpaste)"
 abbr sf "source ~/.config/fish/config.fish"
 abbr sr "sesh root"

@@ -46,10 +46,10 @@ set fish_cursor_replace_one underscore
 set -Ux EDITOR nvim # 'neovim/neovim' text editor
 
 zoxide init fish | source # ajeetdsouza/zoxide
-atuin init fish | source # https://github.com/atuinsh/atuin
+# atuin init fish | source # https://github.com/atuinsh/atuin
 
 # System maintenance.
-abbr -a --position anywhere ss sudo
+abbr -a --position anywhere s sudo
 if test "$os" = Darwin
     abbr -a --position anywhere b brew
 else if test "$os" = Linux
