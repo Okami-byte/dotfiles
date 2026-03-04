@@ -9,7 +9,7 @@
 # alt - a : "${HOME}"/.config/scripts/script-picker.sh
 # alt - e : "${HOME}"/.config/scripts/choose/emoji.sh
 # alt - space : "${HOME}"/.config/scripts/choose/apps-picker.sh
-alt - w : "${HOME}"/.config/scripts/choose/wallpapers.sh
+# alt - w : "${HOME}"/.config/scripts/choose/wallpapers.sh
 alt - n : "${HOME}"/.config/scripts/open_floating_notes.sh
 
 # Applications
@@ -37,8 +37,8 @@ cmd + alt - w : yabai -m space --destroy
 #change focus between external displays (top and bottom)
 # alt - e: yabai -m display --focus east
 # alt - w: yabai -m display --focus west
-# alt - u: yabai -m display --focus north
-# alt - d: yabai -m display --focus south
+alt - u: yabai -m display --focus north
+alt - d: yabai -m display --focus south
 
 
 # rotate layout clockwise
@@ -71,10 +71,10 @@ shift + alt - e : yabai -m space --balance
 lctrl + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
 # swap windows
-shift + alt - s : yabai -m window --swap south
-shift + alt - w : yabai -m window --swap north
-shift + alt - a : yabai -m window --swap west
-shift + alt - d : yabai -m window --swap east
+# shift + alt - s : yabai -m window --swap south
+# shift + alt - w : yabai -m window --swap north
+# shift + alt - a : yabai -m window --swap west
+# shift + alt - d : yabai -m window --swap east
 
 # resize window
 alt + shift - h : yabai -m window west --resize right:-20:0 2> /dev/null || yabai -m window --resize right:-20:0
