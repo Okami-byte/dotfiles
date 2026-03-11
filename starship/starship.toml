@@ -9,7 +9,7 @@
 # The minimal, blazing-fast, and infinitely customizable prompt
 # https://starship.rs
 
-command_timeout = 1000
+command_timeout = 10000
 
 add_newline = true
 
