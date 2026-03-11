@@ -49,7 +49,7 @@ zoxide init fish | source # ajeetdsouza/zoxide
 # atuin init fish | source # https://github.com/atuinsh/atuin
 
 # System maintenance.
-abbr -a --position anywhere s sudo
+abbr -a --position anywhere ss sudo
 if test "$os" = Darwin
     abbr -a --position anywhere b brew
 else if test "$os" = Linux
