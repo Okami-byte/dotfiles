@@ -6,9 +6,6 @@
 
 
 # SCRIPTS
-# alt - a : "${HOME}"/.config/scripts/script-picker.sh
-# alt - e : "${HOME}"/.config/scripts/choose/emoji.sh
-# alt - space : "${HOME}"/.config/scripts/choose/apps-picker.sh
 # alt - w : "${HOME}"/.config/scripts/choose/wallpapers.sh
 alt - n : "${HOME}"/.config/scripts/open_floating_notes.sh
 
@@ -35,8 +32,6 @@ cmd + alt - n : yabai -m space --create && \
 cmd + alt - w : yabai -m space --destroy
 
 #change focus between external displays (top and bottom)
-# alt - e: yabai -m display --focus east
-# alt - w: yabai -m display --focus west
 alt - u: yabai -m display --focus north
 alt - d: yabai -m display --focus south
 
@@ -101,15 +96,3 @@ shift + alt - 5 : yabai -m window --space 5;
 
 :: default : sketchybar --trigger skhd_enabled SKHD_ENABLED=false; sketchybar --trigger request_bg REQUEST_BG=false;
 :: bg_select : sketchybar --trigger skhd_enabled SKHD_ENABLED=false; sketchybar --trigger request_bg REQUEST_BG=true;
-
-# -- WALLPAPER SELECT -- #
-
-# default < ctrl - b ; bg_select
-# bg_select < ctrl - b; default
-#
-# bg_select < tab : sketchybar --trigger cycle_bg CYCLE=next;
-# bg_select < shift - tab : sketchybar --trigger cycle_bg CYCLE=prev;
-#
-# bg_select < return : sketchybar --trigger select_bg SELECT=true; 
-# bg_select < escape : sketchybar --trigger select_bg SELECT=false;
-#
