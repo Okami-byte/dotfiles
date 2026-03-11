@@ -35,7 +35,7 @@ return {
       flavour = "frappe", -- Latte, Frappe, Macchiato, Mocha
       no_italic = false,
       term_colors = true,
-      transparent_background = true,
+      transparent_background = false,
       styles = {
         comments = {},
         conditionals = {},
@@ -55,7 +55,7 @@ return {
           surface2 = "#535763",
           surface1 = "#3a3d4b",
           surface0 = "#30303b",
-          -- base = "#202027",
+          base = "#202027",
           mantle = "#1c1d22",
           crust = "#171719",
         }),
