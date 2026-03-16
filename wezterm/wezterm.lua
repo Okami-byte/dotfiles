@@ -121,8 +121,8 @@ config = {
 	},
 
 	-- For example, changing the color scheme:
-	color_scheme = "Catppuccin Frappé (Gogh)",
-	-- color_scheme = "Catppuccin Mocha (Gogh)",
+	-- color_scheme = "Catppuccin Frappé (Gogh)",
+	color_scheme = "Catppuccin Mocha (Gogh)",
 	-- color_scheme = "Rosé Pine Moon (Gogh)",
 	-- color_scheme = "Rosé Pine (Gogh)",
 
@@ -158,38 +158,38 @@ config = {
 	-- cursor_blink_rate = 10,
 
 	colors = {
-		-- Kopicat
+		-- -- Kopicat
 		foreground = "#CDD6F4",
-		-- background = "#1f2027",
+		-- -- background = "#1f2027",
 		background = "#100c08",
-		selection_fg = "#1E1E2E",
-		selection_bg = "#F5E0DC",
-		cursor_fg = "#fcfcfa",
-		cursor_border = "#9cd1bb",
-		scrollbar_thumb = "#8E95B3",
-		split = "#D0B1C8",
-
-		ansi = {
-			"#30303b",
-			"#ff657a",
-			"#a8be81",
-			"#eccc81",
-			"#5d81ab",
-			"#ebbcba",
-			"#9cd1bb",
-			"#fcfcfa",
-		},
-
-		brights = {
-			"#8E95B3",
-			"#ff657a",
-			"#a8be81",
-			"#eccc81",
-			"#5d81ab",
-			"#ebbcba",
-			"#9cd1bb",
-			"#A1A8C9",
-		},
+		-- selection_fg = "#1E1E2E",
+		-- selection_bg = "#F5E0DC",
+		-- cursor_fg = "#fcfcfa",
+		-- cursor_border = "#9cd1bb",
+		-- scrollbar_thumb = "#8E95B3",
+		-- split = "#D0B1C8",
+		--
+		-- ansi = {
+		-- 	"#30303b",
+		-- 	"#ff657a",
+		-- 	"#a8be81",
+		-- 	"#eccc81",
+		-- 	"#5d81ab",
+		-- 	"#ebbcba",
+		-- 	"#9cd1bb",
+		-- 	"#fcfcfa",
+		-- },
+		--
+		-- brights = {
+		-- 	"#8E95B3",
+		-- 	"#ff657a",
+		-- 	"#a8be81",
+		-- 	"#eccc81",
+		-- 	"#5d81ab",
+		-- 	"#ebbcba",
+		-- 	"#9cd1bb",
+		-- 	"#A1A8C9",
+		-- },
 
 		-- foreground = "#fcfcfc",
 		-- background = "#0B0A08",
@@ -197,20 +197,6 @@ config = {
 		-- background = "#353839",
 		-- background = "#222222",
 		-- background = "#21212A",
-		-- background = "#9B96B5",
-		-- background = "#444444",
-		-- background = "#3c3c3c",
-		-- background = "#464651",
-		-- background = "#2f2f3b",
-		-- cursor_bg = "#9B96B5",
-		-- cursor_bg = "#FBF1F5",
-		-- cursor_bg = "#fab387",
-		-- cursor_fg = "black",
-		-- cursor_border = "#fab387",
-		-- selection_fg = "black",
-		-- selection_bg = "#fffacd",
-		-- 	scrollbar_thumb = "#222222",
-		-- split = "#444444",
 
 		--
 		-- 	ansi = {
