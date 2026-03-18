@@ -98,7 +98,7 @@ case "$COLOR_SCHEME" in
 
   # General bar colors
   if [[ $BAR_TRANSPARENCY == true ]]; then
-    export BAR_COLOR=0xB81f1f30
+    export BAR_COLOR=0xB81f2027
     export BORDER_COLOR=0xB845475a
   elif [[ $BAR_TRANSPARENCY == false ]]; then
     export BAR_COLOR=0xff1f1f30
