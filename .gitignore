@@ -6,3 +6,6 @@
 
 # Ignore log files so that people can't read system Info
 .log
+
+# Ignore mpv cache files
+mpv/cache/

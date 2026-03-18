@@ -37,6 +37,11 @@ path = "~/Developer/Projects/Python"
 startup_command = "nvim "
 
 [[session]]
+name = "videos_󰗃 "
+path = "~/Videos"
+startup_command = "yazi"
+
+[[session]]
 name = "developer_󰅴 "
 path = "~/Developer/Projects"
 startup_command = "la"
