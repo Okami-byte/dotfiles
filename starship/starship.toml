@@ -30,7 +30,7 @@ palette = "catppuccin_mocha"
 
 [character]
 disabled = false
-success_symbol = "[❯](bold fg:iris)"
+success_symbol = "[❯](bold fg:overlay1)"
 error_symbol = "[✘](red bold)"
 vimcmd_symbol = '[ ](bold fg:maroon)'
 vimcmd_replace_one_symbol = '[󰜉 ](bold fg:sapphire)'
@@ -166,7 +166,6 @@ Artix = "󰣇"
 CentOS = ""
 Debian = "󰣚"
 Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
 
 [aws]
 disabled = true

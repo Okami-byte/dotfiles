@@ -424,6 +424,9 @@ else
     "Tor Browser")
       icon_result=":tor_browser:"
       ;;
+    "TradingView")
+      icon_result=":trading_view:"
+      ;;
     "Kakoune")
       icon_result=":kakoune:"
       ;;
