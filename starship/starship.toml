@@ -9,81 +9,36 @@
 # The minimal, blazing-fast, and infinitely customizable prompt
 # https://starship.rs
 
-command_timeout = 10000
+scan_timeout = 100
+command_timeout = 1000
 
 add_newline = true
-
-# palette = "catppuccin_kopicat"
-palette = "catppuccin_mocha"
-# palette = "rose-pine"
 
 format = """
 $character\
 $directory\
 ${custom.git_host}\
 $git_branch\
+${custom.git_worktree}\
 $git_status\
 $git_metrics\
 """
 
-# move the rest of the prompt to the right
 right_format = """$aws$python$docker_context$terraform"""
 
-# Drop ugly default prompt characters
+palette = "catppuccin_mocha"
+
 [character]
 disabled = false
 success_symbol = "[❯](bold fg:iris)"
-error_symbol = "[❯❯](red bold)"
+error_symbol = "[✘](red bold)"
 vimcmd_symbol = '[ ](bold fg:maroon)'
-vimcmd_replace_one_symbol = '[ ](bold fg:peach)'
-vimcmd_replace_symbol = '[ ](bold fg:sky)'
-vimcmd_visual_symbol = '[ ](bold fg:peach)'
+vimcmd_replace_one_symbol = '[󰜉 ](bold fg:sapphire)'
+vimcmd_visual_symbol = '[􀋭](bold fg:sapphire)'
 # ---
 
-# Display OS symbol at the very begining
-[os]
-format = '[$symbol](bold grey)'
-disabled = true 
-
-[os.symbols]
-Windows = "󰍲"
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = ""
-Manjaro = ""
-Linux = "󰌽"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-Arch = "󰣇"
-Artix = "󰣇"
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
-
-# Shows the username
-[username]
-style_user = 'white bold'
-style_root = 'red bold'
-format = '[$user]($style) '
-disabled = true
-show_always = false
-
-# Shows the hostname
-[hostname]
-ssh_only = false
-ssh_symbol = " "
-format = 'on [$hostname](bold yellow) '
-disabled = false
-
-# Shows current directory
 [directory]
-style = 'rose_pink'
+style = 'sapphire'
 truncation_length = 10
 truncation_symbol = '…/  '
 home_symbol = '~'
@@ -95,22 +50,49 @@ disabled = false
 [directory.substitutions]
 "Documents" = "󰈙 "
 "Downloads" = " "
-"Music" = "󰝚 "
+"Music" = " "
 "Pictures" = " "
 "Developer" = "󰲋 "
+"Others" = " "
+
+[username]
+style_user = 'white bold'
+style_root = 'red bold'
+format = '[$user]($style) '
+disabled = true
+show_always = false
 
 [git_status]
-format = '(:[$all_status$ahead_behind]($style)) '
-conflicted = '\[ [$count](white)\]'
-ahead = '\[[ ](blue)[$count](white)\]' # 󰜘
-behind = '\[[ ](white)[$count](white)\]' # 
-diverged = '\[[ ](purple)|[ ﯁ ](blue)[$ahead_count](white)[ ﮾ ](white)[$behind_count](white)\]'
-untracked = '\[? [$count](white)\]'
-stashed = '\[[ ](peach) [$count](white)\]'
-modified = '\[[󰏫 ](peach)[$count](white)\]'
-staged = '\[[󰏗 ](green)[$count](white)\]'
-renamed = '\[[󰜉 ](sky) [$count](white)\]'
-deleted = '\[✘ [$count](white)\]'
+format = "[$staged$modified$renamed$conflicted$ahead_behind]($style)"
+# options available for format
+staged     = "[+${count} ](green)"
+modified   = "[!${count} ](yellow)"
+renamed    = "[»${count} ](blue)"
+deleted    = "[-${count} ](red)"
+untracked  = "[?${count} ](sapphire)"
+stashed    = "[≡${count} ](lavender)"
+conflicted = "[✖${count} ](red bold)"
+
+ahead      = "[⇡${count} ](teal)"
+behind     = "[⇣${count} ](peach)"
+diverged   = "[⇕⇡${ahead_count}⇣${behind_count} ](mauve)"
+
+[custom.git_worktree]
+description = "Show indicator when inside a git worktree"
+command = """
+if git rev-parse --git-dir >/dev/null 2>&1; then
+      common_dir=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null)
+      git_dir=$(git rev-parse --path-format=absolute --git-dir 2>/dev/null)
+      if [ "$common_dir" != "$git_dir" ]; then
+            echo "⛓ "
+      fi
+fi
+"""
+when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+format = " ([$output ]($style))"
+style = "bold green"
+require_repo = true
+ignore_timeout = true
 
 # Shows current git branch
 [git_branch]
@@ -124,11 +106,11 @@ disabled = false
 command = """
 URL=$(command git ls-remote --get-url 2> /dev/null)
 if [[ "$URL" =~ "github" ]]; then
-    ICON=" "
+    ICON="  "
 elif [[ "$URL" =~ "gitlab" ]]; then
-    ICON=" "
+    ICON="  "
 elif [[ "$URL" =~ "bitbucket" ]];then
-    ICON=" "
+    ICON="  "
 elif [[ "$URL" =~ "kernel" ]];then
     ICON=" "
 elif [[ "$URL" =~ "archlinux" ]];then
@@ -160,64 +142,78 @@ format = " at [$output]($style)"
 [git_metrics]
 disabled = false
 
+# Display OS symbol at the very begining
+[os]
+format = '[$symbol](bold grey)'
+disabled = true 
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = ""
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
 [aws]
-format = ' [$symbol(profile: "$profile" )(\(region: $region\) )]($style)'
 disabled = true
-style = 'bold green'
 symbol = " "
+format = "[ $symbol( $context) ]($style)"
 
 [terraform]
 symbol = " "
-disabled = false 
-style = "bold red"
-version_format = "v${raw}"
-format = ' [$symbol$workspace]($style) '
+format = "[ $symbol( $context) ]($style)"
 
 [python]
 symbol = '  '
-disabled = false
-style = 'bold yellow'
-version_format = 'v${raw}'
-format = ' [${symbol}(${version} )(\($virtualenv\) )]($style)'
+format = "[ $symbol( $context) ]($style)"
 
 [docker_context]
 symbol = " "
-style = 'bold blue'
-disabled = false 
-format = ' [ $symbol( $context) ]($style)'
+format = "[ $symbol( $context) ]($style)"
 
 [kubernetes]
 symbol = '󱃾 '
-disabled = false
-style = 'bold sky'
-detect_files = ['k8s']
-format = ' [ $symbol( $context) ]($style)'
+format = "[ $symbol( $context) ]($style)"
 
-# [palettes.catppuccin_kopicat]
-# red = "#ff657a"
-# maroon = "#F29BA7"
-# rose_pink = "#ebbcba"
-# peach = "#ff9b5e"
-# yellow = "#eccc81"
-# green = "#a8be81"
-# teal = "#9cd1bb"
-# sky = "#A6C9E5"
-# sapphire = "#86AACC"
-# blue = "#5d81ab"
-# lavender = "#66729C"
-# mauve = "#b18eab"
-# text = "#fcfcfa"
-# subtext1 = "#bac2de"
-# subtext0 = "#a6adc8"
-# overlay2 = "#9399b2"
-# overlay1 = "#7f849c"
-# overlay0 = "#6c7086"
-# surface2 = "#535763"
-# surface1 = "#3a3d4b"
-# surface0 = "#30303b"
-# base = "#202027"
-# mantle = "#1c1d22"
-# crust = "#171719"
+[palettes.catppuccin_kopicat]
+red = "#ff657a"
+maroon = "#F29BA7"
+rose_pink = "#ebbcba"
+peach = "#ff9b5e"
+yellow = "#eccc81"
+green = "#a8be81"
+teal = "#9cd1bb"
+sky = "#A6C9E5"
+sapphire = "#86AACC"
+blue = "#5d81ab"
+lavender = "#66729C"
+mauve = "#b18eab"
+text = "#fcfcfa"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#535763"
+surface1 = "#3a3d4b"
+surface0 = "#30303b"
+base = "#202027"
+mantle = "#1c1d22"
+crust = "#171719"
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
@@ -250,28 +246,97 @@ base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
 
-# [palettes.rose-pine]
-# overlay = '#26233a'
-# red= '#eb6f92'
-# orange = '#f6c177'
-# pink = '#ebbcba'
-# blue = '#31748f'
-# sky = '#9ccfd8'
-# green = "#95b1ac"
-# iris = '#c4a7e7'
-# yellow = "#f5e0dc"
-# peach = "#f2cdcd"
-# lavender = "#b4befe"
-# purple = "#cba6f7"
-# text = "#cdd6f4"
-# subtext1 = "#bac2de"
-# subtext0 = "#a6adc8"
-# overlay2 = "#9399b2"
-# overlay1 = "#7f849c"
-# overlay0 = "#6c7086"
-# surface2 = "#585b70"
-# surface1 = "#45475a"
-# surface0 = "#313244"
-# base = "#1e1e2e"
-# mantle = "#181825"
-# crust = "#11111b"
+[palettes.rose-pine]
+overlay = '#26233a'
+red= '#eb6f92'
+orange = '#f6c177'
+pink = '#ebbcba'
+blue = '#31748f'
+sky = '#9ccfd8'
+green = "#95b1ac"
+iris = '#c4a7e7'
+yellow = "#f5e0dc"
+peach = "#f2cdcd"
+lavender = "#b4befe"
+purple = "#cba6f7"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+[palettes.solarized_osaka]
+# --- background ---
+crust = "#00141a"
+mantle = "#002029"
+base = "#002b36" # git branch bg
+
+surface0 = "#073642"
+surface1 = "#0f3b47"
+surface2 = "#124652"
+
+overlay0 = "#586e75"
+overlay1 = "#657b83"
+overlay2 = "#839496"
+
+# --- text ---
+text = "#93a1a1"
+subtext0 = "#839496"
+subtext1 = "#93a1a1"
+
+# --- accents ---
+rosewater = "#eee8d5"
+flamingo = "#dc322f"
+pink = "#d33682"
+mauve = "#6c71c4"
+red = "#dc322f"
+maroon = "#cb4b16"
+peach = "#cb4b16"
+yellow = "#b58900"
+green = "#859900"
+teal = "#2aa198"
+sky = "#2aa198"
+sapphire = "#268bd2" # dir fg
+blue = "#268bd2"
+lavender = "#f84668" # git br
+
+[palettes.kanagawa]
+# --- background ---
+crust = "#16161D"
+mantle = "#1F1F28"
+base = "#2A2A37"      # git branch bg
+
+surface0 = "#363646"
+surface1 = "#414156"
+surface2 = "#4C4C66"
+overlay0 = "#585873"
+overlay1 = "#72727F"
+overlay2 = "#8C8C8C"
+
+# --- text ---
+text = "#DCD7BA"
+subtext0 = "#A3A3A3"
+subtext1 = "#C8C3A6"
+
+# --- accents ---
+rosewater = "#DCD7BA"
+flamingo = "#C34043"
+pink = "#D27E99"
+mauve = "#957FB8"
+red = "#C34043"
+maroon = "#E82424"
+peach = "#FF9E3B"
+yellow = "#E6C384"
+green = "#76946A"
+teal = "#6A9589"
+sky = "#7E9CD8"
+sapphire = "#D27E99" # dir fg
+blue = "#7E9CD8"
+lavender = "#E6C384"   # git branch fg
