@@ -32,7 +32,7 @@
 #####################
 ## Config Location ##
 #####################
-config-file = ghostty-theme
+config-file = ./themes/catppuccin-mocha
 
 # Some shaders can be found in this repo, they're usually uploaded to discord
 # https://github.com/hackrmomo/ghostty-shaders

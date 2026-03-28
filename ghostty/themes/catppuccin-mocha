@@ -1,0 +1,11 @@
+# Theme
+theme = Catppuccin Mocha
+
+# Opacity
+background-opacity = 0.75
+
+# Blur
+background-blur-radius = 95
+
+# Background Color
+background = #100c08

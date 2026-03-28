@@ -1,0 +1,9 @@
+theme = TokyoNight Night
+
+# Opacity
+background-opacity = 0.75
+
+# Blur
+background-blur-radius = 95
+
+# Background Color
