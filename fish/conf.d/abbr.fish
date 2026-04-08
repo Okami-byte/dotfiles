@@ -39,7 +39,9 @@ abbr -a gcm git commit -m ""
 abbr -a gco git checkout
 abbr -a gf git fetch
 abbr -a gl lazygit
+abbr -a glg git log --graph --oneline --all
 abbr -a gm git merge
+abbr -a gs git status
 abbr -a gst git status --short
 abbr -a glo serie
 
@@ -59,11 +61,10 @@ abbr fu "fisher update"
 
 abbr gn "sudo shutdown -h now"
 abbr nm "nmap -sC -sV -oN nmap-output.txt"
-abbr sp spotify_player
-abbr wifi wifi-password
+abbr sp spotatui
 abbr x exit
 abbr ya yazi
-abbr yt yt-dlp
+abbr yt xytz
 abbr z zoxide
 
 # Neovim.
@@ -77,6 +78,9 @@ abbr s. "sesh connect ."
 abbr sc "sesh clone --cmdDir ~/c (pbpaste)"
 abbr sf "source ~/.config/fish/config.fish"
 abbr sr "sesh root"
+
+# System Commands
+abbr pwdc "pwd | pbcopy"
 
 # Tmux
 abbr tn "tmux new-session -s"

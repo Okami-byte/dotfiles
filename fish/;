@@ -79,7 +79,7 @@ alias sp="spotify_player"
 alias wifi="wifi-password"
 alias py="python3"
 alias rm="trash"
-alias ping="ping -c 5"
+alias ping="ping -c 3"
 alias cp="cp -iv"
 alias mv="mv -iv"
 
