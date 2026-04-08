@@ -1,9 +1,9 @@
 #!/bin/bash
 
 options=(
-  style=round
-  width=3.5
-  hidpi=off
+  style=uniform
+  width=4
+  hidpi=on
   # active_color=0xff89dceb # Catppuccin Mocha - Glow
   # active_color=0xffeba0ac # Catppuccin Mocha - Maroon
   active_color="gradient(top_right=0xff89dceb,bottom_left=0xffeba0ac)"
