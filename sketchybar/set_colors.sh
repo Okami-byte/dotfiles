@@ -54,8 +54,8 @@ case "$COLOR_SCHEME" in
 
   # General bar colors
   if [ $(echo $OS_VERSION | awk -F. '{print $1}') -gt 15 ]; then
-    export BAR_COLOR=0x${TFp}232137
-    export BORDER_COLOR=0x60808080
+    export BAR_COLOR=0x${TFp}1f2027
+    export BORDER_COLOR=0xB845475a
     #export BORDER_COLOR=0x${TFp}4D525B
   else
     export BAR_COLOR=0x${TFp}414354
