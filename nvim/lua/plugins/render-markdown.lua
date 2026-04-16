@@ -4,7 +4,7 @@ return {
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
 
-  enabled = false,
+  enabled = true,
 
   config = function()
     require("render-markdown").setup({
