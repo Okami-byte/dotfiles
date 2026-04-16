@@ -8,4 +8,5 @@ background-opacity = 0.75
 background-blur-radius = 95
 
 # Background Color
-background = #100c08
+# background = #100c08
+background = #0a0505
