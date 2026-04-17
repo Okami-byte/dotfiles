@@ -123,6 +123,7 @@ config = {
 	-- For example, changing the color scheme:
 	-- color_scheme = "Catppuccin Frappé (Gogh)",
 	color_scheme = "Catppuccin Mocha (Gogh)",
+	-- color_scheme = "Catppuccin Latte (Gogh)",
 	-- color_scheme = "Rosé Pine Moon (Gogh)",
 	-- color_scheme = "Rosé Pine (Gogh)",
 
@@ -130,40 +131,27 @@ config = {
 	window_decorations = "RESIZE",
 
 	-- Blur
-	macos_window_background_blur = 95,
+	macos_window_background_blur = 95, -- Dark mode
+	-- macos_window_background_blur = 99, -- Light mode
 
 	-- Opacity
-	window_background_opacity = 0.75,
+	window_background_opacity = 0.60, -- Dark mode
+	-- window_background_opacity = 0.30, -- Light mode
 
 	font_size = 13.5,
 
-	-- I don't use tabs
 	enable_tab_bar = false,
 
 	window_close_confirmation = "NeverPrompt",
 
-	-- -- NOTE: My cursor was not blinking when using wezterm with the "wezterm" terminfo
-	-- -- Setting my term to "xterm-kitty" fixed the issue
-	-- -- I also use the zsh-vi-mode plugin, I had to set up the blinking cursor
-	-- -- for that in my zshrc file
-	-- -- Neovim didn't need cursor changes, worked by setting it to "xterm-kitty"
-	-- --
-	-- default_cursor_style = "SteadyBlock",
-	-- default_cursor_style = "BlinkingBlock",
-
-	-- I don't like the the "Linear", which gives it a fade effect between blinks
-	-- cursor_blink_ease_out = "Linear",
-	-- cursor_blink_ease_in = "Linear",
-	-- Setting this to 0 disables blinking
-	-- cursor_blink_rate = 10,
-
 	colors = {
 		-- -- Kopicat
-		foreground = "#CDD6F4",
-		-- -- background = "#1f2027",
-		background = "#100c08",
-		-- selection_fg = "#1E1E2E",
-		selection_bg = "#F5E0DC",
+		-- foreground = "#CDD6F4",
+		-- background = "#1f2227",
+		background = "#111419",
+		-- background = "#0a0505",
+		-- selection_fg = "#9cd1bb",
+		-- selection_bg = "#F5E0DC",
 		-- cursor_fg = "#fcfcfa",
 		-- cursor_border = "#9cd1bb",
 		-- scrollbar_thumb = "#8E95B3",
@@ -191,35 +179,31 @@ config = {
 		-- 	"#A1A8C9",
 		-- },
 
-		-- foreground = "#fcfcfc",
-		-- background = "#0B0A08",
-		-- background = "#100c08",
-		-- background = "#353839",
-		-- background = "#222222",
-		-- background = "#21212A",
-
+		-- Default backgrounds
+		-- foreground = "#CDD6F4",
+		-- background = "#0a0505",
 		--
-		-- 	ansi = {
-		-- 		"#6C6168",
-		-- 		"#F29BA7",
-		-- 		"#a8be81",
-		-- 		"#F3DDA0",
-		-- 		"#86AACC",
-		-- 		"#D0B1C8",
-		-- 		"#C9E4F6",
-		-- 		"#E3F2FA",
-		-- 	},
+		-- ansi = {
+		-- 	"#0a0505",
+		-- 	"#F29BA7",
+		-- 	"#a8be81",
+		-- 	"#F3DDA0",
+		-- 	"#86AACC",
+		-- 	"#D0B1C8",
+		-- 	"#C9E4F6",
+		-- 	"#E3F2FA",
+		-- },
 		--
-		-- 	brights = {
-		-- 		"#1c1d22",
-		-- 		"#EA7A95",
-		-- 		"#a8be81",
-		-- 		"#eccc81",
-		-- 		"#5d81ab",
-		-- 		"#b18eab",
-		-- 		"#A6C9E5",
-		-- 		"#FBF1F5",
-		-- 	},
+		-- brights = {
+		-- 	"#1c1d22",
+		-- 	"#EA7A95",
+		-- 	"#a8be81",
+		-- 	"#eccc81",
+		-- 	"#5d81ab",
+		-- 	"#b18eab",
+		-- 	"#A6C9E5",
+		-- 	"#FBF1F5",
+		-- },
 		--
 		-- 		-- When the IME, a dead key or a leader key are being processed and are effectively
 		-- 		-- holding input pending the result of input composition, change the cursor
