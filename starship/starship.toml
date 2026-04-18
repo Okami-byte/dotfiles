@@ -142,6 +142,15 @@ format = " at [$output]($style)"
 [git_metrics]
 disabled = false
 
+[shell]
+bash_indicator = '󱆃 '
+zsh_indicator = ' '
+fish_indicator = '󰈺 '
+powershell_indicator = '_'
+unknown_indicator = 'mystery shell'
+style = 'yellow bold'
+disabled = false
+
 # Display OS symbol at the very begining
 [os]
 format = '[$symbol](bold grey)'
