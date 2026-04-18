@@ -53,7 +53,7 @@ return {
 		-- bg = 0x991c1c1c, -- Mostly dark transparent
 		-- bg = 0xf0181819, -- Black Transparent
 		-- bg = 0xff11111b, -- crust
-		bg = 0xB81f1f30,
+		bg = 0xB81f2027,
 		border = 0xB845475a,
 		-- border = 0xff414141, -- mantle	-- border = 0xff2c2e34,
 

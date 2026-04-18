@@ -226,9 +226,9 @@ else
     "Vivaldi")
       icon_result=":vivaldi:"
       ;;
-    # "Firefox")
-    #   icon_result=":firefox:"
-    #   ;;
+    "UTM")
+      icon_result=":utm:"
+      ;;
     "Skype")
       icon_result=":skype:"
       ;;
