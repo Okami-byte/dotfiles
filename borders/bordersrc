@@ -1,7 +1,7 @@
 #!/bin/bash
 
 options=(
-  style=uniform
+  style=rounded
   width=4
   hidpi=on
   # active_color=0xff89dceb # Catppuccin Mocha - Glow
