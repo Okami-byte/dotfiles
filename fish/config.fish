@@ -74,7 +74,7 @@ set fzf_diff_highlighter delta --paging=never --width=20
 # $PATHS
 
 # Scripts
-fish_add_path $HOME/Developer/Scripts # my custom scripts
+fish_add_path $HOME/Developer/scripts # my custom scripts
 
 # Using Trash Command to replace rm
 fish_add_path --path /opt/homebrew/opt/trash/bin
@@ -106,3 +106,11 @@ function take
     mkdir -p $argv[1]
     cd $argv[1]
 end
+
+# fzf fish custom keybindings
+set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)" # open the selected file in the default editor (nvim) when ctrl-o is pressed
+set fzf_diff_highlighter delta --paging=never --width=20 # use delta to highlight diffs in fzf when searching through git logs
+fzf_configure_bindings --directory=ctrl-alt-f # Open a fuzzy searcher for directories when ctrl-g is pressed
+fzf_configure_bindings --git_log=ctrl-alt-l # Open a fuzzy searcher for directories when ctrl-g is pressed
+fzf_configure_bindings --git_status=ctrl-alt-s # Open a fuzzy searcher for directories when ctrl-g is pressed
+fzf_configure_bindings --processes=ctrl-alt-p # Open a fuzzy searcher for directories when ctrl-g is pressed

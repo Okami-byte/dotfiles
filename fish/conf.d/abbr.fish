@@ -71,6 +71,7 @@ abbr z zoxide
 abbr -a nv nvim
 abbr -a nvo --set-cursor "cd % && nvim"
 abbr -a nvp nvim +Man!
+abbr -a lvim "NVIM_APPNAME=nvim-nightly nvim "
 
 # Sesh
 abbr s sesh_start
