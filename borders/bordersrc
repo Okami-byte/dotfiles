@@ -2,7 +2,7 @@
 
 options=(
   style=rounded
-  width=4
+  width=5.0
   hidpi=on
   # active_color=0xff89dceb # Catppuccin Mocha - Glow
   # active_color=0xffeba0ac # Catppuccin Mocha - Maroon
