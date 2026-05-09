@@ -30,8 +30,7 @@ palette = "catppuccin_mocha"
 
 [character]
 disabled = false
-# success_symbol = "[❯](bold fg:overlay1)"
-success_symbol = "[ ](bold fg:green)"
+success_symbol = "[ ](bold fg:text)"
 error_symbol = "[✘](red bold)"
 vimcmd_symbol = '[](bold fg:maroon)'
 vimcmd_replace_one_symbol = '[󰜉 ](bold fg:sapphire)'
@@ -39,7 +38,7 @@ vimcmd_visual_symbol = '[􀋭 ](bold fg:sapphire)'
 # ---
 
 [directory]
-style = 'lavender'
+style = 'blue'
 truncation_length = 10
 # truncation_symbol = '…/  '
 home_symbol = '~'
