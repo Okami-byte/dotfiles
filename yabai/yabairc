@@ -19,7 +19,7 @@ yabai -m config layout bsp
 # ###############################################################################
 #                          Custom padding settings
 ###############################################################################
-yabai -m config top_padding 5
+yabai -m config top_padding 8
 yabai -m config bottom_padding 8
 yabai -m config left_padding 8
 yabai -m config right_padding 8
@@ -33,22 +33,22 @@ yabai -m config mouse_follows_focus on
 yabai -m config focus_follows_mouse autoraise # set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
 yabai -m config window_zoom_persist on
 yabai -m config window_placement second_child
-yabai -m config window_shadow on
-yabai -m config window_shadow float
-yabai -m window_opacity off
-yabai -m window_opacity_duration 0.4
-yabai -m active_window_opacity 1.0
-yabai -m normal_window_opacity 0.7
-yabai -m window_animation_duration 0.0
-yabai -m window_animation_easing ease_in_sine
-yabai -m insert_feedback_color 0xff9dd274
-yabai -m split_ratio 0.50
-yabai -m auto_balance on
-yabai -m auto_padding on
+yabai -m config window_shadow off
+yabai -m config window_opacity off
+yabai -m config window_opacity_duration 0.4
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.7
+yabai -m config window_animation_duration 0.0
+yabai -m config window_animation_easing ease_in_sine
+yabai -m config insert_feedback_color 0xff9dd274
+yabai -m config split_ratio 0.50
+yabai -m config auto_balance on
+yabai -m config auto_padding on
 yabai -m config mouse_modifier fn # set mouse interaction modifier key (default: fn, options: ctrl, opt, cmd)
-yabai -m mouse_action1 move
-yabai -m mouse_action2 resize
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
 yabai -m config mouse_drop_action swap
+# yabai -m config menubar_opacity 0.0
 
 ###############################################################################
 #                              Excluded apps
@@ -62,7 +62,7 @@ yabai -m rule --add app="Antinote$" manage=off
 yabai -m rule --add app="Numi$" manage=off
 yabai -m rule --add app="^zoom.us$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
-yabai -m rule --add app="^OBS$" manage-off
+yabai -m rule --add app="^OBS$" manage=off
 yabai -m rule --add app="^Be Focused$" manage=off
 yabai -m rule --add app="^Time Machine$" manage=off
 yabai -m rule --add app="^DaisyDisk$" manage=off
@@ -72,6 +72,10 @@ yabai -m rule --add app="^FaceTime$" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|Time Machine|System Settings|Archive Utility|Python|App Store|Messages|Activity Monitor|Raycast|mpv)$" manage=off
 
+###############################################################################
+#                             Scratchpads
+###############################################################################
+yabai -m rule --add app="^Spotify$" scratchpad=spotify grid=5:5:3:0:2:2
 ###############################################################################
 #                              Signals
 ###############################################################################
