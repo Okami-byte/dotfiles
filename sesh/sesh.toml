@@ -15,6 +15,12 @@ blacklist = ["scratch"]
 # Introduces a caching layer in order to speed up load times
 cache = false
 
+# Tui
+[tui]
+prompt = "> "
+placeholder = "Filter sessions... "
+show_icons = true
+
 # Makes it aware of the separators
 separator_aware = true
 
@@ -133,7 +139,7 @@ windows = ["qc","pxe"]
 
 [[window]]
 name = "qc"
-path = "~/Developer/WorkTools/lifecycle-lemur-master"
+path = "~/Developer/WorkTools/lifecycle-lemur/"
 startup_script = "la"
 
 [[window]]
