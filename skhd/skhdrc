@@ -6,8 +6,8 @@
 
 
 # SCRIPTS
-# alt - w : "${HOME}"/.config/scripts/choose/wallpapers.sh
-alt - n : "${HOME}"/.config/scripts/open_floating_notes.sh
+alt - n : $HOME/.dotfiles/wezterm/open_floating_notes.sh
+alt - t : $HOME/.dotfiles/wezterm/open_scratchpad.sh
 
 # Applications
 rcmd - return : open -n -a "wezterm"

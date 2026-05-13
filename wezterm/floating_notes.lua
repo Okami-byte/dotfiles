@@ -41,7 +41,7 @@ config = {
 
 	window_decorations = "RESIZE",
 	macos_window_background_blur = 90,
-	window_background_opacity = 0.70,
+	window_background_opacity = 0.60,
 	initial_cols = 50,
 	initial_rows = 40,
 	window_padding = {

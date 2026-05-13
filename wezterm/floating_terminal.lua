@@ -8,14 +8,13 @@ local act = wezterm.action
 config = {
 
 	wezterm.on("format-window-title", function()
-		return "SCRATCHPAD"
+		return "floaterm"
 	end),
 
 	wezterm.on("gui-startup", function(cmd)
 		local tab, pane, window = mux.spawn_window(cmd or {})
 		local gui = window:gui_window()
 		gui:perform_action(act.ToggleAlwaysOnTop, pane)
-
 		local screen = wezterm.gui.screens().active
 		local dims = gui:get_dimensions()
 		local x = screen.x + math.floor((screen.width - dims.pixel_width) / 2)
@@ -24,8 +23,8 @@ config = {
 	end),
 
 	window_decorations = "RESIZE",
-	macos_window_background_blur = 90,
-	window_background_opacity = 0.70,
+	macos_window_background_blur = 95,
+	window_background_opacity = 0.60,
 	initial_cols = 70,
 	initial_rows = 18,
 	window_padding = {
@@ -37,7 +36,6 @@ config = {
 	exit_behavior = "Close",
 	enable_tab_bar = false,
 	font_size = 13,
-	enable_kitty_graphics = true,
 
 	color_scheme = "Catppuccin Mocha (Gogh)",
 	colors = {
