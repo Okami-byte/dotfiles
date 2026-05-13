@@ -32,7 +32,7 @@ palette = "catppuccin_mocha"
 disabled = false
 success_symbol = "[ ](bold fg:text)"
 error_symbol = "[✘](red bold)"
-vimcmd_symbol = '[](bold fg:maroon)'
+vimcmd_symbol = "[ ](bold fg:maroon)"
 vimcmd_replace_one_symbol = '[󰜉 ](bold fg:sapphire)'
 vimcmd_visual_symbol = '[􀋭 ](bold fg:sapphire)'
 # ---
