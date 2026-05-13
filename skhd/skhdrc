@@ -11,12 +11,14 @@ alt - t : $HOME/.dotfiles/wezterm/open_scratchpad.sh
 
 # Applications
 rcmd - return : open -n -a "wezterm"
-# rcmd - return : open -n -a "ghostty"
 
 # change layout of desktop
 lctrl + alt - b : yabai -m space --layout bsp
 lctrl + alt - f : yabai -m space --layout float
 lctrl + alt - s : yabai -m space --layout stack
+
+# quick restart yabai + skhd
+lctrl + alt - r : yabai --restart-service && skhd --restart-service
 
 # change window focus within space
 alt - j : yabai -m window --focus south
@@ -24,10 +26,11 @@ alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
-# create desktop and follow focus - uses jq for parsing json (brew install jq)
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 cmd + alt - n : yabai -m space --create && \
-                index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                yabai -m space --focus "${index}"
+                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                   yabai -m window --space "${index}" && \
+                   yabai -m space --focus "${index}"
 
 # destroy desktop
 cmd + alt - w : yabai -m space --destroy
@@ -57,6 +60,13 @@ shift + ctrl - j    : yabai -m window south --stack $(yabai -m query --windows -
 shift + ctrl - k    : yabai -m window north --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
 shift + ctrl - l : yabai -m window  east --stack $(yabai -m query --windows --window | jq -r '.id') && sketchybar --trigger window_focus
 
+# cycle through stack
+alt - p : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
+alt - tab : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+
+# picture-in-picture float (bottom right, small)
+shift + alt - p : yabai -m window --toggle float --grid 5:5:3:3:2:2; yabai -m window --toggle sticky; yabai -m window --layer above
+
 # maximize a window
 shift + alt - m : yabai -m window --toggle zoom-fullscreen
 
@@ -73,10 +83,10 @@ lctrl + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 # shift + alt - d : yabai -m window --swap east
 
 # resize window
-alt + shift - h : yabai -m window west --resize right:-20:0 2> /dev/null || yabai -m window --resize right:-20:0
-alt + shift - k : yabai -m window north --resize bottom:0:20 2> /dev/null || yabai -m window --resize bottom:0:20
-alt + shift - j : yabai -m window south --resize top:0:-20 2> /dev/null || yabai -m window --resize top:0:-20
-alt + shift - l : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m window --resize left:20:0
+alt + shift - h : yabai -m window west --resize right:-40:0 2> /dev/null || yabai -m window --resize right:-40:0
+alt + shift - k : yabai -m window north --resize bottom:0:40 2> /dev/null || yabai -m window --resize bottom:0:40
+alt + shift - j : yabai -m window south --resize top:0:-40 2> /dev/null || yabai -m window --resize top:0:-40
+alt + shift - l : yabai -m window east --resize left:40:0 2> /dev/null || yabai -m window --resize left:40:0
 
 # move window and split
 lctrl + alt - j : yabai -m window --warp south
