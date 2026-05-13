@@ -95,21 +95,21 @@ return {
         end,
         desc = "Keymaps",
       },
-      -- File picker
-      {
-        "ff",
-        function()
-          Snacks.picker.files({
-            finder = "files",
-            format = "file",
-            show_empty = true,
-            supports_live = true,
-            -- In case you want to override the layout for this keymap
-            -- layout = "ivy",
-          })
-        end,
-        desc = "Find Files",
-      },
+      -- -- File picker
+      -- {
+      --   "ff",
+      --   function()
+      --     Snacks.picker.files({
+      --       finder = "files",
+      --       format = "file",
+      --       show_empty = true,
+      --       supports_live = true,
+      --       -- In case you want to override the layout for this keymap
+      --       -- layout = "ivy",
+      --     })
+      --   end,
+      --   desc = "Find Files",
+      -- },
       -- Navigate my buffers
       {
         "<S-h>",
@@ -329,7 +329,7 @@ return {
         width = 50,
         preset = {
           keys = {
-            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "f", desc = "Find File", action = ":FFFFind" },
             -- { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
             { icon = " ", key = "s", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
             { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },

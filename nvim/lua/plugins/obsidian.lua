@@ -87,23 +87,11 @@ return {
       return path:with_suffix(".md")
     end,
 
-    -- Optional, customize how wiki links are formatted. You can set this to one of:
-    --  * "use_alias_only", e.g. '[[Foo Bar]]'
-    --  * "prepend_note_id", e.g. '[[foo-bar|Foo Bar]]'
-    --  * "prepend_note_path", e.g. '[[foo-bar.md|Foo Bar]]'
-    --  * "use_path_only", e.g. '[[foo-bar.md]]'
-    -- Or you can set it to a function that takes a table of options and returns a string, like this:
-    wiki_link_func = function(opts)
-      return require("obsidian.util").wiki_link_id_prefix(opts)
-    end,
-
-    -- Optional, customize how markdown links are formatted.
-    markdown_link_func = function(opts)
-      return require("obsidian.util").markdown_link(opts)
-    end,
-
-    -- Either 'wiki' or 'markdown'.
-    preferred_link_style = "markdown",
+    link = {
+      style = "markdown",
+      format = "shortest",
+      auto_update = false,
+    },
 
     -- Optional, boolean or a function that takes a filename and returns a boolean.
     frontmatter_enabled = false,
@@ -191,14 +179,11 @@ return {
       -- },
     },
 
-    -- Optional, sort search results by "path", "modified", "accessed", or "created".
-    -- The recommend value is "modified" and `true` for `sort_reversed`, which means, for example,
-    -- that `:Obsidian quickswitch` will show the notes sorted by latest modified time
-    search_sort_by = "modified",
-    search_sort_reversed = true,
-
-    -- Set the maximum number of lines to read from notes on disk when performing certain searches.
-    search_max_lines = 1000,
+    search = {
+      sort_by = "modified",
+      sort_reversed = true,
+      max_lines = 1000,
+    },
 
     -- Optional, determines how certain commands open notes. The valid options are:
     -- 1. "current" (the default) - to always open in the current window
