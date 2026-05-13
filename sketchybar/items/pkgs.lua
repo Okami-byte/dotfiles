@@ -1,63 +1,63 @@
 local mod = {}
 
--- Setup 
-function mod.setup(icons,palette)
-  mod.properties = {
-    position    = "right",
-    update_freq = 1800,
+-- Setup
+function mod.setup(icons, palette)
+	mod.properties = {
+		position = "right",
+		update_freq = 300, -- 5 minutes
 
-    icon = {
-      string = icons.pkg,
-      color  = palette.colors.orange
-    },
+		icon = {
+			string = icons.pkg,
+			color = palette.text.primary,
+		},
 
-    label = {
-      string = "1234",
-      y_offset = 0
-    }
-  }
+		label = {
+			string = "?",
+			y_offset = 0,
+		},
+	}
 
-  return mod
+	return mod
 end
 
-local function update(item)
-  return function (env)
-    sbar.exec([=[
-    list_nix_packages() {
-      for x in $(nix-store --query --requisites "$1" 2>/dev/null); do
-        if [ -d "$x" ]; then
-          echo "$x"
-        fi
-      done | cut -d- -f2- |
-        grep -E '([0-9]+\.)+[0-9]+' |
-        grep -Ev '(-doc$|-man$|-info$|-dev$|-bin$|^nixos-system-nixos-)' |
-        uniq |
-        wc -l
-    }
-        
-    ### Sum of all packages
-        
-    packages_total=$(($(list_nix_packages "/nix/var/nix/profiles/default") + \
-    $(list_nix_packages "/run/current-system") + \
-    $(list_nix_packages "$HOME/.nix-profile") + \
-    $(ls /opt/homebrew/Caskroom 2>/dev/null | wc -l) + \
-    $(ls /opt/homebrew/Cellar 2>/dev/null | wc -l) + \
-    $(ls $HOME/local/Caskroom 2>/dev/null | wc -l) + \
-    $(ls $HOME/local/Cellar 2>/dev/null | wc -l))) # Nix default + Nix system + Nix user
+local function update(item, icons, palette)
+	return function(env)
+		sbar.exec("/bin/zsh -lc 'brew update >/dev/null 2>&1; brew outdated 2>/dev/null'", function(result)
+			local count = 0
+			if result and result ~= "" then
+				for _ in result:gmatch("[^\r\n]+") do
+					count = count + 1
+				end
+			end
 
-    printf "%s" $packages_total
-    ]=], function (result)
-      item:set({ label = { string = result }})
-    end)
-  end
+			local color = palette.text.primary
+			if count >= 50 then
+				color = palette.colors.red
+			elseif count >= 30 then
+				color = palette.colors.orange
+			elseif count >= 10 then
+				color = palette.colors.yellow
+			elseif count >= 1 then
+				color = palette.colors.cyan
+			end
+
+			local label = count == 0 and "􀆅" or tostring(count)
+
+			item:set({
+				icon = { color = color },
+				label = { string = label },
+			})
+		end)
+	end
 end
+
 -- Load
-function mod.load()
-  mod.item = sbar.add("item",mod.properties)
+function mod.load(icons, palette)
+	mod.item = sbar.add("item", mod.properties)
 
-  mod.item:subscribe({"routine","forced"},update(mod.item))
+	mod.item:subscribe({ "routine", "forced" }, update(mod.item, icons, palette))
 
-  return mod
+	return mod
 end
 
 return mod

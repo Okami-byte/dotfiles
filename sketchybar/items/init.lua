@@ -87,7 +87,7 @@ function mod.load(zones, icons, palette)
 	mod.wifi.load(mod, icons, palette).item:set({ padding_left = 0 })
 	mod.display.load()
 
-	mod.pkgs.load().item:set({ padding_left = 0 })
+	mod.pkgs.load(icons, palette).item:set({ padding_left = 0 })
 	mod.user.load()
 	mod.notifs.load(icons, palette)
 

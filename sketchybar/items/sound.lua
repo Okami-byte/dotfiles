@@ -2,178 +2,183 @@ local mod = {}
 
 -- Setup
 function mod.setup(items, icons, palette)
-  mod.properties = {
-    item = {
-      position = "right",
+	mod.properties = {
+		item = {
+			position = "right",
 
-      updates = true,
+			updates = true,
 
-      icon = {
-        string        = icons.speaker.loud,
-        color         = palette.text.subtle - 0xff000000 + 100 * 0x1000000,
-        --padding_right = items.config.padding.outer,
-        width         = 21 + items.config.padding.outer
-      },
-      label = { 
-        width        = 0,--(21 + items.config.padding.outer),
-        padding_left = -(19 + items.config.padding.outer),
-        string       = icons.speaker.mid,
-        color        = palette.colors.purple,
-        font         = items.defaults.icon.font
-      }
-    },
-    slider = {
-      position      = "right",
+			icon = {
+				string = icons.speaker.loud,
+				color = palette.text.subtle - 0xff000000 + 100 * 0x1000000,
+				--padding_right = items.config.padding.outer,
+				width = 21 + items.config.padding.outer,
+			},
+			label = {
+				width = 0, --(21 + items.config.padding.outer),
+				padding_left = -(19 + items.config.padding.outer),
+				string = icons.speaker.mid,
+				color = palette.colors.purple,
+				font = items.defaults.icon.font,
+			},
+		},
+		slider = {
+			position = "right",
 
-      padding_left  = 0,
-      padding_right = 0,
-      icon          = { drawing = false },
-      label         = { drawing = false },
-      
-      slider        = {
-        width           = 0,
-        highlight_color = palette.colors.blue,
+			padding_left = 0,
+			padding_right = 0,
+			icon = { drawing = false },
+			label = { drawing = false },
 
-        background      = {
-          color         = palette.zone.border,
-          height        = 5,
-          corner_radius = 3
-        },
+			slider = {
+				width = 0,
+				highlight_color = palette.colors.blue,
 
-        knob = {
-          drawing = false,
-          string  = "􀀁",
-          color   = palette.text.primary,
-          --font = { size = 14 },
-        }
-      }
-    }
-  }
+				background = {
+					color = palette.zone.border,
+					height = 5,
+					corner_radius = 3,
+				},
 
-  mod.state = {
-    slider = false,
-    anim_refc = 0,
-    last_volume = 0,
-  }
+				knob = {
+					drawing = false,
+					string = "􀀁",
+					color = palette.text.primary,
+					--font = { size = 14 },
+				},
+			},
+		},
+	}
 
-  return mod
+	mod.state = {
+		slider = false,
+		anim_refc = 0,
+		last_volume = 0,
+	}
+
+	return mod
 end
 
 local function toggleSlider(slider)
-  return function (env)
-    if env.INFO.button == "left" then
-      mod.state.slider = toggle(mod.state.slider)
+	return function(env)
+		if env.INFO.button == "left" then
+			mod.state.slider = toggle(mod.state.slider)
 
-      sequencedAnimation(slider, "tanh", 25, nil, {
-        slider = { width = mod.state.slider and 100 or 0 }
-      }, nil, true)
-      
-    elseif env.INFO.button == "right" then
-      sbar.exec(execs.menubar .. string.format(" -s \"%s\"",menu_items.sound))
-    end
-  end
+			sequencedAnimation(slider, "tanh", 25, nil, {
+				slider = { width = mod.state.slider and 100 or 0 },
+			}, nil, true)
+		elseif env.INFO.button == "right" then
+			sbar.exec(execs.menubar .. string.format(' -s "%s"', menu_items.sound))
+		end
+	end
 end
 
-local function update(items,item,slider,icons,palette)
-  return function (env)
-    -- Slider opening animation
-    if not mod.state.slider and env.SENDER ~= "forced" then 
-      if mod.state.anim_refc == 0 then
-        sequencedAnimation(slider, "tanh", 50, nil, {
-          slider = { width = 100 }
-        }, nil, true)
-      end
+local function update(items, item, slider, icons, palette)
+	return function(env)
+		-- Slider opening animation
+		if not mod.state.slider and env.SENDER ~= "forced" then
+			if mod.state.anim_refc == 0 then
+				sequencedAnimation(slider, "tanh", 50, nil, {
+					slider = { width = 100 },
+				}, nil, true)
+			end
 
-      mod.state.anim_refc = mod.state.anim_refc + 1
+			mod.state.anim_refc = mod.state.anim_refc + 1
 
-      sbar.delay(50.0/60 + 1, function () 
-        mod.state.anim_refc = mod.state.anim_refc - 1
+			sbar.delay(50.0 / 60 + 1, function()
+				mod.state.anim_refc = mod.state.anim_refc - 1
 
-        if mod.state.anim_refc == 0 then
-          sequencedAnimation(slider, "tanh", 50, nil, {
-            slider = { width = 0 }
-          }, nil, true)
-        end
-      end)
-    end
+				if mod.state.anim_refc == 0 then
+					sequencedAnimation(slider, "tanh", 50, nil, {
+						slider = { width = 0 },
+					}, nil, true)
+				end
+			end)
+		end
 
-    -- Slider color + item icon
-    local volume = tonumber(env.INFO)
+		-- Slider color + item icon
+		local volume = tonumber(env.INFO)
 
-    local slider_properties = { slider = { percentage = volume } }
-    local item_properties = { label = { }, icon = { string = volume ~= 0 and icons.speaker.loud or "" } }
-    
-    if volume == 0 then 
-      item_properties.icon.width         = mod.properties.item.icon.width - 5
-      item_properties.label.padding_left = mod.properties.item.label.padding_left + 5
-      item_properties.label.color        = palette.colors.red
-    else
-      item_properties.icon.width         = mod.properties.item.icon.width
-      item_properties.label.padding_left = mod.properties.item.label.padding_left
-      item_properties.label.color        = mod.properties.item.label.color
-    end
+		local slider_properties = { slider = { percentage = volume } }
+		local item_properties = { label = {}, icon = { string = volume ~= 0 and icons.speaker.loud or "" } }
 
-    if volume == 0 then 
-      slider_properties.slider.highlight_color = palette.text.muted
-      item_properties.label.string = icons.speaker.muted
-    elseif volume < 25 then
-      slider_properties.slider.highlight_color = palette.colors.blue
-      item_properties.label.string = icons.speaker.quiet
-    elseif volume < 50 then
-      slider_properties.slider.highlight_color = palette.colors.cyan
-      item_properties.label.string = icons.speaker.mid
-    elseif volume < 75 then 
-      slider_properties.slider.highlight_color = palette.colors.yellow
-      item_properties.label.string = icons.speaker.normal
-    else 
-      slider_properties.slider.highlight_color = palette.colors.red
-      item_properties.label.string = icons.speaker.loud
-    end
+		if volume == 0 then
+			item_properties.icon.width = mod.properties.item.icon.width - 5
+			item_properties.label.padding_left = mod.properties.item.label.padding_left + 5
+			item_properties.label.color = palette.colors.red
+		else
+			item_properties.icon.width = mod.properties.item.icon.width
+			item_properties.label.padding_left = mod.properties.item.label.padding_left
+			item_properties.label.color = mod.properties.item.label.color
+		end
 
-    local item_anim_property = nil
-    local item_anim_property_after = nil
+		--NOTE: Add the changing icon so I know if I'm connected to headphones or not without opening the slider
 
-    if mod.last_volume == 0 or volume == 0 then
-      item_anim_property = { label = {
-        color        = item_properties.label.color,
-        padding_left = item_properties.label.padding_left
-      }, icon = {
-        width        = item_properties.icon.width
-      }}
+		if volume == 0 then
+			slider_properties.slider.highlight_color = palette.text.muted
+			item_properties.label.string = icons.speaker.muted
+		elseif volume < 25 then
+			slider_properties.slider.highlight_color = palette.colors.blue
+			item_properties.label.string = icons.speaker.quiet
+		elseif volume < 50 then
+			slider_properties.slider.highlight_color = palette.colors.cyan
+			item_properties.label.string = icons.speaker.mid
+		elseif volume < 75 then
+			slider_properties.slider.highlight_color = palette.colors.yellow
+			item_properties.label.string = icons.speaker.normal
+		else
+			slider_properties.slider.highlight_color = palette.colors.red
+			item_properties.label.string = icons.speaker.loud
+		end
 
-      item_properties.label.color        = nil
-      item_properties.label.padding_left = nil
-      item_properties.icon.width         = nil
+		local item_anim_property = nil
+		local item_anim_property_after = nil
 
-      if mod.last_volume == 0 then
-        item_anim_property_after = { icon = { string = item_properties.icon.string } }
-        item_properties.icon.string       = nil
-      end
-    end
+		if mod.last_volume == 0 or volume == 0 then
+			item_anim_property = {
+				label = {
+					color = item_properties.label.color,
+					padding_left = item_properties.label.padding_left,
+				},
+				icon = {
+					width = item_properties.icon.width,
+				},
+			}
 
-    sequencedAnimation(item, "tanh", 15, item_properties, item_anim_property, item_anim_property_after, true)
-    sequencedAnimation(slider, "sin", 15, nil, slider_properties , nil, true)
+			item_properties.label.color = nil
+			item_properties.label.padding_left = nil
+			item_properties.icon.width = nil
 
-    mod.last_volume = volume
-  end
+			if mod.last_volume == 0 then
+				item_anim_property_after = { icon = { string = item_properties.icon.string } }
+				item_properties.icon.string = nil
+			end
+		end
+
+		sequencedAnimation(item, "tanh", 15, item_properties, item_anim_property, item_anim_property_after, true)
+		sequencedAnimation(slider, "sin", 15, nil, slider_properties, nil, true)
+
+		mod.last_volume = volume
+	end
 end
 
 -- Load
 function mod.load(items, icons, palette)
-  mod.slider = sbar.add("slider", 100, mod.properties.slider)
-  mod.item   = sbar.add("item", mod.properties.item)
-  
-  mod.item:subscribe("volume_change",update(items,mod.item,mod.slider,icons,palette))
-  mod.item:subscribe("mouse.clicked",toggleSlider(mod.slider))
+	mod.slider = sbar.add("slider", 100, mod.properties.slider)
+	mod.item = sbar.add("item", mod.properties.item)
 
-  mod.slider:subscribe("mouse.clicked",function (env) 
-    sbar.exec(string.format("osascript -e 'set volume output volume %s'",env.PERCENTAGE))
-  end)
-  mod.slider:subscribe({"mouse.entered","mouse.exited"},function (env)
-    mod.slider:set({slider = { knob = { drawing = env.SENDER == "mouse.entered"}}})
-  end)
+	mod.item:subscribe("volume_change", update(items, mod.item, mod.slider, icons, palette))
+	mod.item:subscribe("mouse.clicked", toggleSlider(mod.slider))
 
-  return mod
+	mod.slider:subscribe("mouse.clicked", function(env)
+		sbar.exec(string.format("osascript -e 'set volume output volume %s'", env.PERCENTAGE))
+	end)
+	mod.slider:subscribe({ "mouse.entered", "mouse.exited" }, function(env)
+		mod.slider:set({ slider = { knob = { drawing = env.SENDER == "mouse.entered" } } })
+	end)
+
+	return mod
 end
 
 return mod
+
