@@ -13,7 +13,7 @@ function mod.setup(bar, icons, palette)
 			position = "q",
 
 			drawing = false,
-			padding_left = -120,
+			padding_left = -150,
 
 			updates = true,
 
@@ -42,7 +42,7 @@ function mod.setup(bar, icons, palette)
 
 			y_offset = (bar.config.height / 2) - mod.config.title_margin,
 			padding_left = -mod.config.info_width,
-			padding_right = 0,
+			padding_right = 100,
 
 			icon = { drawing = false },
 
@@ -62,7 +62,7 @@ function mod.setup(bar, icons, palette)
 
 			y_offset = -(bar.config.height / 2) + mod.config.title_margin,
 			padding_left = 0,
-			padding_right = 0,
+			padding_right = 46,
 
 			icon = { drawing = false },
 
@@ -70,7 +70,7 @@ function mod.setup(bar, icons, palette)
 				color = palette.text.subtle,
 				max_chars = mod.config.info_width / 5.5,
 				align = "right",
-				width = -mod.config.info_width,
+				width = mod.config.info_width,
 				font = { size = 9.0, style = "Semibold" },
 			},
 
@@ -241,4 +241,3 @@ function mod.load(separator, icons)
 end
 
 return mod
-

@@ -230,6 +230,7 @@ return {
 	["Réglages Système"] = ":gear:",
 	["システム設定"] = ":gear:",
 	["TextEdit"] = ":textedit:",
+	["Journal"] = ":book:",
 
 	-- Multimedia
 	["VLC"] = ":vlc:",

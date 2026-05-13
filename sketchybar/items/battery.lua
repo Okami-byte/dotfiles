@@ -82,4 +82,3 @@ function mod.load(icons, palette)
 end
 
 return mod
-
