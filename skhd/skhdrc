@@ -65,7 +65,7 @@ alt - p : yabai -m window --focus stack.prev || yabai -m window --focus stack.la
 alt - tab : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 
 # picture-in-picture float (bottom right, small)
-shift + alt - p : yabai -m window --toggle float --grid 5:5:3:3:2:2; yabai -m window --toggle sticky; yabai -m window --layer above
+shift + alt - p : yabai -m window --toggle float --grid 8:8:6:6:2:2; yabai -m window --toggle sticky; yabai -m window --layer above
 
 # maximize a window
 shift + alt - m : yabai -m window --toggle zoom-fullscreen
