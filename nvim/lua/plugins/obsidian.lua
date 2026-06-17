@@ -54,16 +54,6 @@ return {
       template = "Daily Template",
     },
 
-    -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
-    completion = {
-      -- Enables completion using nvim_cmp
-      nvim_cmp = false,
-      -- Enables completion using blink.cmp
-      blink = true,
-      -- Trigger completion at 2 chars.
-      min_chars = 2,
-    },
-
     -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
     -- way then set 'mappings = {}'.
     -- Where to put new notes. Valid options are
