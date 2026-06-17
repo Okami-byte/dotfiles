@@ -1,18 +1,21 @@
 # yazi.toml
 [mgr]
-sort_by = "alphabetical"
+ratio = [1, 2, 4]
+sort_by = "mtime"
 sort_sensitive = true
-linemode = "mtime"
-show_hidden = false
+sort_reverse = true
+sort_dir_first = true
+linemode = "none"
+show_hidden = true
 show_symlink = true
 
 [preview]
 tab_size = 2
-max_width = 2000 
+max_width = 2000
 max_height = 1200
 cache_dir = ""
-image_filter = "triangle"
-image_quality = 75
+ueberzug_scale = 1
+ueberzug_offset = [0, 0, 0, 0]
 
 [opener]
 edit = [
@@ -39,28 +42,14 @@ play = [
   { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
 ]
 
-[open]
-rules = [
-  { name = "*/", use = [
-    "edit",
-    "open",
-    "reveal",
-  ] },
+[tasks]
+micro_workers = 5
+macro_workers = 10
+bizarre_retry = 5
 
-  { mime = "text/*", use = [
-    "edit",
-    "reveal",
-  ] },
-  { mime = "image/*", use = [
-    "open",
-    "reveal",
-  ] },
-  { mime = "video/*", use = [
-    "play",
-    "reveal",
-  ] },
-  { mime = "audio/*", use = [
-    "play",
-    "reveal",
-  ] },
-]
+[plugins]
+preload = []
+prepend_previewers = [{ mime = "image/heic", run = "heic" }]
+
+[log]
+enabled = false

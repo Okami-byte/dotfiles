@@ -1,5 +1,5 @@
 [app]
-overall = { bg = "#24273a" }
+# overall = { bg = "#24273a" } # Make this transparent
 
 [mgr]
 cwd = { fg = "#8bd5ca" }
