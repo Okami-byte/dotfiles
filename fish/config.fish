@@ -75,19 +75,13 @@ end
 
 # --- Abbreviations ---
 
-abbr -a --position anywhere ss sudo
-if test "$os" = Darwin
-    abbr -a --position anywhere b brew
-else if test "$os" = Linux
-    abbr -a j journalctl
-    abbr -a pc --position anywhere pacman
-end
+# I currently don't have a use for this, so I'll come and revisit another time if I find a use.
 
 # --- FZF ---
 
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 set fzf_diff_highlighter delta --paging=never --width=20
-fzf_configure_bindings --directory=ctrl-alt-f
+fzf_configure_bindings --directory=ctrl-f
 fzf_configure_bindings --git_log=ctrl-alt-l
 fzf_configure_bindings --git_status=ctrl-alt-s
 fzf_configure_bindings --processes=ctrl-alt-p
@@ -98,3 +92,7 @@ function take
     mkdir -p $argv[1]
     cd $argv[1]
 end
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
