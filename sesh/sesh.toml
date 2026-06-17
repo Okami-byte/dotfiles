@@ -63,6 +63,23 @@ name = "downloads 󱃩 "
 path = "~/Downloads"
 startup_command = "yazi"
 
+[[session]]
+name = "work 󱌢"
+path = "~/Developer/WorkTools/"
+startup_command = "la"
+preview_command = "bat --style=snip --color=always"
+windows = ["qc","pxe"]
+
+[[window]]
+name = "qc"
+path = "~/Developer/WorkTools/lifecycle-lemur/"
+startup_script = "la"
+
+[[window]]
+name = "pxe"
+path = "~/Developer/WorkTools/tools-master/pxe/"
+startup_script = "la"
+
 # configs
 
 [[session]]
@@ -130,19 +147,3 @@ path = "~/.dotfiles/skhd"
 startup_command = "nvim skhdrc"
 preview_command = "bat --style=snip --color=always ~/.dotfiles/skhd/skhdrc"
 
-[[session]]
-name = "work"
-path = "~/Developer/WorkTools/"
-startup_command = "la"
-preview_command = "bat --style=snip --color=always ~/.dotfiles/yabai/yabairc"
-windows = ["qc","pxe"]
-
-[[window]]
-name = "qc"
-path = "~/Developer/WorkTools/lifecycle-lemur/"
-startup_script = "la"
-
-[[window]]
-name = "pxe"
-path = "~/Developer/WorkTools/tools-master/pxe/"
-startup_script = "la"
