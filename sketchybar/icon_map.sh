@@ -82,7 +82,7 @@ else
     "App Store")
       icon_result=":app_store:"
       ;;
-    "Chromium" | "Google Chrome" | "Google Chrome Canary")
+    "Chromium" | "Google Chrome" | "Google Chrome Canary" | "Helium")
       icon_result=":google_chrome:"
       ;;
     "zoom.us")
