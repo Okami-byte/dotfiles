@@ -53,6 +53,11 @@ config = {
 	exit_behavior = "Close",
 	enable_tab_bar = false,
 	font_size = 13,
+
+	color_scheme = "Catppuccin Mocha (Gogh)",
+	colors = {
+		background = "#111419",
+	},
 }
 
 return config
