@@ -102,6 +102,32 @@ local palettes = {
     },
   },
 
+  ["kopicat"] = {
+    bar = {
+      background = function(tpf, f) return f(0x313244, tpf) end,
+      border     = function(tpf, f) return f(0x45475a, tpf) end,
+    },
+    text = {
+      primary = 0xfffcfcfa,
+      subtle  = 0xff908caa,
+      muted   = 0xff6e6a86,
+    },
+    zone = {
+      background = function(tpf, f) return f(0x313244, tpf - 50) end,
+      border     = function(tpf, f) return f(0x45475a, tpf - 20) end,
+      overlay    = 0xff585b70,
+    },
+    colors = {
+      red    = 0xfff38ba8,
+      orange = 0xffff8459,
+      yellow = 0xffcaa75e,
+      blue   = 0xff89b4fa,
+      cyan   = 0xff87a35e,
+      purple = 0xff986794,
+      black  = 0xff11111b,
+    },
+  },
+
   ["kanagawa"] = {
     bar = {
       background = function(tpf, f) return f(0x363646, tpf) end,

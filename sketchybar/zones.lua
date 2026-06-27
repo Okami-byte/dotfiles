@@ -51,8 +51,10 @@ end
 local function fetchNames(items)
   local names = {}
 
-  for index,item in pairs(items) do
-    names[index] = item.name
+  for index, item in pairs(items) do
+    if type(item) == "table" and item.name then
+      names[index] = item.name
+    end
   end
 
   return names
@@ -64,8 +66,8 @@ local function bracketToggle(items,icons,show,forced)
   if type(sep_icon) == "table" then items.separator:set({ icon = sep_icon }) 
   else items.separator:set({ icon = { string = sep_icon }}) end
 
-  for index,item in pairs(items) do
-    if index ~= "separator" and index ~= "bracket" then
+  for index, item in pairs(items) do
+    if type(item) == "table" and item.name and index ~= "separator" and index ~= "bracket" then
       if forced then 
         item:set({ drawing = show })
         goto next
@@ -118,10 +120,14 @@ local function handleDynamicBrackets(brackets,icons)
     bracketToggle(items,icons,items.bracket.show,true)
 
     items.separator:subscribe("mouse.clicked", function (env)
-      items.bracket.show = toggle(items.bracket.show)
-      perfbc()
-      bracketToggle(items,icons,items.bracket.show)
-      perfec()
+      if env.BUTTON == "right" and type(items.on_right_click) == "function" then
+        items.on_right_click(items.separator, env)
+      else
+        items.bracket.show = toggle(items.bracket.show)
+        perfbc()
+        bracketToggle(items,icons,items.bracket.show)
+        perfec()
+      end
     end)
     
     sbar.exec(string.format("sketchybar --move \"%s\" before \"%s\"",items.separator.name,items[1].name))
