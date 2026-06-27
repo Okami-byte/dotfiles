@@ -18,7 +18,7 @@ menu_items = {
 
 -- Fetch config with given defaults
 config = fetchConfig(os.getenv("SKETCHYBAR_CONFIG") or "./config.lua", { -- Look & feel
-	theme = "catppuccin_mocha",
+	theme = "rose_pine",
 	transparency = true,
 	bar_look = "default",
 	font = "SF Pro",
@@ -26,11 +26,12 @@ config = fetchConfig(os.getenv("SKETCHYBAR_CONFIG") or "./config.lua", { -- Look
 
 	-- Behaviour
 	controls = { menu_items.bluetooth },
-	theme_file = "./themes.lua",
+	theme_file = "./helpers/colors.lua",
 
 	-- Technical
 	window_manager = "yabai",
 	notch_width = 180,
+	cpu_update_freq = 2,
 	perfbc = true, -- Allow command bundling for improved performance
 	git_key = nil,
 	display_groups = {},
@@ -38,8 +39,8 @@ config = fetchConfig(os.getenv("SKETCHYBAR_CONFIG") or "./config.lua", { -- Look
 })
 
 execs = mergeTables({
-	menubar = cmdPath("menubar") or "./helper/menubar",
-	ft_haptic = cmdPath("ft-haptic") or "./helper/ft-haptics",
+	menubar = cmdPath("menubar") or "./helpers/menus/bin/menus",
+	ft_haptic = cmdPath("ft-haptic") or "./helpers/ft-haptic",
 	media_control = cmdPath("media-control") or log("lua-main", "No media-control in path"),
 	icon_map = cmdPath("icon_map.sh") or "./helper/icon_map.sh",
 	bd_cli = cmdPath("betterdisplaycli") or log("lua-main", "No betterdisplaycli in path"),

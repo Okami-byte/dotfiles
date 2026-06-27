@@ -65,6 +65,7 @@ function mod.setup(bar, zones, icons, palette)
 
 	mod.separator = require("items.separator").setup(zones, icons, palette)
 	mod.player    = require("items.player")   .setup(bar, icons, palette)
+	mod.cpu       = require("items.cpu")      .setup(bar, palette)
 
 	return mod
 end
@@ -114,6 +115,7 @@ function mod.load(zones, icons, palette)
 
 	mod.separator.load()
 	mod.player.load(mod.separator, icons)
+	mod.cpu.load(mod.separator, palette)
 
 	-- Zone setup
 	zones.brackets.dynamic_brackets[1] = {
@@ -137,6 +139,9 @@ function mod.load(zones, icons, palette)
 		mod.user.item,
 		mod.notifs.item,
 		["bracket"] = { show = false },
+		["on_right_click"] = function(separator, _)
+			mod.cpu.toggle(separator, icons)
+		end,
 	}
 
 	for _, item in pairs(mod.controls.items) do
