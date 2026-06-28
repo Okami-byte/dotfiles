@@ -112,53 +112,84 @@ local function update(items, item, slider, icons, palette)
 			item_properties.label.color = mod.properties.item.label.color
 		end
 
-		--NOTE: Add the changing icon so I know if I'm connected to headphones or not without opening the slider
-
 		if volume == 0 then
 			slider_properties.slider.highlight_color = palette.text.muted
-			item_properties.label.string = icons.speaker.muted
 		elseif volume < 25 then
 			slider_properties.slider.highlight_color = palette.colors.blue
-			item_properties.label.string = icons.speaker.quiet
 		elseif volume < 50 then
 			slider_properties.slider.highlight_color = palette.colors.cyan
-			item_properties.label.string = icons.speaker.mid
 		elseif volume < 75 then
 			slider_properties.slider.highlight_color = palette.colors.yellow
-			item_properties.label.string = icons.speaker.normal
 		else
 			slider_properties.slider.highlight_color = palette.colors.red
-			item_properties.label.string = icons.speaker.loud
 		end
 
-		local item_anim_property = nil
-		local item_anim_property_after = nil
+		sbar.exec("SwitchAudioSource -t output -c", function(result)
+			local device = result:sub(1, -2)
+			local known_device = true
 
-		if mod.last_volume == 0 or volume == 0 then
-			item_anim_property = {
-				label = {
-					color = item_properties.label.color,
-					padding_left = item_properties.label.padding_left,
-				},
-				icon = {
-					width = item_properties.icon.width,
-				},
-			}
-
-			item_properties.label.color = nil
-			item_properties.label.padding_left = nil
-			item_properties.icon.width = nil
-
-			if mod.last_volume == 0 then
-				item_anim_property_after = { icon = { string = item_properties.icon.string } }
-				item_properties.icon.string = nil
+			if device == "AirPods Max" or device == "Noise Eliminator" then
+				item_properties.label.string = "􀺹"
+			elseif device == "AirPods2" then
+				item_properties.label.string = "􀟥"
+			elseif device == "AirPods Pro" then
+				item_properties.label.string = "􁄡"
+			elseif device == "Scarlett 2i2 USB" then
+				item_properties.label.string = "􀑫"
+			elseif device == "Moon Pods" then
+				item_properties.label.string = "􀪷"
+			elseif device == "Headphone" then
+				item_properties.label.string = "􀟶"
+			elseif device == "Klipsch R-15PM" then
+				item_properties.label.string = "􀝏"
+			else
+				known_device = false
+				if volume == 0 then
+					item_properties.label.string = icons.speaker.muted
+				elseif volume < 25 then
+					item_properties.label.string = icons.speaker.quiet
+				elseif volume < 50 then
+					item_properties.label.string = icons.speaker.mid
+				elseif volume < 75 then
+					item_properties.label.string = icons.speaker.normal
+				else
+					item_properties.label.string = icons.speaker.loud
+				end
 			end
-		end
 
-		sequencedAnimation(item, "tanh", 15, item_properties, item_anim_property, item_anim_property_after, true)
-		sequencedAnimation(slider, "sin", 15, nil, slider_properties, nil, true)
+			if known_device then
+				item_properties.icon.string = ""
+			end
 
-		mod.last_volume = volume
+			local item_anim_property = nil
+			local item_anim_property_after = nil
+
+			if mod.last_volume == 0 or volume == 0 then
+				item_anim_property = {
+					label = {
+						color = item_properties.label.color,
+						padding_left = item_properties.label.padding_left,
+					},
+					icon = {
+						width = item_properties.icon.width,
+					},
+				}
+
+				item_properties.label.color = nil
+				item_properties.label.padding_left = nil
+				item_properties.icon.width = nil
+
+				if mod.last_volume == 0 then
+					item_anim_property_after = { icon = { string = item_properties.icon.string } }
+					item_properties.icon.string = nil
+				end
+			end
+
+			sequencedAnimation(item, "tanh", 15, item_properties, item_anim_property, item_anim_property_after, true)
+			sequencedAnimation(slider, "sin", 15, nil, slider_properties, nil, true)
+
+			mod.last_volume = volume
+		end)
 	end
 end
 
@@ -181,4 +212,3 @@ function mod.load(items, icons, palette)
 end
 
 return mod
-

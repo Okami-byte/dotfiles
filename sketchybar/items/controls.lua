@@ -34,7 +34,7 @@ function mod.load()
 	local item = sbar.add("item", mod.properties.control_center)
 	item:subscribe("mouse.clicked", function(env)
 		sbar.exec(
-			'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 3 of menu bar 1\''
+			'osascript -e \'tell application "System Events" to tell process "ControlCenter" to click menu bar item 4 of menu bar 1\''
 		)
 	end)
 
