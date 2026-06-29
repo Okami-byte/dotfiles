@@ -65,6 +65,18 @@ function mod.load()
 		)
 	end)
 
+	mod.item:subscribe("mouse.clicked", function(env)
+		sbar.exec(string.format(
+			"for i in $(seq 0 5); do\n"
+				.. "  sketchybar --set %s icon=\"$(date '+%%a %%d. %%b')\" label=\"$(date '+%%H:%%M:%%S')\" label.width=65\n"
+				.. "  sleep 1\n"
+				.. "done\n"
+				.. "sketchybar --set %s icon=\"$(date '+%%a %%d. %%b')\" label=\"$(date '+%%H:%%M')\" label.width=50\n",
+			env.NAME,
+			env.NAME
+		))
+	end)
+
 	return mod
 end
 
