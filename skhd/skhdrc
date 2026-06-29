@@ -28,11 +28,10 @@ alt - k : yabai -m window --focus north
 alt - h : yabai -m window --focus west
 alt - l : yabai -m window --focus east
 
-# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
-cmd + alt - n : yabai -m space --create && \
-                   index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
-                   yabai -m window --space "${index}" && \
-                   yabai -m space --focus "${index}"
+# create desktop
+#TODO: move window and follow focus - uses jq for parsing json (brew install jq)
+#TODO: Figure out space focus after workspace creation. Prveious iteration doesn't work anymore
+cmd + alt - n : yabai -m space --create
 
 # destroy desktop
 cmd + alt - w : yabai -m space --destroy
