@@ -82,6 +82,7 @@ abbr sr "sesh root"
 
 # System Commands
 abbr pwdc "pwd | pbcopy"
+abbr --add - 'cd -'
 
 # Tmux
 abbr tn "tmux new-session -s"
