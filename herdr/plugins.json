@@ -1,0 +1,190 @@
+[
+  {
+    "plugin_id": "rjyo.window-title-sync",
+    "name": "Window Title Sync",
+    "version": "0.1.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Sync the outer terminal title to the focused Herdr workspace, tab, and agent session.",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github/rjyo.window-title-sync-aa963fbbc3d9/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github/rjyo.window-title-sync-aa963fbbc3d9",
+    "enabled": true,
+    "platforms": [
+      "macos",
+      "linux"
+    ],
+    "actions": [
+      {
+        "id": "refresh",
+        "title": "Refresh terminal title",
+        "contexts": [
+          "workspace",
+          "tab",
+          "pane"
+        ],
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_detected",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      },
+      {
+        "on": "pane.agent_status_changed",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      },
+      {
+        "on": "pane.closed",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      },
+      {
+        "on": "pane.created",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      },
+      {
+        "on": "pane.focused",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      },
+      {
+        "on": "pane.moved",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      },
+      {
+        "on": "tab.focused",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      },
+      {
+        "on": "tab.renamed",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      },
+      {
+        "on": "workspace.focused",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      },
+      {
+        "on": "workspace.renamed",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      },
+      {
+        "on": "workspace.updated",
+        "command": [
+          "bun",
+          "sync-title.js"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "rjyo",
+      "repo": "herdr-window-title-sync",
+      "resolved_commit": "a9fb323db00d0c4365ff8e1b7b13d29990367cb7",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github/rjyo.window-title-sync-aa963fbbc3d9",
+      "installed_unix_ms": 1782339507797
+    }
+  },
+  {
+    "plugin_id": "sessionizer",
+    "name": "Sessionizer",
+    "version": "0.2.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Inspired by ThePrimeagen's tmux-sessionizer: fuzzy pickers to open projects and Git worktrees into Herdr workspaces.",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github/sessionizer-66e03d1ff740/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github/sessionizer-66e03d1ff740",
+    "enabled": true,
+    "platforms": [
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "bun",
+          "install",
+          "--frozen-lockfile"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "open",
+        "title": "Open sessionizer",
+        "command": [
+          "bun",
+          "run",
+          "src/open-pane.ts"
+        ]
+      },
+      {
+        "id": "worktree-open",
+        "title": "Open worktree",
+        "command": [
+          "bun",
+          "run",
+          "src/open-worktree-pane.ts"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "sessionizer",
+        "title": "Sessionizer",
+        "placement": "overlay",
+        "command": [
+          "bun",
+          "run",
+          "src/sessionizer-pane.ts"
+        ]
+      },
+      {
+        "id": "worktree",
+        "title": "Worktree",
+        "placement": "overlay",
+        "command": [
+          "bun",
+          "run",
+          "src/worktree-pane.ts"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "andrewchng",
+      "repo": "herdr-sessionizer",
+      "resolved_commit": "ab3267c81e17747af5774e8b45f7417678a1876f",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github/sessionizer-66e03d1ff740",
+      "installed_unix_ms": 1782393333636
+    }
+  }
+]

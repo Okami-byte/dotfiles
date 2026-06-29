@@ -1,0 +1,40 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "wD",
+      "custom_name": "ubuntu-server",
+      "identity_cwd": "/Users/fox",
+      "public_pane_numbers": {
+        "2": 1
+      },
+      "next_public_pane_number": 2,
+      "public_tab_numbers": [
+        1
+      ],
+      "next_public_tab_number": 2,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 2
+          },
+          "panes": {
+            "2": {
+              "cwd": "/Users/fox"
+            }
+          },
+          "zoomed": false,
+          "focused": 2,
+          "root_pane": 2
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 0,
+  "selected": 0,
+  "sidebar_width": 36,
+  "sidebar_section_split": 0.5,
+  "collapsed_space_keys": []
+}

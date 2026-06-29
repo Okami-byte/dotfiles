@@ -1,0 +1,10 @@
+name = "notes 󱞁 "
+description = "Obsidian Notes Vault (New Workspace)"
+working_dir = "/Users/fox/Notes"
+
+[[tabs]]
+name = "notes"
+command = "nvim ."
+
+[[tabs]]
+name = "claude"
