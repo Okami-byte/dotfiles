@@ -1,0 +1,7 @@
+name = "developer 󰅴 " # workspace name
+description = "Main development workspace (New Workspace)"
+working_dir = "/Developer/" # default workspace dir
+
+# default tabs
+[[tabs]]
+name = "dev"
