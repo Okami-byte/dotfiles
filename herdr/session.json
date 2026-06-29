@@ -2,8 +2,8 @@
   "version": 3,
   "workspaces": [
     {
-      "id": "wD",
-      "custom_name": "ubuntu-server",
+      "id": "wE",
+      "custom_name": null,
       "identity_cwd": "/Users/fox",
       "public_pane_numbers": {
         "2": 1

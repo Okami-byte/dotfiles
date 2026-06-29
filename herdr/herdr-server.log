@@ -544,3 +544,33 @@
 2026-06-26T21:44:58.025244Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=2 status="ExitStatus { code: 1, signal: Some(\"Hangup: 1\") }"
 2026-06-26T21:44:58.049120Z  INFO herdr::pane: pane session terminated pane=2 pid=47827 signal=Hangup
 2026-06-26T21:44:58.049550Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="server" outcome="completed" pid=41797
+2026-06-29T02:09:27.531670Z  INFO herdr::platform::macos: raised server file descriptor soft limit previous=2560 target=8192
+2026-06-29T02:09:27.532656Z  INFO herdr::api::server: api server listening path=/Users/fox/.config/herdr/herdr.sock
+2026-06-29T02:09:27.535685Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=1 rows=24 cols=80 scrollback_limit_bytes=10000000
+2026-06-29T02:09:27.540423Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=1 pid=92279
+2026-06-29T02:09:27.541228Z  INFO herdr::logging: session restore evaluated event="persist.restore" subsystem="persist" outcome="ok" workspaces=1
+2026-06-29T02:09:27.541242Z  INFO herdr::app: using pane scrollback configuration pane_scrollback_limit_bytes=10000000
+2026-06-29T02:09:27.563425Z  INFO herdr::logging: checking for updates event="update.check.start" subsystem="update" outcome="started"
+2026-06-29T02:09:27.564268Z  INFO herdr::server::headless: restored session already has workspaces; ignoring startup cwd cwd=/Users/fox/.dotfiles/herdr
+2026-06-29T02:09:27.564408Z  INFO herdr::server::headless: client protocol socket listening path=/Users/fox/.config/herdr/herdr-client.sock
+2026-06-29T02:09:27.564429Z  INFO herdr::server::headless: herdr server started api_socket=/Users/fox/.config/herdr/herdr.sock client_socket=/Users/fox/.config/herdr/herdr-client.sock
+2026-06-29T02:09:27.564453Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="server" outcome="started" pid=92278
+2026-06-29T02:09:27.705328Z  INFO herdr::server::headless: client connected client_id=2 cols=220 rows=61 cell_width_px=0 cell_height_px=0 render_encoding=SemanticFrame
+2026-06-29T02:09:43.002301Z  INFO herdr::server::headless: client connected client_id=4 cols=220 rows=62 cell_width_px=0 cell_height_px=0 render_encoding=SemanticFrame
+2026-06-29T02:09:51.695740Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=1 status="ExitStatus { code: 0, signal: None }"
+2026-06-29T02:09:51.699495Z  INFO herdr::pane: pane session terminated pane=1 pid=92279 signal=Hangup
+2026-06-29T02:09:51.700019Z  INFO herdr::logging: spawning pane terminal event="pane.spawn.start" subsystem="pane" outcome="started" pane_id=2 rows=61 cols=184 scrollback_limit_bytes=10000000
+2026-06-29T02:09:51.703278Z  INFO herdr::logging: pane child spawned event="pane.spawned" subsystem="pane" outcome="ok" pane_id=2 pid=92757
+2026-06-29T02:09:51.703446Z  INFO herdr::logging: workspace created event="workspace.create" subsystem="workspace" outcome="ok" workspace_id="wE" pane_id=2
+2026-06-29T02:09:51.703453Z  INFO herdr::logging: workspace focused event="workspace.focus" subsystem="workspace" outcome="ok" workspace_id="wE"
+2026-06-29T02:09:51.703467Z  INFO herdr::logging: tab focused event="tab.focus" subsystem="tab" outcome="ok" workspace_id="wE" tab_id="wE:t1"
+2026-06-29T02:09:56.724044Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/fox/.config/herdr/session.json workspaces=1
+2026-06-29T02:09:57.790696Z  INFO herdr::server::headless: client detach requested via keybind client_id=4
+2026-06-29T02:09:57.792911Z  INFO herdr::server::headless: client disconnected client_id=4
+2026-06-29T02:10:03.102106Z  INFO herdr::server::headless: server shutdown initiated
+2026-06-29T02:10:03.156171Z  INFO herdr::server::headless: completing server shutdown
+2026-06-29T02:10:03.211931Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/fox/.config/herdr/session.json workspaces=1
+2026-06-29T02:10:03.211974Z  INFO herdr::server::headless: headless server exiting
+2026-06-29T02:10:03.213236Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=2 status="ExitStatus { code: 1, signal: Some(\"Hangup: 1\") }"
+2026-06-29T02:10:03.237616Z  INFO herdr::pane: pane session terminated pane=2 pid=92757 signal=Hangup
+2026-06-29T02:10:03.238137Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="server" outcome="completed" pid=92278
