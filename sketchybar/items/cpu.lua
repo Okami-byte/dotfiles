@@ -43,15 +43,15 @@ function mod.setup(bar, palette)
 			padding_right = 0,
 			y_offset = -(bar.config.height / 2) + graph_margin + 8,
 
-			icon = {
-				string = "􀅺 ",
-				drawing = true,
-				color = palette.text.subtle,
-				width = ICON_WIDTH,
-				padding_left = 0,
-				padding_right = 0,
-				font = { family = config.font, style = "Regular", size = 10.0 },
-			},
+			-- icon = {
+			-- 	string = "",
+			-- 	drawing = true,
+			-- 	color = palette.text.subtle,
+			-- 	width = ICON_WIDTH,
+			-- 	padding_left = 0,
+			-- 	padding_right = 0,
+			-- 	font = { family = config.font, style = "Regular", size = 10.0 },
+			-- },
 
 			label = {
 				string = "0%",
@@ -120,8 +120,8 @@ function mod.load(separator, palette)
 			mod.graph_label:set({ drawing = true })
 			separator:set({
 				icon = {
-					string = "􀅺",
-					font = { family = config.font, style = "Regular", size = 11.0 },
+					string = "􀫰",
+					font = { family = config.font, style = "Semibold", size = 14.0 },
 					padding_left = 4,
 					padding_right = 4,
 					y_offset = 0,
