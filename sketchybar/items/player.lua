@@ -13,7 +13,8 @@ function mod.setup(bar, icons, palette)
 			position = "q",
 
 			drawing = false,
-			padding_left = -150,
+			padding_left = 0,
+			padding_right = 22,
 
 			updates = true,
 
@@ -42,7 +43,7 @@ function mod.setup(bar, icons, palette)
 
 			y_offset = (bar.config.height / 2) - mod.config.title_margin,
 			padding_left = -mod.config.info_width,
-			padding_right = 100,
+			padding_right = 0,
 
 			icon = { drawing = false },
 
@@ -62,7 +63,7 @@ function mod.setup(bar, icons, palette)
 
 			y_offset = -(bar.config.height / 2) + mod.config.title_margin,
 			padding_left = 0,
-			padding_right = 46,
+			padding_right = 0,
 
 			icon = { drawing = false },
 
@@ -112,6 +113,8 @@ local function loadStream(event_name)
 	end)
 end
 
+local art_version = 0
+
 local function mediaDecode(artwork, title, subtitle, separator, icons)
 	return function(env)
 		if env.INFO.payload and next(env.INFO.payload) then
@@ -121,15 +124,15 @@ local function mediaDecode(artwork, title, subtitle, separator, icons)
 				mod.state.last_pid = env.INFO.payload.processIdentifier
 			end
 
-			if env.INFO.payload.playing ~= nil and env.INFO.payload.playing ~= mod.state.last_play then
+			if env.INFO.payload.playing ~= nil and env.INFO.diff then
 				mod.state.last_play = env.INFO.payload.playing
 				mod.state.play_refc = mod.state.play_refc + 1
 
 				artwork:set({ icon = { string = env.INFO.payload.playing and icons.player.pause or icons.player.play } })
 
-				sbar.delay(5, function(env)
-					mod.state.play_refc = mod.state.play_refc - 1
-					if mod.state.play_refc == 0 then
+				local refc_at_trigger = mod.state.play_refc
+				sbar.delay(5, function()
+					if mod.state.play_refc == refc_at_trigger then
 						artwork:set({ icon = { string = "" } })
 					end
 				end)
@@ -154,6 +157,8 @@ local function mediaDecode(artwork, title, subtitle, separator, icons)
 
 			if env.INFO.payload.artworkData then
 				artwork:set({ drawing = true })
+				art_version = art_version + 1
+				local this_version = art_version
 				sbar.exec([[
           #mkdir -p ${TMPDIR}/sketchybar
           tmp_file=$(mktemp ${TMPDIR}/sketchybar/cover.XXXXXXXXXX)
@@ -180,6 +185,9 @@ local function mediaDecode(artwork, title, subtitle, separator, icons)
 
           printf "%s,%s" "$tmp_file.$ext" $size
           ]], function(result, exit_code)
+					if art_version ~= this_version then
+						return
+					end
 					local path, height, width = table.unpack(strSplit(result, ","))
 					local scale = mod.config.artw_height / height
 
