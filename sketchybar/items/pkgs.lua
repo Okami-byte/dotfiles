@@ -38,7 +38,7 @@ local function update(item, icons, palette)
 			elseif count >= 10 then
 				color = palette.colors.yellow
 			elseif count >= 1 then
-				color = palette.colors.cyan
+				color = palette.colors.white
 			end
 
 			local label = count == 0 and "􀆅" or tostring(count)

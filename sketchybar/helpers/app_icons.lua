@@ -180,6 +180,7 @@ return {
 	["Plex"] = ":plex:",
 	["Plexamp"] = ":plexamp:",
 	["Moonlight"] = ":moonlight:",
+	["Artemis"] = ":moonlight:",
 	["Kodi"] = ":kodi:",
 
 	-- Microsoft Office Sweet

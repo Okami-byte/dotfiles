@@ -1,6 +1,6 @@
 local mod = {}
 
-local GRAPH_WIDTH = 100
+local GRAPH_WIDTH = 75
 local PERCENT_WIDTH = 24
 local ICON_WIDTH = 18
 
@@ -19,7 +19,7 @@ function mod.setup(bar, palette)
 			drawing = false,
 
 			padding_left = 0,
-			padding_right = 0,
+			padding_right = -45,
 			y_offset = -(bar.config.height / 2) + graph_margin + 7,
 
 			graph = { color = palette.text.subtle },
