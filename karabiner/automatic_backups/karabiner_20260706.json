@@ -5,13 +5,13 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Change right_command + p/l/;/' to arrow keys",
+                        "description": "Change fn + p/l/;/' to arrow keys",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": {
-                                        "mandatory": ["right_command"],
+                                        "mandatory": ["fn"],
                                         "optional": ["any"]
                                     }
                                 },
@@ -22,7 +22,7 @@
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
-                                        "mandatory": ["right_command"],
+                                        "mandatory": ["fn"],
                                         "optional": ["any"]
                                     }
                                 },
@@ -33,7 +33,7 @@
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": {
-                                        "mandatory": ["right_command"],
+                                        "mandatory": ["fn"],
                                         "optional": ["any"]
                                     }
                                 },
@@ -44,7 +44,7 @@
                                 "from": {
                                     "key_code": "quote",
                                     "modifiers": {
-                                        "mandatory": ["right_command"],
+                                        "mandatory": ["fn"],
                                         "optional": ["any"]
                                     }
                                 },
