@@ -5,7 +5,7 @@
 .DS_Store
 
 # Ignore log files so that people can't read system Info
-.log
+*.log
 
 # Ignore mpv cache files
 mpv/cache/
