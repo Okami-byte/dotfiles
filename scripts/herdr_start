@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+herdr plugin action invoke herdr-picker-plus.open &
+herdr
