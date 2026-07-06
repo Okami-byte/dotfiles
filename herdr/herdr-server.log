@@ -2931,3 +2931,5 @@ duplicate key `keys` in document root
 2026-07-06T13:11:41.632949Z  INFO herdr::logging: pane child exited event="pane.exit" subsystem="pane" outcome="completed" pane_id=4 status="ExitStatus { code: 0, signal: None }"
 2026-07-06T13:11:41.634699Z  INFO herdr::pane: pane session terminated pane=4 pid=24324 signal=Hangup
 2026-07-06T13:11:46.636481Z  INFO herdr::logging: session saved event="persist.save" subsystem="persist" outcome="ok" path=/Users/fox/.config/herdr/session.json workspaces=2
+2026-07-06T13:14:44.231418Z  INFO herdr::server::headless: client resize client_id=4 cols=108 rows=62 cell_width_px=16 cell_height_px=35
+2026-07-06T13:14:47.145479Z  INFO herdr::server::headless: client resize client_id=4 cols=220 rows=62 cell_width_px=16 cell_height_px=35
