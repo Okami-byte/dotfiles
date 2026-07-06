@@ -61,6 +61,7 @@ fish_add_path --path /opt/homebrew/opt/python@3.13/libexec/bin
 fish_add_path --path /Users/fox/.local/bin
 fish_add_path --path /Users/fox/.cargo/bin
 fish_add_path --path XDG_CONFIG_HOME=$HOME/.config/
+fish_add_path --path /opt/homebrew/bin/bun
 
 # --- Completions ---
 

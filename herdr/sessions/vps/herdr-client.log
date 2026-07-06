@@ -1,4 +1,0 @@
-2026-06-27T00:03:22.141981Z  INFO herdr::logging: herdr starting event="app.startup" subsystem="client" outcome="started" pid=17339
-2026-06-27T00:03:22.142030Z  INFO herdr::client: connecting to server path=/Users/fox/.config/herdr/sessions/vps/herdr-client.sock
-2026-06-27T00:03:22.271402Z  INFO herdr::client: handshake succeeded version=14 encoding=SemanticFrame
-2026-06-27T11:37:31.267989Z  INFO herdr::logging: herdr exiting event="app.shutdown" subsystem="client" outcome="completed" pid=17339

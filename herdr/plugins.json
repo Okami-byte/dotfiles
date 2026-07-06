@@ -1,5 +1,207 @@
 [
   {
+    "plugin_id": "cloudmanic.herdr-plus",
+    "name": "Herdr Plus",
+    "version": "0.1.10",
+    "min_herdr_version": "0.7.0",
+    "description": "An extension for herdr — a collection of tools that make it better. Projects: fuzzy-pick a declarative template to spin up a whole workspace — every tab, pane, and startup command. Quick Actions: a fuzzy launcher for one-off scripts, run in the directory you launched from.",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github/cloudmanic.herdr-plus-0cce37b56fb9/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github/cloudmanic.herdr-plus-0cce37b56fb9",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "sh",
+          "scripts/build.sh"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "ping",
+        "title": "Herdr Plus: ping",
+        "command": [
+          "./bin/herdr-plus",
+          "ping"
+        ]
+      },
+      {
+        "id": "projects",
+        "title": "Herdr Plus: Projects",
+        "command": [
+          "./bin/herdr-plus",
+          "projects"
+        ]
+      },
+      {
+        "id": "quick-actions",
+        "title": "Herdr Plus: Quick Actions",
+        "command": [
+          "./bin/herdr-plus",
+          "quick-actions"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "worktree.created",
+        "command": [
+          "./bin/herdr-plus",
+          "on-worktree"
+        ]
+      },
+      {
+        "on": "worktree.opened",
+        "command": [
+          "./bin/herdr-plus",
+          "on-worktree"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "picker",
+        "title": "Herdr Plus: Projects",
+        "placement": "zoomed",
+        "command": [
+          "./bin/herdr-plus",
+          "projects-ui"
+        ]
+      },
+      {
+        "id": "quick-actions-picker",
+        "title": "Quick Actions",
+        "placement": "overlay",
+        "command": [
+          "./bin/herdr-plus",
+          "quick-actions-ui"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "cloudmanic",
+      "repo": "herdr-plus",
+      "resolved_commit": "013fe1667a638487004164955a01707584ab7b9e",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github/cloudmanic.herdr-plus-0cce37b56fb9",
+      "installed_unix_ms": 1782923147832
+    }
+  },
+  {
+    "plugin_id": "herdr-picker-plus",
+    "name": "Picker Plus",
+    "version": "0.2.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Move anywhere in your Herdr workflow: search workspaces, SSH servers, agents, projects, actions, directories, and plugin integrations from one native picker.",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github/herdr-picker-plus-24891de4026e/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github/herdr-picker-plus-24891de4026e",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "cargo",
+          "build",
+          "--release"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "open",
+        "title": "Picker Plus: open",
+        "contexts": [
+          "workspace",
+          "global"
+        ],
+        "command": [
+          "./target/release/herdr-picker-plus",
+          "open"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "picker",
+        "title": "Picker Plus",
+        "placement": "overlay",
+        "command": [
+          "./target/release/herdr-picker-plus",
+          "ui"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "thanhdat77",
+      "repo": "herdr-picker-plus",
+      "resolved_commit": "1dfdeb7c64307a529a6ccae2e39d1caf02446b2d",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github/herdr-picker-plus-24891de4026e",
+      "installed_unix_ms": 1782923254525
+    }
+  },
+  {
+    "plugin_id": "url.fzf-picker",
+    "name": "FZF URL Picker",
+    "version": "0.1.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Scan terminal panes for URLs and interactively pick one with fzf",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github/url.fzf-picker-bbe028f7cf4c/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github/url.fzf-picker-bbe028f7cf4c",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "herdr-fzf-url"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "pick-url",
+        "title": "Pick URL from Panes",
+        "contexts": [
+          "pane"
+        ],
+        "command": [
+          "./herdr-fzf-url"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "url-picker",
+        "title": "URL Picker",
+        "placement": "overlay",
+        "command": [
+          "./herdr-fzf-url"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "x0d7x",
+      "repo": "herdr-fzf-url",
+      "resolved_commit": "7f5fc52a4367c537cae11b636bb27bc26e2279ad",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github/url.fzf-picker-bbe028f7cf4c",
+      "installed_unix_ms": 1782923307350
+    }
+  },
+  {
     "plugin_id": "rjyo.window-title-sync",
     "name": "Window Title Sync",
     "version": "0.1.0",
@@ -110,81 +312,61 @@
       "kind": "github",
       "owner": "rjyo",
       "repo": "herdr-window-title-sync",
-      "resolved_commit": "a9fb323db00d0c4365ff8e1b7b13d29990367cb7",
+      "resolved_commit": "b07f1140b7308d66487b2f4be546c0c7db065569",
       "managed_path": "/Users/fox/.config/herdr/plugins/github/rjyo.window-title-sync-aa963fbbc3d9",
-      "installed_unix_ms": 1782339507797
+      "installed_unix_ms": 1782923221993
     }
   },
   {
-    "plugin_id": "sessionizer",
-    "name": "Sessionizer",
+    "plugin_id": "herdr-floax",
+    "name": "herdr-floax",
     "version": "0.2.0",
     "min_herdr_version": "0.7.0",
-    "description": "Inspired by ThePrimeagen's tmux-sessionizer: fuzzy pickers to open projects and Git worktrees into Herdr workspaces.",
-    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github/sessionizer-66e03d1ff740/herdr-plugin.toml",
-    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github/sessionizer-66e03d1ff740",
+    "description": "Toggle a floating scratch shell (sized popup) for the current workspace, à la tmux-floax.",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github/herdr-floax-0151ef56c880/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github/herdr-floax-0151ef56c880",
     "enabled": true,
     "platforms": [
+      "linux",
       "macos"
     ],
     "build": [
       {
         "command": [
-          "bun",
-          "install",
-          "--frozen-lockfile"
+          "cargo",
+          "build",
+          "--release"
         ]
       }
     ],
     "actions": [
       {
-        "id": "open",
-        "title": "Open sessionizer",
+        "id": "toggle",
+        "title": "Toggle floating pane",
+        "description": "Open, reveal, or dismiss the floating scratch shell for this workspace.",
         "command": [
-          "bun",
-          "run",
-          "src/open-pane.ts"
-        ]
-      },
-      {
-        "id": "worktree-open",
-        "title": "Open worktree",
-        "command": [
-          "bun",
-          "run",
-          "src/open-worktree-pane.ts"
+          "bash",
+          "scripts/toggle-floating.sh"
         ]
       }
     ],
     "panes": [
       {
-        "id": "sessionizer",
-        "title": "Sessionizer",
-        "placement": "overlay",
+        "id": "floating",
+        "title": "⌂ floax",
+        "placement": "split",
         "command": [
-          "bun",
-          "run",
-          "src/sessionizer-pane.ts"
-        ]
-      },
-      {
-        "id": "worktree",
-        "title": "Worktree",
-        "placement": "overlay",
-        "command": [
-          "bun",
-          "run",
-          "src/worktree-pane.ts"
+          "./target/release/herdr-floax"
         ]
       }
     ],
     "source": {
       "kind": "github",
-      "owner": "andrewchng",
-      "repo": "herdr-sessionizer",
-      "resolved_commit": "ab3267c81e17747af5774e8b45f7417678a1876f",
-      "managed_path": "/Users/fox/.config/herdr/plugins/github/sessionizer-66e03d1ff740",
-      "installed_unix_ms": 1782393333636
+      "owner": "Tyru5",
+      "repo": "herdr-floax",
+      "resolved_commit": "5bf869ab666c45a3a72af88c2a92b413f05f2c56",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github/herdr-floax-0151ef56c880",
+      "installed_unix_ms": 1783307624093
     }
   }
 ]

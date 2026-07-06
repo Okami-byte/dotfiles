@@ -36,7 +36,7 @@ new_cwd = "follow"
 [update]
 # Update channel used by background checks and `herdr update`.
 # Use "stable" for normal releases or "preview" for opt-in preview builds.
-# channel = "stable"
+channel = "stable"
 
 [keys]
 # Prefix key to enter prefix mode (default: "ctrl+b")
@@ -97,19 +97,19 @@ resize_mode = "prefix+R"
 navigate_workspace_up = "ctrl+k"
 navigate_workspace_down = "ctrl+j"
 
-# navigate_pane_left = "h"      # left arrow always focuses the pane to the left
-# navigate_pane_down = "j"
-# navigate_pane_up = "k"
-# navigate_pane_right = "l"     # right arrow always focuses the pane to the right
+navigate_pane_left = "h"      # left arrow always focuses the pane to the left
+navigate_pane_down = "j"
+navigate_pane_up = "k"
+navigate_pane_right = "l"     # right arrow always focuses the pane to the right
 
 # Custom commands use the same binding syntax.
 # type = "shell" runs detached in the background.
 # type = "pane" opens a temporary pane and closes it when the command exits.
-# [[keys.command]]
-# key = "prefix+alt+g"
-# type = "pane"
-# command = "lazygit"
-# description = "Opens Lazygit"
+[[keys.command]]
+key = "prefix+alt+g"
+type = "pane"
+command = "lazygit"
+description = "Opens Lazygit"
 
 # [[keys.command]]
 # key = "prefix+alt+o"
@@ -122,6 +122,19 @@ navigate_workspace_down = "ctrl+j"
 # type = "pane"
 # command = "~/scripts/zoxide_openfiles_nvim.sh"
 # description = "Find files and open into vim"
+# ~/.config/herdr/config.toml
+
+[[keys.command]]
+key = "prefix+x"
+type = "pane"
+command = "herdr plugin pane open --plugin url.fzf-picker --entrypoint url-picker"
+description = "picker center"
+
+[[keys.command]]
+key = "prefix+ctrl+k"
+type = "plugin_action"
+command = "herdr-picker-plus.open"
+description = "picker center"
 
 [[keys.command]]
 key = "prefix+y"
@@ -136,12 +149,6 @@ type = "plugin_action"
 command = "cloudmanic.herdr-plus.quick-actions"
 description = "herdr-plus: quick actions"
 
-## Plugin Herdr Plus - Projects Dir
-[[keys.command]]
-key = "prefix+ctrl+k"
-type = "plugin_action"
-command = "cloudmanic.herdr-plus.projects"
-description = "herdr-plus: projects"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
@@ -189,7 +196,7 @@ mouse_scroll_lines = 7
 
 # Ask for a tab name before creating a new tab.
 # Set false to create tabs immediately with generated names.
-prompt_new_tab_name = false
+prompt_new_tab_name = true
 
 # Show detected/reported agent labels in split pane borders when no manual pane name is set.
 show_agent_labels_on_pane_borders = true
@@ -244,7 +251,7 @@ resume_agents_on_restore = true
 # allow_nested = false
 # Experimental local Kitty graphics rendering for attached clients.
 # Requires a Kitty graphics-compatible outer terminal.
-# kitty_graphics = false
+kitty_graphics = true
 # Save recent pane screen history across full server restarts.
 pane_history = false
 # Expose the focused pane's cursor to the outer terminal so macOS input
@@ -266,3 +273,10 @@ pane_history = false
 # Maximum scrollback buffer size in bytes retained per pane terminal.
 # Matches Ghostty's default scrollback-limit behavior.
 # scrollback_limit_bytes = 10000000
+
+# herdr-floax:keybind
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "herdr-floax.toggle"
+description = "Toggle floating pane"

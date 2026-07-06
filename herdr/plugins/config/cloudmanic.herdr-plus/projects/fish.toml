@@ -1,0 +1,8 @@
+name = "Fish Config"
+description = "Open fish config (In New Workspace)"
+working_dir = "~/.config/fish"
+# tab 1
+[[tabs]]
+name = "fish"
+command = "nvim config.fish"
+

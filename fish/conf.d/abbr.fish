@@ -80,6 +80,9 @@ abbr sc "sesh clone --cmdDir ~/c (pbpaste)"
 abbr sf "source ~/.config/fish/config.fish"
 abbr sr "sesh root"
 
+# Herdr
+abbr h herdr_start
+
 # System Commands
 abbr pwdc "pwd | pbcopy"
 abbr --add - 'cd -'
