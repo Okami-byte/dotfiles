@@ -23,6 +23,7 @@ abbr bs "brew search"
 
 # Claude
 abbr ca claude
+abbr cc claude --dangerously-skip-permissions
 
 # Espanso
 abbr ee "espanso edit"
