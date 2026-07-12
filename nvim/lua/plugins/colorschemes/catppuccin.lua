@@ -12,9 +12,9 @@ local palette = {
   mauve = "#b18eab",
 }
 
--- local palette = function(value)
---   return vim.tbl_extend("force", palette, value)
--- end
+local palette = function(value)
+  return vim.tbl_extend("force", palette, value)
+end
 
 -- colorscheme == catppuccin
 return {
@@ -32,7 +32,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      flavour = "mocha", -- Latte, Frappe, Macchiato, Mocha
+      flavour = "frappe", -- Latte, Frappe, Macchiato, Mocha
       no_italic = false,
       term_colors = true,
       transparent_background = true,
@@ -50,31 +50,31 @@ return {
         types = {},
       },
       color_overrides = {
-        -- frappe = palette({
-        --   text = "#fcfcfa",
-        --   surface2 = "#535763",
-        --   surface1 = "#3a3d4b",
-        --   surface0 = "#30303b",
-        --   base = "#202027",
-        --   mantle = "#1c1d22",
-        --   crust = "#171719",
-        -- }),
-        -- latte = palette({
-        --   text = "#202027",
-        --   subtext1 = "#263168",
-        --   subtext0 = "#4c4f69",
-        --   overlay2 = "#737994",
-        --   overlay1 = "#838ba7",
-        --   base = "#fcfcfa",
-        --   mantle = "#EAEDF3",
-        --   crust = "#DCE0E8",
-        --   pink = "#EA7A95",
-        --   mauve = "#986794",
-        --   red = "#EC5E66",
-        --   peach = "#FF8459",
-        --   yellow = "#CAA75E",
-        --   green = "#87A35E",
-        -- }),
+        frappe = palette({
+          text = "#fcfcfa",
+          surface2 = "#535763",
+          surface1 = "#3a3d4b",
+          surface0 = "#30303b",
+          base = "#202027",
+          mantle = "#1c1d22",
+          crust = "#171719",
+        }),
+        latte = palette({
+          text = "#202027",
+          subtext1 = "#263168",
+          subtext0 = "#4c4f69",
+          overlay2 = "#737994",
+          overlay1 = "#838ba7",
+          base = "#fcfcfa",
+          mantle = "#EAEDF3",
+          crust = "#DCE0E8",
+          pink = "#EA7A95",
+          mauve = "#986794",
+          red = "#EC5E66",
+          peach = "#FF8459",
+          yellow = "#CAA75E",
+          green = "#87A35E",
+        }),
         mocha = {
           text = "#fcfcfa",
           surface2 = "#535763",
@@ -105,12 +105,18 @@ return {
             BlinkCmpMenuSelection = { fg = mocha.base, bg = mocha.blue },
           }
         end,
-        -- frappe = function(frappe)
-        --   return {
-        --     IblScope = { fg = frappe.none, style = { "bold" } },
-        --     BlinkCmpMenuSelection = { fg = frappe.base, bg = frappe.teal },
-        --   }
-        -- end,
+        frappe = function(frappe)
+          return {
+            IblScope = { fg = frappe.none, style = { "bold" } },
+            BlinkCmpMenuSelection = { fg = frappe.base, bg = frappe.blue },
+          }
+        end,
+        latte = function(latte)
+          return {
+            IblScope = { fg = latte.none, style = { "bold" } },
+            BlinkCmpMenuSelection = { fg = latte.base, bg = latte.green },
+          }
+        end,
       },
     },
   },
