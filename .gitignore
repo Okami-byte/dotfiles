@@ -9,3 +9,9 @@
 
 # Ignore mpv cache files
 mpv/cache/
+
+# Ignore herdr auto-generated cache files
+herdr/release-notes.json
+
+# Ignore herdr plugin installer temporary directories
+herdr/plugins/.tmp-install-*/
