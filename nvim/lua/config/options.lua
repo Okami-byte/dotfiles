@@ -42,7 +42,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
 
 -- line numbers
-opt.relativenumber = false -- show relative line numbers
+opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
