@@ -165,7 +165,7 @@ local palettes = {
 	["kopicat"] = {
 		bar = {
 			background = function(tpf, f)
-				return f(0x313244, tpf)
+				return f(0x202027, tpf)
 			end,
 			border = function(tpf, f)
 				return f(0x45475a, tpf)
@@ -178,21 +178,21 @@ local palettes = {
 		},
 		zone = {
 			background = function(tpf, f)
-				return f(0x313244, tpf - 50)
+				return f(0x30303b, tpf - 50)
 			end,
 			border = function(tpf, f)
-				return f(0x45475a, tpf - 20)
+				return f(0x3a3d4b, tpf - 20)
 			end,
-			overlay = 0xff585b70,
+			overlay = 0xff535763,
 		},
 		colors = {
-			red = 0xfff38ba8,
-			orange = 0xffff8459,
-			yellow = 0xffcaa75e,
-			blue = 0xff89b4fa,
-			cyan = 0xff87a35e,
-			purple = 0xff986794,
-			black = 0xff11111b,
+			red = 0xffff657a,
+			orange = 0xffff9b5e,
+			yellow = 0xffeccc81,
+			blue = 0xff5d81ab,
+			cyan = 0xff9cd1bb,
+			purple = 0xffb18eab,
+			black = 0xff171719,
 		},
 	},
 
