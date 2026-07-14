@@ -368,5 +368,202 @@
       "managed_path": "/Users/fox/.config/herdr/plugins/github/herdr-floax-0151ef56c880",
       "installed_unix_ms": 1783423985277
     }
+  },
+  {
+    "plugin_id": "aarsh21.tab-title",
+    "name": "Tab Title",
+    "version": "0.1.6",
+    "min_herdr_version": "0.7.3",
+    "description": "Automatic tmux-like Herdr tab titles from the focused pane's process or directory",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github/aarsh21.tab-title-e49028775f6d/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github/aarsh21.tab-title-e49028775f6d",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "sh",
+          "scripts/install-binary.sh"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "start",
+        "title": "Start tab title watcher",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "start"
+        ]
+      },
+      {
+        "id": "status",
+        "title": "Show tab title watcher status",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "status"
+        ]
+      },
+      {
+        "id": "stop",
+        "title": "Stop tab title watcher",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "stop"
+        ]
+      },
+      {
+        "id": "sync",
+        "title": "Sync tab titles once",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "sync"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.created",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "autostart"
+        ]
+      },
+      {
+        "on": "pane.exited",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "autostart"
+        ]
+      },
+      {
+        "on": "pane.focused",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "autostart"
+        ]
+      },
+      {
+        "on": "pane.moved",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "autostart"
+        ]
+      },
+      {
+        "on": "tab.created",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "autostart"
+        ]
+      },
+      {
+        "on": "tab.focused",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "autostart"
+        ]
+      },
+      {
+        "on": "tab.moved",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "autostart"
+        ]
+      },
+      {
+        "on": "workspace.created",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "autostart"
+        ]
+      },
+      {
+        "on": "workspace.focused",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "bin/herdr-tab-title",
+          "autostart"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "aarsh21",
+      "repo": "herdr-tab-title",
+      "resolved_commit": "2e85b286035803fb4cd1befb94b66111dad2cf1c",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github/aarsh21.tab-title-e49028775f6d",
+      "installed_unix_ms": 1783866440912
+    }
   }
 ]
