@@ -216,15 +216,10 @@ local function yabaiSpaceChange(item)
 	end
 end
 
-local function yabaiClick(item, space_popup)
+local function yabaiClick(item)
 	return function(env)
-		if env.BUTTON == "other" then
-			space_popup:set({ background = { image = "space." .. env.SID } })
-			item:set({ popup = { drawing = "toggle" } })
-		else
-			local op = (env.BUTTON == "right") and "--destroy" or "--focus"
-			sbar.exec("yabai -m space " .. op .. " " .. env.SID)
-		end
+		local op = (env.BUTTON == "right") and "--destroy" or "--focus"
+		sbar.exec("yabai -m space " .. op .. " " .. env.SID)
 	end
 end
 
@@ -251,26 +246,10 @@ local function loadYabaiSpaces(zones)
 		mod.items[i] = item
 		zones.brackets.spaces[i] = item
 
-		local space_popup = sbar.add("item", {
-			position = "popup." .. item.name,
-			padding_left = 5,
-			padding_right = 0,
-			background = {
-				drawing = true,
-				image = {
-					corner_radius = 9,
-					scale = 0.10,
-				},
-			},
-		})
-
 		item:subscribe("space_change", yabaiSpaceChange(item))
 		item:subscribe("space_windows_change", yabaiWindowChange(item, i))
-		item:subscribe("mouse.clicked", yabaiClick(item, space_popup))
+		item:subscribe("mouse.clicked", yabaiClick(item))
 		item:subscribe("mouse.entered", yabaiMouseHover(item))
-		item:subscribe("mouse.exited", function(_)
-			item:set({ popup = { drawing = false } })
-		end)
 	end
 
 	mod.items["separator"] = sbar.add("item", mod.properties.separator)
