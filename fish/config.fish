@@ -82,10 +82,6 @@ end
 
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 set fzf_diff_highlighter delta --paging=never --width=20
-fzf_configure_bindings --directory=ctrl-f
-fzf_configure_bindings --git_log=ctrl-alt-l
-fzf_configure_bindings --git_status=ctrl-alt-s
-fzf_configure_bindings --processes=ctrl-alt-p
 
 # --- Functions ---
 
