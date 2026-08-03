@@ -12,14 +12,30 @@
 #:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
 blacklist = ["scratch"]
 
-# Introduces a caching layer in order to speed up load times
-cache = false
+cache = true
+separator_aware = true
+dir_length = 2
+
+[dashboard]
+title = "My Dashboard"
+
+[[dashboard.sections]]
+type = "sessions"
+title = "Sessions"
+width = 0.4
+row = 0
+groups = [{ name = "Nutiliti", patterns = ["~/c/nu/w*"] }]
 
 # Tui
 [tui]
-prompt = "> "
+prompt = "󰑃  "
 placeholder = "Filter sessions... "
 show_icons = true
+show_windows = true
+preview = true
+preview_width = 40
+preview_min_width = 80
+preview_border = "double"   # "thick" | "double" | "none"
 
 # Makes it aware of the separators
 separator_aware = true
@@ -27,44 +43,48 @@ separator_aware = true
 # default
 
 [default_session]
-startup_command = "la"
+startup_command = "nvim"
 startup_command_ignore_dirs = ["~/repos", "~/.config"]
 preview_command = "eza --all --git --icons --color=always {}"
 
 # common
 
 [[session]]
-name = "notes 󱞁 "
+name = "notes"
+icon = "󱞁 "
 path = "~/Notes"
-startup_command = "nvim "
 
 [[session]]
-name = "python-dev 󰌠 "
+name = "python projects"
+icon = "󰌠 "
 path = "~/Developer/Projects/Python"
-startup_command = "nvim "
 
 [[session]]
-name = "videos 󰗃 "
+name = "videos"
+icon = "󰗃 "
 path = "~/Videos"
 startup_command = "yazi"
 
 [[session]]
-name = "developer 󰅴 "
+name = "developer"
+icon = "󰅴 "
 path = "~/Developer/Projects"
-startup_command = "la"
 
 [[session]]
-name = "claude 󱙺 "
+name = "claude"
+icon = "󱙺 "
 path = "~/.claude"
 startup_command = "claude"
 
 [[session]]
-name = "downloads 󱃩 "
+name = "downloads"
+icon = "󱃩 "
 path = "~/Downloads"
 startup_command = "yazi"
 
 [[session]]
-name = "work 󱌢"
+name = "work"
+icon = "󱌢 "
 path = "~/Developer/WorkTools/"
 startup_command = "la"
 preview_command = "bat --style=snip --color=always"
@@ -84,25 +104,30 @@ startup_script = "la"
 
 [[session]]
 name = "dotfiles"
+icon = " "
 path = "~/.dotfiles"
 
 [[session]]
 name = "wezterm config"
+icon = " "
 path = "~/.dotfiles/wezterm"
 startup_command = "nvim wezterm.lua"
 
 [[session]]
 name = "fish config"
+icon = " "
 path = "~/.dotfiles/fish"
 preview_command = "bat --language=fish --style=snip --color=always ~/.dotfiles/fish/config.fish"
 
 [[session]]
 name = "kitty config"
+icon = " "
 path = "~/.dotfiles/kitty"
 startup_command = "nvim kitty.conf"
 
 [[session]]
 name = "neovim config"
+icon = " "
 path = "~/.dotfiles/nvim"
 
 [[session]]
@@ -111,12 +136,14 @@ path = "~/.dotfiles/sketchybar"
 
 [[session]]
 name = "sesh config"
+icon = "⚡"
 path = "~/.config/sesh"
 startup_command = "nvim sesh.toml"
 preview_command = "bat --language=toml --style=snip --color=always ~/.config/sesh/sesh.toml"
 
 [[session]]
 name = "tmux config"
+icon = " "
 path = "~/.dotfiles/tmux"
 startup_command = "nvim tmux.conf"
 preview_command = "bat --language=bash --style=snip --color=always ~/.dotfiles/tmux/tmux.conf"
@@ -128,21 +155,25 @@ startup_command = "nvim yazi.toml"
 
 [[session]]
 name = "ghostty config"
+icon = " "
 path = "~/.dotfiles/ghostty"
 startup_command = "nvim config"
 
 [[session]]
 name = "karabiner elements config"
+icon = "󰌓 "
 path = "~/.dotfiles/karabiner"
 
 [[session]]
 name = "yabai config"
+icon = "󰚀 "
 path = "~/.dotfiles/yabai"
 startup_command = "nvim yabairc"
 preview_command = "bat --style=snip --color=always ~/.dotfiles/yabai/yabairc"
 
 [[session]]
 name = "skhd config"
+icon = "󰚀 "
 path = "~/.dotfiles/skhd"
 startup_command = "nvim skhdrc"
 preview_command = "bat --style=snip --color=always ~/.dotfiles/skhd/skhdrc"
