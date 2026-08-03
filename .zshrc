@@ -1,6 +1,6 @@
 # Starship ----------------------------------------
 eval "$(starship init zsh)"
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export STARSHIP_CONFIG=~/.config/starship.toml
 
 # Install Homebrew -------------------------------
 if [[ -f "/opt/homebrew/bin/brew" ]] then
@@ -22,8 +22,10 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
+# zinit light zsh-users/zsh-completions
+# zinit light zsh-users/zsh-autosuggestions
+zinit ice wait"0" lucid depth=1
+zinit light Giammarco-Ferranti/deja
 zinit light Aloxaf/fzf-tab
 zinit light jeffreytse/zsh-vi-mode
 zinit load atuinsh/atuin
@@ -261,3 +263,7 @@ chruby ruby-3.4.1
 # eval "$(atuin init zsh)"
 
 export PATH=$PATH:/Users/fox/.spicetify
+eval "$(deja init zsh)"
+
+fpath=(/Users/fox/.zsh/completions $fpath)
+autoload -Uz compinit && compinit
