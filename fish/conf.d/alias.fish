@@ -30,9 +30,6 @@ alias fabric='fabric-ai'
 alias ip='ip -color=always'
 alias cd='z'
 
-# Pi stuff
-alias q="pi --model claude-haiku-4-5 -p"
-
 # Dirs
 alias ..="cd .."
 alias ...="cd ../.."

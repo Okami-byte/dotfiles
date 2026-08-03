@@ -75,7 +75,8 @@ abbr -a nvp nvim +Man!
 abbr -a lvim "NVIM_APPNAME=nvim-nightly nvim "
 
 # Sesh
-abbr s sesh_start
+# abbr s sesh_start
+abbr s "sesh picker -idH"
 abbr s. "sesh connect ."
 abbr sc "sesh clone --cmdDir ~/c (pbpaste)"
 abbr sf "source ~/.config/fish/config.fish"
