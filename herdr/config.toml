@@ -108,26 +108,13 @@ navigate_pane_right = "l"     # right arrow always focuses the pane to the right
 # type = "pane" opens a temporary pane and closes it when the command exits.
 [[keys.command]]
 key = "prefix+alt+g"
-type = "pane"
+type = "popup"
 command = "lazygit"
 description = "Opens Lazygit"
 
-# [[keys.command]]
-# key = "prefix+alt+o"
-# type = "pane"
-# command = "~/scripts/fzf_listoldfiles.sh"
-# description = "List old files via fzf"
-
-# [[keys.command]]
-# key = "prefix+t"
-# type = "pane"
-# command = "~/scripts/zoxide_openfiles_nvim.sh"
-# description = "Find files and open into vim"
-# ~/.config/herdr/config.toml
-
 [[keys.command]]
 key = "prefix+x"
-type = "pane"
+type = "popup"
 command = "herdr plugin pane open --plugin url.fzf-picker --entrypoint url-picker"
 description = "picker center"
 
@@ -139,7 +126,7 @@ description = "picker center"
 
 [[keys.command]]
 key = "prefix+y"
-type = "pane"
+type = "popup"
 command = "yazi"
 description = "Opens Yazi"
 
