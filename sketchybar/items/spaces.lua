@@ -176,7 +176,7 @@ local function yabaiWindowChange(item, space_index)
 			sequencedAnimation(item, "tanh", 15, {
 				label = { string = icon_strip },
 			}, {
-				label = { width = "dynamic" },
+				label = { width = (not item.state.selected) and "dynamic" or 0 },
 			}, nil, true)
 
 			if not item.state.selected then
