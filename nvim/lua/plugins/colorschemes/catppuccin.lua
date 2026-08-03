@@ -32,7 +32,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      flavour = "frappe", -- Latte, Frappe, Macchiato, Mocha
+      flavour = "mocha", -- Latte, Frappe, Macchiato, Mocha
       no_italic = false,
       term_colors = true,
       transparent_background = true,
