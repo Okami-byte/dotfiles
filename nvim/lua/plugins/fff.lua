@@ -52,11 +52,12 @@ return {
       desc = "Live fffuzy grep",
     },
     {
-      "fc",
+      "fw",
       function()
-        require("fff").live_grep({ query = vim.fn.expand("<cword>") })
+        require("fff").live_grep_under_cursor()
       end,
-      desc = "Search current word",
+      mode = { "n", "x" },
+      desc = "Search current word / selection",
     },
   },
 }
