@@ -34,6 +34,9 @@ config = fetchConfig(os.getenv("SKETCHYBAR_CONFIG") or "./config.lua", { -- Look
 	cpu_update_freq = 2,
 	perfbc = true, -- Allow command bundling for improved performance
 	git_key = nil,
+	git_api_url = "https://api.github.com", -- override for GHE/homelab, e.g. "https://git.home.lab/api/v3"
+	git_web_url = "https://github.com", -- override to match git_api_url's host for self-hosted instances
+	git_pr_query = "is:pr is:open author:@me", -- GitHub search qualifiers, see docs.github.com/search-syntax
 	display_groups = {},
 	execs = {}, -- Overrides for executables
 })
