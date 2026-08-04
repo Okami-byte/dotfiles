@@ -122,10 +122,10 @@ config = {
 
 	-- For example, changing the color scheme:
 	-- color_scheme = "Catppuccin Frappé (Gogh)",
-	color_scheme = "Catppuccin Mocha (Gogh)",
+	-- color_scheme = "Catppuccin Mocha (Gogh)",
 	-- color_scheme = "Catppuccin Latte (Gogh)",
 	-- color_scheme = "Rosé Pine Moon (Gogh)",
-	-- color_scheme = "Rosé Pine (Gogh)",
+	color_scheme = "Rosé Pine (Gogh)",
 
 	-- Removes the macos bar at the top with the 3 buttons
 	window_decorations = "RESIZE",
