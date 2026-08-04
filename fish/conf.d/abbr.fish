@@ -21,9 +21,13 @@ abbr blr "brew leaves --installed-on-request"
 abbr blp "brew leaves --installed-as-dependency"
 abbr bs "brew search"
 
+# - - - - - AI - - - - - 
 # Claude
 abbr ca claude
 abbr cc claude --dangerously-skip-permissions
+
+# Oh My Pi
+abbr o omp
 
 # Espanso
 abbr ee "espanso edit"
