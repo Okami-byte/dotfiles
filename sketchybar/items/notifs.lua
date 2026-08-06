@@ -5,7 +5,7 @@ function mod.setup(icons, palette)
 	mod.properties = {
 		position = "right",
 
-		update_freq = 1800,
+		update_freq = 900,
 
 		icon = {
 			color = palette.colors.blue,
