@@ -26,11 +26,11 @@ return {
       },
       {
         name = "it",
-        path = "~/Notes/02 - Areas/IT",
+        path = "~/Notes/02 - Areas/DevOps",
       },
       {
-        name = "professional",
-        path = "~/Notes/02 - Areas/Professional",
+        name = "career",
+        path = "~/Notes/02 - Areas/Career",
       },
       {
         name = "spirituality",
