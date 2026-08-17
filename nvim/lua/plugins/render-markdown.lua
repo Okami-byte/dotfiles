@@ -120,7 +120,7 @@ return {
         enabled = true,
         comment = {
           -- Turn on / off HTML comment concealing
-          conceal = true,
+          conceal = false,
         },
       },
       on = {
@@ -535,6 +535,7 @@ return {
           researchgate = { pattern = "researchgate%.net", icon = "󰙨 " },
           apple = { pattern = "apple%.com", icon = " " },
           discord = { pattern = "discord%.com", icon = "󰙯 " },
+          forgejo = { pattern = "forgejo%.com", icon = "󰊢 " },
           github = { pattern = "github%.com", icon = "󰊤 " },
           gitlab = { pattern = "gitlab%.com", icon = "󰮠 " },
           google = { pattern = "google%.com", icon = "󰊭 " },
