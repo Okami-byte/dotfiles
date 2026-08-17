@@ -26,12 +26,12 @@ $git_metrics\
 
 right_format = """$aws$python$docker_context$terraform"""
 
-palette = "rose_pine"
+palette = "catppuccin_mocha"
 
 [character]
 disabled = false
-# success_symbol = "[ ](bold fg:text)"
-success_symbol = "[󰌪 ](bold fg:green)"
+success_symbol = "[ ](bold fg:text)"
+# success_symbol = "[󰌪 ](bold fg:green)"
 error_symbol = "[✘](red bold)"
 vimcmd_symbol = "[: ](bold fg:yellow)"
 vimcmd_replace_one_symbol = '[󰜉 ](bold fg:maroon)'
