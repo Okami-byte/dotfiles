@@ -243,6 +243,7 @@ return {
 	["mpv"] = ":mpv:",
 	["Live"] = ":ableton:",
 	["Logic Pro"] = ":logicpro:",
+	["Jellium Desktop"] = ":jellyfin:",
 
 	-- Network
 	-- TODO 目前没有:clash:，先用着kiro的icon

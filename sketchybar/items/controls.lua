@@ -5,8 +5,8 @@ function mod.setup(icons, palette)
 	mod.properties = {
 		alias = {
 			position = "right",
-			padding_left = -4,
-			padding_right = -4,
+			padding_left = 3,
+			padding_right = 4,
 
 			icon = { drawing = false },
 			label = { drawing = false },

@@ -124,7 +124,7 @@ function mod.show(bool)
 
 	if config.window_manager == "yabai" then
 		for i = 1, mod.space_count do
-			sequencedAnimation(mod.items[i], "tanh", 30, nil, {
+			sequencedAnimation(mod.items[i], "tanh", 30, bool and {drawing = true } or nil, {
 				width = bool and "dynamic" or 0,
 				label = {
 					width = (bool and mod.items[i].state.appc > 0 and not mod.items[i].state.selected) and "dynamic"
@@ -140,9 +140,7 @@ function mod.show(bool)
 				sequencedAnimation(item, "tanh", 30, nil, {
 					width = bool and "dynamic" or 0,
 					label = { width = (bool and item.state.appc > 0 and not item.state.selected) and "dynamic" or 0 },
-				}, {
-					drawing = bool,
-				}, true)
+				}, not bool and { drawing = false } or nil, true)
 			end
 		end
 	end
