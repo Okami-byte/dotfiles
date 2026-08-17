@@ -11,3 +11,6 @@ if [[ $(ps --no-header --pid=$PPID --format=comm) != "fish" && -z ${BASH_EXECUTI
 fi
 
 eval "$(starship init bash)"
+
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init bash)"
