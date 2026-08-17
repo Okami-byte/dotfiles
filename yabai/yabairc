@@ -67,6 +67,7 @@ yabai -m rule --add app="^Be Focused$" manage=off
 yabai -m rule --add app="^Time Machine$" manage=off
 yabai -m rule --add app="^DaisyDisk$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^Voice Memos$" manage=off
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
 yabai -m rule --add app="^FaceTime$" manage=off
 yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
@@ -82,6 +83,8 @@ yabai -m rule --add app="^Spotify$" scratchpad=spotify grid=5:5:3:0:2:2
 
 # Add signal to make yabai focus the other window when I close one
 yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus recent || yabai -m window --focus first"
+# Add signal to focus window when I change spaces vs having to move the mouse once space is focused
+yabai -m signal --add event=space_changed action="yabai -m window --focus first"
 
 # S K E T C H Y B A R  E V E N T S
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus &> /dev/null"
