@@ -267,3 +267,5 @@ eval "$(deja init zsh)"
 
 fpath=(/Users/fox/.zsh/completions $fpath)
 autoload -Uz compinit && compinit
+
+. "$HOME/.atuin/bin/env"
