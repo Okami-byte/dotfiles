@@ -50,13 +50,13 @@ preview_command = "eza --all --git --icons --color=always {}"
 # common
 
 [[session]]
-name = "notes"
-icon = "󱞁 "
+name = "notes 󱞁 "
+# icon = "󱞁 "
 path = "~/Notes"
 
 [[session]]
-name = "python projects"
-icon = "󰌠 "
+name = "python projects 󰌠 "
+# icon = "󰌠 "
 path = "~/Developer/Projects/Python"
 
 [[session]]
@@ -66,8 +66,8 @@ path = "~/Videos"
 startup_command = "yazi"
 
 [[session]]
-name = "developer"
-icon = "󰅴 "
+name = "developer 󰅴 "
+# icon = "󰅴 "
 path = "~/Developer/Projects"
 
 [[session]]
