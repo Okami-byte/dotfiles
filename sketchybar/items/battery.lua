@@ -52,9 +52,9 @@ local function update(item, icons, palette)
 						elseif percentage < 60 then
 							properties.icon.color = palette.colors.yellow
 						elseif percentage < 90 then
-							properties.icon.color = palette.colors.cyan
-						else
 							properties.icon.color = palette.colors.blue
+						else
+							properties.icon.color = palette.colors.cyan
 						end
 					else
 						properties.icon.color = palette.text.subtle

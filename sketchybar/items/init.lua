@@ -53,6 +53,7 @@ function mod.setup(bar, zones, icons, palette)
 	mod.date = require("items.date").setup(palette)
 
 	mod.mic = require("items.mic").setup(mod, icons, palette)
+	mod.video = require("items.video").setup(mod, icons, palette)
 	mod.sound = require("items.sound").setup(mod, icons, palette)
 
 	mod.battery = require("items.battery").setup(icons, palette)
@@ -64,8 +65,8 @@ function mod.setup(bar, zones, icons, palette)
 	mod.notifs = require("items.notifs").setup(icons, palette)
 
 	mod.separator = require("items.separator").setup(zones, icons, palette)
-	mod.player    = require("items.player")   .setup(bar, icons, palette)
-	mod.cpu       = require("items.cpu")      .setup(bar, palette)
+	mod.player = require("items.player").setup(bar, icons, palette)
+	mod.cpu = require("items.cpu").setup(bar, palette)
 
 	return mod
 end
@@ -82,6 +83,7 @@ function mod.load(zones, icons, palette)
 	mod.controls.load() --.control_center:set({ alias = { color = palette.colors.orange }})
 
 	mod.mic.load(icons, palette).item:set({ padding_left = mod.config.margin - 4 })
+	mod.video.load()
 	mod.sound.load(mod, icons, palette).item:set({ padding_right = 4 })
 
 	mod.battery.load(icons, palette).item:set({ padding_left = 0 })
@@ -124,6 +126,7 @@ function mod.load(zones, icons, palette)
 
 	zones.brackets.dynamic_brackets[2] = {
 		mod.mic.item,
+		mod.video.item,
 		mod.sound.slider,
 		mod.sound.item,
 	}
@@ -150,4 +153,3 @@ function mod.load(zones, icons, palette)
 end
 
 return mod
-

@@ -100,15 +100,17 @@ local function loadStream(event_name)
       #echo Killing PIDs: "$(pgrep -P $lastpid)" "$lastpid" >&2
       kill -9 $(pgrep -P $lastpid) $lastpid
     fi;
-    
+
     mkdir -p ${TMPDIR}/sketchybar;
-    echo $$ > ${TMPDIR}/sketchybar/pids;
-    
+
+    (
     ]] .. execs.media_control .. [[ stream | \
     while IFS= read -r line; do 
       sketchybar --trigger ]] .. event_name .. [[ "INFO=$line"
     done
-    ]], function(result, exit_code)
+    ) > /dev/null 2>&1 &
+    echo $! > ${TMPDIR}/sketchybar/pids;
+	]], function(result, exit_code)
 		log("media-stream", "Exited with code: " .. exit_code)
 	end)
 end
