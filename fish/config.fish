@@ -1,4 +1,3 @@
-#
 # ███████╗██╗███████╗██╗  ██╗
 # ██╔════╝██║██╔════╝██║  ██║
 # █████╗  ██║███████╗███████║
@@ -12,8 +11,8 @@
 # --- Bootstrap ---
 
 eval (/opt/homebrew/bin/brew shellenv)
-# command -q zoxide; and zoxide init fish | source # 'ajeetdsouza/zoxide'
-zoxide init fish | source
+command -q zoxide; and zoxide init fish | source # 'ajeetdsouza/zoxide'
+# zoxide init fish | source
 
 if not status is-interactive
     return 0
@@ -55,12 +54,12 @@ set fish_cursor_replace_one underscore
 
 # --- Paths ---
 
+fish_add_path --path XDG_CONFIG_HOME=$HOME/.config/
 fish_add_path $HOME/Developer/scripts
 fish_add_path --path /opt/homebrew/opt/trash/bin
 fish_add_path --path /opt/homebrew/opt/python@3.13/libexec/bin
 fish_add_path --path /Users/fox/.local/bin
 fish_add_path --path /Users/fox/.cargo/bin
-fish_add_path --path XDG_CONFIG_HOME=$HOME/.config/
 fish_add_path --path /opt/homebrew/bin/bun
 
 # --- Completions ---
