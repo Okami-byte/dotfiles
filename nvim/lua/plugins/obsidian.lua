@@ -59,7 +59,7 @@ return {
     -- Where to put new notes. Valid options are
     --  * "current_dir" - put new notes in same directory as the current buffer.
     --  * "notes_subdir" - put new notes in the default notes subdirectory.
-    new_notes_location = "~/Notes/00 - Inbox",
+    new_notes_location = "notes_subdir",
 
     note_id_func = function(title)
       if not title or title == "" then
@@ -109,7 +109,7 @@ return {
 
     -- Optional, for templates (see below).
     templates = {
-      folder = "/99 - Meta/templates/",
+      folder = "/Users/fox/Notes/99 - Meta/templates",
       date_format = "%Y-%m-%d",
       time_format = "%H:%M",
       -- A map for custom variables, the key should be the variable and the value a function
@@ -151,8 +151,8 @@ return {
     },
 
     picker = {
-      -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
-      name = "snacks.pick",
+      -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.picker'.
+      name = "snacks.picker",
       -- Optional, configure key mappings for the picker. These are the defaults.
       -- Not all pickers support all mappings.
       -- note_mappings = {

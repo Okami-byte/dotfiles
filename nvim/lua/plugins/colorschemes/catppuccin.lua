@@ -32,7 +32,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      flavour = "mocha", -- Latte, Frappe, Macchiato, Mocha
+      flavour = "frappe", -- Latte, Frappe, Macchiato, Mocha
       no_italic = false,
       term_colors = true,
       transparent_background = true,
@@ -108,7 +108,7 @@ return {
         frappe = function(frappe)
           return {
             IblScope = { fg = frappe.none, style = { "bold" } },
-            BlinkCmpMenuSelection = { fg = frappe.base, bg = frappe.blue },
+            BlinkCmpMenuSelection = { fg = frappe.base, bg = frappe.red },
           }
         end,
         latte = function(latte)

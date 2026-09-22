@@ -12,7 +12,7 @@ return {
         "lua_ls",
         "emmet_ls",
         "pyrefly",
-        "eslint",
+        "biome",
       },
     },
     dependencies = {
@@ -37,7 +37,7 @@ return {
           "prettier", -- prettier formatter
           "stylua", -- lua formatter
           "ruff", -- python formatter
-          "eslint_d",
+          "biome",
         },
       },
       dependencies = {

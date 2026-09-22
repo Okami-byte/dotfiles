@@ -1,5 +1,6 @@
 return {
   "github/copilot.vim",
+  enabled = false,
   config = false,
   keymaps = {
     accept = "<C-e>", --FIX: fix keymap for acceptance as this doesn't work currently

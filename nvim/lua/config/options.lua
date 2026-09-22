@@ -1,8 +1,3 @@
-local opt = vim.opt -- for conciseness
-
--- Python debugging
-vim.g.python3_host_prog = "~/.virtualenvs/debugpy/bin/python"
-
 -- Function to get the full path and replace the home directory with ~
 local function get_winbar_path()
   local full_path = vim.fn.expand("%:p")
@@ -42,46 +37,46 @@ vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
 vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
 
 -- line numbers
-opt.relativenumber = true -- show relative line numbers
-opt.number = true -- shows absolute line number on cursor line (when relative number is on)
+vim.opt.relativenumber = true -- show relative line numbers
+vim.opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 -- tabs & indentation
-opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
-opt.shiftwidth = 2 -- 2 spaces for indent width
-opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting new one
+vim.opt.tabstop = 2 -- 2 spaces for tabs (prettier default)
+vim.opt.shiftwidth = 2 -- 2 spaces for indent width
+vim.opt.expandtab = true -- expand tab to spaces
+vim.opt.autoindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
-opt.wrap = true -- enable line wrapping
+vim.opt.wrap = true -- enable line wrapping
 vim.opt.textwidth = 80 -- wrap lines at 80 characters
 
 -- search settings
-opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+vim.opt.ignorecase = true -- ignore case when searching
+vim.opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
+vim.opt.inccommand = "split"
 
 -- cursor line
-opt.cursorline = true -- highlight the current cursor line
+vim.opt.cursorline = true -- highlight the current cursor line
 
 -- appearance
 
 -- turn on termguicolors for nightfly colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
-opt.termguicolors = true
--- opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-opt.signcolumn = "number" -- show sign column so that text doesn't shift
+vim.opt.termguicolors = true
+vim.opt.signcolumn = "number" -- show sign column so that text doesn't shift
 
 -- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
+vim.opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 -- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 -- split windows
-opt.splitright = true -- split vertical window to the right
-opt.splitbelow = true -- split horizontal window to the bottom
+vim.opt.splitright = true -- split vertical window to the right
+vim.opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
-opt.swapfile = false
+vim.opt.swapfile = false
 
 -- turn conceallevel to 1
-opt.conceallevel = 2
+vim.opt.conceallevel = 2
