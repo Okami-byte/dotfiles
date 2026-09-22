@@ -51,12 +51,10 @@ preview_command = "eza --all --git --icons --color=always {}"
 
 [[session]]
 name = "notes 󱞁 "
-# icon = "󱞁 "
 path = "~/Notes"
 
 [[session]]
 name = "python projects 󰌠 "
-# icon = "󰌠 "
 path = "~/Developer/Projects/Python"
 
 [[session]]
@@ -84,7 +82,6 @@ startup_command = "yazi"
 
 [[session]]
 name = "work"
-icon = "󱌢 "
 path = "~/Developer/WorkTools/"
 startup_command = "la"
 preview_command = "bat --style=snip --color=always"
@@ -104,30 +101,27 @@ startup_script = "la"
 
 [[session]]
 name = "dotfiles"
-icon = " "
 path = "~/.dotfiles"
 
 [[session]]
-name = "wezterm config"
-icon = " "
+name = "wezterm config  "
 path = "~/.dotfiles/wezterm"
 startup_command = "nvim wezterm.lua"
 
 [[session]]
 name = "fish config"
-icon = " "
+# icon = " "
 path = "~/.dotfiles/fish"
 preview_command = "bat --language=fish --style=snip --color=always ~/.dotfiles/fish/config.fish"
 
 [[session]]
-name = "kitty config"
-icon = " "
+name = "kitty config   "
 path = "~/.dotfiles/kitty"
 startup_command = "nvim kitty.conf"
 
 [[session]]
 name = "neovim config"
-icon = " "
+# icon = " "
 path = "~/.dotfiles/nvim"
 
 [[session]]
@@ -142,8 +136,7 @@ startup_command = "nvim sesh.toml"
 preview_command = "bat --language=toml --style=snip --color=always ~/.config/sesh/sesh.toml"
 
 [[session]]
-name = "tmux config"
-icon = " "
+name = "tmux config  "
 path = "~/.dotfiles/tmux"
 startup_command = "nvim tmux.conf"
 preview_command = "bat --language=bash --style=snip --color=always ~/.dotfiles/tmux/tmux.conf"
@@ -154,8 +147,7 @@ path = "~/.dotfiles/yazi"
 startup_command = "nvim yazi.toml"
 
 [[session]]
-name = "ghostty config"
-icon = " "
+name = "ghostty config  "
 path = "~/.dotfiles/ghostty"
 startup_command = "nvim config"
 
@@ -165,15 +157,13 @@ icon = "󰌓 "
 path = "~/.dotfiles/karabiner"
 
 [[session]]
-name = "yabai config"
-icon = "󰚀 "
+name = "yabai config 󰚀 "
 path = "~/.dotfiles/yabai"
 startup_command = "nvim yabairc"
 preview_command = "bat --style=snip --color=always ~/.dotfiles/yabai/yabairc"
 
 [[session]]
-name = "skhd config"
-icon = "󰚀 "
+name = "skhd config 󰚀 "
 path = "~/.dotfiles/skhd"
 startup_command = "nvim skhdrc"
 preview_command = "bat --style=snip --color=always ~/.dotfiles/skhd/skhdrc"
