@@ -122,10 +122,11 @@ config = {
 
 	-- For example, changing the color scheme:
 	-- color_scheme = "Catppuccin Frappé (Gogh)",
-	color_scheme = "Catppuccin Mocha (Gogh)",
+	-- color_scheme = "Catppuccin Mocha (Gogh)",
 	-- color_scheme = "Catppuccin Latte (Gogh)",
 	-- color_scheme = "Rosé Pine Moon (Gogh)",
-	-- color_scheme = "Rosé Pine (Gogh)",
+	color_scheme = "Rosé Pine (Gogh)",
+	-- color_scheme = 'Rosé Pine Dawn (Gogh)'
 
 	-- Removes the macos bar at the top with the 3 buttons
 	window_decorations = "RESIZE",
@@ -147,8 +148,8 @@ config = {
 	colors = {
 		-- -- Kopicat
 		-- foreground = "#CDD6F4",
-		-- background = "#1f2227",
-		background = "#111419",
+		background = "#1f2227",
+		-- background = "#111419",
 		-- background = "#0a0505",
 		-- selection_fg = "#9cd1bb",
 		-- selection_bg = "#F5E0DC",
