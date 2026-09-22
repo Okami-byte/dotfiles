@@ -26,12 +26,13 @@ $git_metrics\
 
 right_format = """$aws$python$docker_context$terraform"""
 
-palette = "catppuccin_mocha"
+palette = "kopicat"
 
 [character]
 disabled = false
-success_symbol = "[ ](bold fg:text)"
-# success_symbol = "[󰌪 ](bold fg:green)"
+# success_symbol = "[ ](bold fg:text)"
+# success_symbol = "[􀥲 ](bold fg:green)"
+success_symbol = "[󰴈 ](bold fg:rose_pink)"
 error_symbol = "[✘](red bold)"
 vimcmd_symbol = "[: ](bold fg:yellow)"
 vimcmd_replace_one_symbol = '[󰜉 ](bold fg:maroon)'
@@ -154,7 +155,7 @@ disabled = false
 # Display OS symbol at the very begining
 [os]
 format = '[$symbol](bold grey)'
-disabled = true 
+disabled = true
 
 [aws]
 disabled = true
@@ -163,15 +164,15 @@ format = "[ $symbol( $context) ]($style)"
 
 [terraform]
 symbol = " "
-format = "[ $symbol( $context) ]($style)"
+format = "[ $symbol( $context)${version} ]($style)"
 
 [python]
 symbol = '  '
-format = "[ $symbol( $context) ]($style)"
+format = "[ $symbol( $context)${version} ]($style)"
 
 [docker_context]
 symbol = " "
-format = "[ $symbol( $context) ]($style)"
+format = "[ $symbol( $context)${version} ]($style)"
 
 [kubernetes]
 symbol = '󱃾 '
