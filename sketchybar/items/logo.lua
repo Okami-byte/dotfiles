@@ -94,7 +94,7 @@ local function mouseClick(menus, spaces)
 
     elseif mod.state.show_menus then
       sbar.exec(execs.menubar .. " -s 0")
-    elseif not mod.state.show_menus then
+    elseif env.MODIFIER == "cmd" then
       sbar.exec("/System/Applications/Mission\\ Control.app/Contents/MacOS/Mission\\ Control")
     end
   end
