@@ -34,7 +34,10 @@ vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
 })
 
 -- Remove borders
-vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
+-- vim.api.nvim_set_hl(0, "FloatBorder", { link = "Normal" })
+
+-- Add borders
+vim.opt.winborder = "rounded"
 
 -- line numbers
 vim.opt.relativenumber = true -- show relative line numbers

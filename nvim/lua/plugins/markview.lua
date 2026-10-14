@@ -405,10 +405,10 @@ return {
       },
       tables = {
         enable = true,
-        strict = falsej,
+        strict = false,
 
         block_decorator = true,
-        use_virt_lines = false,
+        use_virt_lines = true,
 
         parts = {
           top = { "╭", "─", "╮", "┬" },

@@ -9,9 +9,6 @@ return {
   },
   opts = function(_, opts)
     opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
-      fuzzy = {
-        implementation = "prefer_rust",
-      },
       default = {
         "lsp",
         "path",
@@ -235,15 +232,6 @@ return {
       -- },
     }
 
-    -- opts.fuzzy = {
-    --   -- Disabling this matches the behavior of fzf
-    --   use_typo_resistance = false,
-    --   -- Frecency tracks the most recently/frequently used items and boosts the score of the item
-    --   use_frecency = true,
-    --   -- Proximity bonus boosts the score of items matching nearby words
-    --   use_proximity = false,
-    -- }
-
     opts.snippets = {
       preset = "luasnip",
     }
@@ -271,12 +259,4 @@ return {
 
     return opts
   end,
-
-  -- Experimental signature help support
-  signature = {
-    enabled = true,
-    window = {
-      border = "rounded",
-    },
-  },
 }
