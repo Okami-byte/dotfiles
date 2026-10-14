@@ -2,11 +2,20 @@
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship.toml
 
-# Install Homebrew -------------------------------
-if [[ -f "/opt/homebrew/bin/brew" ]] then
-  # If you're using macOS, you'll want this enabled
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+# Transient prompt (parity with fish's enable_transience) ----------------------------------------
+autoload -Uz add-zsh-hook add-zle-hook-widget
+
+# Starship transient prompt
+function transient-prompt-precmd {
+  # Fix ctrl+c behavior
+  TRAPINT() { transient-prompt; return $(( 128 + $1 )) }
+}
+add-zsh-hook precmd transient-prompt-precmd
+
+function transient-prompt {
+  PROMPT="$(starship module character)" RPROMPT='' zle .reset-prompt
+}
+add-zle-hook-widget zle-line-finish transient-prompt
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -20,18 +29,32 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+# Vi-mode cursor shapes (parity with fish's fish_vi_key_bindings cursor config)
+function zvm_config() {
+  ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BEAM
+  ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+  ZVM_VISUAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+}
+
 # Add in zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
-# zinit light zsh-users/zsh-completions
-# zinit light zsh-users/zsh-autosuggestions
+# zinit light zsh-users/zsh-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
 zinit ice wait"0" lucid depth=1
-zinit light Giammarco-Ferranti/deja
 zinit light Aloxaf/fzf-tab
 zinit light jeffreytse/zsh-vi-mode
 zinit load atuinsh/atuin
 
-# Load completions
-autoload -Uz compinit && compinit
+# Load completions — only re-run the (slow) security audit once a day;
+# otherwise trust the cached dump (saves ~150-200ms per startup).
+fpath=(/Users/fox/.zsh/completions $fpath)
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 zinit cdreplay -q
 
@@ -40,6 +63,9 @@ bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 # bindkey '^[w' kill-region
+
+# VI Mode!!!
+bindkey jj vi-cmd-mode
 
 # History
 HISTSIZE=5000
@@ -111,9 +137,6 @@ export SUDO_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export FZF_DEFAULT_OPS="--extended"
 
-# Python
-export PATH="${PATH}:/Users/fox/Library/Python/3.11/lib/python/site-packages"
-
 # Colored manpages
 # Use bat to view man pages
 # export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -121,52 +144,82 @@ export PATH="${PATH}:/Users/fox/Library/Python/3.11/lib/python/site-packages"
 # Use Nvim as the manpage viewer
 export MANPAGER="nvim +Man!"
 
+# PATH ----------------------------------------
+export PATH="/opt/homebrew/opt/trash/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/Developer/scripts:$PATH"
+export PATH="$HOME/.config/scripts:$PATH"
+export PATH="/Applications/Ghostty.app/Contents/MacOS:$PATH"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/fox/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
 # Aliases
 
 alias ll="eza -l --icons --git "
-alias ls="eza --color=always --grid --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias la="eza -a"
+alias ls="eza -lh --group-directories-first --git --icons=auto"
+alias la="ls -a"
 alias lt="eza --tree --level=2 --long --icons --git"
+alias lta="lt -a"
+alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
+alias py="python3"
+alias pythong="python3"
+alias tf="terraform"
+alias k="kubectl"
+alias stat="stat -x"
+alias grep="rg --color=always"
+alias fabric='fabric-ai'
+alias ip='ip -color=always'
+alias ss='ss -color=always'
 alias vimm="vim"
+alias v="$EDITOR"
 alias x="exit"
 alias gn="sudo shutdown -h now"
 alias cat="bat"
-alias z="zoxide"
 alias sv="fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim"
 alias ya="yazi"
 alias d="delta"
-alias yt="yt-dlp"
-alias f="fastfetch"
-alias sp="spotify_player"
-alias wifi="wifi-password"
+alias yt="xytz"
+alias sp="spotatui"
 alias py="python3"
 alias rm="trash"
-alias ping="ping -c 5"
+alias ping="ping -c 3"
 alias cp="cp -iv"
 alias mv="mv -iv"
-
-# Sesh
-# alias s="./.dotfiles/scripts/sesh_start"
 
 # Nmap
 alias nm="nmap -sC -sV -oN nmap-output.txt"
 
-#git aliases
+# git aliases
 
 alias ga='git add -A'
 alias gp='git push'
 alias gl='git log'
-alias gs='git status'
 alias gdiff='git diff'
 alias gdc='git diff --cached'
 alias gcm='git commit -m'
 alias gma='git commit -am'
 alias gb='git branch'
 alias gc='git checkout'
+alias gco='git checkout'
+alias gf='git fetch'
+alias gm='git merge'
+alias gs='git status'
+alias gst='git status --short'
+alias glg='git log --graph --oneline --all'
+alias glo='serie'
 alias gra='git remote add'
 alias grr='git remote rm'
 alias gpl='git pull'
 alias gcl='git clone'
+alias lg='lazygit'
 
 # Docker
 alias dco="docker compose"
@@ -181,42 +234,53 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+alias -- -='cd -'
 
-# Aerospace listing
-# def ff () {
-# aerospace list-windows --all | fzf --bind 'enter:execute(bash -c "aerospace focus --window-id {1}")+abort'
-# }
+# Brew
+alias bu="brew update"
+alias bug="brew upgrade"
+alias bo="brew outdated"
+alias bi="brew install"
+alias bic="brew install --cask"
+alias bin="brew info"
+alias binc="brew info --cask"
+alias bl="brew leaves"
+alias blr="brew leaves --installed-on-request"
+alias blp="brew leaves --installed-as-dependency"
+alias bs="brew search"
 
-# Alias for yabai window listing
-def ff() {
-  yabai -m query --windows | jq -r '.[] | "\(.id) \(.app) - \(.title)"' | \
-  fzf --bind 'enter:execute(yabai -m window --focus {1})+abort'
-}
+# AI
+alias ca="claude"
+alias cc="claude --dangerously-skip-permissions"
 
-deff s() {
-sesh connect "$(
-  sesh list --icons --hide-duplicates | fzf --no-border \
-    --ansi \
-    --list-border \
-    --no-sort --prompt '   ' \
-    --color 'list-border:6,input-border:3,preview-border:4,header-bg:-1,header-border:6' \
-    --input-border \
-    --header-border \
-    --bind 'tab:down,btab:up' \
-    --bind 'ctrl-a:change-prompt(   )+reload(sesh list --icons)' \
-    --bind 'ctrl-t:change-prompt(   )+reload(sesh list -t --icons)' \
-    --bind 'ctrl-g:change-prompt(   )+reload(sesh list -c --icons)' \
-    --bind 'ctrl-x:change-prompt(󰉋   )+reload(sesh list -z --icons)' \
-    --bind 'ctrl-f:change-prompt(󰭎   )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
-    --bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(⚡  )+reload(sesh list --icons)' \
-    --preview-window 'right:70%' \
-    --preview 'sesh preview {}'
-)"
-}
+# Oh My Pi
+alias o="omp"
 
-# VI Mode!!!
-bindkey jj vi-cmd-mode
+# Espanso
+alias ee="espanso edit"
+alias er="espanso restart"
 
+# LazyDocker
+alias ld="lazydocker"
+
+# Neovim
+alias nvp="nvim +Man!"
+
+# Herdr
+alias h="herdr_start"
+
+# System commands
+alias pwdc="pwd | pbcopy"
+
+# Tmux
+alias tn="tmux new-session -s"
+alias tl="tmux list-sessions"
+alias ta="tmux attach-session"
+
+# Sesh — zsh's richer fzf picker is retired in favor of sesh's own picker,
+# which the upstream author is actively extending with window/pane nav.
+# Revisit once sesh ships that, possibly porting a custom picker to both shells.
+alias s="sesh picker -idH"
 
 #Create a directory and cd diretctly into it
 function take {
@@ -224,48 +288,33 @@ function take {
     cd $1
 }
 
-# Drop into fish if:
-# - The parent process isn't fish.
-# - Not running a command like `zsh -c 'echo foo'`.
-# - This is the top-level shell.
-if [[ $(ps -p $PPID -o comm=) != "fish" && -z ${ZSH_EXECUTION_STRING} && ${SHLVL} == 1 ]]; then
-    # Check if this is a login shell using zsh options
-    if [[ ! -o login ]]; then
-        exec fish --login
-    else
-        exec fish
-    fi
-fi
+# # Styled sesh picker (superseded by `sesh picker -idH` above — kept for
+# # reference in case we build a custom window/pane-aware picker later)
+# deff s() {
+# sesh connect "$(
+#   sesh list --icons --hide-duplicates | fzf --no-border \
+#     --ansi \
+#     --list-border \
+#     --no-sort --prompt '   ' \
+#     --color 'list-border:6,input-border:3,preview-border:4,header-bg:-1,header-border:6' \
+#     --input-border \
+#     --header-border \
+#     --bind 'tab:down,btab:up' \
+#     --bind 'ctrl-a:change-prompt(   )+reload(sesh list --icons)' \
+#     --bind 'ctrl-t:change-prompt(   )+reload(sesh list -t --icons)' \
+#     --bind 'ctrl-g:change-prompt(   )+reload(sesh list -c --icons)' \
+#     --bind 'ctrl-x:change-prompt(󰉋   )+reload(sesh list -z --icons)' \
+#     --bind 'ctrl-f:change-prompt(󰭎   )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
+#     --bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(⚡  )+reload(sesh list --icons)' \
+#     --preview-window 'right:70%' \
+#     --preview 'sesh preview {}'
+# )"
+# }
 
 # Shell integrations  ----------------------------------------
 
+. "$HOME/.atuin/bin/env"
+
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-# Using Trash Command to replace rm
-export PATH="/opt/homebrew/opt/trash/bin:$PATH"
-
-# Set XDG config home
-export XDG_CONFIG_HOME="$HOME/.config"
-
-# Adding Python to path
-export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
-
-export PATH="/Users/fox/.local/bin:$PATH"
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
-# This is for ruby stuff that is required for github blog
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.4.1
-# eval "$(atuin init zsh)"
-
-export PATH=$PATH:/Users/fox/.spicetify
-eval "$(deja init zsh)"
-
-fpath=(/Users/fox/.zsh/completions $fpath)
-autoload -Uz compinit && compinit
-
-. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"

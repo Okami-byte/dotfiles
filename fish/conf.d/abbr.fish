@@ -49,6 +49,18 @@ abbr -a gm git merge
 abbr -a gs git status
 abbr -a gst git status --short
 abbr -a glo serie
+abbr -a gdiff git diff
+abbr -a gdc git diff --cached
+abbr -a gma git commit -am
+abbr -a gra git remote add
+abbr -a grr git remote rm
+
+# Docker
+abbr -a dco docker compose
+abbr -a dps docker ps
+abbr -a dpa docker ps -a
+abbr -a dl docker ps -l -q
+abbr -a dx docker exec -it
 
 # LazyDocker
 abbr -a ld lazydocker

@@ -15,3 +15,6 @@ herdr/release-notes.json
 
 # Ignore herdr plugin installer temporary directories
 herdr/plugins/.tmp-install-*/
+
+# Ignore fish universal variables (can contain secrets like API keys)
+fish/fish_variables
