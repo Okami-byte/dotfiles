@@ -10,14 +10,12 @@ alt - n : $HOME/.dotfiles/wezterm/open_floating_notes.sh
 alt - t : $HOME/.dotfiles/wezterm/open_scratchpad.sh
 
 # Applications
-# rcmd - return : open -n -a "wezterm"
-# rcmd - return : open -n -a "ghostty"
 rcmd - return : open -n -a "kitty"
 
 # change layout of desktop
-lctrl + alt - b : yabai -m space --layout bsp
-lctrl + alt - f : yabai -m space --layout float
-lctrl + alt - s : yabai -m space --layout stack
+# lctrl + alt - b : yabai -m space --layout bsp
+# lctrl + alt - f : yabai -m space --layout float
+# lctrl + alt - s : yabai -m space --layout stack
 
 # quick restart yabai + skhd
 lctrl + alt - r : yabai --restart-service && skhd --restart-service
@@ -39,7 +37,6 @@ cmd + alt - w : yabai -m space --destroy
 #change focus between external displays (top and bottom)
 alt - u: yabai -m display --focus north
 alt - d: yabai -m display --focus south
-
 
 # rotate layout clockwise
 alt - r : yabai -m space --rotate 270
@@ -96,8 +93,8 @@ lctrl + alt - h : yabai -m window --warp west
 lctrl + alt - l : yabai -m window --warp east
 
 # move window to display top and bottom
-# shift + alt - g : yabai -m window --display west; yabai -m display --focus north;
-# shift + alt - s : yabai -m window --display east; yabai -m display --focus south;
+# shift + alt - u : yabai -m window --display west; yabai -m display --focus north;
+# shift + alt - d : yabai -m window --display east; yabai -m display --focus south;
 
 # move window to space #
 shift + alt - 1 : yabai -m window --space 1;
