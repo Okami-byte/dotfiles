@@ -18,3 +18,11 @@ herdr/plugins/.tmp-install-*/
 
 # Ignore fish universal variables (can contain secrets like API keys)
 fish/fish_variables
+
+# Ignore superfile runtime state and config backups
+superfile/*.bak-*
+superfile/firstUseCheck
+superfile/lastCheckVersion
+superfile/toggleDotFile
+superfile/toggleFooter
+superfile/themeFileVersion
