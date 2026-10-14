@@ -35,7 +35,7 @@ show_windows = true
 preview = true
 preview_width = 40
 preview_min_width = 80
-preview_border = "double"   # "thick" | "double" | "none"
+preview_border = "thick"   # "thick" | "double" | "none"
 
 # Makes it aware of the separators
 separator_aware = true
@@ -44,7 +44,7 @@ separator_aware = true
 
 [default_session]
 startup_command = "nvim"
-startup_command_ignore_dirs = ["~/repos", "~/.config"]
+startup_command_ignore_dirs = ["~/repos", "~/.config", "/Users/fox"]
 preview_command = "eza --all --git --icons --color=always {}"
 
 # common
