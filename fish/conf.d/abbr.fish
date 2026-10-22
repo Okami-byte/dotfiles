@@ -91,11 +91,17 @@ abbr -a nvp nvim +Man!
 
 # Sesh
 # abbr s sesh_start
-abbr s "sesh picker -idH"
+abbr s "sesh picker -id"
 abbr s. "sesh connect ."
 abbr sc "sesh clone --cmdDir ~/c (pbpaste)"
 abbr sf "source ~/.config/fish/config.fish"
 abbr sr "sesh root"
+
+# Herdr Sesh (herdr-sesh plugin)
+abbr hs "hsesh picker"
+abbr hs. "hsesh connect ."
+abbr hsc "hsesh clone --cmdDir ~/c (pbpaste)"
+abbr hsr "hsesh root"
 
 # Herdr
 abbr h herdr_start
