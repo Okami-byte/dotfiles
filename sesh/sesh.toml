@@ -12,19 +12,10 @@
 #:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
 blacklist = ["scratch"]
 
-cache = true
+cache = false
 separator_aware = true
 dir_length = 2
 
-[dashboard]
-title = "My Dashboard"
-
-[[dashboard.sections]]
-type = "sessions"
-title = "Sessions"
-width = 0.4
-row = 0
-groups = [{ name = "Nutiliti", patterns = ["~/c/nu/w*"] }]
 
 # Tui
 [tui]
