@@ -1,0 +1,133 @@
+version = 1
+
+[list]
+cache = true
+blacklist = ['scratch']
+
+[naming]
+path_components = 2
+
+[picker]
+preview_mode = 'command'
+show_icons = true
+herdr_theme_inherit = true
+replace_worktree_icon = true
+show_last_workspace = true
+show_last_workspace_path = true
+prompt = '󰑃  '
+placeholder = 'Filter sessions... '
+separator_aware = true
+workspace_sort = 'workspace'
+
+[workspace_defaults]
+startup = 'nvim'
+preview = 'eza --all --git --icons --color=always {}'
+
+[[tab]]
+name = 'qc'
+startup = 'la'
+path = '~/Developer/WorkTools/lifecycle-lemur/'
+
+[[tab]]
+name = 'pxe'
+startup = 'la'
+path = '~/Developer/WorkTools/tools-master/pxe/'
+
+[[workspace]]
+name = 'notes 󱞁 '
+path = '~/Notes'
+
+[[workspace]]
+name = 'python projects 󰌠 '
+path = '~/Developer/Projects/Python'
+
+[[workspace]]
+name = 'videos'
+path = '~/Videos'
+startup = 'yazi'
+
+[[workspace]]
+name = 'developer 󰅴 '
+path = '~/Developer/Projects'
+
+[[workspace]]
+name = 'claude'
+path = '~/.claude'
+startup = 'claude'
+
+[[workspace]]
+name = 'downloads'
+path = '~/Downloads'
+startup = 'yazi'
+
+[[workspace]]
+name = 'work'
+path = '~/Developer/WorkTools/'
+startup = 'la'
+preview = 'bat --style=snip --color=always'
+tabs = ['qc', 'pxe']
+
+[[workspace]]
+name = 'dotfiles'
+path = '~/.dotfiles'
+
+[[workspace]]
+name = 'wezterm config  '
+path = '~/.dotfiles/wezterm'
+startup = 'nvim wezterm.lua'
+
+[[workspace]]
+name = 'fish config'
+path = '~/.dotfiles/fish'
+preview = 'bat --language=fish --style=snip --color=always ~/.dotfiles/fish/config.fish'
+
+[[workspace]]
+name = 'kitty config   '
+path = '~/.dotfiles/kitty'
+startup = 'nvim kitty.conf'
+
+[[workspace]]
+name = 'neovim config'
+path = '~/.dotfiles/nvim'
+
+[[workspace]]
+name = 'sketchybar config'
+path = '~/.dotfiles/sketchybar'
+
+[[workspace]]
+name = 'sesh config'
+path = '~/.config/sesh'
+startup = 'nvim sesh.toml'
+preview = 'bat --language=toml --style=snip --color=always ~/.config/sesh/sesh.toml'
+
+[[workspace]]
+name = 'tmux config  '
+path = '~/.dotfiles/tmux'
+startup = 'nvim tmux.conf'
+preview = 'bat --language=bash --style=snip --color=always ~/.dotfiles/tmux/tmux.conf'
+
+[[workspace]]
+name = 'yazi config'
+path = '~/.dotfiles/yazi'
+startup = 'nvim yazi.toml'
+
+[[workspace]]
+name = 'ghostty config  '
+path = '~/.dotfiles/ghostty'
+startup = 'nvim config'
+
+[[workspace]]
+name = 'karabiner elements config'
+path = '~/.dotfiles/karabiner'
+
+[[workspace]]
+name = 'yabai config 󰚀 '
+path = '~/.dotfiles/yabai'
+startup = 'nvim yabairc'
+preview = 'bat --style=snip --color=always ~/.dotfiles/yabai/yabairc'
+
+[[workspace]]
+name = 'skhd config 󰚀 '
+path = '~/.dotfiles/skhd'
+startup = 'nvim skhdrc'
+preview = 'bat --style=snip --color=always ~/.dotfiles/skhd/skhdrc'

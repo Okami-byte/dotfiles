@@ -1,3 +1,0 @@
-name = "📜 Cam Switch Input" 
-description = "Switch camera" 
-command = "~/.config/scripts/choose/cam.sh"

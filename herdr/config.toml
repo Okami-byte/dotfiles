@@ -13,13 +13,27 @@ name = "terminal"
 
 # Override individual color tokens on top of the base theme.
 # Accepts: hex (#rrggbb), named colors, rgb(r,g,b), or panel_bg = "reset"
-# [theme.custom]
-# panel_bg = "reset"
-# accent = "#f5c2e7"
+# name = "catppuccin"
+auto_switch = false
+[theme.custom]
+# panel_bg = "transparent" # overall panel / chrome background
+# selection_bg = "#1e1e2a"
+# surface0     = "#11111B"     # lowest elevated surface
+# surface1     = "#181825"     # higher surface
+# surface_dim  = "#040404"     # dimmed surface
+# # overlay0     = "#FF9D65"
+# overlay1     = "#A5D4DF"
+#
+# accent = "#828698" # main hl, borders, focus
+#
 # red = "#ff6188"
 # green = "#a6e3a1"
+# yellow = "#FFC009"
+# blue = ""
+# mauve = ""
+# teal = ""
+# peach = ""
 
-auto_switch = false
 [terminal]
 # Executable used for new interactive panes.
 # Empty means $SHELL, then /bin/sh.
@@ -52,15 +66,14 @@ prefix = "ctrl+a"
 
 # Prefix-mode actions
 # help = "prefix+?"
-# settings = "prefix+s"
-settings = "prefix+;"
+settings = "prefix+."
 detach = "prefix+d"
 reload_config = "prefix+r"
 # open_notification_target = "prefix+o"
 # workspace_picker = "prefix+w" # navigate mode
 goto = "prefix+s"
 new_workspace = "prefix+shift+w"
-# new_worktree = "prefix+shift+g"
+new_worktree = "prefix+shift+g"
 # open_worktree = ""    # optional, unset by default
 # remove_worktree = ""  # optional, unset by default; opens confirmation
 rename_workspace = "prefix+$"
@@ -89,8 +102,9 @@ rename_tab = "prefix+,"
 split_vertical = "prefix+\\"
 split_horizontal = "prefix+minus"
 # close_pane = "prefix+x"
-zoom = "prefix+z"       
+zoom = "prefix+z"
 resize_mode = "prefix+R"
+# copy_mode = "prefix+esc" #NOTE: copy_mode is not impleemented yet
 # toggle_sidebar = "prefix+b"
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
@@ -119,10 +133,10 @@ command = "herdr plugin pane open --plugin url.fzf-picker --entrypoint url-picke
 description = "picker center"
 
 [[keys.command]]
-key = "prefix+ctrl+k"
+key = "prefix+;"
 type = "plugin_action"
-command = "herdr-picker-plus.open"
-description = "picker center"
+command = "fullerzz.sesh.open-picker"
+description = "herdr-sesh: open picker"
 
 [[keys.command]]
 key = "prefix+y"
@@ -130,13 +144,12 @@ type = "popup"
 command = "yazi"
 description = "Opens Yazi"
 
-## Plugin Herdr Plus - Quick Actions
-[[keys.command]]
-key = "prefix+E"
-type = "plugin_action"
-command = "cloudmanic.herdr-plus.quick-actions"
-description = "herdr-plus: quick actions"
 
+[[keys.command]]
+key = "prefix+p"
+type = "plugin_action"
+command = "ray.plugin-manager.open"
+description = "open plugin manager"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
@@ -149,6 +162,20 @@ description = "herdr-plus: quick actions"
 # directory = "~/.herdr/worktrees"
 
 [ui]
+# top (default) | bottom
+tab_bar_position = "bottom"
+# hide_tab_bar_when_single_tab = true
+tab_bar_right = [
+{ type = "zoom" },
+#   { type = "hostname" },
+#   { type = "datetime", format = "%H:%M" },
+#   { type = "text", text = "prod" },
+{ type = "command", command = "~/.config/herdr/status.sh", interval_seconds = 5, timeout_seconds = 2 },
+]
+tab_bar_right_separator = " | "
+
+sidebar_collapsed_mode = "hidden"  # Change from "compact" to "hidden"
+status_indicators = "symbols"
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
 # sidebar_width = 26
 

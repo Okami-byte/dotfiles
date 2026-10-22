@@ -1,3 +1,0 @@
-name = "📜 Reload" 
-description = "Reload Config"
-command = "~/.config/scripts/reload_rice.sh"

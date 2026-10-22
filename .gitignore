@@ -26,3 +26,10 @@ superfile/lastCheckVersion
 superfile/toggleDotFile
 superfile/toggleFooter
 superfile/themeFileVersion
+
+# Ignore herdr runtime/generated state (sockets, locks, session snapshots)
+herdr/herdr.sock.agent
+herdr/plugins/.locks/
+herdr/plugins/github-installations/
+herdr/session-snapshots/
+herdr/plugins/config/*/*.settings.lock
