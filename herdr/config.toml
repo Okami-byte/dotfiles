@@ -104,7 +104,7 @@ split_horizontal = "prefix+minus"
 # close_pane = "prefix+x"
 zoom = "prefix+z"
 resize_mode = "prefix+R"
-# copy_mode = "prefix+esc" #NOTE: copy_mode is not impleemented yet
+# copy_mode = "prefix+esc" #NOTE: copy_mode is not implemented yet
 # toggle_sidebar = "prefix+b"
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
