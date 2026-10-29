@@ -5,8 +5,8 @@
     "version": "0.15.0",
     "min_herdr_version": "0.8.2",
     "description": "Sesh-style smart workspace/session manager for Herdr",
-    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/97894-0/checkout/herdr-plugin.toml",
-    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/97894-0/checkout",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/72155-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/72155-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -116,9 +116,9 @@
       "kind": "github",
       "owner": "fullerzz",
       "repo": "herdr-plugin-sesh",
-      "resolved_commit": "99f50246d9a936a49e434c3699ccf4f2ad633427",
-      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/97894-0/checkout",
-      "installed_unix_ms": 1792600832652
+      "resolved_commit": "531d0de2ccb61888be08f8380d27845beab5c1bd",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/72155-0/checkout",
+      "installed_unix_ms": 1792886365056
     }
   },
   {
@@ -127,8 +127,8 @@
     "version": "0.3.1",
     "min_herdr_version": "0.7.0",
     "description": "Toggle a floating scratch shell (sized popup) for the current workspace, à la tmux-floax.",
-    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr-floax-0151ef56c880/73580-0/checkout/herdr-plugin.toml",
-    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr-floax-0151ef56c880/73580-0/checkout",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr-floax-0151ef56c880/31092-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr-floax-0151ef56c880/31092-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -186,19 +186,19 @@
       "kind": "github",
       "owner": "Tyru5",
       "repo": "herdr-floax",
-      "resolved_commit": "c59e0d75394b34fe75fd9ff50ea42fe4c81f7447",
-      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/herdr-floax-0151ef56c880/73580-0/checkout",
-      "installed_unix_ms": 1792707506054
+      "resolved_commit": "0e9d9545dde074dcb4f200029178261f5c28b31f",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/herdr-floax-0151ef56c880/31092-0/checkout",
+      "installed_unix_ms": 1792788929709
     }
   },
   {
     "plugin_id": "herdr.auto-title",
     "name": "Auto Title",
-    "version": "0.14.0",
+    "version": "0.17.0",
     "min_herdr_version": "0.8.2",
     "description": "Automatically generates contextual tab titles",
-    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/11816-0/checkout/herdr-plugin.toml",
-    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/11816-0/checkout",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/94961-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/94961-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -269,9 +269,9 @@
       "kind": "github",
       "owner": "kryptamine",
       "repo": "herdr-auto-title",
-      "resolved_commit": "69d7182ce46d539dd092ae666b11298a9a2bc39e",
-      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/11816-0/checkout",
-      "installed_unix_ms": 1792611165007
+      "resolved_commit": "dc188abb3ae5bd00fd1518a14bce1f2e3da72af9",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/94961-0/checkout",
+      "installed_unix_ms": 1793205132367
     }
   },
   {

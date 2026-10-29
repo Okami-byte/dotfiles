@@ -154,8 +154,8 @@ disabled = false
 
 # Display OS symbol at the very begining
 [os]
-format = '[$symbol](bold grey)'
 disabled = true
+format = '[$symbol](bold grey)'
 
 [aws]
 disabled = true
@@ -167,8 +167,9 @@ symbol = " "
 format = "[ $symbol( $context)${version} ]($style)"
 
 [python]
-symbol = '  '
-format = "[ $symbol( $context)${version} ]($style)"
+symbol = "[](black)[ ](bold fg:yellow bg:black)"
+format = ' [$symbol$virtualenv]($style)[](black)'
+style = "bold fg:blue bg:black"
 
 [docker_context]
 symbol = " "

@@ -9,14 +9,14 @@ onboarding = false
 # Built-in themes: catppuccin, terminal, tokyo-night, dracula, nord,
 #                  gruvbox, one-dark, solarized, kanagawa, rose-pine,
 #                  vesper
-name = "terminal"
+name = "rose-pine"
 
 # Override individual color tokens on top of the base theme.
 # Accepts: hex (#rrggbb), named colors, rgb(r,g,b), or panel_bg = "reset"
 # name = "catppuccin"
 auto_switch = false
 [theme.custom]
-# panel_bg = "transparent" # overall panel / chrome background
+panel_bg = "transparent" # overall panel / chrome background
 # selection_bg = "#1e1e2a"
 # surface0     = "#11111B"     # lowest elevated surface
 # surface1     = "#181825"     # higher surface

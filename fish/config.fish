@@ -112,7 +112,3 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 if status is-interactive
     atuin init fish | source
 end
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-set --export --prepend PATH "/Users/fox/.rd/bin"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
