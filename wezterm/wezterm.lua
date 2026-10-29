@@ -16,6 +16,57 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- Light / Dark mode aware appearance (scheme, background, blur, opacity)
+-- https://wezterm.org/config/lua/window/get_appearance.html
+--
+-- Single source of truth: tweak the numbers/colors below and save -- this
+-- also keeps already-open windows in sync, not just newly created ones,
+-- because window-config-reloaded fires on plain file edits too.
+local appearance_settings = {
+	light = {
+		color_scheme = "Rosé Pine Dawn (Gogh)",
+		colors = {},
+		macos_window_background_blur = 99,
+		window_background_opacity = 0.30,
+	},
+	dark = {
+		color_scheme = "Rosé Pine (Gogh)",
+		colors = { background = "#1f2227" },
+		macos_window_background_blur = 95,
+		window_background_opacity = 0.60,
+	},
+}
+
+local function settings_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return appearance_settings.dark
+	else
+		return appearance_settings.light
+	end
+end
+
+-- Used for the config's initial load, before any window exists
+local initial_settings = settings_for_appearance(wezterm.gui.get_appearance())
+
+-- Re-sync every open window's overrides whenever the config reloads, whether
+-- that's triggered by a system appearance change or by hand-editing the
+-- settings above (automatically_reload_config fires this event either way)
+wezterm.on("window-config-reloaded", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local settings = settings_for_appearance(window:get_appearance())
+	local changed = overrides.color_scheme ~= settings.color_scheme
+		or overrides.macos_window_background_blur ~= settings.macos_window_background_blur
+		or overrides.window_background_opacity ~= settings.window_background_opacity
+		or (overrides.colors and overrides.colors.background) ~= settings.colors.background
+	if changed then
+		overrides.color_scheme = settings.color_scheme
+		overrides.colors = settings.colors
+		overrides.macos_window_background_blur = settings.macos_window_background_blur
+		overrides.window_background_opacity = settings.window_background_opacity
+		window:set_config_overrides(overrides)
+	end
+end)
+
 -- This is where you actually apply your config choices
 config = {
 
@@ -120,24 +171,22 @@ config = {
 		},
 	},
 
-	-- For example, changing the color scheme:
+	-- Color scheme follows macOS light/dark appearance (see appearance_settings above)
+	-- Catppuccin Frappé/Mocha/Latte and Rosé Pine Moon kept here as alternatives
 	-- color_scheme = "Catppuccin Frappé (Gogh)",
 	-- color_scheme = "Catppuccin Mocha (Gogh)",
 	-- color_scheme = "Catppuccin Latte (Gogh)",
 	-- color_scheme = "Rosé Pine Moon (Gogh)",
-	color_scheme = "Rosé Pine (Gogh)",
-	-- color_scheme = 'Rosé Pine Dawn (Gogh)'
+	color_scheme = initial_settings.color_scheme,
 
 	-- Removes the macos bar at the top with the 3 buttons
 	window_decorations = "RESIZE",
 
 	-- Blur
-	macos_window_background_blur = 95, -- Dark mode
-	-- macos_window_background_blur = 99, -- Light mode
+	macos_window_background_blur = initial_settings.macos_window_background_blur, -- 95 dark, 99 light
 
 	-- Opacity
-	window_background_opacity = 0.60, -- Dark mode
-	-- window_background_opacity = 0.30, -- Light mode
+	window_background_opacity = initial_settings.window_background_opacity, -- 0.60 dark, 0.30 light
 
 	font_size = 13.5,
 
@@ -145,7 +194,10 @@ config = {
 
 	window_close_confirmation = "NeverPrompt",
 
-	colors = {
+	-- Dark mode gets a custom background color; light mode (Rosé Pine Dawn)
+	-- uses the scheme's own background. See appearance_settings above.
+	colors = initial_settings.colors,
+	--[[ colors = {
 		-- -- Kopicat
 		-- foreground = "#CDD6F4",
 		background = "#1f2227",
@@ -218,7 +270,7 @@ config = {
 		-- 		-- 2. selection_* otherwise
 		-- 		copy_mode_active_highlight_bg = { Color = "#000000" },
 		-- 	},
-	},
+	}, ]]
 }
 -- return the configuration to wezterm
 return config
