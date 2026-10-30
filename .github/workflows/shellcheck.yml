@@ -1,0 +1,36 @@
+name: ShellCheck
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    name: Lint shell scripts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@2.0.0
+        with:
+          severity: warning
+          # Vendored third-party plugin code and local build/cache dirs — not ours to fix.
+          ignore_paths: >-
+            herdr/plugins
+            .venv
+            mpv/cache
+          # Also catch extensionless scripts (e.g. scripts/herdr_start, yabai/yabairc)
+          # that only carry a shebang, in addition to *.sh files.
+          additional_files: >-
+            scripts/herdr_start
+            scripts/sesh_start
+            yabai/yabairc
+            borders/bordersrc
