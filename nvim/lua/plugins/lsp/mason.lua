@@ -13,6 +13,7 @@ return {
         "emmet_ls",
         "pyrefly",
         "biome",
+        "marksman",
       },
     },
     dependencies = {
