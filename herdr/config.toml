@@ -131,6 +131,8 @@ key = "prefix+x"
 type = "popup"
 command = "herdr plugin pane open --plugin url.fzf-picker --entrypoint url-picker"
 description = "picker center"
+width = 50
+height = 50
 
 [[keys.command]]
 key = "prefix+;"
@@ -176,9 +178,9 @@ tab_bar_right_separator = " | "
 
 sidebar_collapsed_mode = "hidden"  # Change from "compact" to "hidden"
 status_indicators = "symbols"
+pane_scrollbars = false
 # Sidebar width (auto-scaled based on workspace names, this sets the default)
 # sidebar_width = 26
-
 # Minimum sidebar width when expanded (columns)
 sidebar_min_width = 36
 
