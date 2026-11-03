@@ -18,7 +18,7 @@
 #####################
 ## Config Location ##
 #####################
-config-file = ./themes/catppuccin-mocha
+config-file = ./themes/rosepine
 
 # Some shaders can be found in this repo, they're usually uploaded to discord
 # https://github.com/hackrmomo/ghostty-shaders
@@ -65,7 +65,12 @@ window-padding-x = 4,2
 window-padding-y = 6,0
 
 font-family = "JetBrainsMono Nerd Font"
-font-size = 14
+font-size = 13
+
+clipboard-read = allow
+clipboard-write = allow
+cursor-style-blink = true
+cursor-style = block
 
 # Valid values:
 # 
@@ -121,6 +126,11 @@ quit-after-last-window-closed = true
 #  information.
 # keybind = global:cmd+s=toggle_quick_terminal
 keybind = global:cmd+/=toggle_quick_terminal
+quick-terminal-position = center
+quick-terminal-space-behavior = remain
+quick-terminal-autohide = true
+# Two values specify primary and secondary axis
+quick-terminal-size = 25%,75%
 
 mouse-hide-while-typing = true
 window-decoration = true

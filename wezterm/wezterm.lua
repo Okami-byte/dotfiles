@@ -31,7 +31,7 @@ local appearance_settings = {
 	},
 	dark = {
 		color_scheme = "Rosé Pine (Gogh)",
-		colors = { background = "#1f2227" },
+		colors = { background = "#0a0505" },
 		macos_window_background_blur = 95,
 		window_background_opacity = 0.60,
 	},
