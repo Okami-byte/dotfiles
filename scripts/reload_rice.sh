@@ -8,6 +8,7 @@
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+# shellcheck disable=SC2034 # palette entry kept for completeness
 BLUE='\033[0;34m'
 PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
@@ -18,11 +19,10 @@ NC='\033[0m' # No Color
 # Loading animation function
 show_loading() {
   local message="$1"
-  local duration=${2:-2}
 
   echo -ne "${CYAN}${message}${NC}"
-  for i in {1..3}; do
-    for j in {1..3}; do
+  for _ in {1..3}; do
+    for _ in {1..3}; do
       echo -ne "."
       sleep 0.2
     done

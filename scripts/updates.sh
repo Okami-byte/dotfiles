@@ -100,6 +100,7 @@ elif [ "$OS" == "Linux" ]; then
   else
     echo "Nala not found, using apt instead..."
     sudo apt update
+    # shellcheck disable=SC2024 # /tmp is world-writable; only apt needs root, not the redirect
     sudo apt upgrade -y >/tmp/apt_output.txt 2>&1
 
     # Parse apt output (similar approach to nala)

@@ -20,7 +20,6 @@ if [[ -z "$selected" ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
-tmux new-window -n  $selected_name -d zathura $selected
+tmux new-window -n "$selected_name" -d zathura "$selected"
 tmux select-window -l
