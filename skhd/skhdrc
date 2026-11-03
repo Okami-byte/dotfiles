@@ -6,12 +6,14 @@
 
 
 # SCRIPTS
-alt - n : $HOME/.dotfiles/wezterm/open_floating_notes.sh
-alt - t : $HOME/.dotfiles/wezterm/open_scratchpad.sh
+# alt - n : $HOME/.dotfiles/wezterm/open_floating_notes.sh
+# alt - t : $HOME/.dotfiles/wezterm/open_scratchpad.sh
+alt - n : $HOME/.dotfiles/kitty/scripts/open_floating_notes.sh
+alt - t : $HOME/.dotfiles/kitty/scripts/open_scratchpad.sh
 
 # Applications
-# rcmd - return : open -n -a "kitty"
-rcmd - return : open -n -a "wezterm"
+rcmd - return : open -n -a "kitty"
+# rcmd - return : open -n -a "wezterm"
 
 # change layout of desktop
 # lctrl + alt - b : yabai -m space --layout bsp
