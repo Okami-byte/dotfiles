@@ -1,18 +1,19 @@
-tap "abue-ammar/tinycast", trusted: true
-tap "alienator88/cask", "https://github.com/alienator88/homebrew-cask2", trusted: { casks: ["raindropio"] }
+tap "1architect/macspace"
+tap "alienator88/cask", "https://github.com/alienator88/homebrew-cask2"
 tap "altalt-org/alt", trusted: true
 tap "anomalyco/tap", trusted: true
 tap "antoniorodr/cronboard", trusted: true
+tap "artginzburg/tap", trusted: { casks: ["wheelclick"] }
 tap "asmvik/formulae", trusted: true
 tap "bloznelis/tap", trusted: true
+tap "c0desurfer/tap"
 tap "can1357/tap"
 tap "codechenx/tap", trusted: true
 tap "dlvhdr/formulae", trusted: true
-tap "dmtrkovalenko/fff", "https://github.com/dmtrKovalenko/homebrew-fff"
+tap "dmtrkovalenko/fff", "https://github.com/dmtrKovalenko/homebrew-fff", trusted: true
 tap "espanso/espanso", trusted: true
-tap "fayazara/tap"
+tap "fayazara/tap", trusted: true
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae", trusted: true
-tap "giammarco-ferranti/deja", "https://github.com/Giammarco-Ferranti/homebrew-deja"
 tap "gromgit/brewtils", trusted: true
 tap "hashicorp/tap", trusted: true
 tap "jackielii/tap", trusted: true
@@ -24,14 +25,16 @@ tap "largemodgames/spotatui", "https://github.com/LargeModGames/homebrew-spotatu
 tap "luoling8192/tap", trusted: true
 tap "marsanne/cask", trusted: true
 tap "mhaeuser/mhaeuser", trusted: true
-tap "modem-dev/tap"
+tap "modem-dev/tap", trusted: true
+tap "nayji7/tap"
 tap "netbirdio/tap", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "nikolaeu/numi", trusted: true
 tap "okami-byte/versions", trusted: true
 tap "oven-sh/bun", trusted: true
 tap "retlehs/tap", trusted: true
-tap "sozercan/repo"
+tap "sanyam-g/switch", "https://github.com/Sanyam-G/homebrew-switch"
+tap "sozercan/repo", trusted: true
 tap "teamookla/speedtest", trusted: true
 tap "textfuel/tap", trusted: true
 tap "tonisives/tap", trusted: true
@@ -41,8 +44,6 @@ tap "xdagiz/tap", trusted: true
 tap "zfdang/free-for-macos", trusted: true
 # Simple, modern, secure file encryption
 brew "age"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Text-based UI library
 brew "ncurses"
 # Aquarium animation in ASCII art
@@ -61,6 +62,8 @@ brew "xz"
 brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Arbitrary precision numeric processing language
@@ -285,8 +288,12 @@ brew "sd"
 brew "serie"
 # Smart session manager for the terminal
 brew "sesh"
+# 7-Zip is a file archiver with a high compression ratio
+brew "sevenzip"
 # Database of common MIME types
 brew "shared-mime-info"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # SMART hard drive monitoring
 brew "smartmontools"
 # Super fast C++ logging library
@@ -331,6 +338,8 @@ brew "unzip"
 brew "uv"
 # Image processing library
 brew "vips"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
 # Command-line streaming torrent client
 brew "webtorrent-cli"
 # Internet file retriever
@@ -358,7 +367,7 @@ brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 # Simple hotkey-daemon for macOS.
-brew "asmvik/formulae/skhd", trusted: true
+brew "asmvik/formulae/skhd"
 # Keyboard tester in terminal
 brew "bloznelis/tap/kbt"
 # Coding agent with the IDE wired in
@@ -368,23 +377,25 @@ brew "codechenx/tap/codechenx-tv"
 # Git diff pager based on delta but with a file tree, à la GitHub
 brew "dlvhdr/formulae/diffnav"
 # Fast file search toolkit for AI agents (MCP server)
-brew "dmtrkovalenko/fff/fff-mcp", trusted: true
+brew "dmtrkovalenko/fff/fff-mcp"
 # A window border system for macOS
 brew "felixkratz/formulae/borders"
 # Custom macOS statusbar with shell plugin, interaction and graph support
-brew "felixkratz/formulae/sketchybar", trusted: true
+brew "felixkratz/formulae/sketchybar"
 # Interactive TUI for Homebrew
 brew "gromgit/brewtils/taproom"
 # Terraform
-brew "hashicorp/tap/terraform", link: false, trusted: true
+brew "hashicorp/tap/terraform", link: false
 # Simple system stats event provider for SketchyBar
 brew "joncrangle/tap/sketchybar-system-stats"
 # Drop in replacement for ueberzug written in C++
 brew "jstkdng/programs/ueberzugpp"
-# Spotify client for the terminal written in Rust, powered by Ratatui
-brew "largemodgames/spotatui/spotatui", trusted: true
+# Terminal music player for Spotify, local files, Subsonic, radio, YouTube, Qobuz
+brew "largemodgames/spotatui/spotatui"
 # Desktop-inspired terminal diff viewer for agent-authored changesets
-brew "modem-dev/tap/hunk", trusted: true
+brew "modem-dev/tap/hunk"
+# Terminal Git client with an image-rendered commit graph and GitHub PRs
+brew "nayji7/tap/gitoui", trusted: true
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Ookla Speedtest
@@ -395,14 +406,6 @@ brew "waydabber/betterdisplay/betterdisplaycli"
 brew "zfdang/free-for-macos/free-for-macos"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
-# Command-line interface for 1Password
-cask "1password-cli"
-# Time tracker
-cask "activitywatch"
-# Desktop application for AI-powered lecture note taking and management
-cask "altalt-org/alt/alt"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Memory training application
 cask "anki"
 # Display management tool
@@ -413,12 +416,8 @@ cask "claude"
 cask "cleanshot"
 # Disk space visualiser
 cask "daisydisk"
-# Window peeking utility app
-cask "dockdoor"
 # Cross-platform Text Expander written in Rust
 cask "espanso"
-# Offline voice-to-text dictation app with AI enhancement
-cask "fluidvoice"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
@@ -442,44 +441,46 @@ cask "latest"
 cask "localsend"
 # Clipboard manager
 cask "maccy"
-# Utility to extend trackpad functionality
-cask "middleclick"
+# System Data and Apple Intelligence cleaner
+cask "1architect/macspace/macspace", trusted: true
+# Tool to create bootable USB installers
+cask "macusb"
 # Native app email client for Gmail
 cask "mimestream"
-# GameStream client
-cask "moonlight"
 # Open-source software for live streaming and screen recording
 cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Local-first alternative to Logitech Options+ for HID++ devices
+cask "openlogi"
 # Client program for the OpenVPN Access Server
 cask "openvpn-connect"
-# Privacy-first voice-to-text dictation with AI agents
-cask "openwhispr"
 # Replacement for Docker Desktop
 cask "orbstack"
-# Utility to uninstall apps and remove leftover files from old/uninstalled apps
-cask "pearcleaner"
 # Customise and maintain app icons
 cask "pictogram"
 # VPN client focusing on security
 cask "protonvpn"
 # All-in-one bookmark manager
 cask "raindropio"
-# Kubernetes and container management on the desktop
-cask "rancher"
-# Emoji picker optimised for blind people
-cask "rocket"
+# Control your tools with a few keystrokes
+cask "raycast"
 # Native macOS menu bar screenshot and screen recording tool
-cask "fayazara/tap/screendrop", trusted: true
+cask "fayazara/tap/screendrop"
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
 # PDF viewer designed for reading research papers and technical books
 cask "sioyek"
 # Music streaming service
 cask "spotify"
+# Dual-pane file manager for local folders and network storage
+cask "c0desurfer/tap/swift-salamander", trusted: true
+# Keyboard-driven window switcher that cycles windows, not apps
+cask "sanyam-g/switch/switch", trusted: true
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Teleprompter that highlights scripts in real time as you speak
+cask "textream"
 # Virtual machines UI using QEMU
 cask "utm"
 # Custom Discord App
@@ -495,7 +496,6 @@ cask "xdagiz/tap/xytz"
 # Gecko based web browser
 cask "zen"
 mas "Color Picker", id: 1545870783
-mas "LockLines", id: 6772349545
 cargo "lazyrsync"
 uv "pylatexenc"
 npm "@a5c-ai/babysitter-pi"
