@@ -38,6 +38,16 @@ set -g fish_key_bindings fish_vi_key_bindings
 function fish_user_key_bindings
     fish_default_key_bindings -M insert
     fish_vi_key_bindings --no-erase insert
+    # pisces binds in conf.d before vi mode is set, so its bindings get wiped; re-apply them here
+    if functions -q _pisces_bind_pair
+        for pair in $pisces_pairs
+            _pisces_bind_pair insert (string split -- ',' $pair)
+        end
+        bind -M insert backspace _pisces_backspace
+    end
+    # fzf-tab style completion (overrides pisces' tab); shift-tab keeps the native pager
+    bind -M insert tab __fzf_complete
+    bind -M insert shift-tab complete
 end
 set fish_vi_force_cursor 1
 set fish_cursor_default block
@@ -83,11 +93,9 @@ end
 set fzf_directory_opts --bind "ctrl-o:execute($EDITOR {} &> /dev/tty)"
 set fzf_diff_highlighter delta --paging=never --width=20
 
-# fzf.fish's default ctrl-alt-l (Search Git Log) still collides with
-# skhd/yabai's lctrl+alt-l window-warp hotkey (~/.dotfiles/skhd/skhdrc).
-# ctrl-alt-f/s are clear now that those skhd bindings were removed.
-# ctrl-r is already owned by atuin.
-fzf_configure_bindings --git_log=ctrl-alt-c --history=
+# Directory previews (tab completion + fzf.fish's ctrl-alt-f) use eza instead of plain ls.
+# Exported because previews run in a non-interactive child fish that exits config.fish early.
+set -gx fzf_preview_dir_cmd eza --all --oneline --group-directories-first --color=always --icons=always
 
 # --- Functions ---
 
