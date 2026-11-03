@@ -3,9 +3,22 @@ return {
   lazy = true,
   event = { "BufReadPre", "BufNewFile" },
   opts_extend = { "servers.*.keys" },
+  -- LazyVim owns nvim-lspconfig's `config`; do not define one here or it would
+  -- replace LazyVim's setup. Declare servers in opts.servers instead and LazyVim
+  -- configures and enables them (mason.lua installs the binaries).
   opts = {
     servers = {
       ["*"] = {
+        -- Ensure dynamicRegistration is enabled. This lets the LS react to actions
+        -- like the Create Unresolved File code action and resolve completions for
+        -- unindexed code blocks. Merged with blink.cmp's capabilities by LazyVim.
+        capabilities = {
+          workspace = {
+            didChangeWatchedFiles = {
+              dynamicRegistration = true,
+            },
+          },
+        },
         -- LazyVim's default here is `vim.lsp.buf.code_action` (buffer-local,
         -- always wins over a plain global keymap). Override it in place so
         -- <leader>ca drives tiny-code-action.nvim's picker/diff preview
@@ -23,37 +36,13 @@ return {
           },
         },
       },
+      pyrefly = {},
+      html = {},
+      ts_ls = {},
+      cssls = {},
+      marksman = {},
+      svelte = {},
+      emmet_ls = {},
     },
-    },
-},
-  config == function()
-    -- import lspconfig plugin
-    local lspconfig = require("lspconfig")
-
-    -- import blink plugin
-    local capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-
-    local keymap = vim.keymap -- for conciseness
-
-    local opts = { noremap = true, silent = true }
-
-    opts({ "s" })
-
-    -- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
-    -- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
-    capabilities.workspace = {
-      didChangeWatchedFiles = {
-        dynamicRegistration = true,
-      },
-    }
-
-    -- Servers
-
-    vim.lsp.enable("pyrefly")
-    vim.lsp.enable("html")
-    vim.lsp.enable("ts_ls")
-    vim.lsp.enable("cssls")
-    vim.lsp.enable("marksman")
-    vim.lsp.enable("svelte")
-    vim.lsp.enable("emmet_ls")
-  end
+  },
+}
