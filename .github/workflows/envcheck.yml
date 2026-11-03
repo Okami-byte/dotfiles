@@ -1,0 +1,35 @@
+# Environment Check Workflow that checks the environment to see any wayward env
+# vars that may have crept into any of the files.
+name: Environment Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  envcheck:
+    name: Hardcoded secret env vars
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Look for literal secrets assigned to env vars
+        run: |
+          # Matches: export FOO_TOKEN=abc / set -gx FOO_KEY abc / set -x FOO_SECRET abc
+          # Ignores values that are $vars or $(command substitutions) -- those aren't literals.
+          pattern='^\s*(export\s+[A-Z0-9_]*(KEY|TOKEN|SECRET|PASSWORD)[A-Z0-9_]*=|set\s+-(gx|x)\s+[A-Z0-9_]*(KEY|TOKEN|SECRET|PASSWORD)[A-Z0-9_]*\s+)[^$(\s]'
+          if grep -rnE "$pattern" \
+              --exclude-dir=.git --exclude-dir=.venv --exclude-dir=plugins \
+              --exclude=fish_variables . ; then
+            echo "::error::Literal secret-looking env var found above. Move it to .env or a keychain."
+            exit 1
+          fi
+          echo "No hardcoded secret env vars found."

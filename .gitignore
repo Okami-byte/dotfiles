@@ -4,6 +4,9 @@
 # Ignore DS.Store Files
 .DS_Store
 
+# Ignore karabiner's auto-generated backups (churn on every config change)
+karabiner/automatic_backups/
+
 # Ignore log files so that people can't read system Info
 *.log
 
