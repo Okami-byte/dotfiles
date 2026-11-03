@@ -2,7 +2,7 @@
 
 # Open the current repository in the browser
 dir=$(tmux run "echo #{pane_start_path}")
-cd $dir
+cd "$dir" || exit 1
 url=$(git remote get-url origin)
 
 if [[ "$url" == git@github.com:* ]]; then
