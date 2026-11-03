@@ -19,11 +19,6 @@ vim.keymap.set("n", "<leader><right>", ":vertical resize -20<cr>")
 vim.keymap.set("n", "<leader><up>", ":resize +10<cr>")
 vim.keymap.set("n", "<leader><down>", ":resize -10<cr>")
 
--- Tiny Code Action
-vim.keymap.set("n", "<leader>ca", function()
-  require("tiny-code-action").code_action()
-end, { noremap = true, silent = true })
-
 -- ############################################################################
 --                         Begin of markdown section
 -- ############################################################################

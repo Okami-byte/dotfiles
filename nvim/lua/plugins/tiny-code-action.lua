@@ -1,12 +1,14 @@
 return {
   "rachartier/tiny-code-action.nvim",
   dependencies = {
-    { "nvim-lua/plenary.nvim" },
+    -- used for the "snacks" picker (list UI) and "delta" backend preview
+    -- (rendered via Snacks.terminal)
+    { "folke/snacks.nvim" },
   },
   event = "LspAttach",
   opts = {
     --- The backend to use, currently only "vim", "delta", "difftastic", "diffsofancy" are supported
-    backend = "vim",
+    backend = "delta",
 
     -- The picker to use, "telescope", "snacks", "select", "buffer" are supported
     -- And it's opts that will be passed at the picker's creation, optional
