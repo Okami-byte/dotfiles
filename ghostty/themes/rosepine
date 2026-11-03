@@ -2,10 +2,10 @@
 theme = Rose Pine
 
 # Opacity
-background-opacity = 0.75
+background-opacity = 0.60
 
 # Blur
-background-blur-radius = 95
+background-blur-radius = 99
 
 # Background Color
-# background = #100c08
+background = #100c08
