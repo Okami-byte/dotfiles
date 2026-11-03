@@ -26,11 +26,14 @@ jobs:
         uses: ludeeus/action-shellcheck@2.0.0
         with:
           severity: warning
-          # Vendored third-party plugin code and local build/cache dirs — not ours to fix.
+          # Vendored third-party plugin code, local build/cache dirs, and the archived
+          # Bash sketchybar snapshot (another author's config, frozen after the Lua migration)
+          # — not ours to fix.
           ignore_paths: >-
             herdr/plugins
             .venv
             mpv/cache
+            sketchybar.sh
           # Also catch extensionless scripts that only carry a shebang.
           additional_files: >-
             scripts/herdr_start
@@ -38,12 +41,15 @@ jobs:
             yabai/yabairc
             borders/bordersrc
 
+      # `if: !cancelled()` on every step below: one failing check must not hide the others.
       - name: Secret scan
+        if: ${{ !cancelled() }}
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Stylua (nvim)
+        if: ${{ !cancelled() }}
         uses: JohnnyMorganz/stylua-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -51,11 +57,13 @@ jobs:
           args: --check nvim
 
       - name: Fish syntax
+        if: ${{ !cancelled() }}
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq fish
           find fish -name '*.fish' -print0 | xargs -0 -n1 fish --no-execute
 
       - name: JSON / TOML parse
+        if: ${{ !cancelled() }}
         run: |
           find . -name '*.json' -not -path './.git/*' -not -path './.venv/*' \
             -not -path './karabiner/automatic_backups/*' -print0 \
@@ -72,10 +80,37 @@ jobs:
 
       - name: Brewfile still resolves
         run: |
-          brew bundle list --tap | while read -r t; do brew tap "$t" || echo "::warning::dead tap $t"; done
-          brew bundle list --formula | xargs -n1 brew info >/dev/null
+          # Tap exactly as the Brewfile declares: honor custom clone URLs, and trust only
+          # taps the Brewfile marks `trusted:` (Homebrew refuses to load formulae from
+          # untrusted taps, so a dropped flag shows up here as a failure).
+          while IFS= read -r line; do
+            name=$(sed -E 's/^tap "([^"]+)".*/\1/' <<<"$line")
+            url=$(sed -nE 's/^tap "[^"]+", "([^"]+)".*/\1/p' <<<"$line")
+            if brew tap "$name" ${url:+"$url"}; then
+              if grep -q 'trusted:' <<<"$line"; then brew trust "$name"; fi
+            else
+              echo "::warning::dead tap $name"
+            fi
+          done < <(grep -E '^tap ' Brewfile)
+
+          # Per-package trust, e.g. `brew "tap/user/name", trusted: true`.
+          while read -r kind pkg; do
+            flag=--formula; [ "$kind" = cask ] && flag=--cask
+            brew trust "$flag" "$pkg" || echo "::warning::could not trust $pkg"
+          done < <(grep -E '^(brew|cask) ".*trusted:' Brewfile | sed -E 's/^(brew|cask) "([^"]+)".*/\1 \2/')
+
+          # Every formula and cask must still resolve; report all of them, not just the first.
+          fail=0
+          for f in $(brew bundle list --formula); do
+            brew info --formula "$f" >/dev/null 2>&1 || { echo "::error::formula missing or untrusted: $f"; fail=1; }
+          done
+          for c in $(brew bundle list --cask); do
+            brew info --cask "$c" >/dev/null 2>&1 || { echo "::error::cask missing or untrusted: $c"; fail=1; }
+          done
+          exit $fail
 
       - name: Stow dry run
+        if: ${{ !cancelled() }}
         run: |
           brew install stow
           mkdir -p "$HOME/.config"
