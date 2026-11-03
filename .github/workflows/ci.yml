@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 14 * * 1" # weekly: catch Brewfile rot even when nothing changed
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint and scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # gitleaks scans history, not just the latest commit
+
+      - name: ShellCheck
+        uses: ludeeus/action-shellcheck@2.0.0
+        with:
+          severity: warning
+          # Vendored third-party plugin code and local build/cache dirs — not ours to fix.
+          ignore_paths: >-
+            herdr/plugins
+            .venv
+            mpv/cache
+          # Also catch extensionless scripts that only carry a shebang.
+          additional_files: >-
+            scripts/herdr_start
+            scripts/sesh_start
+            yabai/yabairc
+            borders/bordersrc
+
+      - name: Secret scan
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Stylua (nvim)
+        uses: JohnnyMorganz/stylua-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest
+          args: --check nvim
+
+      - name: Fish syntax
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq fish
+          find fish -name '*.fish' -print0 | xargs -0 -n1 fish --no-execute
+
+      - name: JSON / TOML parse
+        run: |
+          find . -name '*.json' -not -path './.git/*' -not -path './.venv/*' \
+            -not -path './karabiner/automatic_backups/*' -print0 \
+            | xargs -0 -n1 python3 -m json.tool >/dev/null
+          find . -name '*.toml' -not -path './.git/*' -not -path './.venv/*' -print0 \
+            | xargs -0 -n1 python3 -c 'import sys,tomllib; tomllib.load(open(sys.argv[1],"rb"))'
+
+  bootstrap:
+    name: Brewfile and stow check
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Brewfile still resolves
+        run: |
+          brew bundle list --tap | while read -r t; do brew tap "$t" || echo "::warning::dead tap $t"; done
+          brew bundle list --formula | xargs -n1 brew info >/dev/null
+
+      - name: Stow dry run
+        run: |
+          brew install stow
+          mkdir -p "$HOME/.config"
+          stow -nv --dir="$PWD/.." --target="$HOME/.config" "$(basename "$PWD")"
