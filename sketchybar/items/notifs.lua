@@ -22,32 +22,30 @@ end
 -- Works against github.com and GitHub Enterprise/homelab instances alike, since both
 -- expose `GET <api_url>/search/issues?q=...`. Runs in the background (detached from
 -- the calling sbar.exec's pipe) so the network round-trip never blocks the bar's
--- event thread; the count comes back via the "notifs_update" trigger.
--- `advanced_search=true` is what lets GitHub accept OR / parentheses in the query.
+-- event thread; the result comes back via the "notifs_update" trigger as either a
+-- number or "err:<reason>" (see helpers/pr_count.sh, which does the request).
 local function search_command(key_path, query)
 	return string.format(
 		[[
       (/bin/zsh -lc '
-        count=$(curl -m 15 -s \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer $(cat "%s")" \
-          "%s/search/issues?q=%s&per_page=1&advanced_search=true" | jq -r ".total_count // empty")
-        sketchybar --trigger notifs_update "INFO=${count:-err}"
+        info=$(./helpers/pr_count.sh "%s" "%s" "%s")
+        sketchybar --trigger notifs_update "INFO=$info"
       ') > /dev/null 2>&1 &
     ]],
 		key_path,
 		config.git_api_url,
-		query:gsub(" ", "+")
+		query
 	)
 end
 
--- `count` is nil when the lookup failed (bad token, network, rate limit): show a
--- yellow "!" instead of "0" so a broken lookup never looks like "nothing to review".
+-- `count` is nil when the lookup failed (bad token, network, rate limit): show a yellow
+-- slashed bell instead of "0" so a broken lookup never looks like "nothing to review".
+-- The bar stays quiet about why; the reason goes to the log (see the handler in load).
 local function set_badge(item, icons, palette, count)
 	if not count then
 		item:set({
-			label = { string = "!" },
-			icon = { color = palette.colors.yellow, string = icons.notifications.empty },
+			label = { string = "" },
+			icon = { color = palette.colors.yellow, string = icons.notifications.error },
 		})
 		return
 	end
@@ -80,7 +78,11 @@ function mod.load(icons, palette)
 		mod.item = sbar.add("item", mod.properties)
 		mod.item:subscribe({ "routine", "forced" }, update(mod.item, config.git_key))
 		mod.item:subscribe("notifs_update", function(env)
-			set_badge(mod.item, icons, palette, tonumber(env.INFO))
+			local count = tonumber(env.INFO)
+			if not count then
+				log("notifs", "lookup failed: " .. tostring(env.INFO)) -- e.g. "err:HTTP 401 Bad credentials"
+			end
+			set_badge(mod.item, icons, palette, count)
 		end)
 		mod.item:subscribe("mouse.clicked", function()
 			sbar.exec("open " .. config.git_web_url .. "/pulls/inbox")
