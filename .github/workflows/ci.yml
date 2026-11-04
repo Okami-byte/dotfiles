@@ -1,3 +1,9 @@
+# Which checks block a merge (see the "Protect main" ruleset):
+#   REQUIRED  "Secret scan" (this file) and "Hardcoded secret env vars" (envcheck.yml).
+#             A secret pushed to a public repo lives in git history forever, so this
+#             is the one mistake worth blocking on.
+#   ADVISORY  "Lint": shows red/green on the PR but never blocks. Read it, fix what is real.
+#   MANUAL    "Brewfile and stow check": weekly + on demand only (slow macOS runner).
 name: CI
 
 on:
@@ -13,14 +19,26 @@ permissions:
   contents: read
 
 jobs:
-  lint:
-    name: Lint and scan
+  secret-scan:
+    name: Secret scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # gitleaks scans history, not just the latest commit
+
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: ShellCheck
         uses: ludeeus/action-shellcheck@2.0.0
@@ -42,12 +60,6 @@ jobs:
             borders/bordersrc
 
       # `if: !cancelled()` on every step below: one failing check must not hide the others.
-      - name: Secret scan
-        if: ${{ !cancelled() }}
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Stylua (nvim)
         if: ${{ !cancelled() }}
         uses: JohnnyMorganz/stylua-action@v4
@@ -73,6 +85,8 @@ jobs:
 
   bootstrap:
     name: Brewfile and stow check
+    # Slow macOS runner and not worth gating PRs on: weekly schedule or manual run only.
+    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     runs-on: macos-latest
     steps:
       - name: Checkout
