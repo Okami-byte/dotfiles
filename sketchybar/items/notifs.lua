@@ -30,8 +30,8 @@ local function search_command(key_path, query)
         count=$(curl -m 15 -s \
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer $(cat "%s")" \
-          "%s/search/issues?q=%s&per_page=1" | jq -r ".total_count // 0")
-        sketchybar --trigger notifs_update "INFO=$count"
+          "%s/search/issues?q=%s&per_page=1" | jq -r ".total_count // empty")
+        sketchybar --trigger notifs_update "INFO=${count:-err}"
       ') > /dev/null 2>&1 &
     ]],
 		key_path,
@@ -40,7 +40,17 @@ local function search_command(key_path, query)
 	)
 end
 
+-- `count` is nil when the lookup failed (bad token, network, rate limit): show a
+-- yellow "!" instead of "0" so a broken lookup never looks like "nothing to review".
 local function set_badge(item, icons, palette, count)
+	if not count then
+		item:set({
+			label = { string = "!" },
+			icon = { color = palette.colors.yellow, string = icons.notifications.empty },
+		})
+		return
+	end
+
 	item:set({
 		label = { string = tostring(count) },
 		icon = (count > 0) and { color = palette.colors.red, string = icons.notifications.notif }
@@ -69,7 +79,7 @@ function mod.load(icons, palette)
 		mod.item = sbar.add("item", mod.properties)
 		mod.item:subscribe({ "routine", "forced" }, update(mod.item, config.git_key))
 		mod.item:subscribe("notifs_update", function(env)
-			set_badge(mod.item, icons, palette, tonumber(env.INFO) or 0)
+			set_badge(mod.item, icons, palette, tonumber(env.INFO))
 		end)
 		mod.item:subscribe("mouse.clicked", function()
 			sbar.exec("open " .. config.git_web_url .. "/pulls/inbox")
