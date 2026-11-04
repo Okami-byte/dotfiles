@@ -63,6 +63,7 @@ return {
 	notifications = {
 		empty = "􀋚",
 		notif = "􀝗",
+		error = "􀋞", -- bell.slash: the lookup failed (the reason is in the sketchybar log)
 	},
 	pkg = "􀐛",
 	user = "􀅷",
