@@ -26,6 +26,8 @@ local function micUpdate(item,icons,palette)
   return function (env)
     sbar.exec("osascript -e 'set ivol to input volume of (get volume settings)'", function (result,exit_code)
       local volume = tonumber(result)
+      -- osascript returns "missing value" when no mic is available; skip instead of erroring
+      if not volume then return end
       if not mod.state.muted then mod.state.volume = volume end
 
       local properties
