@@ -36,7 +36,9 @@ config = fetchConfig(os.getenv("SKETCHYBAR_CONFIG") or "./config.lua", { -- Look
 	git_key = nil,
 	git_api_url = "https://api.github.com", -- override for GHE/homelab, e.g. "https://git.home.lab/api/v3"
 	git_web_url = "https://github.com", -- override to match git_api_url's host for self-hosted instances
-	git_pr_query = "is:pr is:open author:@me", -- GitHub search qualifiers, see docs.github.com/search-syntax
+	-- GitHub search qualifiers (docs.github.com/search-syntax). Catch-all for open PRs that may need
+	-- attention: ones I wrote, was asked to review, am assigned, or am mentioned in.
+	git_pr_query = "is:pr is:open (author:@me OR review-requested:@me OR assignee:@me OR mentions:@me)",
 	display_groups = {},
 	execs = {}, -- Overrides for executables
 })

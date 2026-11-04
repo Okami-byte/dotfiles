@@ -23,6 +23,7 @@ end
 -- expose `GET <api_url>/search/issues?q=...`. Runs in the background (detached from
 -- the calling sbar.exec's pipe) so the network round-trip never blocks the bar's
 -- event thread; the count comes back via the "notifs_update" trigger.
+-- `advanced_search=true` is what lets GitHub accept OR / parentheses in the query.
 local function search_command(key_path, query)
 	return string.format(
 		[[
@@ -30,7 +31,7 @@ local function search_command(key_path, query)
         count=$(curl -m 15 -s \
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer $(cat "%s")" \
-          "%s/search/issues?q=%s&per_page=1" | jq -r ".total_count // empty")
+          "%s/search/issues?q=%s&per_page=1&advanced_search=true" | jq -r ".total_count // empty")
         sketchybar --trigger notifs_update "INFO=${count:-err}"
       ') > /dev/null 2>&1 &
     ]],
