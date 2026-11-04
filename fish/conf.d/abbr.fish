@@ -98,13 +98,11 @@ abbr sf "source ~/.config/fish/config.fish"
 abbr sr "sesh root"
 
 # Herdr Sesh (herdr-sesh plugin)
+abbr h herdr_start
 abbr hs "hsesh picker"
 abbr hs. "hsesh connect ."
 abbr hsc "hsesh clone --cmdDir ~/c (pbpaste)"
 abbr hsr "hsesh root"
-
-# Herdr
-abbr h herdr_start
 
 # System Commands
 abbr pwdc "pwd | pbcopy"

@@ -11,7 +11,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: "0 14 * * 1" # weekly: catch Brewfile rot even when nothing changed
+    - cron: "0 14 * * *" # daily: catch Brewfile rot even when nothing changed
   workflow_dispatch: {}
 
 permissions:
@@ -34,7 +34,7 @@ jobs:
 
   bootstrap:
     name: Brewfile and stow check
-    # Slow macOS runner and not worth gating PRs on: weekly schedule or manual run only.
+    # Slow macOS runner and not worth gating PRs on: daily schedule or manual run only.
     if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     runs-on: macos-latest
     steps:
