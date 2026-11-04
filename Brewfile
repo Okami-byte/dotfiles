@@ -8,7 +8,6 @@ tap "asmvik/formulae", trusted: true
 tap "bloznelis/tap", trusted: true
 tap "c0desurfer/tap"
 tap "can1357/tap"
-tap "codechenx/tap", trusted: true
 tap "dlvhdr/formulae", trusted: true
 tap "dmtrkovalenko/fff", "https://github.com/dmtrKovalenko/homebrew-fff", trusted: true
 tap "espanso/espanso", trusted: true
@@ -372,8 +371,6 @@ brew "asmvik/formulae/skhd"
 brew "bloznelis/tap/kbt"
 # Coding agent with the IDE wired in
 brew "can1357/tap/omp", trusted: true
-# Fast, feature-rich CSV/TSV/delimited file viewer for the command-line
-brew "codechenx/tap/codechenx-tv"
 # Git diff pager based on delta but with a file tree, à la GitHub
 brew "dlvhdr/formulae/diffnav"
 # Fast file search toolkit for AI agents (MCP server)
