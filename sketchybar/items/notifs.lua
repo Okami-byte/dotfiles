@@ -85,6 +85,10 @@ function mod.load(icons, palette)
 		mod.item:subscribe("mouse.clicked", function()
 			sbar.exec("open " .. config.git_web_url .. "/pulls/inbox")
 		end)
+
+		-- Look up once after startup; otherwise the badge sits at 0 until the first refresh.
+		-- It needs a few seconds: 2s was too early (the bar was still settling after a reload).
+		sbar.delay(8, update(mod.item, config.git_key))
 	end
 
 	return mod
