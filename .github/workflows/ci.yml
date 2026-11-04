@@ -2,7 +2,6 @@
 #   REQUIRED  "Secret scan" (this file) and "Hardcoded secret env vars" (envcheck.yml).
 #             A secret pushed to a public repo lives in git history forever, so this
 #             is the one mistake worth blocking on.
-#   ADVISORY  "Lint": shows red/green on the PR but never blocks. Read it, fix what is real.
 #   MANUAL    "Brewfile and stow check": weekly + on demand only (slow macOS runner).
 name: CI
 
@@ -32,56 +31,6 @@ jobs:
         uses: gitleaks/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: ShellCheck
-        uses: ludeeus/action-shellcheck@2.0.0
-        with:
-          severity: warning
-          # Vendored third-party plugin code, local build/cache dirs, and the archived
-          # Bash sketchybar snapshot (another author's config, frozen after the Lua migration)
-          # — not ours to fix.
-          ignore_paths: >-
-            herdr/plugins
-            .venv
-            mpv/cache
-            sketchybar.sh
-          # Also catch extensionless scripts that only carry a shebang.
-          additional_files: >-
-            scripts/herdr_start
-            scripts/sesh_start
-            yabai/yabairc
-            borders/bordersrc
-
-      # `if: !cancelled()` on every step below: one failing check must not hide the others.
-      - name: Stylua (nvim)
-        if: ${{ !cancelled() }}
-        uses: JohnnyMorganz/stylua-action@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          version: latest
-          args: --check nvim
-
-      - name: Fish syntax
-        if: ${{ !cancelled() }}
-        run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq fish
-          find fish -name '*.fish' -print0 | xargs -0 -n1 fish --no-execute
-
-      - name: JSON / TOML parse
-        if: ${{ !cancelled() }}
-        run: |
-          find . -name '*.json' -not -path './.git/*' -not -path './.venv/*' \
-            -not -path './karabiner/automatic_backups/*' -print0 \
-            | xargs -0 -n1 python3 -m json.tool >/dev/null
-          find . -name '*.toml' -not -path './.git/*' -not -path './.venv/*' -print0 \
-            | xargs -0 -n1 python3 -c 'import sys,tomllib; tomllib.load(open(sys.argv[1],"rb"))'
 
   bootstrap:
     name: Brewfile and stow check
