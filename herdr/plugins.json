@@ -5,8 +5,8 @@
     "version": "0.16.0",
     "min_herdr_version": "0.8.2",
     "description": "Sesh-style smart workspace/session manager for Herdr",
-    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/87130-0/checkout/herdr-plugin.toml",
-    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/87130-0/checkout",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/59149-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/59149-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -116,9 +116,9 @@
       "kind": "github",
       "owner": "fullerzz",
       "repo": "herdr-plugin-sesh",
-      "resolved_commit": "85541f7c2dcbaa7c1bdbf78abe5b4f6b2c23262e",
-      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/87130-0/checkout",
-      "installed_unix_ms": 1793757699065
+      "resolved_commit": "3d003285a5691148c1e07d22d332c833b68b3f34",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/59149-0/checkout",
+      "installed_unix_ms": 1793928222664
     }
   },
   {
@@ -194,11 +194,11 @@
   {
     "plugin_id": "herdr.auto-title",
     "name": "Auto Title",
-    "version": "0.19.0",
+    "version": "0.20.0",
     "min_herdr_version": "0.8.2",
     "description": "Automatically generates contextual tab titles",
-    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/87246-0/checkout/herdr-plugin.toml",
-    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/87246-0/checkout",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/59256-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/59256-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -221,12 +221,10 @@
           "windows"
         ],
         "command": [
-          "powershell",
-          "-NoProfile",
-          "-ExecutionPolicy",
-          "Bypass",
-          "-File",
-          "scripts/install.ps1"
+          "cmd",
+          "/d",
+          "/c",
+          "scripts\\install.cmd"
         ]
       }
     ],
@@ -267,9 +265,9 @@
       "kind": "github",
       "owner": "kryptamine",
       "repo": "herdr-auto-title",
-      "resolved_commit": "63950b6dff514bb141ca265a63344e2171f61dad",
-      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/87246-0/checkout",
-      "installed_unix_ms": 1793757701705
+      "resolved_commit": "4839155852d55bd8fdc9ec36766d98ce6d894bd9",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/59256-0/checkout",
+      "installed_unix_ms": 1793928225195
     }
   },
   {
