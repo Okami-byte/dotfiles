@@ -29,7 +29,6 @@ tap "nayji7/tap"
 tap "netbirdio/tap", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "nikolaeu/numi", trusted: true
-tap "okami-byte/versions", trusted: true
 tap "oven-sh/bun", trusted: true
 tap "retlehs/tap", trusted: true
 tap "sanyam-g/switch", "https://github.com/Sanyam-G/homebrew-switch"
@@ -163,8 +162,6 @@ brew "icu4c@77"
 brew "ifstat"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
-# University of Washington IMAP toolkit
-brew "imap-uw"
 # CLI wrapper for basic network utilities on macOS - ip command
 brew "iproute2mac"
 # Interactive computing in Python
