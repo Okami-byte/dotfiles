@@ -1,0 +1,15 @@
+# Known false positives in git history (vendored third-party code, since removed or upstream-public).
+# spicetify/Extracted: Spotify's own bundled client bundle; mpv/scripts/uosc: uosc's public OpenSubtitles key.
+17e9b0c77005d72d7bed53ada7fcb37dd152fd1a:mpv/scripts/uosc/main.lua:generic-api-key:175
+302b7dafa899ede1f285aed5ebb644a8c5ffb402:spicetify/Extracted/Raw/xpui/i18n/en-GB.json:generic-api-key:981
+302b7dafa899ede1f285aed5ebb644a8c5ffb402:spicetify/Extracted/Raw/xpui/i18n/en.json:generic-api-key:981
+302b7dafa899ede1f285aed5ebb644a8c5ffb402:spicetify/Extracted/Raw/xpui/i18n/fil.json:generic-api-key:981
+302b7dafa899ede1f285aed5ebb644a8c5ffb402:spicetify/Extracted/Raw/xpui/vendor~xpui.js:adobe-client-id:29
+302b7dafa899ede1f285aed5ebb644a8c5ffb402:spicetify/Extracted/Raw/xpui/xpui.js:generic-api-key:1
+302b7dafa899ede1f285aed5ebb644a8c5ffb402:spicetify/Extracted/Themed/xpui/i18n/en-GB.json:generic-api-key:981
+302b7dafa899ede1f285aed5ebb644a8c5ffb402:spicetify/Extracted/Themed/xpui/i18n/en.json:generic-api-key:981
+302b7dafa899ede1f285aed5ebb644a8c5ffb402:spicetify/Extracted/Themed/xpui/i18n/fil.json:generic-api-key:981
+302b7dafa899ede1f285aed5ebb644a8c5ffb402:spicetify/Extracted/Themed/xpui/vendor~xpui.js:adobe-client-id:29
+302b7dafa899ede1f285aed5ebb644a8c5ffb402:spicetify/Extracted/Themed/xpui/xpui.js:generic-api-key:1
+46e8b8a0f0515c05109b286f2dfc172ba033b7a6:mpv/scripts/uosc/main.lua:generic-api-key:175
+6886513ced9dfb5f6927a0a79fb7a93d7a53e655:mpv/scripts/uosc/main.lua:generic-api-key:171
