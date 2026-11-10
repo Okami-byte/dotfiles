@@ -90,7 +90,7 @@ alias stat="stat -x"
 alias grep="rg --color=always"
 alias cdi='zi'
 alias fabric='fabric-ai'
-alias ip='ip -color=always'
+alias ip='ip --color=always'
 alias cd='z'
 
 # Dirs
