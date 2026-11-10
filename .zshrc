@@ -176,8 +176,8 @@ alias k="kubectl"
 alias stat="stat -x"
 alias grep="rg --color=always"
 alias fabric='fabric-ai'
-alias ip='ip -color=always'
-alias ss='ss -color=always'
+alias ip='ip --color=always'
+alias ss='ss --color=always'
 alias vimm="vim"
 alias v="$EDITOR"
 alias x="exit"
