@@ -26,7 +26,8 @@ alias mv="mv -iv"
 alias stat="stat -x"
 alias grep="rg --color=always"
 alias fabric='fabric-ai'
-alias ip='ip -color=always'
+alias ip='ip --color=always'
+alias ss='ss --color=always'
 alias k='kubectl'
 alias sv="fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim"
 
