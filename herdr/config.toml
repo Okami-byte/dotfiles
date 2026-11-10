@@ -153,6 +153,18 @@ type = "plugin_action"
 command = "ray.plugin-manager.open"
 description = "open plugin manager"
 
+[[keys.command]]
+key = "prefix+f"
+type = "plugin_action"
+command = "herdr-floax.toggle"
+description = "Toggle floating pane"
+
+[[keys.command]]
+key = "prefix+i"
+type = "plugin_action"
+command = "herdr-floax.instances"
+description = "List and navigate Floax sessions"
+
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
 # [keys.indexed]
@@ -227,6 +239,29 @@ show_agent_labels_on_pane_borders = true
 
 # Background notification popup delivery
 agent_panel_sort = "spaces"
+
+# Per-agent rows: state icon + name in the agent's color.
+# Icons per state come from agent-icons.sh (state_text shows the reported label).
+[ui.sidebar.agents.rows_by_agent]
+claude = [
+  ["machine", "workspace", "tab"],
+  [{ token = "state_text", fg = "#D97757" }, { token = "agent", fg = "#D97757" }],
+]
+omp = [
+  ["machine", "workspace", "tab"],
+  [{ token = "state_text", fg = "#B48EAD" }, { token = "agent", fg = "#B48EAD" }],
+]
+codex = [
+  ["machine", "workspace", "tab"],
+  [{ token = "state_text", fg = "#10A37F" }, { token = "agent", fg = "#10A37F" }],
+]
+
+[ui.sidebar.spaces]
+rows = [
+  ["state_icon", "workspace", "branch", "git_status"],
+  [{ token = "$topic", bold = true, dim = false }],
+]
+
 [ui.toast]
 # off = disable pop-up notifications
 # herdr = show top-right in-app toasts
@@ -290,10 +325,3 @@ pane_history = false
 # Maximum scrollback buffer size in bytes retained per pane terminal.
 # Matches Ghostty's default scrollback-limit behavior.
 # scrollback_limit_bytes = 10000000
-
-# herdr-floax:keybind
-[[keys.command]]
-key = "prefix+f"
-type = "plugin_action"
-command = "herdr-floax.toggle"
-description = "Toggle floating pane"
