@@ -2,11 +2,11 @@
   {
     "plugin_id": "fullerzz.sesh",
     "name": "Sesh for Herdr",
-    "version": "0.16.0",
+    "version": "0.17.0",
     "min_herdr_version": "0.8.2",
     "description": "Sesh-style smart workspace/session manager for Herdr",
-    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/59149-0/checkout/herdr-plugin.toml",
-    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/59149-0/checkout",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/63311-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/63311-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -17,7 +17,7 @@
         "command": [
           "go",
           "build",
-          "-ldflags=-X=github.com/fullerzz/herdr-plugin-sesh/internal/app.Version=0.16.0",
+          "-ldflags=-X=github.com/fullerzz/herdr-plugin-sesh/internal/app.Version=0.17.0",
           "-o",
           "bin/",
           "./cmd/herdr-sesh"
@@ -116,19 +116,19 @@
       "kind": "github",
       "owner": "fullerzz",
       "repo": "herdr-plugin-sesh",
-      "resolved_commit": "3d003285a5691148c1e07d22d332c833b68b3f34",
-      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/59149-0/checkout",
-      "installed_unix_ms": 1793928222664
+      "resolved_commit": "464b0b57d3b0bb023f78d4800651171412438aef",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/fullerzz.sesh-ac3fc6b2e1d3/63311-0/checkout",
+      "installed_unix_ms": 1794191673197
     }
   },
   {
     "plugin_id": "herdr-floax",
     "name": "herdr-floax",
-    "version": "0.3.1",
+    "version": "0.4.0",
     "min_herdr_version": "0.7.0",
     "description": "Toggle a floating scratch shell (sized popup) for the current workspace, à la tmux-floax.",
-    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr-floax-0151ef56c880/31092-0/checkout/herdr-plugin.toml",
-    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr-floax-0151ef56c880/31092-0/checkout",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr-floax-0151ef56c880/61468-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr-floax-0151ef56c880/61468-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -186,19 +186,19 @@
       "kind": "github",
       "owner": "Tyru5",
       "repo": "herdr-floax",
-      "resolved_commit": "0e9d9545dde074dcb4f200029178261f5c28b31f",
-      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/herdr-floax-0151ef56c880/31092-0/checkout",
-      "installed_unix_ms": 1792788929709
+      "resolved_commit": "3f52b52755aa53830e4107e2f641e041d948ff8e",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/herdr-floax-0151ef56c880/61468-0/checkout",
+      "installed_unix_ms": 1794191644491
     }
   },
   {
     "plugin_id": "herdr.auto-title",
     "name": "Auto Title",
-    "version": "0.20.0",
+    "version": "0.21.0",
     "min_herdr_version": "0.8.2",
     "description": "Automatically generates contextual tab titles",
-    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/59256-0/checkout/herdr-plugin.toml",
-    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/59256-0/checkout",
+    "manifest_path": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/33925-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/fox/.dotfiles/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/33925-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -265,9 +265,9 @@
       "kind": "github",
       "owner": "kryptamine",
       "repo": "herdr-auto-title",
-      "resolved_commit": "4839155852d55bd8fdc9ec36766d98ce6d894bd9",
-      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/59256-0/checkout",
-      "installed_unix_ms": 1793928225195
+      "resolved_commit": "e78dfca55a2b5aab006e10d34f722220a2222779",
+      "managed_path": "/Users/fox/.config/herdr/plugins/github-installations/herdr.auto-title-4b7d61f48ce8/33925-0/checkout",
+      "installed_unix_ms": 1794277022669
     }
   },
   {
