@@ -46,6 +46,7 @@ return {
 	["日历"] = ":calendar:",
 	["Fantastical"] = ":calendar:",
 	["BusyCal"] = ":busycal:",
+	["Classycal"] = ":busycal:",
 
 	-- Design
 	["Affinity"] = ":affinity_photo:",
