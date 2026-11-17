@@ -1,4 +1,5 @@
 return {
+	nerd_font = "JetBrainsMonoNL Nerd Font", -- for glyphs SF Symbols lacks (agents, ethernet)
 	logo = {
 		cmd = "􀆔",
 		apple = "􀣺",
@@ -32,6 +33,7 @@ return {
 		error = "􀙥",
 		connected = "􀙇",
 		hotspot = "􀉤",
+		ethernet = "󰈀",
 	},
 	display = {
 		default = "􀢹",
@@ -62,7 +64,6 @@ return {
 	},
 	-- Same glyphs as herdr/agent-icons.sh so the bar matches the herdr sidebar.
 	agents = {
-		font = "JetBrainsMonoNL Nerd Font",
 		working = "\u{edf7}",
 		blocked = "\u{f169d}",
 		done = "\u{f171a}",
