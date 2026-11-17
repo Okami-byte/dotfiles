@@ -60,10 +60,15 @@ return {
 		pause = "􀊆",
 		play = "􀊄",
 	},
-	notifications = {
-		empty = "􀋚",
-		notif = "􀝗",
-		error = "􀋞", -- bell.slash: the lookup failed (the reason is in the sketchybar log)
+	-- Same glyphs as herdr/agent-icons.sh so the bar matches the herdr sidebar.
+	agents = {
+		font = "JetBrainsMonoNL Nerd Font",
+		working = "\u{edf7}",
+		blocked = "\u{f169d}",
+		done = "\u{f171a}",
+		idle = "\u{f16a0}",
+		unknown = "\u{f16a2}",
+		none = "\u{f16a7}",
 	},
 	pkg = "􀐛",
 	user = "􀅷",

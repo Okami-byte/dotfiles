@@ -62,7 +62,7 @@ function mod.setup(bar, zones, icons, palette)
 
 	mod.pkgs = require("items.pkgs").setup(icons, palette)
 	mod.user = require("items.user").setup(icons, palette)
-	mod.notifs = require("items.notifs").setup(icons, palette)
+	mod.agents = require("items.agents").setup(icons, palette)
 
 	mod.separator = require("items.separator").setup(zones, icons, palette)
 	mod.player = require("items.player").setup(bar, icons, palette)
@@ -92,15 +92,15 @@ function mod.load(zones, icons, palette)
 
 	mod.pkgs.load(icons, palette).item:set({ padding_left = 0 })
 	mod.user.load()
-	mod.notifs.load(icons, palette)
+	mod.agents.load(icons, palette)
 
-	if mod.notifs.item then
+	if mod.agents.item then
 		mod.user.item:set({ padding_left = 0 })
 	end
 
 	if config.controls ~= nil and next(config.controls) ~= nil then
-		if mod.notifs.item then
-			mod.notifs.item:set({ padding_left = 0 })
+		if mod.agents.item then
+			mod.agents.item:set({ padding_left = 0 })
 		else
 			mod.user.item:set({ padding_left = 0 })
 		end
@@ -140,7 +140,7 @@ function mod.load(zones, icons, palette)
 	zones.brackets.dynamic_brackets[4] = {
 		mod.pkgs.item,
 		mod.user.item,
-		mod.notifs.item,
+		mod.agents.item,
 		["bracket"] = { show = false },
 		["on_right_click"] = function(separator, _)
 			mod.cpu.toggle(separator, icons)
