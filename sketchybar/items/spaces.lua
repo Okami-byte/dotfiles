@@ -267,13 +267,7 @@ local function loadYabaiSpaces(zones)
 		sbar.exec("yabai -m window --toggle expose")
 	end)
 
-	mod.items["front_app"]:subscribe("front_app_switched", function(env)
-		local icon = app_icons[env.INFO] or app_icons["default"]
-		mod.items["front_app"]:set({
-			icon = { string = icon },
-			label = { string = env.INFO },
-		})
-	end)
+	require("helpers.front_app").attach(mod.items["front_app"])
 end
 
 -- ─── Aerospace ───────────────────────────────────────────────────────────────

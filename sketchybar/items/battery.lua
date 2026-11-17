@@ -24,7 +24,9 @@ local function update(item, icons, palette)
 				sbar.exec('pmset -g batt | grep -Eo "[0-9]+%" | cut -d% -f1', function(result, exit_code)
 					local percentage = tonumber(result)
 
-					local properties = { icon = {}, label = { string = percentage .. " %" } }
+					-- Plugged in and (nearly) full: icon only, the percentage adds nothing.
+					local quiet = exit_code_ac == 0 and percentage >= 95
+					local properties = { icon = {}, label = { drawing = not quiet, string = percentage .. " %" } }
 
 					-- Icon
 					if exit_code_ac == 0 then

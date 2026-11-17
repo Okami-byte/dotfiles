@@ -31,7 +31,7 @@ function mod.setup(icons, palette)
 		updates = true, -- keep tracking status while the zone is collapsed
 		position = "right",
 		icon = {
-			font = { family = icons.agents.font, style = "Regular", size = 16.0 },
+			font = { family = icons.nerd_font, style = "Regular", size = 16.0 },
 			string = mod.status.none.icon,
 			color = mod.status.none.color,
 		},
@@ -74,7 +74,7 @@ local function addRows(icons, palette)
 			position = "popup." .. mod.item.name,
 			drawing = false,
 			icon = {
-				font = { family = icons.agents.font, style = "Regular", size = 14.0 },
+				font = { family = icons.nerd_font, style = "Regular", size = 14.0 },
 				width = 26,
 			},
 			label = { width = popup_width - 26, max_chars = 40 },
