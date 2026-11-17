@@ -251,11 +251,21 @@ local function loadYabaiSpaces(zones)
 	end
 
 	mod.items["separator"] = sbar.add("item", mod.properties.separator)
-	mod.items["separator"]:subscribe("mouse.clicked", function(_)
-		sbar.exec("yabai -m space --create")
+	mod.items["separator"]:subscribe({ "mouse.entered", "mouse.exited", "mouse.clicked" }, function(env)
+		local item = mod.items["separator"]
+		if env.SENDER == "mouse.entered" then
+			item:set({ icon = { string = "􀏩" } })
+		elseif env.SENDER == "mouse.exited" then
+			item:set({ icon = { string = mod.properties.separator.icon.string } })
+		else
+			sbar.exec("yabai -m space --create")
+		end
 	end)
 
 	mod.items["front_app"] = sbar.add("item", mod.properties.front_app)
+	mod.items["front_app"]:subscribe("mouse.clicked", function(_)
+		sbar.exec("yabai -m window --toggle expose")
+	end)
 
 	mod.items["front_app"]:subscribe("front_app_switched", function(env)
 		local icon = app_icons[env.INFO] or app_icons["default"]

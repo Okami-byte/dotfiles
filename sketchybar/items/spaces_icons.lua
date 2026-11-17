@@ -197,7 +197,16 @@ end
 local function addSeparator(on_click)
 	local separator = sbar.add("item", mod.properties.separator)
 	if on_click then
-		separator:subscribe("mouse.clicked", on_click)
+		-- Clickable separators swap to a "+" glyph on hover as an affordance.
+		separator:subscribe({ "mouse.entered", "mouse.exited", "mouse.clicked" }, function(env)
+			if env.SENDER == "mouse.entered" then
+				separator:set({ icon = { string = "􀏩" } })
+			elseif env.SENDER == "mouse.exited" then
+				separator:set({ icon = { string = mod.properties.separator.icon.string } })
+			else
+				on_click(env)
+			end
+		end)
 	end
 	mod.items["separator"] = separator
 end
@@ -297,6 +306,9 @@ local function loadYabaiSpaces(zones)
 	end)
 
 	mod.items["front_app"] = sbar.add("item", mod.properties.front_app)
+	mod.items["front_app"]:subscribe("mouse.clicked", function(_)
+		sbar.exec("yabai -m window --toggle expose")
+	end)
 
 	mod.items["front_app"]:subscribe("front_app_switched", function(env)
 		local icon = app_icons[env.INFO] or app_icons["default"]
