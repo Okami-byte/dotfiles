@@ -26,7 +26,6 @@ config = fetchConfig(os.getenv("SKETCHYBAR_CONFIG") or "./config.lua", { -- Look
 
 	-- Behaviour
 	controls = { menu_items.bluetooth },
-	theme_file = "./helpers/colors.lua",
 
 	-- Technical
 	window_manager = "yabai",
