@@ -31,13 +31,8 @@ config = fetchConfig(os.getenv("SKETCHYBAR_CONFIG") or "./config.lua", { -- Look
 	window_manager = "yabai",
 	notch_width = 180,
 	cpu_update_freq = 2,
+	agent_terminal = "kitty", -- app brought forward when clicking an agent row
 	perfbc = true, -- Allow command bundling for improved performance
-	git_key = nil,
-	git_api_url = "https://api.github.com", -- override for GHE/homelab, e.g. "https://git.home.lab/api/v3"
-	git_web_url = "https://github.com", -- override to match git_api_url's host for self-hosted instances
-	-- GitHub search qualifiers (docs.github.com/search-syntax). Catch-all for open PRs that may need
-	-- attention: ones I wrote, was asked to review, am assigned, or am mentioned in.
-	git_pr_query = "is:pr is:open (author:@me OR review-requested:@me OR assignee:@me OR mentions:@me)",
 	display_groups = {},
 	execs = {}, -- Overrides for executables
 })
@@ -51,6 +46,7 @@ execs = mergeTables({
 	identify = cmdPath("identify") or log("lua-main", "No imagemagick in path"),
 	magick = cmdPath("magick") or cmdPath("convert") or log("lua-main", "No imagemagick in path"),
 	yabai = cmdPath("yabai") or log("lua-main", "No yabai in path"),
+	herdr = cmdPath("herdr") or log("lua-main", "No herdr in path"),
 }, config.execs)
 
 local palette = require("helpers/colors").getColorPalette(config.theme, config.transparency and 180 or 1000) -- Put a huge alpha value to prevent adjusts
