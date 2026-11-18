@@ -7,7 +7,7 @@ return {
       variant = "auto", -- auto, main, moon, or dawn
       dark_variant = "main", -- main, moon, or dawn
       light_variant = "dawn", -- main, moon, or dawn
-      dim_inactive_windows = false,
+      dim_inactive_windows = true,
       extend_background_behind_borders = true,
 
       enable = {
@@ -19,7 +19,7 @@ return {
       styles = {
         bold = true,
         italic = true,
-        transparency = true,
+        transparency = false,
       },
 
       groups = {
