@@ -107,6 +107,7 @@ abbr hsr "hsesh root"
 # System Commands
 abbr pwdc "pwd | pbcopy"
 abbr --add - 'cd -'
+abbr :q "tmux kill-server"
 
 # Tmux
 abbr tn "tmux new-session -s"
