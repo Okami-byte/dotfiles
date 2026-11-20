@@ -16,12 +16,12 @@ rcmd - return : open -n -a "kitty"
 # rcmd - return : open -n -a "wezterm"
 
 # change layout of desktop
-# lctrl + alt - b : yabai -m space --layout bsp
+lctrl + alt - b : yabai -m space --layout bsp
 # lctrl + alt - f : yabai -m space --layout float
-# lctrl + alt - s : yabai -m space --layout stack
+lctrl + alt - s : yabai -m space --layout stack
 
 # quick restart yabai + skhd
-lctrl + alt - r : yabai --restart-service && skhd --restart-service
+lctrl + alt - r : $HOME/.dotfiles/scripts/reload_rice.sh
 
 # change window focus within space
 alt - j : yabai -m window --focus south
@@ -105,6 +105,7 @@ shift + alt - 2 : yabai -m window --space 2;
 shift + alt - 3 : yabai -m window --space 3;
 shift + alt - 4 : yabai -m window --space 4;
 shift + alt - 5 : yabai -m window --space 5;
+shift + alt - 6 : yabai -m window --space 6;
 
 :: default : sketchybar --trigger skhd_enabled SKHD_ENABLED=false; sketchybar --trigger request_bg REQUEST_BG=false;
 :: bg_select : sketchybar --trigger skhd_enabled SKHD_ENABLED=false; sketchybar --trigger request_bg REQUEST_BG=true;
