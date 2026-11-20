@@ -16,6 +16,8 @@ add_newline = true
 
 format = """
 $character\
+$username\
+$hostname\
 $directory\
 ${custom.git_host}\
 $git_branch\
@@ -24,15 +26,15 @@ $git_status\
 $git_metrics\
 """
 
-right_format = """$aws$python$docker_context$terraform"""
+right_format = """$status$cmd_duration$jobs$python$terraform$kubernetes"""
 
 palette = "kopicat"
 
 [character]
 disabled = false
 # success_symbol = "[ ](bold fg:text)"
-# success_symbol = "[􀥲 ](bold fg:green)"
-success_symbol = "[󰴈 ](bold fg:rose_pink)"
+success_symbol = "[􀥲 ](bold fg:green)"
+# success_symbol = "[󰴈 ](bold fg:rose_pink)"
 error_symbol = "[✘](red bold)"
 vimcmd_symbol = "[: ](bold fg:yellow)"
 vimcmd_replace_one_symbol = '[󰜉 ](bold fg:maroon)'
@@ -41,8 +43,9 @@ vimcmd_visual_symbol = '[􀋭 ](bold fg:sapphire)'
 
 [directory]
 style = 'blue'
-truncation_length = 10
-# truncation_symbol = '…/  '
+truncation_length = 5
+repo_root_style = 'bold peach'
+# truncation_symbol = '…/'
 home_symbol = '~'
 read_only_style = '197'
 read_only = '  '
@@ -57,25 +60,50 @@ disabled = false
 "Developer" = "󰲋 "
 "Others" = " "
 
+# Only shown over SSH (or as root); hidden on the local machine
 [username]
 style_user = 'white bold'
 style_root = 'red bold'
-format = '[$user]($style) '
-disabled = true
+format = '[$user]($style)'
+disabled = false
 show_always = false
 
+# ssh_only = true (default): only shown when connected over SSH
+[hostname]
+ssh_only = true
+ssh_symbol = ''
+format = '[@$hostname]($style) '
+style = 'bold yellow'
+
+[cmd_duration]
+min_time = 2000
+format = '[󰔛 $duration]($style) '
+style = 'bold subtext0'
+
+[status]
+disabled = false
+map_symbol = true
+pipestatus = true
+symbol = '✘ '
+format = '[$symbol$status]($style) '
+style = 'bold red'
+
+[jobs]
+symbol = '✦ '
+style = 'bold teal'
+
 [git_status]
-format = "[$staged$modified$renamed$conflicted$ahead_behind]($style)"
+format = "[$staged$modified$renamed$deleted$untracked$stashed$conflicted$ahead_behind]($style)"
 # options available for format
 staged     = "[+${count} ](green)"
 modified   = "[!${count} ](yellow)"
 renamed    = "[»${count} ](blue)"
 deleted    = "[-${count} ](red)"
 untracked  = "[?${count} ](sapphire)"
-stashed    = "[≡${count} ](lavender)"
+stashed    = "[≡${count} ](mauve)"
 conflicted = "[✖${count} ](red bold)"
 ahead      = "[⇡${count} ](teal)"
-behind     = "[⇣${count} ](peach)"
+behind     = "[⇣${count} ](maroon)"
 diverged   = "[⇕⇡${ahead_count}⇣${behind_count} ](mauve)"
 
 [custom.git_worktree]
@@ -97,10 +125,10 @@ ignore_timeout = true
 
 # Shows current git branch
 [git_branch]
-symbol = "[](black) "
-format =  ' on [$symbol$branch]($style)[](black)'
+symbol = " "
+format =  ' on [$symbol$branch]($style)'
 truncation_symbol = '…/'
-style = 'fg:lavender bg:black'
+style = 'fg:lavender'
 disabled = false
 
 [custom.git_host]
@@ -164,20 +192,38 @@ format = "[ $symbol( $context) ]($style)"
 
 [terraform]
 symbol = " "
-format = "[ $symbol( $context)${version} ]($style)"
+format = '[$symbol$version( $workspace)]($style) '
+style = "bold mauve"
 
+# Only shown when a virtualenv is active (no file/extension detection), no version
 [python]
-symbol = "[](black)[ ](bold fg:yellow bg:black)"
-format = ' [$symbol$virtualenv]($style)[](black)'
-style = "bold fg:blue bg:black"
+symbol = " "
+format = '[$symbol$virtualenv]($style) '
+style = "bold yellow"
+detect_extensions = []
+detect_files = []
+detect_folders = []
+detect_env_vars = ["VIRTUAL_ENV"]
 
+# Disabled for now: docker usually runs on a remote host, not locally
 [docker_context]
+disabled = true
 symbol = " "
-format = "[ $symbol( $context)${version} ]($style)"
+format = '[$symbol$context]($style) '
+style = "bold blue"
 
+# Only shown in directories that look like k8s projects; first matching context wins
 [kubernetes]
-symbol = '󱃾 '
-format = "[ $symbol( $context) ]($style)"
+disabled = false
+symbol = "󱃾 "
+format = '[$symbol$context( \($namespace\))]($style) '
+style = "bold blue"
+detect_files = ["kustomization.yaml", "kustomization.yml", "Chart.yaml", "skaffold.yaml", "helmfile.yaml"]
+detect_folders = ["k8s", "kubernetes"]
+contexts = [
+  { context_pattern = ".*prod.*", style = "bold red" },
+  { context_pattern = ".*dev.*", style = "bold green" },
+]
 
 [palettes.kopicat]
 red = "#ff657a"
