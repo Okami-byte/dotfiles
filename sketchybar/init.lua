@@ -31,6 +31,7 @@ config = fetchConfig(os.getenv("SKETCHYBAR_CONFIG") or "./config.lua", { -- Look
 	window_manager = "yabai",
 	notch_width = 180,
 	cpu_update_freq = 2,
+	agent_mux = "tmux", -- where the agents item reads agent status: "tmux" or "herdr"
 	agent_terminal = "kitty", -- app brought forward when clicking an agent row
 	perfbc = true, -- Allow command bundling for improved performance
 	display_groups = {},
@@ -47,6 +48,8 @@ execs = mergeTables({
 	magick = cmdPath("magick") or cmdPath("convert") or log("lua-main", "No imagemagick in path"),
 	yabai = cmdPath("yabai") or log("lua-main", "No yabai in path"),
 	herdr = cmdPath("herdr") or log("lua-main", "No herdr in path"),
+	tmux = cmdPath("tmux") or log("lua-main", "No tmux in path"),
+	sesh = cmdPath("sesh") or log("lua-main", "No sesh in path"),
 }, config.execs)
 
 local palette = require("helpers/colors").getColorPalette(config.theme, config.transparency and 180 or 1000) -- Put a huge alpha value to prevent adjusts

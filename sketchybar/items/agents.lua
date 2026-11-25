@@ -1,12 +1,14 @@
--- Coding-agent status from herdr.
+-- Coding-agent status from herdr or tmux (pick with config.agent_mux).
 --
 -- Bar: the most urgent status across all agents (blocked > working > done >
--- idle > unknown) with how many agents are in it. Driven by
--- helpers/agent_watch.py, which listens on herdr's socket and fires
--- "agents_update" only when something changes (no polling).
+-- idle > unknown) with how many agents are in it. Driven by a watcher that
+-- fires "agents_update" only when something changes:
+--   herdr: helpers/agent_watch.py listens on herdr's socket (no polling).
+--   tmux:  helpers/agent_watch_tmux.py reads the @agent_status pane option
+--          that helpers/tmux_agent_hook.sh sets from Claude Code hooks.
 --
--- Click: popup listing every agent (status, title, folder). Clicking a row
--- focuses that agent in herdr and brings the terminal forward.
+-- Click: popup listing every agent (status, title, folder/session). Clicking
+-- a row focuses that agent and brings the terminal forward.
 
 local popup = require("helpers/popup")
 
@@ -14,10 +16,82 @@ local mod = {}
 
 local popup_width = 300
 local max_rows = 8
-local pane_ids = {} -- row index -> herdr pane id, for click-to-focus
+local pane_ids = {} -- row index -> pane id, for click-to-focus
+local sessions = {} -- row index -> tmux session name (tmux backend only)
 
--- Setup
+local function basename(path)
+	return (path or ""):match("([^/]+)/?$") or ""
+end
+
+-- Backends -------------------------------------------------------------------
+-- Each one: available(), watcher (script + args), list_cmd, row_label(agent),
+-- focus(row index).
+
+local backends = {}
+
+backends.herdr = {
+	available = function()
+		return execs.herdr ~= nil
+	end,
+	watcher = "agent_watch.py",
+	watcher_args = function(event_name)
+		return event_name .. ' "$(command -v sketchybar)"'
+	end,
+	list_cmd = function()
+		return execs.herdr .. " agent list"
+	end,
+	agents = function(result)
+		return type(result) == "table" and result.result and result.result.agents or {}
+	end,
+	row_label = function(a)
+		return (a.terminal_title_stripped or a.agent or "agent") .. "  ·  " .. basename(a.cwd)
+	end,
+	focus = function(i)
+		sbar.exec(execs.herdr .. " agent focus '" .. pane_ids[i] .. "' && open -a " .. config.agent_terminal)
+	end,
+}
+
+backends.tmux = {
+	available = function()
+		return execs.tmux ~= nil
+	end,
+	watcher = "agent_watch_tmux.py",
+	watcher_args = function(event_name)
+		return event_name .. ' "$(command -v sketchybar)" ' .. execs.tmux
+	end,
+	list_cmd = function()
+		return "./helpers/agent_watch_tmux.py --list " .. execs.tmux
+	end,
+	agents = function(result)
+		return type(result) == "table" and result.agents or {}
+	end,
+	row_label = function(a)
+		local title = (a.title ~= "" and a.title) or a.agent or "agent"
+		return title .. "  ·  " .. (a.session or basename(a.cwd))
+	end,
+	-- Switch the most recently used tmux client to the agent's pane. With no
+	-- client attached, open a terminal and let sesh attach the session.
+	focus = function(i)
+		local t, pane = execs.tmux, pane_ids[i]
+		local sesh = execs.sesh and string.format(
+			"open -na %s --args %s connect '%s'",
+			config.agent_terminal,
+			execs.sesh,
+			sessions[i]
+		) or ("open -a " .. config.agent_terminal)
+		sbar.exec(string.format(
+			"if [ -n \"$(%s list-clients 2>/dev/null)\" ]; then "
+				.. "%s switch-client -t '%s' \\; select-window -t '%s' \\; select-pane -t '%s' && open -a %s; "
+				.. "else %s; fi",
+			t, t, pane, pane, pane, config.agent_terminal, sesh
+		))
+	end,
+}
+
+-- Setup ----------------------------------------------------------------------
 function mod.setup(icons, palette)
+	mod.backend = backends[config.agent_mux] or backends.tmux
+
 	mod.status = {
 		blocked = { icon = icons.agents.blocked, color = palette.colors.red },
 		working = { icon = icons.agents.working, color = palette.colors.yellow },
@@ -43,16 +117,18 @@ function mod.setup(icons, palette)
 	return mod
 end
 
+-- Starts the backend's watcher, killing whichever one (herdr or tmux) ran last.
 local function startWatcher(event_name)
+	local b = mod.backend
 	sbar.exec(
 		[[
     #SKETCHYBAR_AGENT_WATCH#
     lastpid=$(cat ${TMPDIR}/sketchybar/agent_pids 2> /dev/null || echo 0)
-    if ps -p $lastpid -o command= | grep 'agent_watch.py' > /dev/null; then
+    if ps -p $lastpid -o command= | grep -E 'agent_watch(_tmux)?\.py' > /dev/null; then
       kill $lastpid
     fi
     mkdir -p ${TMPDIR}/sketchybar
-    ./helpers/agent_watch.py ]] .. event_name .. [[ "$(command -v sketchybar)" > /dev/null 2>&1 &
+    ./helpers/]] .. b.watcher .. " " .. b.watcher_args(event_name) .. [[ > /dev/null 2>&1 &
     echo $! > ${TMPDIR}/sketchybar/agent_pids
   ]],
 		function() end
@@ -82,7 +158,7 @@ local function addRows(icons, palette)
 		})
 		row:subscribe("mouse.clicked", function()
 			if pane_ids[i] then
-				sbar.exec(execs.herdr .. " agent focus '" .. pane_ids[i] .. "' && open -a " .. config.agent_terminal)
+				mod.backend.focus(i)
 			end
 			popup.hide(mod.item)
 		end)
@@ -98,21 +174,18 @@ local function addRows(icons, palette)
 	})
 end
 
-local function basename(path)
-	return (path or ""):match("([^/]+)/?$") or ""
-end
-
 local function fillRows()
-	sbar.exec(execs.herdr .. " agent list", function(result)
-		local agents = type(result) == "table" and result.result and result.result.agents or {}
+	local b = mod.backend
+	sbar.exec(b.list_cmd(), function(result)
+		local agents = b.agents(result)
 		mod.empty_row:set({ drawing = #agents == 0 })
 
 		for i, row in ipairs(mod.rows) do
 			local a = agents[i]
 			if a then
 				local s = mod.status[a.agent_status] or mod.status.unknown
-				local label = (a.terminal_title_stripped or a.agent or "agent") .. "  ·  " .. basename(a.cwd)
-				pane_ids[i] = a.pane_id
+				local label = b.row_label(a)
+				pane_ids[i], sessions[i] = a.pane_id, a.session
 				if i == max_rows and #agents > max_rows then
 					label = string.format("+%d more…", #agents - max_rows + 1)
 					pane_ids[i] = nil
@@ -123,16 +196,16 @@ local function fillRows()
 					label = { string = label },
 				})
 			else
-				pane_ids[i] = nil
+				pane_ids[i], sessions[i] = nil, nil
 				row:set({ drawing = false })
 			end
 		end
 	end)
 end
 
--- Load
+-- Load -----------------------------------------------------------------------
 function mod.load(icons, palette)
-	if not execs.herdr then
+	if not mod.backend.available() then
 		return mod
 	end
 
