@@ -33,7 +33,7 @@ palette = "kopicat"
 [character]
 disabled = false
 # success_symbol = "[ ](bold fg:text)"
-success_symbol = "[􀥲 ](bold fg:green)"
+success_symbol = "[ ](bold fg:green)"
 # success_symbol = "[󰴈 ](bold fg:rose_pink)"
 error_symbol = "[✘](red bold)"
 vimcmd_symbol = "[: ](bold fg:yellow)"
