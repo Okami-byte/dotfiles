@@ -16,7 +16,6 @@ cache = true
 separator_aware = true
 dir_length = 2
 
-
 # Tui
 [tui]
 prompt = "󰑃 "
@@ -37,7 +36,7 @@ startup_command = "nvim"
 # Sessions
 
 [default_session]
-startup_command = "nvim && exit"
+startup_command = "nvim"
 startup_command_ignore_dirs = ["~/repos", "~/.config", "/Users/fox"]
 preview_command = "eza --all --icons --color=always {} && echo '---' && git -C {} status --short"
 
@@ -46,20 +45,23 @@ preview_command = "eza --all --icons --color=always {} && echo '---' && git -C {
 [[session]]
 name = "notes"
 path = "~/Notes"
+startup_command = "nvim && exit"
 
 [[session]]
 name = "python projects"
 path = "~/Developer/Projects/Python"
+startup_command = "nvim && exit"
 
 [[session]]
 name = "developer"
 path = "~/Developer/Projects"
+startup_command = "nvim && exit"
 
 [[session]]
 name = "claude"
 icon = "󱙺 "
 path = "~/.claude"
-startup_command = "claude"
+startup_command = "claude && exit"
 
 [[session]]
 name = "work"
@@ -83,25 +85,28 @@ startup_script = "la"
 [[session]]
 name = "dotfiles"
 path = "~/.dotfiles"
+startup_command = "nvim && exit"
 
 [[session]]
 name = "wezterm config"
 path = "~/.dotfiles/wezterm"
-startup_command = "nvim wezterm.lua"
+startup_command = "nvim wezterm.lua && exit"
 
 [[session]]
 name = "fish config"
 path = "~/.dotfiles/fish"
 preview_command = "bat --language=fish --style=snip --color=always ~/.dotfiles/fish/config.fish"
+startup_command = "nvim && exit"
 
 [[session]]
 name = "kitty config"
 path = "~/.dotfiles/kitty"
-startup_command = "nvim kitty.conf"
+startup_command = "nvim kitty.conf && exit"
 
 [[session]]
 name = "neovim config"
 path = "~/.dotfiles/nvim"
+startup_command = "nvim && exit"
 
 [[session]]
 name = "sketchybar config"
@@ -111,19 +116,19 @@ path = "~/.dotfiles/sketchybar"
 name = "sesh config"
 icon = "⚡"
 path = "~/.config/sesh"
-startup_command = "nvim sesh.toml"
+startup_command = "nvim sesh.toml && exit"
 preview_command = "bat --language=toml --style=snip --color=always ~/.config/sesh/sesh.toml"
 
 [[session]]
 name = "tmux config"
 path = "~/.dotfiles/tmux"
-startup_command = "nvim tmux.conf"
+startup_command = "nvim && exit"
 preview_command = "bat --language=bash --style=snip --color=always ~/.dotfiles/tmux/tmux.conf"
 
 [[session]]
 name = "yazi config"
 path = "~/.dotfiles/yazi"
-startup_command = "nvim yazi.toml"
+startup_command = "nvim yazi.toml && exit"
 
 [[session]]
 name = "ghostty config"
@@ -131,19 +136,14 @@ path = "~/.dotfiles/ghostty"
 startup_command = "nvim config"
 
 [[session]]
-name = "karabiner elements config"
-icon = "󰌓 "
-path = "~/.dotfiles/karabiner"
-
-[[session]]
 name = "yabai config"
 path = "~/.dotfiles/yabai"
-startup_command = "nvim yabairc"
+startup_command = "nvim yabairc && exit"
 preview_command = "bat --style=snip --color=always ~/.dotfiles/yabai/yabairc"
 
 [[session]]
 name = "skhd config"
 path = "~/.dotfiles/skhd"
-startup_command = "nvim skhdrc"
+startup_command = "nvim skhdrc && exit"
 preview_command = "bat --style=snip --color=always ~/.dotfiles/skhd/skhdrc"
 
